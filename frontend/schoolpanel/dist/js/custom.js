@@ -1,24 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Fetch the common menu HTML
-    fetch("../frontend/dist/common/side-menu.html")
+    fetch("../schoolpanel/dist/common/side-menu.html")
         .then(response => response.text())
         .then(html => {
             document.getElementById("side-nav").innerHTML = html;
         })
         .catch(error => console.error("Error fetching common menu:", error));
-    fetch("../frontend/dist/common/mobile-menu.html")
+    fetch("../schoolpanel/dist/common/mobile-menu.html")
         .then(response => response.text())
         .then(html => {
             document.getElementById("mobile-menu").innerHTML = html;
         })
         .catch(error => console.error("Error fetching common menu:", error));
-    fetch("../frontend/dist/common/notification.html")
+    fetch("../schoolpanel/dist/common/notification.html")
         .then(response => response.text())
         .then(html => {
             document.getElementById("notification-section").innerHTML = html;
         })
         .catch(error => console.error("Error fetching common menu:", error));
-    fetch("../frontend/dist/common/profile-dropdown.html")
+    fetch("../schoolpanel/dist/common/profile-dropdown.html")
         .then(response => response.text())
         .then(html => {
             document.getElementById("right-profile-section").innerHTML = html;
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 setTimeout(function () {
     var script = document.createElement('script');
-    script.src = '../frontend/dist/js/app.js';
+    script.src = '../dist/js/app.js';
     document.body.appendChild(script);
 
     const currentPageName = document.body.getAttribute('page-name');
