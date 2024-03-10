@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="en" class="light">
+<!-- BEGIN: Head -->
+
+<head>
+    <meta charset="utf-8">
+    <link href="dist/images/logo.svg" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Add School</title>
+    <!-- BEGIN: CSS Assets-->
+    <link rel="stylesheet" href="dist/css/app.css" />
+    <!-- END: CSS Assets-->
+</head>
+<!-- END: Head -->
+
+<body class="main" page-name="school">
+    <!-- BEGIN: Mobile Menu -->
+    <div class="mobile-menu d-md-none" id="mobile-menu">
+
+    </div>
+    <!-- END: Mobile Menu -->
+    <div class="d-flex">
+        <!-- BEGIN: Side Menu -->
+        <nav class="side-nav" id="side-nav">
+
+        </nav>
+        <!-- END: Side Menu -->
+        <!-- BEGIN: Content -->
+        <div class="content">
+            <!-- BEGIN: Top Bar -->
+            <div class="top-bar">
+                <!-- BEGIN: Breadcrumb -->
+                <div class="-intro-x breadcrumb me-auto d-none d-sm-flex"> <a href="">Admin</a> <i
+                        data-feather="chevron-right" class="breadcrumb__icon"></i> <a href=""
+                        class="breadcrumb--active">School List</a> </div>
+                <!-- END: Breadcrumb -->
+                <!-- BEGIN: Notifications -->
+                <div class="intro-x dropdown me-auto me-sm-6" id="notification-section">
+
+                </div>
+                <!-- END: Notifications -->
+                <!-- BEGIN: Account Menu -->
+                <div class="intro-x dropdown w-8 h-8" id="right-profile-section">
+
+                </div>
+                <!-- END: Account Menu -->
+            </div>
+            <!-- END: Top Bar -->
+            <div class="intro-y d-flex flex-column flex-sm-row align-items-center mt-8">
+                <h2 class="fs-lg fw-medium me-auto">
+                    Add New School
+                </h2>
+                <div class="w-full w-sm-auto d-flex mt-4 mt-sm-0">
+                    <a href="school-list.html" class="btn btn-primary shadow-md me-2">
+                        School List</a>
+                </div>
+            </div>
+            <div class="intro-y box py-10 mt-5">
+                <div class="px-5 px-sm-20">
+                    <div class="grid columns-12 gap-4 gap-y-5">
+                        <div class="intro-y g-col-12 g-col-sm-6">
+                            <label for="name" class="form-label">School Name</label>
+                            <input id="name" type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="intro-y g-col-12 g-col-sm-6">
+                            <label for="email" class="form-label">Email ID</label>
+                            <input id="email" type="email" class="form-control" placeholder="example@gmail.com">
+                        </div>
+                        <div class="intro-y g-col-12 g-col-sm-6">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input id="phone" type="tel" class="form-control" placeholder="Important Meeting">
+                        </div>
+                        <div class="intro-y g-col-12 g-col-sm-6">
+                            <label for="input-wizard-4" class="form-label">Est. Since</label>
+                            <div class="input-group w-100 mx-auto">
+                                <div id="input-group-email" class="input-group-text"> <i data-feather="calendar"
+                                        class="w-4 h-4"></i> </div> <input type="text" class="datepicker form-control"
+                                    data-single-mode="true">
+                            </div>
+                        </div>
+                        <div class="intro-y g-col-12 g-col-sm-6">
+                            <label for="schoolcode" class="form-label">School Code</label>
+                            <input id="schoolcode" type="text" class="form-control" disabled placeholder="CM1234">
+                        </div>
+                        <div class="intro-y g-col-12 g-col-sm-6">
+                            <label for="schoolcode" class="form-label">Principal Name</label>
+                            <input id="schoolcode" type="text" class="form-control" disabled placeholder="CM1234">
+                        </div>
+                        <div class="intro-y g-col-12 g-col-sm-6">
+                            <form action="/upload" method="post" enctype="multipart/form-data">
+                                <label for="fileInput" class="form-label">Choose Logo</label>
+                                <input type="file" class="form-control" id="fileInput" name="fileInput">
+                            </form>
+                        </div>
+                        <div class="intro-y g-col-12 g-col-sm-6">
+                            <label for="name" class="form-label">Branch</label>
+                            <input id="name" type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="intro-y g-col-12 g-col-sm-6">
+                            <label for="name" class="form-label">Pincode</label>
+                            <input id="name" type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="intro-y g-col-12 g-col-sm-6">
+                            <label for="name" class="form-label">City</label>
+                            <input id="name" type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="intro-y g-col-12 g-col-sm-6">
+                            <label for="name" class="form-label">State</label>
+                            <input id="name" type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="intro-y g-col-12 g-col-sm-6">
+
+                            <label for="validation-form-6" class="form-label w-full d-flex flex-column flex-sm-row">
+                                Address
+                            </label> <textarea id="validation-form-6" class="form-control" name="comment"
+                                placeholder="Enter Address" minlength="10" required></textarea>
+                        </div>
+                        <div class="intro-y g-col-12 g-col-sm-6">
+                            <label for="name" class="form-label">Medium</label>
+                            <select class="form-select me-sm-2" aria-label="Default select example">
+                                <option>Hindi</option>
+                                <option>English</option>
+                                <option>Marathi</option>
+                                <option>Gujarati</option>
+                                <option>Semi English</option>
+                            </select>
+                        </div>
+                        <div class="intro-y g-col-12 g-col-sm-6">
+                            <label for="name" class="form-label">School Board</label>
+                            <select class="form-select me-sm-2" aria-label="Default select example">
+                                <option>Maharastra</option>
+                                <option>Gujarat</option>
+                                <option>Delhi</option>
+                                <option>Uttar Pradesh</option>
+                                <option>Punjab</option>
+                            </select>
+                        </div>
+                        <div class="intro-y g-col-12 g-col-sm-6">
+                            <label for="name" class="form-label">School Type</label>
+                            <select class="form-select me-sm-2" aria-label="Default select example">
+                                <option>Private</option>
+                                <option>Goverment</option>
+                                <option>Trust</option>
+                            </select>
+                        </div>
+                        <div class="intro-y g-col-12 g-col-sm-6">
+                            <label for="name" class="form-label">Morning Shift From</label>
+                            <input id="name" type="time" class="form-control" placeholder="">
+                        </div>
+                        <div class="intro-y g-col-12 g-col-sm-6">
+                            <label for="name" class="form-label">Morning Shift End</label>
+                            <input id="name" type="time" class="form-control" placeholder="">
+                        </div>
+                        <div class="intro-y g-col-12 g-col-sm-6">
+                            <label for="name" class="form-label">Afternoon Shift From</label>
+                            <input id="name" type="time" class="form-control" placeholder="">
+                        </div>
+                        <div class="intro-y g-col-12 g-col-sm-6">
+                            <label for="name" class="form-label">Afternoon Shift End</label>
+                            <input id="name" type="time" class="form-control" placeholder="">
+                        </div>
+                        <div
+                            class="intro-y g-col-12 d-flex align-items-center justify-content-center justify-content-sm-end mt-5">
+                            <a href="index" class="btn btn-secondary w-24">Cancel</a>
+                            <button class="btn btn-primary w-24 ms-2">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- END: HTML Table Data -->
+    </div>
+    <!-- END: Content -->
+    </div>
+
+    <!-- BEGIN: JS Assets-->
+
+    <!-- <script src="dist/js/app.js"></script> -->
+    <script src="dist/js/custom.js"></script>
+    <!-- END: JS Assets-->
+</body>
+
+</html>
