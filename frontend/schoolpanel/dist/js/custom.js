@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 setTimeout(function () {
     var script = document.createElement('script');
-    script.src = '../dist/js/app.js';
+    script.src = '../schoolpanel/dist/js/app.js';
     document.body.appendChild(script);
 
     const currentPageName = document.body.getAttribute('page-name');
