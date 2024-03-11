@@ -27520,3 +27520,12 @@ html body {
 .dark .bg-opacity-90 {
     --bs-bg-opacity: $bg-opacity !important
 }
+
+*>.-intro-x:first-child,
+*>.intro-x:first-child {
+    justify-content: center;
+}
+
+.logo {
+    width: 50%;
+}
