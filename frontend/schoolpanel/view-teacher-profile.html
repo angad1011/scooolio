@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html lang="en" class="light">
+<!-- BEGIN: Head -->
+
+<head>
+    <meta charset="utf-8">
+    <link href="dist/images/logo.svg" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Teacher Details</title>
+    <!-- BEGIN: CSS Assets-->
+    <link rel="stylesheet" href="dist/css/app.css" />
+    <!-- END: CSS Assets-->
+</head>
+<!-- END: Head -->
+
+<body class="main" page-name="school">
+    <!-- BEGIN: Mobile Menu -->
+    <div class="mobile-menu d-md-none" id="mobile-menu">
+
+    </div>
+    <!-- END: Mobile Menu -->
+    <div class="d-flex">
+        <!-- BEGIN: Side Menu -->
+        <nav class="side-nav" id="side-nav">
+
+        </nav>
+        <!-- END: Side Menu -->
+        <!-- BEGIN: Content -->
+        <div class="content">
+            <!-- BEGIN: Top Bar -->
+            <div class="top-bar">
+                <!-- BEGIN: Breadcrumb -->
+                <div class="-intro-x breadcrumb me-auto d-none d-sm-flex"> <a href="">School</a> <i
+                        data-feather="chevron-right" class="breadcrumb__icon"></i> <a href=""
+                        class="breadcrumb--active">Teacher Details</a> </div>
+                <!-- END: Breadcrumb -->
+                <!-- BEGIN: Notifications -->
+                <div class="intro-x dropdown me-auto me-sm-6" id="notification-section">
+
+                </div>
+                <!-- END: Notifications -->
+                <!-- BEGIN: Account Menu -->
+                <div class="intro-x dropdown w-8 h-8" id="right-profile-section">
+
+                </div>
+                <!-- END: Account Menu -->
+            </div>
+            <!-- END: Top Bar -->
+            <div class="intro-y d-flex flex-column flex-sm-row align-items-center mt-8">
+                <h2 class="fs-lg fw-medium me-auto">
+                    Teacher Profile
+                </h2>
+                <div class="w-full w-sm-auto d-flex mt-4 mt-sm-0">
+                    <a href="teacher-list.html" class="btn btn-primary shadow-md me-2">
+                        Teacher List</a>
+                </div>
+            </div>
+            <!-- BEGIN: Profile Info -->
+            <div class="intro-y box px-5 pt-5 mt-5">
+                <div class="d-flex flex-column flex-lg-row border-bottom border-gray-200 dark-border-dark-5 pb-5 mx-n5">
+                    <div class="d-flex flex-1 px-5 align-items-center justify-content-center justify-content-lg-start">
+                        <div class="w-20 h-20 w-sm-24 h-sm-24 flex-none w-lg-32 h-lg-32 image-fit position-relative">
+                            <img alt=" " class="rounded-circle" src="dist/images/profile-photo.jpg">
+                        </div>
+                        <div class="ms-5">
+                            <div class="w-24 w-sm-40 truncate white-space-sm-wrap fw-medium fs-lg">Johnny Depp</div>
+                            <div class="text-gray-600">Backend Engineer</div>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-6 mt-lg-0 flex-1 dark-text-gray-300 px-5 border-start border-end border-gray-200 dark-border-dark-5 border-top border-top-lg-0 pt-5 pt-lg-0">
+                        <div class="fw-medium text-center text-lg-start mt-lg-3">Contact Details</div>
+                        <div
+                            class="d-flex flex-column justify-content-center align-items-center align-items-lg-start mt-4">
+                            <div class="truncate white-space-sm-normal d-flex align-items-center"> <i
+                                    data-feather="mail" class="w-4 h-4 me-2"></i> abc@gmail.com </div>
+                            <div class="truncate white-space-sm-normal d-flex align-items-center mt-3"> <i
+                                    data-feather="phone" class="w-4 h-4 me-2"></i> +91 8108847838 </div>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-6 mt-lg-0 flex-1 d-flex align-items-center justify-content-center px-5 border-top border-lg-0 border-gray-200 dark-border-dark-5 pt-5 pt-lg-0">
+                        <div class="dropdown ms-auto">
+                            <a class="dropdown-toggle w-5 h-5 d-block" href="javascript:;" aria-expanded="false"
+                                data-bs-toggle="dropdown"> <i data-feather="more-horizontal"
+                                    class="w-5 h-5 text-gray-600 dark-text-gray-300"></i> </a>
+                            <div class="dropdown-menu w-40">
+                                <ul class="dropdown-content">
+                                    <li>
+                                        <a href="add-teacher.html" class="dropdown-item d-flex align-items-center"> <i
+                                                data-feather="edit" class="w-4 h-4 me-2"></i> Edit Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="" class="dropdown-item d-flex align-items-center"> <i
+                                                data-feather="trash" class="w-4 h-4 me-2"></i> Delete </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav nav-link-tabs flex-column flex-sm-row justify-content-center justify-content-lg-start"
+                    role="tablist">
+                    <li id="profile-tab" class="nav-item" role="presentation">
+                        <a href="javascript:;" class="nav-link px-0 me-sm-8 d-flex align-items-center active"
+                            data-bs-toggle="pill" data-bs-target="#profile" role="tab" aria-controls="profile-tab"
+                            aria-selected="true"> <i class="w-4 h-4 me-2" data-feather="user"></i> Basic Information
+                        </a>
+                    </li>
+                    <li id="account-tab" class="nav-item" role="presentation">
+                        <a href="javascript:;" class="nav-link px-0 me-sm-8 d-flex align-items-center"
+                            data-bs-toggle="pill" data-bs-target="#account" role="tab" aria-controls="account-tab"
+                            aria-selected="false"> <i class="w-4 h-4 me-2" data-feather="shield"></i> Personal Details
+                        </a>
+                    </li>
+                    <li id="change-password-tab" class="nav-item" role="presentation">
+                        <a href="javascript:;" class="nav-link px-0 me-sm-8 d-flex align-items-center"
+                            data-bs-toggle="pill" data-bs-target="#change-password" role="tab"
+                            aria-controls="change-password-tab" aria-selected="false">
+                            <i class="w-4 h-4 me-2" data-feather="lock"></i> Change Password </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- END: Profile Info -->
+            <div class="intro-y tab-content mt-5">
+                <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="grid columns-12 gap-6">
+                        <div class="intro-y box g-col-12 g-col-lg-12">
+                            <div
+                                class="d-flex align-items-center px-5 py-5 py-sm-3 border-bottom border-gray-200 dark-border-dark-5">
+                                <h2 class="fw-medium fs-base me-auto">
+                                    Latest Uploads
+                                </h2>
+                                <div class="dropdown ms-auto d-sm-none">
+                                    <a class="dropdown-toggle w-5 h-5 d-block" href="javascript:;" aria-expanded="false"
+                                        data-bs-toggle="dropdown"> <i data-feather="more-horizontal"
+                                            class="w-5 h-5 text-gray-600 dark-text-gray-300"></i> </a>
+                                    <div class="dropdown-menu w-40">
+                                        <ul class="dropdown-content">
+                                            <li> <a href="javascript:;" class="dropdown-item">All Files</a> </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline-secondary d-none d-sm-flex">All Files</button>
+                            </div>
+                            <div class="p-5">
+                                <div class="d-flex align-items-center">
+                                    <div class="file"> <a href="" class="w-12 file__icon file__icon--directory"></a>
+                                    </div>
+                                    <div class="ms-4">
+                                        <a class="fw-medium" href="">Documentation</a>
+                                        <div class="text-gray-600 fs-xs mt-0.5">40 KB</div>
+                                    </div>
+                                    <div class="dropdown ms-auto">
+                                        <a class="dropdown-toggle w-5 h-5 d-block" href="javascript:;"
+                                            aria-expanded="false" data-bs-toggle="dropdown"> <i
+                                                data-feather="more-horizontal"
+                                                class="w-5 h-5 text-gray-600 dark-text-gray-300"></i> </a>
+                                        <div class="dropdown-menu w-40">
+                                            <ul class="dropdown-content">
+                                                <li>
+                                                    <a href="" class="dropdown-item d-flex align-items-center"> <i
+                                                            data-feather="users" class="w-4 h-4 me-2"></i> Share File
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" class="dropdown-item d-flex align-items-center"> <i
+                                                            data-feather="trash" class="w-4 h-4 me-2"></i> Delete </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mt-5">
+                                    <div class="file">
+                                        <a href="" class="w-12 file__icon file__icon--file">
+                                            <div class="file__icon__file-name fs-xs">MP3</div>
+                                        </a>
+                                    </div>
+                                    <div class="ms-4">
+                                        <a class="fw-medium" href="">Celine Dion - Ashes</a>
+                                        <div class="text-gray-600 fs-xs mt-0.5">40 KB</div>
+                                    </div>
+                                    <div class="dropdown ms-auto">
+                                        <a class="dropdown-toggle w-5 h-5 d-block" href="javascript:;"
+                                            aria-expanded="false" data-bs-toggle="dropdown"> <i
+                                                data-feather="more-horizontal"
+                                                class="w-5 h-5 text-gray-600 dark-text-gray-300"></i> </a>
+                                        <div class="dropdown-menu w-40">
+                                            <ul class="dropdown-content">
+                                                <li>
+                                                    <a href="" class="dropdown-item d-flex align-items-center"> <i
+                                                            data-feather="users" class="w-4 h-4 me-2"></i> Share File
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" class="dropdown-item d-flex align-items-center"> <i
+                                                            data-feather="trash" class="w-4 h-4 me-2"></i> Delete </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mt-5">
+                                    <div class="file"> <a href=""
+                                            class="w-12 file__icon file__icon--empty-directory"></a> </div>
+                                    <div class="ms-4">
+                                        <a class="fw-medium" href="">Resources</a>
+                                        <div class="text-gray-600 fs-xs mt-0.5">0 KB</div>
+                                    </div>
+                                    <div class="dropdown ms-auto">
+                                        <a class="dropdown-toggle w-5 h-5 d-block" href="javascript:;"
+                                            aria-expanded="false" data-bs-toggle="dropdown"> <i
+                                                data-feather="more-horizontal"
+                                                class="w-5 h-5 text-gray-600 dark-text-gray-300"></i> </a>
+                                        <div class="dropdown-menu w-40">
+                                            <ul class="dropdown-content">
+                                                <li>
+                                                    <a href="" class="dropdown-item d-flex align-items-center"> <i
+                                                            data-feather="users" class="w-4 h-4 me-2"></i> Share File
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" class="dropdown-item d-flex align-items-center"> <i
+                                                            data-feather="trash" class="w-4 h-4 me-2"></i> Delete </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="account" role="tabpanel" aria-labelledby="account-tab">
+                    <div class="grid columns-12 gap-6">
+                        <div class="intro-y box g-col-12 g-col-lg-12">
+                            <div
+                                class="d-flex align-items-center px-5 py-5 py-sm-3 border-bottom border-gray-200 dark-border-dark-5">
+                                <h2 class="fw-medium fs-base me-auto">
+                                    Latest Uploads
+                                </h2>
+                                <div class="dropdown ms-auto d-sm-none">
+                                    <a class="dropdown-toggle w-5 h-5 d-block" href="javascript:;" aria-expanded="false"
+                                        data-bs-toggle="dropdown"> <i data-feather="more-horizontal"
+                                            class="w-5 h-5 text-gray-600 dark-text-gray-300"></i> </a>
+                                    <div class="dropdown-menu w-40">
+                                        <ul class="dropdown-content">
+                                            <li> <a href="javascript:;" class="dropdown-item">All Files</a> </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline-secondary d-none d-sm-flex">All Files</button>
+                            </div>
+                            <div class="p-5">
+                                <div class="d-flex align-items-center">
+                                    <div class="file"> <a href="" class="w-12 file__icon file__icon--directory"></a>
+                                    </div>
+                                    <div class="ms-4">
+                                        <a class="fw-medium" href="">Documentation</a>
+                                        <div class="text-gray-600 fs-xs mt-0.5">40 KB</div>
+                                    </div>
+                                    <div class="dropdown ms-auto">
+                                        <a class="dropdown-toggle w-5 h-5 d-block" href="javascript:;"
+                                            aria-expanded="false" data-bs-toggle="dropdown"> <i
+                                                data-feather="more-horizontal"
+                                                class="w-5 h-5 text-gray-600 dark-text-gray-300"></i> </a>
+                                        <div class="dropdown-menu w-40">
+                                            <ul class="dropdown-content">
+                                                <li>
+                                                    <a href="" class="dropdown-item d-flex align-items-center"> <i
+                                                            data-feather="users" class="w-4 h-4 me-2"></i> Share File
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" class="dropdown-item d-flex align-items-center"> <i
+                                                            data-feather="trash" class="w-4 h-4 me-2"></i> Delete </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mt-5">
+                                    <div class="file">
+                                        <a href="" class="w-12 file__icon file__icon--file">
+                                            <div class="file__icon__file-name fs-xs">MP3</div>
+                                        </a>
+                                    </div>
+                                    <div class="ms-4">
+                                        <a class="fw-medium" href="">Celine Dion - Ashes</a>
+                                        <div class="text-gray-600 fs-xs mt-0.5">40 KB</div>
+                                    </div>
+                                    <div class="dropdown ms-auto">
+                                        <a class="dropdown-toggle w-5 h-5 d-block" href="javascript:;"
+                                            aria-expanded="false" data-bs-toggle="dropdown"> <i
+                                                data-feather="more-horizontal"
+                                                class="w-5 h-5 text-gray-600 dark-text-gray-300"></i> </a>
+                                        <div class="dropdown-menu w-40">
+                                            <ul class="dropdown-content">
+                                                <li>
+                                                    <a href="" class="dropdown-item d-flex align-items-center"> <i
+                                                            data-feather="users" class="w-4 h-4 me-2"></i> Share File
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" class="dropdown-item d-flex align-items-center"> <i
+                                                            data-feather="trash" class="w-4 h-4 me-2"></i> Delete </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mt-5">
+                                    <div class="file"> <a href=""
+                                            class="w-12 file__icon file__icon--empty-directory"></a> </div>
+                                    <div class="ms-4">
+                                        <a class="fw-medium" href="">Resources</a>
+                                        <div class="text-gray-600 fs-xs mt-0.5">0 KB</div>
+                                    </div>
+                                    <div class="dropdown ms-auto">
+                                        <a class="dropdown-toggle w-5 h-5 d-block" href="javascript:;"
+                                            aria-expanded="false" data-bs-toggle="dropdown"> <i
+                                                data-feather="more-horizontal"
+                                                class="w-5 h-5 text-gray-600 dark-text-gray-300"></i> </a>
+                                        <div class="dropdown-menu w-40">
+                                            <ul class="dropdown-content">
+                                                <li>
+                                                    <a href="" class="dropdown-item d-flex align-items-center"> <i
+                                                            data-feather="users" class="w-4 h-4 me-2"></i> Share File
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" class="dropdown-item d-flex align-items-center"> <i
+                                                            data-feather="trash" class="w-4 h-4 me-2"></i> Delete </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="change-password" role="tabpanel"
+                    aria-labelledby="change-password-tab">
+
+                    <div class="grid columns-12 gap-6">
+                        <!-- BEGIN: Change Password -->
+                        <div class="intro-y box g-col-12 g-col-lg-12">
+                            <div class="d-flex align-items-center p-5 border-bottom border-gray-200 dark-border-dark-5">
+                                <h2 class="fw-medium fs-base me-auto">
+                                    Change Password
+                                </h2>
+                            </div>
+                            <div class="p-5">
+                                <div>
+                                    <label for="change-password-form-1" class="form-label">Old Password</label>
+                                    <input id="change-password-form-1" type="password" class="form-control"
+                                        placeholder="Input text">
+                                </div>
+                                <div class="mt-3">
+                                    <label for="change-password-form-2" class="form-label">New Password</label>
+                                    <input id="change-password-form-2" type="password" class="form-control"
+                                        placeholder="Input text">
+                                </div>
+                                <div class="mt-3">
+                                    <label for="change-password-form-3" class="form-label">Confirm New Password</label>
+                                    <input id="change-password-form-3" type="password" class="form-control"
+                                        placeholder="Input text">
+                                </div>
+                                <button type="button" class="btn btn-primary mt-4">Change Password</button>
+                            </div>
+                        </div>
+                        <!-- END: Change Password -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- END: HTML Table Data -->
+    </div>
+    <!-- END: Content -->
+    </div>
+
+    <!-- BEGIN: JS Assets-->
+
+    <!-- <script src="dist/js/app.js"></script> -->
+    <script src="dist/js/custom.js"></script>
+    <!-- END: JS Assets-->
+</body>
+
+</html>

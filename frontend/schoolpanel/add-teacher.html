@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <title>Add School</title>
+    <title>Add Teacher</title>
     <!-- BEGIN: CSS Assets-->
     <link rel="stylesheet" href="dist/css/app.css" />
     <!-- END: CSS Assets-->
@@ -33,9 +33,9 @@
             <!-- BEGIN: Top Bar -->
             <div class="top-bar">
                 <!-- BEGIN: Breadcrumb -->
-                <div class="-intro-x breadcrumb me-auto d-none d-sm-flex"> <a href="">Admin</a> <i
+                <div class="-intro-x breadcrumb me-auto d-none d-sm-flex"> <a href="">School</a> <i
                         data-feather="chevron-right" class="breadcrumb__icon"></i> <a href=""
-                        class="breadcrumb--active">School List</a> </div>
+                        class="breadcrumb--active">Add Teacher</a> </div>
                 <!-- END: Breadcrumb -->
                 <!-- BEGIN: Notifications -->
                 <div class="intro-x dropdown me-auto me-sm-6" id="notification-section">
@@ -51,121 +51,326 @@
             <!-- END: Top Bar -->
             <div class="intro-y d-flex flex-column flex-sm-row align-items-center mt-8">
                 <h2 class="fs-lg fw-medium me-auto">
-                    Add New School
+                    Add New Teacher
                 </h2>
                 <div class="w-full w-sm-auto d-flex mt-4 mt-sm-0">
-                    <a href="school-list.html" class="btn btn-primary shadow-md me-2">
-                        School List</a>
+                    <a href="teacher-list.html" class="btn btn-primary shadow-md me-2">
+                        Teacher List</a>
                 </div>
             </div>
-            <div class="intro-y box py-10 mt-5">
-                <div class="px-5 px-sm-20">
-                    <div class="grid columns-12 gap-4 gap-y-5">
-                        <div class="intro-y g-col-12 g-col-sm-6">
-                            <label for="name" class="form-label">School Name</label>
-                            <input id="name" type="text" class="form-control" placeholder="">
+            <div class="grid columns-12 gap-6">
+                <div class="g-col-12 g-col-lg-12 g-col-xxl-12">
+                    <!-- BEGIN: Display Information -->
+                    <div class="intro-y box mt-lg-5">
+                        <div class="d-flex align-items-center p-5 border-bottom border-gray-200 dark-border-dark-5">
+                            <h2 class="fw-medium fs-base me-auto">
+                                Joining Details
+                            </h2>
                         </div>
-                        <div class="intro-y g-col-12 g-col-sm-6">
-                            <label for="email" class="form-label">Email ID</label>
-                            <input id="email" type="email" class="form-control" placeholder="example@gmail.com">
-                        </div>
-                        <div class="intro-y g-col-12 g-col-sm-6">
-                            <label for="phone" class="form-label">Phone Number</label>
-                            <input id="phone" type="tel" class="form-control" placeholder="Important Meeting">
-                        </div>
-                        <div class="intro-y g-col-12 g-col-sm-6">
-                            <label for="input-wizard-4" class="form-label">Est. Since</label>
-                            <div class="input-group w-100 mx-auto">
-                                <div id="input-group-email" class="input-group-text"> <i data-feather="calendar"
-                                        class="w-4 h-4"></i> </div> <input type="text" class="datepicker form-control"
-                                    data-single-mode="true">
+                        <div class="p-5">
+                            <div class="d-flex flex-column-reverse flex-xl-row flex-column">
+                                <div class="flex-1 mt-6 mt-xl-0">
+                                    <div class="grid columns-12 gap-x-5 gap-y-0">
+                                        <div class="g-col-12 g-col-xxl-3">
+                                            <div>
+                                                <label for="update-profile-form-1" class="form-label">
+                                                    Emp ID</label>
+                                                <input id="update-profile-form-1" type="text" class="form-control"
+                                                    placeholder="" value="EMP1234" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="g-col-12 g-col-xxl-3">
+                                            <label for="input-wizard-4" class="form-label">Joining Date</label>
+                                            <div class="input-group w-100 mx-auto">
+                                                <div id="input-group-email" class="input-group-text"> <i
+                                                        data-feather="calendar" class="w-4 h-4"></i> </div>
+                                                <input type="text" class="datepicker form-control"
+                                                    data-single-mode="true">
+                                            </div>
+                                        </div>
+                                        <div class="g-col-12 g-col-xxl-3">
+                                            <div
+                                                class="border-2 border-dashed shadow-sm border-gray-200 dark-border-dark-5 rounded-2 p-5">
+                                                <form action="/upload" method="post" enctype="multipart/form-data">
+                                                    <label for="fileInput" class="form-label">Choose Aadhar Card</label>
+                                                    <input type="file" class="form-control" id="fileInput"
+                                                        name="fileInput">
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="g-col-12 g-col-xxl-3">
+                                            <div
+                                                class="border-2 border-dashed shadow-sm border-gray-200 dark-border-dark-5 rounded-2 p-5">
+                                                <form action="/upload" method="post" enctype="multipart/form-data">
+                                                    <label for="fileInput" class="form-label">Choose Teacher's
+                                                        Photo</label>
+                                                    <input type="file" class="form-control" id="fileInput"
+                                                        name="fileInput">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="intro-y g-col-12 g-col-sm-6">
-                            <label for="schoolcode" class="form-label">School Code</label>
-                            <input id="schoolcode" type="text" class="form-control" disabled placeholder="CM1234">
+                    </div>
+                    <!-- END: Display Information -->
+                    <!-- BEGIN: Personal Information -->
+                    <div class="intro-y box mt-5">
+                        <div class="d-flex align-items-center p-5 border-bottom border-gray-200 dark-border-dark-5">
+                            <h2 class="fw-medium fs-base me-auto">
+                                Personal Information
+                            </h2>
                         </div>
-                        <div class="intro-y g-col-12 g-col-sm-6">
-                            <label for="schoolcode" class="form-label">Principal Name</label>
-                            <input id="schoolcode" type="text" class="form-control" disabled placeholder="CM1234">
+                        <div class="p-5">
+                            <div class="grid columns-12 gap-x-5 gap-y-0">
+                                <div class="g-col-12 g-col-xxl-4">
+                                    <div>
+                                        <label for="update-profile-form-1" class="form-label">
+                                            First Name</label>
+                                        <input id="update-profile-form-1" type="text" class="form-control"
+                                            placeholder="" value="abc">
+                                    </div>
+                                </div>
+                                <div class="g-col-12 g-col-xxl-4">
+                                    <div>
+                                        <label for="update-profile-form-1" class="form-label">
+                                            Last Name</label>
+                                        <input id="update-profile-form-1" type="text" class="form-control"
+                                            placeholder="" value="xyz">
+                                    </div>
+                                </div>
+                                <div class="g-col-12 g-col-xxl-4">
+                                    <div>
+                                        <label for="update-profile-form-1" class="form-label">
+                                            Email ID</label>
+                                        <input id="update-profile-form-1" type="email" class="form-control"
+                                            placeholder="" value="abc@gmail.com">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
+                                <div class="g-col-12 g-col-xxl-4">
+                                    <div>
+                                        <label for="update-profile-form-1" class="form-label">
+                                            Mobile Number</label>
+                                        <input id="update-profile-form-1" type="tel" class="form-control" placeholder=""
+                                            value="">
+                                    </div>
+                                </div>
+                                <div class="g-col-12 g-col-xxl-4">
+                                    <div>
+                                        <label for="update-profile-form-1" class="form-label">
+                                            Alternate Mobile Number</label>
+                                        <input id="update-profile-form-1" type="tel" class="form-control" placeholder=""
+                                            value="">
+                                    </div>
+                                </div>
+                                <div class="g-col-12 g-col-xxl-4">
+                                    <div>
+                                        <label for="update-profile-form-1" class="form-label">
+                                            Whatsapp Number</label>
+                                        <input id="update-profile-form-1" type="tel" class="form-control" placeholder=""
+                                            value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
+                                <div class="g-col-12 g-col-xxl-4">
+                                    <label>Gender</label>
+                                    <div class="d-flex flex-coloumn flex-sm-row mt-2">
+                                        <div class="form-check me-2"> <input id="radio-switch-4"
+                                                class="form-check-input" type="radio" name="horizontal_radio_button"
+                                                value="horizontal-radio-chris-evans"> <label class="form-check-label"
+                                                for="radio-switch-4">Male</label> </div>
+                                        <div class="form-check me-2 mt-2 mt-sm-0"> <input id="radio-switch-5"
+                                                class="form-check-input" type="radio" name="horizontal_radio_button"
+                                                value="horizontal-radio-liam-neeson"> <label class="form-check-label"
+                                                for="radio-switch-5">Female</label> </div>
+                                        <div class="form-check me-2 mt-2 mt-sm-0"> <input id="radio-switch-6"
+                                                class="form-check-input" type="radio" name="horizontal_radio_button"
+                                                value="horizontal-radio-daniel-craig"> <label class="form-check-label"
+                                                for="radio-switch-6">Other</label> </div>
+                                    </div>
+                                </div>
+                                <div class="g-col-12 g-col-xxl-4">
+                                    <label for="input-wizard-4" class="form-label">Date of Birth</label>
+                                    <div class="input-group w-100 mx-auto">
+                                        <div id="input-group-email" class="input-group-text"> <i data-feather="calendar"
+                                                class="w-4 h-4"></i> </div>
+                                        <input type="text" class="datepicker form-control" data-single-mode="true">
+                                    </div>
+                                </div>
+                                <div class="g-col-12 g-col-xxl-4">
+                                    <label for="name" class="form-label">Martial Status</label>
+                                    <select class="form-select me-sm-2" aria-label="Default select example">
+                                        <option>Married</option>
+                                        <option>Unmarried</option>
+                                        <option>Divorced</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
+                                <div class="g-col-12 g-col-xxl-4">
+                                    <label for="name" class="form-label">Nationality</label>
+                                    <select class="form-select me-sm-2" aria-label="Default select example">
+                                        <option>India</option>
+                                        <option>Nepal</option>
+                                        <option>Bangladesh</option>
+                                    </select>
+                                </div>
+                                <div class="g-col-12 g-col-xxl-4">
+                                    <label for="name" class="form-label">Religion</label>
+                                    <select class="form-select me-sm-2" aria-label="Default select example">
+                                        <option>Hindu</option>
+                                        <option>Muslim</option>
+                                        <option>Sikh</option>
+                                        <option>Christian</option>
+                                        <option>Jain</option>
+                                        <option>Baudh</option>
+                                    </select>
+                                </div>
+                                <div class="g-col-12 g-col-xxl-4">
+                                    <label for="name" class="form-label">Category</label>
+                                    <select class="form-select me-sm-2" aria-label="Default select example">
+                                        <option>GN</option>
+                                        <option>OBC</option>
+                                        <option>ST</option>
+                                        <option>NT</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
+                                <div class="g-col-12 g-col-xxl-4">
+                                    <label for="name" class="form-label">Qualification</label>
+                                    <select class="form-select me-sm-2" aria-label="Default select example">
+                                        <option>BA</option>
+                                        <option>Bsc</option>
+                                        <option>Bcom</option>
+                                        <option>B.ed</option>
+                                        <option>D.ed</option>
+                                        <option>MA</option>
+                                        <option>MSC</option>
+                                        <option>Mcom</option>
+                                        <option>Phd</option>
+                                    </select>
+                                </div>
+                                <div class="g-col-12 g-col-xxl-4">
+                                    <label for="Specialization" class="form-label">Specialization</label>
+                                    <input id="Specialization" type="text" class="form-control" placeholder="" value="">
+                                </div>
+                                <div class="g-col-12 g-col-xxl-4">
+                                    <label for="Institute" class="form-label">Institute</label>
+                                    <input id="Institute" type="text" class="form-control" placeholder="" value="">
+                                </div>
+                            </div>
+                            <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
+                                <div class="g-col-12 g-col-xxl-4">
+                                    <label for="name" class="form-label">Teaching Subjects</label>
+                                    <select data-placeholder="Select Subjects" class="tom-select w-full" multiple>
+                                        <option value="1" selected>Hindi</option>
+                                        <option value="2">English</option>
+                                        <option value="3">Math</option>
+                                        <option value="4">History</option>
+                                        <option value="5">Georaphy</option>
+                                        <option value="6">Marathi</option>
+                                        <option value="7">Science</option>
+                                        <option value="8">Biology</option>
+                                        <option value="9">Chemestry</option>
+                                        <option value="10">Physics</option>
+                                        <option value="11">Economics</option>
+                                        <option value="12">Computer</option>
+                                        <option value="13">IT</option>
+                                        <option value="14">Sports</option>
+                                        <option value="15">Singing</option>
+                                        <option value="15">Social Science</option>
+                                    </select>
+                                </div>
+                                <div class="g-col-12 g-col-xxl-4">
+                                    <label for="input-wizard-4" class="form-label">Passing Year</label>
+                                    <div class="input-group w-100 mx-auto">
+                                        <div id="input-group-email" class="input-group-text"> <i data-feather="calendar"
+                                                class="w-4 h-4"></i> </div>
+                                        <input type="text" class="datepicker form-control" data-single-mode="true">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="intro-y g-col-12 g-col-sm-6">
-                            <form action="/upload" method="post" enctype="multipart/form-data">
-                                <label for="fileInput" class="form-label">Choose Logo</label>
-                                <input type="file" class="form-control" id="fileInput" name="fileInput">
-                            </form>
+                    </div>
+                    <!-- END: Personal Information -->
+                    <div class="intro-y box mt-lg-5">
+                        <div class="d-flex align-items-center p-5 border-bottom border-gray-200 dark-border-dark-5">
+                            <h2 class="fw-medium fs-base me-auto">
+                                Residential Address
+                            </h2>
                         </div>
-                        <div class="intro-y g-col-12 g-col-sm-6">
-                            <label for="name" class="form-label">Branch</label>
-                            <input id="name" type="text" class="form-control" placeholder="">
-                        </div>
-                        <div class="intro-y g-col-12 g-col-sm-6">
-                            <label for="name" class="form-label">Pincode</label>
-                            <input id="name" type="text" class="form-control" placeholder="">
-                        </div>
-                        <div class="intro-y g-col-12 g-col-sm-6">
-                            <label for="name" class="form-label">City</label>
-                            <input id="name" type="text" class="form-control" placeholder="">
-                        </div>
-                        <div class="intro-y g-col-12 g-col-sm-6">
-                            <label for="name" class="form-label">State</label>
-                            <input id="name" type="text" class="form-control" placeholder="">
-                        </div>
-                        <div class="intro-y g-col-12 g-col-sm-6">
+                        <div class="p-5">
+                            <div class="d-flex flex-column-reverse flex-xl-row flex-column">
+                                <div class="flex-1 mt-6 mt-xl-0">
+                                    <div class="grid columns-12 gap-x-5 gap-y-0">
+                                        <div class="g-col-12 g-col-xxl-4">
+                                            <div>
+                                                <label for="update-profile-form-1" class="form-label">
+                                                    Pincode</label>
+                                                <input id="update-profile-form-1" type="text" class="form-control"
+                                                    placeholder="" value="EMP1234">
+                                            </div>
+                                        </div>
 
-                            <label for="validation-form-6" class="form-label w-full d-flex flex-column flex-sm-row">
-                                Address
-                            </label> <textarea id="validation-form-6" class="form-control" name="comment"
-                                placeholder="Enter Address" minlength="10" required></textarea>
-                        </div>
-                        <div class="intro-y g-col-12 g-col-sm-6">
-                            <label for="name" class="form-label">Medium</label>
-                            <select class="form-select me-sm-2" aria-label="Default select example">
-                                <option>Hindi</option>
-                                <option>English</option>
-                                <option>Marathi</option>
-                                <option>Gujarati</option>
-                                <option>Semi English</option>
-                            </select>
-                        </div>
-                        <div class="intro-y g-col-12 g-col-sm-6">
-                            <label for="name" class="form-label">School Board</label>
-                            <select class="form-select me-sm-2" aria-label="Default select example">
-                                <option>Maharastra</option>
-                                <option>Gujarat</option>
-                                <option>Delhi</option>
-                                <option>Uttar Pradesh</option>
-                                <option>Punjab</option>
-                            </select>
-                        </div>
-                        <div class="intro-y g-col-12 g-col-sm-6">
-                            <label for="name" class="form-label">School Type</label>
-                            <select class="form-select me-sm-2" aria-label="Default select example">
-                                <option>Private</option>
-                                <option>Goverment</option>
-                                <option>Trust</option>
-                            </select>
-                        </div>
-                        <div class="intro-y g-col-12 g-col-sm-6">
-                            <label for="name" class="form-label">Morning Shift From</label>
-                            <input id="name" type="time" class="form-control" placeholder="">
-                        </div>
-                        <div class="intro-y g-col-12 g-col-sm-6">
-                            <label for="name" class="form-label">Morning Shift End</label>
-                            <input id="name" type="time" class="form-control" placeholder="">
-                        </div>
-                        <div class="intro-y g-col-12 g-col-sm-6">
-                            <label for="name" class="form-label">Afternoon Shift From</label>
-                            <input id="name" type="time" class="form-control" placeholder="">
-                        </div>
-                        <div class="intro-y g-col-12 g-col-sm-6">
-                            <label for="name" class="form-label">Afternoon Shift End</label>
-                            <input id="name" type="time" class="form-control" placeholder="">
-                        </div>
-                        <div
-                            class="intro-y g-col-12 d-flex align-items-center justify-content-center justify-content-sm-end mt-5">
-                            <a href="index" class="btn btn-secondary w-24">Cancel</a>
-                            <button class="btn btn-primary w-24 ms-2">Next</button>
+                                        <div class="g-col-12 g-col-xxl-4">
+                                            <div>
+                                                <label for="update-profile-form-1" class="form-label">
+                                                    City</label>
+                                                <input id="update-profile-form-1" type="text" class="form-control"
+                                                    placeholder="" value="EMP1234">
+                                            </div>
+                                        </div>
+                                        <div class="g-col-12 g-col-xxl-4">
+                                            <label for="name" class="form-label">State</label>
+                                            <select class="form-select me-sm-2" aria-label="Default select example">
+                                                <option>Maharastra</option>
+                                                <option>Uttar Pradesh</option>
+                                                <option>Madhya Pradesh</option>
+                                                <option>Gujarat</option>
+                                                <option>Delhi</option>
+                                                <option>Punjab</option>
+                                                <option>Hairyana</option>
+                                                <option>Himachal Pradesh</option>
+                                                <option>Karnataka</option>
+                                                <option>West Bengal</option>
+                                                <option>Bihar</option>
+                                                <option>Odisha</option>
+                                                <option>Keral</option>
+                                                <option>Andhra Pradesh</option>
+                                                <option>Goa</option>
+                                                <option>Uttarakhand</option>
+                                                <option>Manipur</option>
+                                                <option>Asam</option>
+                                                <option>Jharkhand</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
+                                        <div class="intro-y g-col-12 g-col-sm-12">
+
+                                            <label for="validation-form-6"
+                                                class="form-label w-full d-flex flex-column flex-sm-row">
+                                                Address
+                                            </label> <textarea id="validation-form-6" class="form-control"
+                                                name="comment" placeholder="Enter Address" minlength="10"
+                                                required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="d-flex justify-content-end mt-4">
+                                <button type="button" class="btn btn-primary w-20 me-auto">Save</button>
+                                <a href="" class="text-theme-6 d-flex align-items-center"> <i data-feather="trash-2"
+                                        class="w-4 h-4 me-1"></i>
+                                    Delete Account </a>
+                            </div>
                         </div>
                     </div>
                 </div>
