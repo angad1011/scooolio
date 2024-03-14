@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <title>College List</title>
+    <title>Student List</title>
     <!-- BEGIN: CSS Assets-->
     <link rel="stylesheet" href="dist/css/app.css" />
     <!-- END: CSS Assets-->
@@ -18,7 +18,7 @@
 
 <body class="main" page-name="college">
     <!-- BEGIN: Mobile Menu -->
-    <div class="mobile-menu d-md-none" id="mobile-menu">
+    <div class="mobile-menu d-md-none" id="mobile-menu" page-name="student">
 
     </div>
     <!-- END: Mobile Menu -->
@@ -51,11 +51,12 @@
             <!-- END: Top Bar -->
             <div class="intro-y d-flex flex-column flex-sm-row align-items-center mt-8">
                 <h2 class="fs-lg fw-medium me-auto">
-                    College List
+                    Student List
                 </h2>
                 <div class="w-full w-sm-auto d-flex mt-4 mt-sm-0">
-                    <button class="btn btn-primary shadow-md me-2"><i data-feather="plus"></i> Add New
-                        School</button>
+                    <a href="add-student.html" class="btn btn-primary shadow-md me-2"><i data-feather="plus"></i> Add
+                        New
+                        Student</a>
                 </div>
             </div>
             <!-- BEGIN: HTML Table Data -->
@@ -109,13 +110,15 @@
                     <table class="table table-report mt-n2">
                         <thead>
                             <tr>
-                                <th class="text-nowrap">Logo</th>
-                                <th class="text-nowrap">Code</th>
-                                <th class="text-nowrap">College Name</th>
+                                <th class="text-nowrap">Photo</th>
+                                <th class="text-nowrap">ID</th>
+                                <th class="text-nowrap">Name</th>
+                                <th class="text-nowrap">Father Name</th>
                                 <th class="text-nowrap">Contact Number</th>
-                                <th class="text-nowrap">Branch</th>
-                                <th class="text-nowrap">City</th>
-                                <th class="text-nowrap">State</th>
+                                <th class="text-nowrap">Standard</th>
+                                <th class="text-nowrap">Division</th>
+                                <th class="text-nowrap">Fees Status</th>
+                                <th class="text-nowrap">Attendance %</th>
                                 <th class="text-nowrap">Action</th>
                             </tr>
                         </thead>
@@ -131,18 +134,20 @@
                                 </td>
                                 <td class="text-right">CM10266</td>
                                 <td>
-                                    <a href="" class="fw-medium text-nowrap">Swami Vivekanand College</a>
+                                    <a href="" class="fw-medium text-nowrap">Angad Yadav</a>
                                 </td>
+                                <td>KP Yadav</td>
                                 <td>8108847838</td>
-                                <td>Chembur</td>
-                                <td>Mumbai</td>
-                                <td>Maharastra</td>
+                                <td>8th</td>
+                                <td>A</td>
+                                <td>Paid</td>
+                                <td>90%</td>
                                 <td class="table-report__action w-56">
                                     <div class="d-flex justify-content-start align-items-center">
-                                        <a class="d-flex align-items-center me-3" href=""> <i
+                                        <a class="d-flex align-items-center me-3" href="add-student.html"> <i
                                                 data-feather="check-square" class="w-4 h-4 me-1"></i> Edit </a>
-                                        <a class="d-flex align-items-center me-3" href=""> <i data-feather="eye"
-                                                class="w-4 h-4 me-1"></i> View </a>
+                                        <a class="d-flex align-items-center me-3" href="view-student-profile.html"> <i
+                                                data-feather="eye" class="w-4 h-4 me-1"></i> View </a>
 
                                     </div>
                                 </td>

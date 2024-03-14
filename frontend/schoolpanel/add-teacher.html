@@ -16,7 +16,7 @@
 </head>
 <!-- END: Head -->
 
-<body class="main" page-name="school">
+<body class="main" page-name="teacher">
     <!-- BEGIN: Mobile Menu -->
     <div class="mobile-menu d-md-none" id="mobile-menu">
 
@@ -244,21 +244,32 @@
                             <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
                                 <div class="g-col-12 g-col-xxl-4">
                                     <label for="name" class="form-label">Qualification</label>
-                                    <select class="form-select me-sm-2" aria-label="Default select example">
-                                        <option>BA</option>
-                                        <option>Bsc</option>
-                                        <option>Bcom</option>
-                                        <option>B.ed</option>
-                                        <option>D.ed</option>
-                                        <option>MA</option>
-                                        <option>MSC</option>
-                                        <option>Mcom</option>
-                                        <option>Phd</option>
+                                    <select class="form-select me-sm-2" aria-label="Default select example"
+                                        id="qualificationSelect">
+                                        <option value="" selected disabled>Select Qualification</option>
+                                        <option value="High School">High School</option>
+                                        <option value="Diploma">Diploma</option>
+                                        <option value="Bachelor's Degree">Bachelor's Degree</option>
+                                        <option value="Master's Degree">Master's Degree</option>
+                                        <option value="Ph.D.">Ph.D.</option>
+                                        <option value="Other">Other</option>
                                     </select>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-4">
                                     <label for="Specialization" class="form-label">Specialization</label>
-                                    <input id="Specialization" type="text" class="form-control" placeholder="" value="">
+                                    <select class="form-select me-sm-2" aria-label="Default select example"
+                                        id="specializationSelect">
+                                        <option value="" selected disabled>Select Specialization</option>
+                                        <option value="Computer Science">Computer Science</option>
+                                        <option value="Electrical Engineering">Electrical Engineering</option>
+                                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                        <option value="Civil Engineering">Civil Engineering</option>
+                                        <option value="Biochemistry">Biochemistry</option>
+                                        <option value="Psychology">Psychology</option>
+                                        <option value="Economics">Economics</option>
+                                        <option value="Business Administration">Business Administration</option>
+                                        <option value="Other">Other</option>
+                                    </select>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-4">
                                     <label for="Institute" class="form-label">Institute</label>
@@ -329,25 +340,35 @@
                                         <div class="g-col-12 g-col-xxl-4">
                                             <label for="name" class="form-label">State</label>
                                             <select class="form-select me-sm-2" aria-label="Default select example">
-                                                <option>Maharastra</option>
-                                                <option>Uttar Pradesh</option>
-                                                <option>Madhya Pradesh</option>
-                                                <option>Gujarat</option>
-                                                <option>Delhi</option>
-                                                <option>Punjab</option>
-                                                <option>Hairyana</option>
-                                                <option>Himachal Pradesh</option>
-                                                <option>Karnataka</option>
-                                                <option>West Bengal</option>
-                                                <option>Bihar</option>
-                                                <option>Odisha</option>
-                                                <option>Keral</option>
-                                                <option>Andhra Pradesh</option>
-                                                <option>Goa</option>
-                                                <option>Uttarakhand</option>
-                                                <option>Manipur</option>
-                                                <option>Asam</option>
-                                                <option>Jharkhand</option>
+                                                <option value="" selected disabled>Select State</option>
+                                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                                <option value="Assam">Assam</option>
+                                                <option value="Bihar">Bihar</option>
+                                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                                <option value="Goa">Goa</option>
+                                                <option value="Gujarat">Gujarat</option>
+                                                <option value="Haryana">Haryana</option>
+                                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                <option value="Jharkhand">Jharkhand</option>
+                                                <option value="Karnataka">Karnataka</option>
+                                                <option value="Kerala">Kerala</option>
+                                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                                <option value="Maharashtra">Maharashtra</option>
+                                                <option value="Manipur">Manipur</option>
+                                                <option value="Meghalaya">Meghalaya</option>
+                                                <option value="Mizoram">Mizoram</option>
+                                                <option value="Nagaland">Nagaland</option>
+                                                <option value="Odisha">Odisha</option>
+                                                <option value="Punjab">Punjab</option>
+                                                <option value="Rajasthan">Rajasthan</option>
+                                                <option value="Sikkim">Sikkim</option>
+                                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                                <option value="Telangana">Telangana</option>
+                                                <option value="Tripura">Tripura</option>
+                                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                <option value="Uttarakhand">Uttarakhand</option>
+                                                <option value="West Bengal">West Bengal</option>
                                             </select>
                                         </div>
                                     </div>
