@@ -8,6 +8,7 @@ use App\Models\Board;
 use App\Models\Medium;
 use App\Models\Stream;
 use App\Models\InstituteType;
+use App\Models\User;
 
 class InstitutesController extends Controller
 {
@@ -104,10 +105,15 @@ class InstitutesController extends Controller
         if (!$school) {
             return redirect()->route('institutes.index')->with('error', 'User not found.');
         }
-
         $instituteName = ($school->its_college == 1) ? 'College' : 'School';
 
-         return view('institutes.show', compact('school','instituteName'));
+
+        /*Users*/
+        $users = User::where('institute_id',$id)->where('active',true)->get();
+
+        // dd($users);
+
+         return view('institutes.show', compact('school','instituteName','users'));
     }
 
     /**

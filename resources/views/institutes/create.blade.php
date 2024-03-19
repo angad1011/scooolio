@@ -111,15 +111,27 @@ placeholder="Enter Address" minlength="10" required></textarea>
 <label for="afternoon_shift_end" class="form-label">Afternoon Shift End</label>
 <input id="afternoon_shift_end" name="afternoon_shift_end" type="time" class="form-control" placeholder="Afternoon Shift End">
 </div>
-<div class="intro-y g-col-12 g-col-sm-6">
+<!-- <div class="intro-y g-col-12 g-col-sm-6">
 <label for="fileInput" class="form-label">Choose Logo</label>
 <input type="file" class="form-control" id="fileInput" name="image_file">
-</div>
+</div> -->
+<div class="intro-y g-col-12 g-col-sm-4">
+  <!-- <label for="fileInput" class="form-label">Choose Logo</label>
+  <input type="file" class="form-control" id="fileInput" name="image_file"> -->
+   <div class="border-2 border-dashed shadow-sm border-gray-200 dark-border-dark-5 rounded-2 p-5">
+  <div class="h-40 position-relative image-fit cursor-pointer zoom-in mx-auto">
+      <img class="rounded-2" alt=" " id="blah" src="{{ asset('dist/images/admin-pic.jpg') }}">
+  </div>
+      <div class="mx-auto cursor-pointer position-relative mt-5">
+          <button type="button" class="btn btn-primary w-full">Change Photo</button>
+          <input type="file" class="w-full h-full top-0 start-0 position-absolute opacity-0" id="imageFile" name="image_file">
+      </div>
+  </div>
+
+  </div>
 
 
-
-<div
-class="intro-y g-col-12 d-flex align-items-center justify-content-center justify-content-sm-end mt-5">
+<div class="intro-y g-col-12 d-flex align-items-center justify-content-center justify-content-sm-end mt-5">
 <button class="btn btn-primary w-24 ms-2" type="submit">submit</button>
 </div>
 </div>
@@ -127,6 +139,14 @@ class="intro-y g-col-12 d-flex align-items-center justify-content-center justify
 </form>
 </div>
 <script type="text/javascript">
+
+  
+    imageFile.onchange = evt => {
+      const [file] = imageFile.files
+      if (file) {
+        blah.src = URL.createObjectURL(file)
+      }
+    }
 
  $('#name').on('input', function(){ 
     var name = $(this).val();

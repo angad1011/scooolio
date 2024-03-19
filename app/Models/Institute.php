@@ -30,4 +30,10 @@ class Institute extends Model
         return $this->belongsTo(Stream::class, 'stream_id', 'id');
     }
 
+     // Define the hasMany relationship
+    public function users()
+    {
+        return $this->hasMany(User::class, 'institute_id', 'id');
+    }
+
 }

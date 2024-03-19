@@ -55,6 +55,7 @@ Route::resource('departments', DepartmentsController::class);
 Route::resource('users', UsersController::class);
 Route::get('/change_password', [UsersController::class,'change_password'])->name('change_password');
 Route::post('/update_password', [UsersController::class,'update_password'])->name('update_password');
+Route::get('/institute_user/{id}', [UsersController::class,'institute_user'])->name('institute_user');
 
 /*institutes Route*/
 Route::resource('institutes', InstitutesController::class);

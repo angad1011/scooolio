@@ -9,10 +9,16 @@
         <?php }else{ ?>    
         <a href="{{ route('institutes.index') }}" class="btn btn-primary shadow-md me-2">{{$instituteName}} List</a>
         <?php } ?>
+        <a href="{{ route('institute_user', $school->id) }}" class="btn btn-primary shadow-md me-2">Add {{$instituteName}} User</a>
     </div>
 </div>
 <!-- BEGIN: HTML Table Data -->
 <div class="intro-y box p-5 mt-5">
+  @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif   
 <div class="intro-y g-col-12 ooverflow-x-auto overflow-lg-visible mt-5">
     <table class="table table-bordered table-report mt-n2">
          <tbody>
@@ -107,6 +113,39 @@
              </tr>
          </tbody>
     </table>
+    <?php if(!empty($users)){ ?>
+    <hr>
+    <br>
+    <h2 class="fs-lg fw-medium me-auto"> {{$instituteName}} Users </h2>
+    <table class="table table-bordered table-condensed table-report mt-n2">
+        <thead>
+              <th class="text-nowrap">Name</th>
+              <th class="text-nowrap">Email/Usrename</th>
+              <th class="text-nowrap">Contact</th>
+              <th class="text-nowrap">Active</th>
+        </thead>
+        <tbody>
+                 @foreach ($users as $user)   
+                  <tr class="intro-x">
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->contact_no }}</td>
+                    <td>
+                        @php if($user->active == '1'){
+                        $class = 'activelabel';
+                        $data = 'Active';
+                        }
+                        else{
+                        $class = 'inactivelabel';
+                        $data = 'Inactive';
+                        } @endphp
+                        <div class="{{ $class; }}">{{ $data }}</div>
+                    </td>
+                  </tr>
+                  @endforeach
+             </tbody>
+    </table>
+    <?php } ?> 
 </div>
 </div>
 @endsection

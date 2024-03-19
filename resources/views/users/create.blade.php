@@ -13,17 +13,15 @@ Add New User
    <form method="POST" action="{{route('users.store')}}" enctype="multipart/form-data">
     @csrf
    <div class="px-5">
+    @if($errors->any())
+    <div class="alert alert-danger alert-dismissible">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          @foreach ($errors->all() as $error)
+          {{ $error }}.
+         @endforeach 
+    </div>
+    @endif
       <div class="grid columns-12 gap-4 gap-y-5">
-         <div class="intro-y g-col-12 g-col-sm-3">
-             <label for="name" class="form-label">Role</label>
-              <select class="form-select me-sm-2" aria-label="Default select example" name="role_id" required>
-                <option>Select Role</option>
-                 @foreach ($roles as $role)
-                  <option value="{{ $role->id }}">{{ $role->name }}</option>
-                 @endforeach
-                
-            </select>
-         </div>
          <div class="intro-y g-col-12 g-col-sm-3">
              <label for="name" class="form-label">Department</label>
               <select class="form-select me-sm-2" aria-label="Default select example" name="department_id" required>
@@ -62,20 +60,21 @@ Add New User
                     data-single-mode="true" name="dob">
             </div>
         </div>
-        <div class="intro-y g-col-12 g-col-sm-6">
+        <div class="intro-y g-col-12 g-col-sm-3">
+             <label for="name" class="form-label">Status</label>
+             <div class="d-flex justify-content-start align-items-center">
+                <div class="mt-2">
+                    <div class="form-check form-switch"> 
+                        <input id="checkbox-switch-7"class="form-check-input" type="checkbox" name="active" checked> 
+                    <label class="form-check-label" for="checkbox-switch-7"></label> </div>
+                </div>
+
+            </div>
+         </div>
+       <!--  <div class="intro-y g-col-12 g-col-sm-6">
             <label for="fileInput" class="form-label">Image File</label>
             <input type="file" class="form-control" id="imageFile" name="image_file">
-        </div>
-         <div class="intro-y g-col-12 g-col-sm-6">
-             <label for="name" class="form-label">Active</label>
-             <br>
-              <label class="radio-inline">
-               <input type="radio" name="active" value="1">Yes
-             </label>
-             <label class="radio-inline">
-               <input type="radio" name="active" value="0" checked>No
-             </label>
-         </div>  
+        </div> -->
         <div class="intro-y g-col-12 ">
          <h2 class="fs-lg fw-medium me-auto">User Authentication</h2>
         </div>
@@ -88,6 +87,19 @@ Add New User
             <input id="password" type="password" class="form-control" name="password" placeholder="Password" required>
         </div>
 
+        <div class="intro-y g-col-12 g-col-sm-3">
+           <div class="border-2 border-dashed shadow-sm border-gray-200 dark-border-dark-5 rounded-2 p-5">
+          <div class="h-40 position-relative image-fit cursor-pointer zoom-in mx-auto">
+              <img class="rounded-2" alt=" " id="blah" src="{{ asset('dist/images/admin-pic.jpg') }}">
+          </div>
+              <div class="mx-auto cursor-pointer position-relative mt-5">
+                  <button type="button" class="btn btn-primary w-full">Change Photo</button>
+                  <input type="file" class="w-full h-full top-0 start-0 position-absolute opacity-0" id="imageFile" name="image_file">
+              </div>
+          </div>
+
+          </div>
+
         <!-- Submit Form -->
        <div class="intro-y g-col-12 d-flex align-items-center justify-content-center justify-content-sm-end mt-5">
           <button class="btn btn-primary w-24 ms-2" type="submit" >Submit</button>
@@ -96,6 +108,14 @@ Add New User
    </div>
    </form>
  </div>
+ <script type="text/javascript">
+     imageFile.onchange = evt => {
+      const [file] = imageFile.files
+      if (file) {
+        blah.src = URL.createObjectURL(file)
+      }
+    }
+ </script>
 @endsection
 
 

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Department;
+use App\Models\Institute;
 
 class UsersController extends Controller
 {
@@ -17,13 +18,8 @@ class UsersController extends Controller
      */
     public function index(){
        $pageTitle = "Users";
-        
-        $usersQuery = User::with(['roles','departments']);
-
+        $usersQuery = User::with(['roles','departments'])->where('role_id',1);
         $users = $usersQuery->paginate(20);
-
-        // dd($users);
-
        return view('users.index',compact('pageTitle','users'));
     }
 
@@ -41,22 +37,44 @@ class UsersController extends Controller
         return view('users.create',compact('pageTitle','roles','departments'));
     }
 
+
+    /*Add Institute User*/
+    public function institute_user($instituteId){
+        $institute = Institute::find($instituteId);
+        
+        $roles = Role::all()->where('active',true);
+        $departments = Department::all()->where('active',true);
+        return view('users.institute_user',compact('roles','departments','institute'));
+    
+    } 
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request){
             
-         dd($request);   
+         // dd($request); 
+
          $request->validate([
-            'role_id'=>['required'],
             'name'=>['required'],
-            'email'=>['required'],
+            'email'=>['required','email','unique:users,email'],
             'password'=>['required'],
-            'contact_no'=>['required'],
+            'contact_no'=>['required','unique:users,contact_no'],
         ]);
         
+
+         /*Active*/
+        $active =  (!empty($request->input('active'))) ? $request->input('active') : '';
+        $roleId = (!empty($request->input('institute_id'))) ? 2 : 1;
+        $instituteId = (!empty($request->input('institute_id'))) ? (int)$request->input('institute_id') : null;
+
+        // dd($request->input('institute_id'));
+        // dd($instituteId);
+
+
         $users = User::create([
-            'role_id' => $request->input('role_id'),
+            'role_id' => $roleId,
+            'institute_id' => $instituteId,
             'department_id'=> $request->input('department_id'),
             'name' => $request->input('name'),
             'email' => $request->input('email'),
@@ -65,12 +83,11 @@ class UsersController extends Controller
             'alternat_no' => $request->input('alternat_no'),
             'dob' => $request->input('dob'),
             'gender' => $request->input('gender'),
-            'active' => $request->input('active'),
+            'active' => (!empty($active)) ? 1 : 0,
         ]);  
 
          /*Upload Files*/
          if ($request->hasFile('image_file')) {
-           
             $image = $request->file('image_file');   
             $folder = 'files/users/image_file/'.$users->id;
             // Save the image directly to the public folder
@@ -78,9 +95,16 @@ class UsersController extends Controller
             $users->image_file = $image->getClientOriginalName();
          } 
 
-         $users->save();
-
-         return redirect()->route('users.index');
+          if ($users->save()) {
+              if(!empty($instituteId)){
+                return redirect()->route('institutes.show',$instituteId)->with('success', 'User added successfully.');
+              }else{
+                return redirect()->route('users.index')->with('success', 'User added successfully.');
+              }  
+          
+          } else {
+            return redirect()->back()->with('error', 'Failed to save user.');
+          }
 
     }
 
@@ -123,20 +147,20 @@ class UsersController extends Controller
             return redirect()->route('users.index')->with('error', 'User not found.');
        }
 
-       $user->update([
-            'role_id' => $request->input('role_id'),
+       $active =  (!empty($request->input('active'))) ? $request->input('active') : '';
+
+        $user->update([
             'department_id'=> $request->input('department_id'),
             'name' => $request->input('name'),
             'contact_no' => $request->input('contact_no'),
             'alternat_no' => $request->input('alternat_no'),
             'dob' => $request->input('dob'),
             'gender' => $request->input('gender'),
-            'active' => $request->input('active'),
+            'active' => (!empty($active)) ? 1 : 0,
         ]);
 
        /*Upload Files*/
          if ($request->hasFile('image_file')) {
-           
             $image = $request->file('image_file');   
             $folder = 'files/users/image_file/'.$user->id;
             // Save the image directly to the public folder
@@ -144,9 +168,11 @@ class UsersController extends Controller
             $user->image_file = $image->getClientOriginalName();
          }
       
-       $user->save();
-
-       return redirect()->route('users.index');
+       if ($user->save()) {
+         return redirect()->route('users.index')->with('success', 'User Updated successfully.');
+       } else {
+         return redirect()->back()->with('error', 'Failed to save user.');
+       }
     
     }
 
@@ -199,6 +225,8 @@ class UsersController extends Controller
     public function destroy(string $id){
         //
     }
+
+
 
     
 

@@ -14,6 +14,11 @@
 </div>
 <!-- BEGIN: HTML Table Data -->
 <div class="intro-y box p-5 mt-5">
+     @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
      <div class="intro-y g-col-12 ooverflow-x-auto overflow-lg-visible mt-5">
         <table class="table table-report mt-n2">
             <thead>

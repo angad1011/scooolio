@@ -16,7 +16,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['role_id','department_id','name','email','password','contact_no','alternat_no','dob','gender','image_file','active','created_at','updated_at'];
+    protected $fillable = ['role_id','department_id','institute_id','name','email','password','contact_no','alternat_no','dob','gender','image_file','active','created_at','updated_at'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -47,6 +47,11 @@ class User extends Authenticatable
     public function departments()
     {
         return $this->belongsTo(Department::class,'department_id', 'id');
+    }
+
+    public function institutes()
+    {
+        return $this->belongsTo(Institute::class,'institute_id', 'id');
     }
 
 
