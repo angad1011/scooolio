@@ -21,7 +21,9 @@
 <nav class="side-nav" id="side-nav">
  <?php if(Auth::user()->role_id == 1){ ?>   
   @include('partials.sidemenu')   
- <?php } ?>
+ <?php }else{?>
+    @include('partials.sidemenu_school')
+ <?php } ?>   
 </nav>
 <!-- END: Side Menu -->
 <!-- BEGIN: Content -->
