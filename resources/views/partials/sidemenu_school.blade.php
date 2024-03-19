@@ -39,42 +39,17 @@
         </a>
         <ul class="">
             <li>
-                <a href="{{route('schools')}}" class="side-menu">
+                <a href="#" class="side-menu">
                     <div class="side-menu__icon"> <i data-feather="list"></i> </div>
-                    <div class="side-menu__title"> School List </div>
+                    <div class="side-menu__title"> Teacher List </div>
                 </a>
             </li>
             <li>
-                <a href="{{route('colleges')}}" class="side-menu">
+                <a href="#" class="side-menu">
                     <div class="side-menu__icon"> <i data-feather="list"></i> </div>
-                    <div class="side-menu__title"> College List </div>
+                    <div class="side-menu__title"> Student List </div>
                 </a>
             </li>
-            <li>
-                <a href="{{ route('institute_types.index') }}" class="side-menu">
-                    <div class="side-menu__icon"> <i data-feather="list"></i> </div>
-                    <div class="side-menu__title"> Institute Type </div>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('boards.index') }}" class="side-menu">
-                    <div class="side-menu__icon"> <i data-feather="list"></i> </div>
-                    <div class="side-menu__title"> Board </div>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('mediums.index') }}" class="side-menu">
-                    <div class="side-menu__icon"> <i data-feather="list"></i> </div>
-                    <div class="side-menu__title"> Medium</div>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('streams.index') }}" class="side-menu">
-                    <div class="side-menu__icon"> <i data-feather="list"></i> </div>
-                    <div class="side-menu__title"> Streams</div>
-                </a>
-            </li>
-            
         </ul>
     </li>
    
