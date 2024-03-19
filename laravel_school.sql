@@ -117,15 +117,17 @@ CREATE TABLE `institutes` (
   `afternoon_shift_end` varchar(45) DEFAULT NULL,
   `image_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '0',
+  `its_college` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `institutes` */
 
-insert  into `institutes`(`id`,`medium_id`,`board_id`,`institute_type_id`,`stream_id`,`name`,`email`,`contact_no`,`code`,`principal_name`,`est_since`,`branch`,`state`,`city`,`pin_code`,`address`,`morning_shift_start`,`morning_shift_end`,`afternoon_shift_start`,`afternoon_shift_end`,`image_file`,`active`,`created_at`,`updated_at`) values 
-(1,2,2,2,NULL,'Shehzad','shehzad215@gmail.com','88989279606','SHSC01','Islam','15 Mar, 2024','Cheeta Camp','Maharashtra','Select City','400088','B Sector E Line Room No. 12','19:14','19:14','18:14','18:15','adishakti-1500x1500.jpg',0,'2024-03-15 11:45:04','2024-03-15 11:45:04');
+insert  into `institutes`(`id`,`medium_id`,`board_id`,`institute_type_id`,`stream_id`,`name`,`email`,`contact_no`,`code`,`principal_name`,`est_since`,`branch`,`state`,`city`,`pin_code`,`address`,`morning_shift_start`,`morning_shift_end`,`afternoon_shift_start`,`afternoon_shift_end`,`image_file`,`active`,`its_college`,`created_at`,`updated_at`) values 
+(1,2,2,2,NULL,'Ideal High School','shehzad215@gmail.com','88989279606','IDSC1','Islam','15 Mar, 2024','Cheeta Camp','Maharashtra','Mumbai','400088','B Sector E Line Room No. 12','19:14','19:14','18:14','18:15','activities.png',0,0,'2024-03-15 11:45:04','2024-03-18 06:07:17'),
+(2,1,1,1,NULL,'National Sarvodaya Jr College','national@gmail.com','9833276092','NACL02','Harish Chandar Ram Chandar Mir Chandani','18 Mar, 2024','Chembur','Maharashtra','Mumbai','400088','B Sector E Line Room No. 12','14:01','15:01','13:01','14:01','culture_india.png',0,1,'2024-03-18 06:32:04','2024-03-18 06:47:55');
 
 /*Table structure for table `mediums` */
 
@@ -295,6 +297,9 @@ DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `role_id` int(11) DEFAULT NULL,
+  `department_id` int(11) DEFAULT NULL,
+  `institute_id` int(11) DEFAULT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -303,20 +308,25 @@ CREATE TABLE `users` (
   `alternat_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `dob` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `gender` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `role_id` int(11) DEFAULT NULL,
-  `department_id` int(11) DEFAULT NULL,
   `image_file` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`name`,`email`,`password`,`remember_token`,`contact_no`,`alternat_no`,`dob`,`gender`,`role_id`,`department_id`,`image_file`,`active`,`created_at`,`updated_at`) values 
-(1,'Athar Ali Badsha','athar@gmail.com','$2y$12$yHFu9cF..zMI1ENGyvF2l.wzjS8MVliyghWTP.YuKrY6hSiDgcnsK',NULL,'8898927606','9619905242','7 Oct, 1991','female',1,1,'EkaSandalwood.jpg',1,'2024-03-13 07:20:05','2024-03-14 08:53:25');
+insert  into `users`(`id`,`role_id`,`department_id`,`institute_id`,`name`,`email`,`password`,`remember_token`,`contact_no`,`alternat_no`,`dob`,`gender`,`image_file`,`active`,`created_at`,`updated_at`) values 
+(1,1,1,NULL,'Athar Ali Badsha','athar@gmail.com','$2y$12$yHFu9cF..zMI1ENGyvF2l.wzjS8MVliyghWTP.YuKrY6hSiDgcnsK',NULL,'8898927606','9619905242','7 Oct, 1991','female','EkaSandalwood.jpg',1,'2024-03-13 07:20:05','2024-03-14 08:53:25'),
+(3,1,1,NULL,'Shehzad','shehzad215@gmail.com','$2y$12$YgMZh8/5f.dgkg.Y2W4Sf.AORuyutQVuuE1/kkHvtCPyT.8RlqrHO',NULL,'9619905242','8898927606','19 Mar, 2024','male','Alleppey.jpg',1,'2024-03-19 05:31:42','2024-03-19 05:31:42'),
+(4,2,1,1,'Moin','moin@puratech.in','$2y$12$U//fZUmve063iMdAMZlWreCWtLkiac8.pTmdZhTBQKU5NtHsv10LC',NULL,'8523697410','8898927606','19 Mar, 2024','male','gateway-of-india-mumbai.webp',1,'2024-03-19 06:05:25','2024-03-19 06:05:25'),
+(5,2,1,1,'Dinesh','dinesh@gmail.com','$2y$12$sY7YgCxbXxWSus/E77rdDeiOoKHjUTcMvCTM3JAqicqknzvFa2g.a',NULL,'258741000','8898927606','19 Mar, 2024','male',NULL,1,'2024-03-19 06:38:51','2024-03-19 06:38:51'),
+(6,2,1,1,'Shubham','shubham@gmail.com','$2y$12$CZHZ45Nzz.iC0D8GYJlfg.SDfr1IjcxKxWfhElzCDBzTTVDdrQqfK',NULL,'9632581111','8898927606','19 Mar, 2024','male',NULL,1,'2024-03-19 06:42:13','2024-03-19 06:42:13'),
+(7,2,1,1,'Hameed Khan','hamid@gmail.com','$2y$12$NfATJYHqm8VE18tuNuggM.6f8POnbsFCPnRQ8NxbGs0ZK4UOLS9Oe',NULL,'123467980','8898927606','19 Mar, 2024','male',NULL,1,'2024-03-19 06:46:23','2024-03-19 06:46:23'),
+(8,2,1,1,'Waseem','wasim@gmail.com','$2y$12$v1e5hV/H93gVjYmVX42fWOmTQFewdpJNbv8A1MqwBG.OB/.K84xM.',NULL,'8522587410','8898927606','19 Mar, 2024','male',NULL,1,'2024-03-19 06:47:29','2024-03-19 06:47:29'),
+(9,2,1,1,'Vivek','vivek@gmail.com','$2y$12$2qW2JrYRT7H0IQgzcckrEeaInw7P.BexwEVDaASEqSwUy6w0buKcK',NULL,'9874563210','8898927606','19 Mar, 2024','male',NULL,1,'2024-03-19 06:51:05','2024-03-19 06:51:05');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
