@@ -1,5 +1,14 @@
 <a href="" class="intro-x d-flex align-items-center ps-5 pt-4">
-    <img alt="Logo" class="w-100" src="{{ asset('dist/images/logo.svg') }}">
+    @php
+    $firstImage = Auth::user()->institutes->image_file;
+    $id = Auth::user()->institute_id;
+    $imagePath = $firstImage ? asset("files/school/image_file/{$id}/{$firstImage}") : asset('dist/images/logo.svg');
+    @endphp
+
+    @if(!empty($imagePath))
+    <img alt="Logo" class="w-100" src="{{ $imagePath }}">
+    @endif
+
 </a>
 <div class="side-nav__devider my-6"></div>
 <ul>

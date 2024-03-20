@@ -89,7 +89,30 @@
             
         </ul>
     </li>
-   
+    <li>
+        <a href="javascript:;" class="side-menu" id="school">
+            <div class="side-menu__icon"> <i data-feather="list"></i> </div>
+            <div class="side-menu__title">
+                Comman Masters
+                <div class="side-menu__sub-icon"> <i data-feather="chevron-down"></i> </div>
+            </div>
+        </a>
+        <ul class="">
+            <li>
+                <a href="{{ route('standards.index') }}" class="side-menu">
+                    <div class="side-menu__icon"> <i data-feather="list"></i> </div>
+                    <div class="side-menu__title"> Standart</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('divisions.index') }}" class="side-menu">
+                    <div class="side-menu__icon"> <i data-feather="list"></i> </div>
+                    <div class="side-menu__title"> Division</div>
+                </a>
+            </li>
+            
+        </ul>
+    </li>    
     <li>
         <a href="{{ route('logout') }}" class="side-menu">
             <div class="side-menu__icon"> <i data-feather="power"></i> </div>

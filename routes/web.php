@@ -12,6 +12,8 @@ use App\Http\Controllers\BoardsController;
 use App\Http\Controllers\MediumsController;
 use App\Http\Controllers\StreamsController;
 use App\Http\Controllers\InstituteTypeController;
+use App\Http\Controllers\DivisionController;
+use App\Http\Controllers\StandardController;
 use App\Http\Controllers\InstitutesController;
 use App\Http\Middleware\Authenticate;
 
@@ -50,6 +52,12 @@ Route::resource('institute_types', InstituteTypeController::class);
 
 /*Department*/
 Route::resource('departments', DepartmentsController::class);
+
+/*Division*/
+Route::resource('divisions', DivisionController::class);
+
+/*Standart*/
+Route::resource('standards', StandardController::class);
 
 /*Users*/
 Route::resource('users', UsersController::class);
