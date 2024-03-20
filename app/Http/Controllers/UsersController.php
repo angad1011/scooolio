@@ -19,7 +19,17 @@ class UsersController extends Controller
     public function index()
     {
         $roleId = Auth::user()->role_id;
-        $usersQuery = User::with(['roles', 'departments'])->where('role_id', $roleId);
+        $instituteTypeId = Auth::user()->institute_id;
+
+        //dd($instituteTypeId);
+        //$usersQuery = User::with(['roles', 'departments'])->where('role_id', $roleId);
+        $usersQuery = User::with(['roles', 'departments'])
+                ->where('role_id', $roleId)
+                ->when($instituteTypeId !== null, function ($query) use ($instituteTypeId) {
+                    return $query->where('institute_id', $instituteTypeId);
+                });
+
+
         $users = $usersQuery->paginate(20);
         return view('users.index', compact('users'));
     }

@@ -16,12 +16,8 @@ class InstitutesController extends Controller
      * Display a listing of the resource.
      */
     public function index(){
-        $pageTitle = "Institute";
         $institutes = Institute::all()->where('its_college','0');
-
-        // dd($institutes);
-
-        return view('institutes.index',compact('pageTitle','institutes'));
+        return view('institutes.index',compact('institutes'));
     }
 
     /**
@@ -120,7 +116,7 @@ class InstitutesController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id){
-         $school = Institute::findOrFail($id);   
+        $school = Institute::findOrFail($id);   
 
         $boards = Board::all()->where('active',true);
         $mediums = Medium::all()->where('active',true);

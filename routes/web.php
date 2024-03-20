@@ -15,6 +15,9 @@ use App\Http\Controllers\InstituteTypeController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\StandardController;
 use App\Http\Controllers\InstitutesController;
+use App\Http\Controllers\LearnSpaceController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Middleware\Authenticate;
 
 /*
@@ -71,6 +74,15 @@ Route::get('/schools', [InstitutesController::class,'index'])->name('schools');
 Route::get('/colleges', [InstitutesController::class,'colleges'])->name('colleges');
 Route::get('/add_college', [InstitutesController::class,'add_college'])->name('add_college');
 Route::post('/college_store', [InstitutesController::class,'college_store'])->name('college_store');
+
+/* Setup Class */
+Route::resource('learn_spaces', LearnSpaceController::class);
+
+/* Subjec Routes */
+Route::resource('subjects', SubjectController::class);
+
+/* Teacher Routes */
+Route::resource('teachers', TeacherController::class);
 
 
 });

@@ -48,7 +48,19 @@
         </a>
         <ul class="">
             <li>
-                <a href="#" class="side-menu">
+                <a href="{{ route('learn_spaces.index') }}" class="side-menu">
+                    <div class="side-menu__icon"> <i data-feather="list"></i> </div>
+                    <div class="side-menu__title">Setup Class</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('subjects.index') }}" class="side-menu">
+                    <div class="side-menu__icon"> <i data-feather="list"></i> </div>
+                    <div class="side-menu__title">Subjects</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('teachers.index') }}" class="side-menu">
                     <div class="side-menu__icon"> <i data-feather="list"></i> </div>
                     <div class="side-menu__title"> Teacher List </div>
                 </a>

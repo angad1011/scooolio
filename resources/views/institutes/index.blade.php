@@ -51,9 +51,9 @@
                     <td>{{$institute->state}}</td>
                     <td class="table-report__action w-56">
                         <div class="d-flex justify-content-start align-items-center">
-                            <a class="d-flex align-items-center me-3" href="{{ route('institutes.edit',$institute->id) }}"> <i
+                            <a class="d-flex align-items-center me-3" href="{{ route('learn_spaces.edit',$institute->id) }}"> <i
                                     data-feather="check-square" class="w-4 h-4 me-1"></i> Edit </a>
-                            <a class="d-flex align-items-center me-3" href="{{ route('institutes.show',$institute->id) }}"> <i data-feather="eye"
+                            <a class="d-flex align-items-center me-3" href="{{ route('learn_spaces.show',$institute->id) }}"> <i data-feather="eye"
                                     class="w-4 h-4 me-1"></i> View </a>
 
                         </div>
