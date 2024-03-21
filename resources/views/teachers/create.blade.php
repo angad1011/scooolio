@@ -10,12 +10,18 @@ Add New Teacher
 </div>
 </div>
  <div class="intro-y box py-10 mt-5">
-   <form method="POST" action="{{route('subjects.store')}}" enctype="multipart/form-data">
+   <form method="POST" action="{{route('teachers.store')}}" enctype="multipart/form-data">
     @csrf
    <div class="px-5">
+   @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
       <div class="grid columns-12 gap-4 gap-y-5">
          <div class="intro-y g-col-12 g-col-sm-3">
              <label for="name" class="form-label">Teacher Name</label>
+             <input id="institute_id" type="hidden" name="institute_id" class="form-control" value="{{$instituteId}}">
              <input id="name" type="text" name="name" class="form-control" placeholder="Teacher Name" required>
          </div> 
          <div class="intro-y g-col-12 g-col-sm-3">
@@ -35,6 +41,10 @@ Add New Teacher
             </select>
         </div> 
         <div class="intro-y g-col-12 g-col-sm-3">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" type="email" class="form-control" name="email" placeholder="Email / Username" required>
+        </div> 
+        <div class="intro-y g-col-12 g-col-sm-3">
             <label for="name" class="form-label">Subjects</label>
             <select class="form-select me-sm-2" aria-label="Default select example" name="subjects[]" multiple="true">
                 <option>Select Subject</option>
@@ -52,22 +62,7 @@ Add New Teacher
                 @endforeach
             </select>
         </div>
-        <div class="intro-y g-col-12 g-col-sm-12">
-            <label for="name" class="form-label">Address</label>
-            <textarea id="address" name="address" class="form-control"></textarea>
-        </div>
-        <div class="intro-y g-col-12 ">
-            <h2 class="fs-lg fw-medium me-auto">Teacher Authentication</h2>
-        </div>
-        <div class="intro-y g-col-12 g-col-sm-5">
-            <label for="email" class="form-label">Email / Username</label>
-            <input id="email" type="email" class="form-control" name="email" placeholder="Email / Username" required>
-        </div>
-        <div class="intro-y g-col-12 g-col-sm-5">
-            <label for="password" class="form-label">Password</label>
-            <input id="password" type="password" class="form-control" name="password" placeholder="Password" required>
-        </div> 
-         <div class="intro-y g-col-12 g-col-sm-2">
+        <div class="intro-y g-col-12 g-col-sm-3">
              <label for="name" class="form-label">Status</label>
              <div class="d-flex justify-content-start align-items-center">
                 <div class="mt-2">
@@ -77,7 +72,12 @@ Add New Teacher
                 </div>
 
             </div>
-         </div>  
+         </div>
+        <div class="intro-y g-col-12 g-col-sm-12">
+            <label for="name" class="form-label">Address</label>
+            <textarea id="address" name="address" class="form-control"></textarea>
+        </div>
+ 
          <div class="intro-y g-col-12 g-col-sm-3">
             <div class="border-2 border-dashed shadow-sm border-gray-200 dark-border-dark-5 rounded-2 p-5">
                 <div class="h-40 position-relative image-fit cursor-pointer zoom-in mx-auto">

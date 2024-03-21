@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Teacher;
 use App\Models\LearnSpace;
 use App\Models\Subject;
+use App\Models\TeachersSubjects;
+use App\Models\TeachersLearnSpaces;
+
 
 class TeacherController extends Controller
 {
@@ -34,14 +37,69 @@ class TeacherController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $request->validate([
+    public function store(Request $request){
+        // dd($request);
+        // dd($request->all());
+        $validatedData = $request->validate([
             'name' => ['required'],
-            'email' => ['required', 'email', 'unique:users,email'],
-            'password' => ['required'],
-            'contact_no' => ['required', 'unique:users,contact_no'],
+            'email' => ['required', 'email', 'unique:teachers,email'],
+            'contact' => ['required', 'unique:teachers,contact'],
+            'qualification' => ['required'],
+            'gender' => ['required'],
+            'address' => ['required']
         ]);
+
+        $active = $request->has('active') ? 1 : 0; // Simplified check for 'active' field
+
+    
+        // Create a new Teacher
+        $teacher = Teacher::create([
+            'institute_id' => $request->input('institute_id'),
+            'name' => $validatedData['name'],
+            'contact' => $validatedData['contact'],
+            'qualification' => $validatedData['qualification'],
+            'gender' => $validatedData['gender'],
+            'email' => $validatedData['email'],
+            'active' => $active, // Simplified 'active' field check
+            'address' => $validatedData['address'],
+        ]);
+
+        // dd($subjects);
+        $subjects = $request->has('subjects') ? $request->input('subjects') : '';
+        if(!empty($subjects)){
+            foreach($subjects as $subject){
+                $teacherSubjects = TeachersSubjects::create([
+                    'teacher_id'=>$teacher->id,
+                    'subject_id'=>$subject,
+                ]);
+            }
+        }
+
+        // For Teacher Class
+        $classes = $request->has('learn_spaces') ? $request->input('learn_spaces') : '';
+        if(!empty($classes)){
+            foreach($classes as $classe){
+                $teacherSubjects = TeachersLearnSpaces::create([
+                    'teacher_id'=>$teacher->id,
+                    'learn_space_id'=>$classe,
+                ]);
+            }
+        }
+
+         // // Upload Profile Image
+        if ($request->hasFile('profile_img')) {
+            $image = $request->file('profile_img');
+            $folder = 'files/teachers/profile_img/' . $teacher->id;
+            $image->move(public_path($folder), $image->getClientOriginalName());
+            $teacher->profile_img = $image->getClientOriginalName();
+        }
+    
+        if ($teacher->save()) {
+            return redirect()->route('teachers.index')->with('success', 'Teacher added successfully.');
+        }else{
+            return redirect()->back()->with('error', 'Failed to save user.');
+        }
+
     }
 
     /**
@@ -55,9 +113,16 @@ class TeacherController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
+    public function edit(string $id){
+        
+        $teacher = Teacher::findOrFail($id);
+
+        $instituteId = Auth::user()->institute_id;
+        $learnSpaces = LearnSpace::all()->where('institute_id',$instituteId);
+        $subjects = Subject::all()->where('institute_id',$instituteId);
+
+        return view('teachers.edit',compact('learnSpaces','subjects','instituteId','teacher'));
+
     }
 
     /**

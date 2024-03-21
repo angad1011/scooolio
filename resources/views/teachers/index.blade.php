@@ -14,6 +14,11 @@ Teacher List
 </div>
 <!-- BEGIN: HTML Table Data -->
 <div class="intro-y box p-5 mt-5">
+@if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
      <div class="intro-y g-col-12 ooverflow-x-auto overflow-lg-visible mt-5">
         <table class="table table-report mt-n2">
             <thead>
@@ -27,10 +32,21 @@ Teacher List
                 </tr>
             </thead>
              <tbody>
+                 <?php //dd($teachers); ?>
                  @foreach ($teachers as $teacher)   
                   <tr class="intro-x">
                    <td class="w-20">
-                       
+                   <div class="d-flex">
+                        <div class="w-10 h-10 image-fit zoom-in">
+                             <?php
+                                $firstImage = $teacher->profile_img;
+                                $id = $teacher->id;
+                                $imagePath = $firstImage ? asset("files/teachers/profile_img/".$id."/".$firstImage."") : null;
+                                // echo $imagePath;
+                            ?>
+                            <img class="tooltip rounded-circle" src="{{$imagePath }}">
+                        </div>
+                    </div>
                     </td>  
                     <td>{{ $teacher->name }}</td>
                     <td>{{ $teacher->contact }}</td>
