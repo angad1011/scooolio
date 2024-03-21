@@ -39,7 +39,9 @@ Add New Class
             <select class="form-select me-sm-2" aria-label="Default select example" name="teacher_id">
             
             <option value="">Select Teacher</option>
-           
+            @foreach ($teachers as $teacher)
+            <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+            @endforeach
 
             </select>
         </div>

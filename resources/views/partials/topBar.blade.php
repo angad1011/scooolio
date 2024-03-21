@@ -11,6 +11,9 @@ class="breadcrumb--active">Dashboard</a> </div>
 
 </div>
 <!-- END: Notifications -->
+<?php if(Auth::user()->role_id != 1){ ?>   
+<div class="text-center" style="margin-right: 10px"><a href="{{ route('institutes.show',Auth::user()->institute_id) }}">{{Auth::user()->institutes->name}}</a></div>
+<?php } ?>
 <!-- BEGIN: Account Menu -->
 <div class="intro-x dropdown w-8 h-8" id="right-profile-section">
 @include('partials.profile')	

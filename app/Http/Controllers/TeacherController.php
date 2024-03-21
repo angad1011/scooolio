@@ -28,9 +28,30 @@ class TeacherController extends Controller
      */
     public function create(){
         $instituteId = Auth::user()->institute_id;
-        $learnSpaces = LearnSpace::all()->where('institute_id',$instituteId);
         $subjects = Subject::all()->where('institute_id',$instituteId);
-        return view('teachers.create',compact('learnSpaces','subjects','instituteId'));
+        
+        // $learnSpaces = LearnSpace::all()->where('institute_id',$instituteId)->with('Division');
+        $learnSpaces = LearnSpace::where('institute_id', $instituteId)->with('divisions','standards')->get();
+
+       
+
+        $assignClasses = [];
+        if(!empty($learnSpaces)){
+            foreach ($learnSpaces as $learnSpace) {
+                $standard = $learnSpace->standards->name; // Assuming 'name' is the field for standard's name
+                $division = $learnSpace->divisions->name; // Assuming 'name' is the field for division's name
+
+               $calssName = "$standard - $division";  
+
+                $assignClasses[] = ['id' => $learnSpace->id,'name'=>$calssName];
+            }
+            
+        }       
+
+
+        // dd($assignClasses);
+
+        return view('teachers.create',compact('learnSpaces','subjects','instituteId','assignClasses'));
 
     }
 
@@ -118,10 +139,26 @@ class TeacherController extends Controller
         $teacher = Teacher::findOrFail($id);
 
         $instituteId = Auth::user()->institute_id;
-        $learnSpaces = LearnSpace::all()->where('institute_id',$instituteId);
         $subjects = Subject::all()->where('institute_id',$instituteId);
 
-        return view('teachers.edit',compact('learnSpaces','subjects','instituteId','teacher'));
+        $learnSpaces = LearnSpace::where('institute_id', $instituteId)->with('divisions','standards')->get();
+
+       
+
+        $assignClasses = [];
+        if(!empty($learnSpaces)){
+            foreach ($learnSpaces as $learnSpace) {
+                $standard = $learnSpace->standards->name; // Assuming 'name' is the field for standard's name
+                $division = $learnSpace->divisions->name; // Assuming 'name' is the field for division's name
+
+               $calssName = "$standard - $division";  
+
+                $assignClasses[] = ['id' => $learnSpace->id,'name'=>$calssName];
+            }
+            
+        } 
+
+        return view('teachers.edit',compact('learnSpaces','subjects','instituteId','teacher','assignClasses'));
 
     }
 
@@ -130,7 +167,62 @@ class TeacherController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $teacher = Teacher::find($id);
+        if (!$teacher) {
+            return redirect()->route('teachers.index')->with('error', 'Teacher not found.');
+        }
+
+        $active = $request->has('active') ? 1 : 0; // Simplified check for 'active' field
+
+        $teacher->update([
+            'name' => $request->input('name'),
+            'contact' => $request->input('contact'),
+            'qualification' => $request->input('qualification'),
+            'gender' => $request->input('gender'),
+            'email' => $request->input('email'),
+            'active' => $active, // Simplified 'active' field check
+            'address' => $request->input('address'),
+        ]);
+
+         // dd($subjects);
+         $subjects = $request->has('subjects') ? $request->input('subjects') : '';
+         if(!empty($subjects)){
+             foreach($subjects as $subject){
+                 $teacherSubjects = TeachersSubjects::create([
+                     'teacher_id'=>$teacher->id,
+                     'subject_id'=>$subject,
+                 ]);
+             }
+         }
+ 
+         // For Teacher Class
+         $classes = $request->has('learn_spaces') ? $request->input('learn_spaces') : '';
+         if(!empty($classes)){
+             foreach($classes as $classe){
+                 $teacherSubjects = TeachersLearnSpaces::create([
+                     'teacher_id'=>$teacher->id,
+                     'learn_space_id'=>$classe,
+                 ]);
+             }
+         }
+
+         // // Upload Profile Image
+        if ($request->hasFile('profile_img')) {
+            $image = $request->file('profile_img');
+            $folder = 'files/teachers/profile_img/' . $teacher->id;
+            $image->move(public_path($folder), $image->getClientOriginalName());
+            $teacher->profile_img = $image->getClientOriginalName();
+        }
+    
+        if ($teacher->save()) {
+            return redirect()->route('teachers.index')->with('success', 'Teacher added successfully.');
+        }else{
+            return redirect()->back()->with('error', 'Failed to save user.');
+        }
+
+
+
+
     }
 
     /**

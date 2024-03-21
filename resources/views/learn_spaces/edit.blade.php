@@ -42,7 +42,10 @@ Update Class
             <select class="form-select me-sm-2" aria-label="Default select example" name="teacher_id">
             
             <option value="">Select Teacher</option>
-           
+            @foreach ($teachers as $teacher)
+            <?php $selected = ($teacher->id == $learnSpace->teacher_id) ? 'selected' : ''; ?>
+            <option value="{{ $teacher->id }}" <?php echo $selected; ?>>{{ $teacher->name }}</option>
+            @endforeach
 
             </select>
         </div>

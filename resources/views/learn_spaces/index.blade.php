@@ -29,7 +29,7 @@ Class List
                  @foreach ($learnSpaces as $learnSpace)   
                   <tr class="intro-x">
                     <td>{{ $learnSpace->standards->name.' '.$learnSpace->divisions->name }}</td>
-                    <td></td>
+                    <td>{{ $learnSpace->teachers->name }}</td>
                     <td>{{$learnSpace->shift_types->name}}</td>
                     <td>{{$learnSpace->no_of_student}}</td>
                      <td class="table-report__action w-56">

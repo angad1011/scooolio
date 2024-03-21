@@ -17,6 +17,7 @@
         <li class="p-2">
             <div class="fw-medium text-white">{{Auth::user()->name}}</div>
             <div class="fs-xs text-theme-28 mt-0.5 dark-text-gray-600">{{Auth::user()->roles->name}}</div>
+            <div class="fs-xs text-theme-28 mt-0.5 dark-text-gray-600">{{isset(Auth::user()->institutes->name) ? Auth::user()->institutes->name : ''}}</div>
         </li>
         <li>
             <hr class="dropdown-divider border-theme-27 dark-border-dark-3">

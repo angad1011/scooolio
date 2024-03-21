@@ -57,8 +57,8 @@ Update Teacher
             <label for="name" class="form-label">Assign Classes</label>
             <select class="form-select me-sm-2" aria-label="Default select example" name="learn_spaces[]" multiple="true">
                 <option>Select Class</option>
-                @foreach ($learnSpaces as $learnSpace)
-                <option value="{{ $learnSpace->id }}">{{ $learnSpace->name }}</option>
+                @foreach ($assignClasses as $assignClass)
+                <option value="{{ $assignClass['id'] }}">{{ $assignClass['name'] }}</option>
                 @endforeach
             </select>
         </div>

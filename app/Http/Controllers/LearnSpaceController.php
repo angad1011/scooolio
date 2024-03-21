@@ -8,6 +8,7 @@ use App\Models\LearnSpace;
 use App\Models\Standard;
 use App\Models\Division;
 use App\Models\ShiftType;
+use App\Models\Teacher;
 
 class LearnSpaceController extends Controller
 {
@@ -31,8 +32,10 @@ class LearnSpaceController extends Controller
         $shiftTypes = ShiftType::all();
         $standards = Standard::all()->where('active',true);
         $divisions = Division::all()->where('active',true);
+        $teachers = Teacher::all()->where('active',true);
 
-        return view('learn_spaces.create',compact('shiftTypes','standards','divisions'));
+
+        return view('learn_spaces.create',compact('shiftTypes','standards','divisions','teachers'));
     }
 
     /**
@@ -45,7 +48,7 @@ class LearnSpaceController extends Controller
         $request->validate([
             'standard_id'=>['required'],
             'division_id'=>['required'],
-            // 'teacher_id'=>['required'],
+            'teacher_id'=>['required'],
             'shift_type_id'=>['required'],
             'no_of_student'=>['required'],
         ]);
@@ -83,8 +86,9 @@ class LearnSpaceController extends Controller
         $shiftTypes = ShiftType::all();
         $standards = Standard::all()->where('active',true);
         $divisions = Division::all()->where('active',true);
+        $teachers = Teacher::all()->where('active',true);
 
-        return view('learn_spaces.edit',compact('shiftTypes','standards','divisions','learnSpace'));
+        return view('learn_spaces.edit',compact('shiftTypes','standards','divisions','learnSpace','teachers'));
 
     }
 

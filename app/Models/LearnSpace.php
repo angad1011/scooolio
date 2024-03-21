@@ -29,4 +29,8 @@ class LearnSpace extends Model
         return $this->belongsTo(ShiftType::class, 'shift_type_id', 'id');
     }
 
+    public function teachers(){
+        return $this->belongsTo(Teacher::class, 'teacher_id', 'id');
+    }
+
 }
