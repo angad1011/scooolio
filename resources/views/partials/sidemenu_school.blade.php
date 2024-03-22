@@ -6,7 +6,7 @@
     @endphp
 
     @if(!empty($imagePath))
-    <img alt="Logo" class="w-100" src="{{ $imagePath }}">
+    <img alt="Logo" class="w-100" src="{{ $imagePath }}" style="width: 100%">
     @endif
 
 </a>
@@ -66,7 +66,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="side-menu">
+                <a href="{{ route('students.index') }}" class="side-menu">
                     <div class="side-menu__icon"> <i data-feather="list"></i> </div>
                     <div class="side-menu__title"> Student List </div>
                 </a>

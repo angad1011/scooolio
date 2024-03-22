@@ -134,7 +134,7 @@ CREATE TABLE `institutes` (
 /*Data for the table `institutes` */
 
 insert  into `institutes`(`id`,`medium_id`,`board_id`,`institute_type_id`,`stream_id`,`name`,`email`,`contact_no`,`code`,`principal_name`,`est_since`,`branch`,`state`,`city`,`pin_code`,`address`,`morning_shift_start`,`morning_shift_end`,`afternoon_shift_start`,`afternoon_shift_end`,`image_file`,`active`,`its_college`,`created_at`,`updated_at`) values 
-(1,2,2,2,NULL,'Ideal High School','shehzad215@gmail.com','88989279606','IDSC1','Islam','15 Mar, 2024','Cheeta Camp','Maharashtra','Mumbai','400088','B Sector E Line Room No. 12','19:14','19:14','18:14','18:15','activities.png',0,0,'2024-03-15 11:45:04','2024-03-18 06:07:17'),
+(1,2,2,2,NULL,'Ideal High School','shehzad215@gmail.com','88989279606','IDSC1','Islam','15 Mar, 2024','Cheeta Camp','Maharashtra','Mumbai','400088','B Sector E Line Room No. 12','19:14','19:14','18:14','18:15','CKRgu-CQ_400x400.jpg',0,0,'2024-03-15 11:45:04','2024-03-22 07:08:16'),
 (2,1,1,1,NULL,'National Sarvodaya Jr College','national@gmail.com','9833276092','NACL02','Harish Chandar Ram Chandar Mir Chandani','18 Mar, 2024','Chembur','Maharashtra','Mumbai','400088','B Sector E Line Room No. 12','14:01','15:01','13:01','14:01','culture_india.png',0,1,'2024-03-18 06:32:04','2024-03-18 06:47:55');
 
 /*Table structure for table `learn_spaces` */
@@ -153,12 +153,13 @@ CREATE TABLE `learn_spaces` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `learn_spaces` */
 
 insert  into `learn_spaces`(`id`,`institute_id`,`standard_id`,`division_id`,`teacher_id`,`shift_type_id`,`no_of_student`,`active`,`created_at`,`updated_at`) values 
-(1,1,1,1,NULL,1,30,0,'2024-03-20 07:01:15','2024-03-20 09:38:44');
+(1,1,1,1,1,1,30,0,'2024-03-20 07:01:15','2024-03-21 10:21:35'),
+(2,1,1,2,2,1,25,0,'2024-03-21 10:24:23','2024-03-21 10:24:23');
 
 /*Table structure for table `mediums` */
 
@@ -283,13 +284,13 @@ DROP TABLE IF EXISTS `students`;
 
 CREATE TABLE `students` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `standard_id` int(11) DEFAULT NULL,
-  `division_id` int(11) DEFAULT NULL,
+  `institute_id` int(11) DEFAULT NULL,
+  `learn_space_id` int(11) DEFAULT NULL,
+  `gr_no` varchar(45) DEFAULT NULL,
+  `roll_no` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(45) DEFAULT NULL,
   `contact_no` varchar(45) DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
-  `roll_no` varchar(45) DEFAULT NULL,
   `date_of_birth` varchar(45) DEFAULT NULL,
   `gender` varchar(45) DEFAULT NULL,
   `blood_group` varchar(45) DEFAULT NULL,
@@ -314,7 +315,7 @@ CREATE TABLE `subjects` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `subjects` */
 
@@ -331,7 +332,6 @@ CREATE TABLE `teachers` (
   `institute_id` int(11) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
   `contact` varchar(45) DEFAULT NULL,
   `qualification` varchar(45) DEFAULT NULL,
   `gender` varchar(45) DEFAULT NULL,
@@ -341,9 +341,13 @@ CREATE TABLE `teachers` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `teachers` */
+
+insert  into `teachers`(`id`,`institute_id`,`name`,`email`,`contact`,`qualification`,`gender`,`address`,`profile_img`,`active`,`created_at`,`updated_at`) values 
+(1,1,'Hetuk Sir','mukesh@puratech.in','8898927606','MBA','male','Vidya Vihar','cmsdes2.webp',1,'2024-03-21 06:48:16','2024-03-21 09:12:09'),
+(2,1,'Rafique Shaikh','rafique@gmail.com','1234567890','D ed','male','B Sector E Line Room No. 12','dmc06.webp',1,'2024-03-21 09:13:21','2024-03-21 09:13:21');
 
 /*Table structure for table `teachers_learn_spaces` */
 
@@ -353,23 +357,33 @@ CREATE TABLE `teachers_learn_spaces` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `teacher_id` int(11) DEFAULT NULL,
   `learn_space_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `teachers_learn_spaces` */
 
-/*Table structure for table `teachers_students` */
+/*Table structure for table `teachers_subjects` */
 
-DROP TABLE IF EXISTS `teachers_students`;
+DROP TABLE IF EXISTS `teachers_subjects`;
 
-CREATE TABLE `teachers_students` (
+CREATE TABLE `teachers_subjects` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `teacher_id` int(11) DEFAULT NULL,
   `subject_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-/*Data for the table `teachers_students` */
+/*Data for the table `teachers_subjects` */
+
+insert  into `teachers_subjects`(`id`,`teacher_id`,`subject_id`,`created_at`,`updated_at`) values 
+(1,1,1,'2024-03-21 06:48:16','2024-03-21 06:48:16'),
+(2,1,2,'2024-03-21 06:48:16','2024-03-21 06:48:16'),
+(3,2,1,'2024-03-21 09:13:21','2024-03-21 09:13:21'),
+(4,2,2,'2024-03-21 09:13:21','2024-03-21 09:13:21');
 
 /*Table structure for table `users` */
 

@@ -18,7 +18,9 @@ use App\Http\Controllers\InstitutesController;
 use App\Http\Controllers\LearnSpaceController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\StudentCintroller;
 use App\Http\Middleware\Authenticate;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +85,9 @@ Route::resource('subjects', SubjectController::class);
 
 /* Teacher Routes */
 Route::resource('teachers', TeacherController::class);
+
+/* Student Routes */
+Route::resource('students', StudentCintroller::class);
 
 
 });

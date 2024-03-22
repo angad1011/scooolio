@@ -126,9 +126,18 @@ class TeacherController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
+    public function show(string $id){
+        $teacher = Teacher::with('learn_spaces','subjects')->findOrFail($id);
+
+        // Subjects 
+        $subjects = $teacher->subjects;
+       
+        // Assignd Class
+        $assignClasses = $teacher->learn_spaces;
+  
+
+        return view('teachers.show',compact('teacher','subjects','assignClasses'));
+
     }
 
     /**
