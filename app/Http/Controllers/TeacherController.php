@@ -31,27 +31,12 @@ class TeacherController extends Controller
         $subjects = Subject::all()->where('institute_id',$instituteId);
         
         // $learnSpaces = LearnSpace::all()->where('institute_id',$instituteId)->with('Division');
-        $learnSpaces = LearnSpace::where('institute_id', $instituteId)->with('divisions','standards')->get();
-
-       
-
-        $assignClasses = [];
-        if(!empty($learnSpaces)){
-            foreach ($learnSpaces as $learnSpace) {
-                $standard = $learnSpace->standards->name; // Assuming 'name' is the field for standard's name
-                $division = $learnSpace->divisions->name; // Assuming 'name' is the field for division's name
-
-               $calssName = "$standard - $division";  
-
-                $assignClasses[] = ['id' => $learnSpace->id,'name'=>$calssName];
-            }
-            
-        }       
+        $assignClasses = LearnSpace::all()->where('institute_id', $instituteId);
 
 
         // dd($assignClasses);
 
-        return view('teachers.create',compact('learnSpaces','subjects','instituteId','assignClasses'));
+        return view('teachers.create',compact('assignClasses','subjects','instituteId'));
 
     }
 
@@ -134,6 +119,8 @@ class TeacherController extends Controller
        
         // Assignd Class
         $assignClasses = $teacher->learn_spaces;
+
+        // dd($assignClasses);
   
 
         return view('teachers.show',compact('teacher','subjects','assignClasses'));
@@ -147,27 +134,22 @@ class TeacherController extends Controller
         
         $teacher = Teacher::findOrFail($id);
 
+        // Selected Subjec For Teacher
+        $selectedSubjectIds = $teacher->subjects;
+
+        //Assign Class For Teacher
+        $selectedClassIds = $teacher->learn_spaces;
+
+        // dd($selectedClassIds);
+
         $instituteId = Auth::user()->institute_id;
         $subjects = Subject::all()->where('institute_id',$instituteId);
 
-        $learnSpaces = LearnSpace::where('institute_id', $instituteId)->with('divisions','standards')->get();
+        $assignClasses = LearnSpace::all()->where('institute_id', $instituteId);
 
        
 
-        $assignClasses = [];
-        if(!empty($learnSpaces)){
-            foreach ($learnSpaces as $learnSpace) {
-                $standard = $learnSpace->standards->name; // Assuming 'name' is the field for standard's name
-                $division = $learnSpace->divisions->name; // Assuming 'name' is the field for division's name
-
-               $calssName = "$standard - $division";  
-
-                $assignClasses[] = ['id' => $learnSpace->id,'name'=>$calssName];
-            }
-            
-        } 
-
-        return view('teachers.edit',compact('learnSpaces','subjects','instituteId','teacher','assignClasses'));
+        return view('teachers.edit',compact('subjects','instituteId','teacher','assignClasses','selectedSubjectIds','selectedClassIds'));
 
     }
 
@@ -177,6 +159,9 @@ class TeacherController extends Controller
     public function update(Request $request, string $id)
     {
         $teacher = Teacher::find($id);
+
+       // dd($teacher);
+
         if (!$teacher) {
             return redirect()->route('teachers.index')->with('error', 'Teacher not found.');
         }
@@ -193,27 +178,45 @@ class TeacherController extends Controller
             'address' => $request->input('address'),
         ]);
 
-         // dd($subjects);
-         $subjects = $request->has('subjects') ? $request->input('subjects') : '';
-         if(!empty($subjects)){
-             foreach($subjects as $subject){
-                 $teacherSubjects = TeachersSubjects::create([
-                     'teacher_id'=>$teacher->id,
-                     'subject_id'=>$subject,
-                 ]);
-             }
-         }
+        
+        $subjects = $request->has('subjects') ? $request->input('subjects') : '';
+        if (!empty($subjects)) {
+            // Get existing associations for this teacher
+            $existingSubjects = TeachersSubjects::where('teacher_id', $teacher->id)->pluck('subject_id')->toArray();
+        
+            foreach ($subjects as $subject) {
+                // Check if the subject already exists in the existing associations
+                if (!in_array($subject, $existingSubjects)) {
+                    // If not, create a new association
+                    $teacherSubjects = TeachersSubjects::create([
+                        'teacher_id' => $teacher->id,
+                        'subject_id' => $subject,
+                    ]);
+                }
+            }
+        }    
+        
+        // For Teacher Class
+        $classes = $request->has('learn_spaces') ? $request->input('learn_spaces') : '';
+
+        if(!empty($classes)){
+
+             // Get existing associations for this teacher
+             $existingClasses = TeachersLearnSpaces::where('teacher_id', $teacher->id)->pluck('learn_space_id')->toArray();
+
+            foreach($classes as $classe){
+                if (!in_array($classe, $existingClasses)) {
+                    TeachersLearnSpaces::create([
+                        'teacher_id'=>$teacher->id,
+                        'learn_space_id'=>$classe,
+                    ]);
+                }
+            }
+        }
+    
+        
  
-         // For Teacher Class
-         $classes = $request->has('learn_spaces') ? $request->input('learn_spaces') : '';
-         if(!empty($classes)){
-             foreach($classes as $classe){
-                 $teacherSubjects = TeachersLearnSpaces::create([
-                     'teacher_id'=>$teacher->id,
-                     'learn_space_id'=>$classe,
-                 ]);
-             }
-         }
+         
 
          // // Upload Profile Image
         if ($request->hasFile('profile_img')) {

@@ -46,8 +46,7 @@ Add New Teacher
         </div> 
         <div class="intro-y g-col-12 g-col-sm-3">
             <label for="name" class="form-label">Subjects</label>
-            <select class="form-select me-sm-2" aria-label="Default select example" name="subjects[]" multiple="true">
-                <option>Select Subject</option>
+            <select class="jSelectbox form-select me-sm-2" placeholder="Select Subject" name="subjects[]" multiple="true">
                 @foreach ($subjects as $subject)
                 <option value="{{ $subject->id }}">{{ $subject->name }}</option>
                 @endforeach
@@ -55,10 +54,9 @@ Add New Teacher
         </div>
         <div class="intro-y g-col-12 g-col-sm-3">
             <label for="name" class="form-label">Assign Classes</label>
-            <select class="form-select me-sm-2" aria-label="Default select example" name="learn_spaces[]" multiple="true">
-                <option>Select Class</option>
+            <select class="jSelectbox form-select me-sm-2" placeholder="Select Class" name="learn_spaces[]" multiple="true">
                 @foreach ($assignClasses as $assignClass)
-                <option value="{{ $assignClass['id'] }}">{{ $assignClass['name'] }}</option>
+                <option value="{{ $assignClass['id'] }}">{{ $assignClass['class_name'] }}</option>
                 @endforeach
             </select>
         </div>
@@ -104,6 +102,8 @@ Add New Teacher
             blah.src = URL.createObjectURL(file)
         }
     }
+    
+  
 </script>
 @endsection
 

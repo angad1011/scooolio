@@ -14,9 +14,9 @@ Add New Student
     @csrf
    <div class="px-5">
    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
     @endif
       <div class="grid columns-12 gap-4 gap-y-5">
          <div class="intro-y g-col-12 g-col-sm-3">

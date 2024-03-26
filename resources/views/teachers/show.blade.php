@@ -79,7 +79,7 @@
                         <th class="">Assigned Class.</th>
                         <td>
                             @foreach ($assignClasses as $assignClass)
-                            <label for="">{{ $assignClass->name }},</label>
+                            <label for="">{{ $assignClass->class_name }},</label>
                             @endforeach
                         </td>
                     </tr>                        

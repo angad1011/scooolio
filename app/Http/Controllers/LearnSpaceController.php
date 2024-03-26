@@ -30,12 +30,10 @@ class LearnSpaceController extends Controller
     public function create(){
 
         $shiftTypes = ShiftType::all();
-        $standards = Standard::all()->where('active',true);
-        $divisions = Division::all()->where('active',true);
         $teachers = Teacher::all()->where('active',true);
 
 
-        return view('learn_spaces.create',compact('shiftTypes','standards','divisions','teachers'));
+        return view('learn_spaces.create',compact('shiftTypes','teachers'));
     }
 
     /**
@@ -46,8 +44,7 @@ class LearnSpaceController extends Controller
         // dd($request);
 
         $request->validate([
-            'standard_id'=>['required'],
-            'division_id'=>['required'],
+            'class_name'=>['required'],
             'teacher_id'=>['required'],
             'shift_type_id'=>['required'],
             'no_of_student'=>['required'],
@@ -58,8 +55,7 @@ class LearnSpaceController extends Controller
 
         $learnSpace = LearnSpace::create([
             'institute_id' => $instituteId,
-            'standard_id' => $request->input('standard_id'),
-            'division_id' => $request->input('division_id'),
+            'class_name' => $request->input('class_name'),
             'teacher_id' => $request->input('teacher_id'),
             'shift_type_id' => $request->input('shift_type_id'),
             'no_of_student' => $request->input('no_of_student'),
@@ -84,11 +80,9 @@ class LearnSpaceController extends Controller
         $learnSpace = LearnSpace::findOrFail($id);
         
         $shiftTypes = ShiftType::all();
-        $standards = Standard::all()->where('active',true);
-        $divisions = Division::all()->where('active',true);
         $teachers = Teacher::all()->where('active',true);
 
-        return view('learn_spaces.edit',compact('shiftTypes','standards','divisions','learnSpace','teachers'));
+        return view('learn_spaces.edit',compact('shiftTypes','learnSpace','teachers'));
 
     }
 
@@ -100,6 +94,8 @@ class LearnSpaceController extends Controller
         if (!$learnSpace) {
             return redirect()->route('LearnSpace.index')->with('error', 'User not found.');
        }
+
+    //    dd($request);
 
        $learnSpace->update($request->all()); 
 

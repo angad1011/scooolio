@@ -8,6 +8,8 @@
     <!-- ========== All CSS files linkup ========= -->
     
     <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}" />
+    <link rel="stylesheet" href="{{ asset('dist/select2/select2.css') }}" />
+    <link rel="stylesheet" href="{{ asset('dist/select2/select2-bootstrap.css') }}" />
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body class="main" page-name="dashboard">    
@@ -38,11 +40,16 @@
 </div>
 
  <!-- BEGIN: JS Assets-->
+ <script src="{{ asset('dist/select2/jquery.select2.min.js') }} "></script> 
 <script src="{{ asset('dist/js/app.js') }} "></script> 
+
 <!-- END: JS Assets-->
+<script type="text/javascript">
+   $(document).ready(function(){
+      $('.jSelectbox').select2();
+   });
 
-
-
+</script>
 
 </body>
 </html>    

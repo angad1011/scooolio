@@ -15,27 +15,9 @@ Update Class
     @method('PUT')
     <div class="px-5">
       <div class="grid columns-12 gap-4 gap-y-5">
-        <div class="intro-y g-col-12 g-col-sm-3">
-            <label for="board" class="form-label">Standard</label>
-            <select class="form-select me-sm-2" aria-label="Default select example" name="standard_id">
-            
-            <option>Select Standard</option>
-            @foreach ($standards as $standard)
-            <?php $selected = ($standard->id == $learnSpace->standard_id) ? 'selected' : ''; ?>
-            <option value="{{ $standard->id }}" <?php echo $selected; ?>>{{ $standard->name }}</option>
-            @endforeach
-            </select>
-        </div>
-        <div class="intro-y g-col-12 g-col-sm-3">
-            <label for="board" class="form-label">Division</label>
-            <select class="form-select me-sm-2" aria-label="Default select example" name="division_id">
-            
-            <option>Select Division</option>
-            @foreach ($divisions as $division)
-            <?php  $selected = ($division->id == $learnSpace->division_id) ? 'selected' : ''; ?>
-            <option value="{{ $division->id }}" <?php echo $selected; ?>>{{ $division->name }}</option>
-            @endforeach
-            </select>
+      <div class="intro-y g-col-12 g-col-sm-3">
+         <label for="pincode" class="form-label">Class Name</label>
+          <input id="class_name" name="class_name" type="text" class="form-control" placeholder="Name" required>
         </div>
         <div class="intro-y g-col-12 g-col-sm-3">
             <label for="board" class="form-label">Class Teacher</label>

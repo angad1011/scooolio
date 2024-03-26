@@ -9,5 +9,5 @@ class TeachersSubjects extends Model
 {
     use HasFactory;
     protected $fillable = ['teacher_id','subject_id'];
-    protected $table = 'teachers_students';
+    protected $table = 'teachers_subjects';
 }
