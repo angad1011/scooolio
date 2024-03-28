@@ -101,6 +101,7 @@ class InstitutesController extends Controller
         if (!$school) {
             return redirect()->route('institutes.index')->with('error', 'User not found.');
         }
+        
         $instituteName = ($school->its_college == 1) ? 'College' : 'School';
 
 

@@ -8,7 +8,7 @@ use App\Models\Students;
 use App\Models\LearnSpace;
 use App\Models\Institute;
 
-class StudentCintroller extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.

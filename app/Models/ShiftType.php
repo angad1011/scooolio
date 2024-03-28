@@ -11,10 +11,5 @@ class ShiftType extends Model
     protected $fillable = ['name'];
     protected $table = 'shift_types';
 
-    
-     // Define the hasMany relationship
-     public function learn_spaces(){
-        return $this->hasMany(LearnSpace::class, 'shift_type_id', 'id');
-    }
 
 }

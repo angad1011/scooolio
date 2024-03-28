@@ -18,7 +18,8 @@ use App\Http\Controllers\InstitutesController;
 use App\Http\Controllers\LearnSpaceController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\StudentCintroller;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\InstituteTimingController;
 use App\Http\Middleware\Authenticate;
 
 
@@ -87,7 +88,15 @@ Route::resource('subjects', SubjectController::class);
 Route::resource('teachers', TeacherController::class);
 
 /* Student Routes */
-Route::resource('students', StudentCintroller::class);
+Route::resource('students', StudentController::class);
+
+
+/* Institute Time Management */ 
+Route::resource('institute_timings', InstituteTimingController::class);
+Route::get('/institute_timings/detail/{id}', [InstituteTimingController::class,'add'])->name('institute_timings.detail');
+
+
+
 
 
 });

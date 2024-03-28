@@ -45,6 +45,9 @@
             <div class="p-5 border-top border-gray-200 dark-border-dark-5">
                 <a class="d-flex align-items-center text-theme-1 dark-text-theme-10 fw-medium" href=""> <i data-feather="box" class="w-4 h-4 me-2"></i> {{$instituteName}} Details </a>
                 <a class="d-flex align-items-center mt-5" href="{{ route('institutes.edit',$school->id) }}"> <i data-feather="settings" class="w-4 h-4 me-2"></i> {{$instituteName}} Settings </a>
+                <?php if(Auth::user()->role_id != 1){ ?>  
+                <a class="d-flex align-items-center mt-5" href="{{ route('institute_timings.detail',$school->id) }}"> <i data-feather="clock" class="w-4 h-4 me-2"></i> {{$instituteName}} Scheduled </a>
+                <?php } ?>    
                 <!-- <a class="d-flex align-items-center mt-5" href=""> <i data-feather="users" class="w-4 h-4 me-2"></i> {{$instituteName}} Users </a> -->
             </div>
         </div>

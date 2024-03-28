@@ -17,7 +17,7 @@ Update Class
       <div class="grid columns-12 gap-4 gap-y-5">
       <div class="intro-y g-col-12 g-col-sm-3">
          <label for="pincode" class="form-label">Class Name</label>
-          <input id="class_name" name="class_name" type="text" class="form-control" placeholder="Name" required>
+          <input id="class_name" name="class_name" type="text" class="form-control" placeholder="Name" value="{{$learnSpace->class_name}}" required>
         </div>
         <div class="intro-y g-col-12 g-col-sm-3">
             <label for="board" class="form-label">Class Teacher</label>

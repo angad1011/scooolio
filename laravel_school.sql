@@ -55,28 +55,30 @@ CREATE TABLE `departments` (
 insert  into `departments`(`id`,`name`,`active`,`created_at`,`updated_at`) values 
 (1,'Super Admin',1,'2024-03-13 05:21:32','2024-03-13 05:25:55');
 
-/*Table structure for table `divisions` */
+/*Table structure for table `institute_timings` */
 
-DROP TABLE IF EXISTS `divisions`;
+DROP TABLE IF EXISTS `institute_timings`;
 
-CREATE TABLE `divisions` (
+CREATE TABLE `institute_timings` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '0',
+  `institute_id` int(11) NOT NULL,
+  `shift_type_id` int(11) NOT NULL,
+  `shift_start` varchar(45) DEFAULT NULL,
+  `shift_end` varchar(45) DEFAULT NULL,
+  `break_time_start` varbinary(45) DEFAULT NULL,
+  `break_durations` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `prayer_time` varchar(45) DEFAULT NULL,
+  `time_per_perioud` varchar(45) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-/*Data for the table `divisions` */
+/*Data for the table `institute_timings` */
 
-insert  into `divisions`(`id`,`name`,`active`,`created_at`,`updated_at`) values 
-(1,'A',1,'2024-03-20 04:00:46','2024-03-20 04:03:17'),
-(2,'B',1,'2024-03-20 04:03:23','2024-03-20 04:03:23'),
-(3,'C',1,'2024-03-20 04:03:55','2024-03-20 04:03:55'),
-(4,'D',1,'2024-03-20 04:04:02','2024-03-20 04:04:02'),
-(5,'F',1,'2024-03-20 04:04:07','2024-03-20 04:04:07'),
-(6,'G',1,'2024-03-20 04:04:14','2024-03-20 04:04:14');
+insert  into `institute_timings`(`id`,`institute_id`,`shift_type_id`,`shift_start`,`shift_end`,`break_time_start`,`break_durations`,`prayer_time`,`time_per_perioud`,`created_at`,`updated_at`) values 
+(1,1,1,'07:30','12:30','10:30','45','15','45','2024-03-28 11:17:36','2024-03-28 11:17:36'),
+(2,1,2,'12:30','17:30','14:30','45','15','45','2024-03-28 11:18:29','2024-03-28 11:18:29');
 
 /*Table structure for table `institute_types` */
 
@@ -144,10 +146,9 @@ DROP TABLE IF EXISTS `learn_spaces`;
 CREATE TABLE `learn_spaces` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `institute_id` int(11) DEFAULT NULL,
-  `standard_id` int(11) DEFAULT NULL,
-  `division_id` int(11) DEFAULT NULL,
   `teacher_id` int(11) DEFAULT NULL,
   `shift_type_id` int(11) DEFAULT NULL,
+  `class_name` varchar(255) DEFAULT NULL,
   `no_of_student` int(45) DEFAULT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -157,9 +158,9 @@ CREATE TABLE `learn_spaces` (
 
 /*Data for the table `learn_spaces` */
 
-insert  into `learn_spaces`(`id`,`institute_id`,`standard_id`,`division_id`,`teacher_id`,`shift_type_id`,`no_of_student`,`active`,`created_at`,`updated_at`) values 
-(1,1,1,1,1,1,30,0,'2024-03-20 07:01:15','2024-03-21 10:21:35'),
-(2,1,1,2,2,1,25,0,'2024-03-21 10:24:23','2024-03-21 10:24:23');
+insert  into `learn_spaces`(`id`,`institute_id`,`teacher_id`,`shift_type_id`,`class_name`,`no_of_student`,`active`,`created_at`,`updated_at`) values 
+(1,1,1,1,'1st - A',30,0,'2024-03-20 07:01:15','2024-03-26 06:16:47'),
+(2,1,2,1,'1st - B',25,0,'2024-03-21 10:24:23','2024-03-26 06:16:58');
 
 /*Table structure for table `mediums` */
 
@@ -214,28 +215,8 @@ CREATE TABLE `shift_types` (
 /*Data for the table `shift_types` */
 
 insert  into `shift_types`(`id`,`name`) values 
-(1,'Morning Shift'),
-(2,'Afternoon Shift');
-
-/*Table structure for table `standards` */
-
-DROP TABLE IF EXISTS `standards`;
-
-CREATE TABLE `standards` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-/*Data for the table `standards` */
-
-insert  into `standards`(`id`,`name`,`active`,`created_at`,`updated_at`) values 
-(1,'1st',1,'2024-03-20 04:12:50','2024-03-20 04:14:01'),
-(2,'2nd',1,'2024-03-20 04:14:10','2024-03-20 04:14:10'),
-(3,'3rd',1,'2024-03-20 04:14:18','2024-03-20 04:14:18');
+(1,'Morning'),
+(2,'Afternoon');
 
 /*Table structure for table `streams` */
 
@@ -315,13 +296,26 @@ CREATE TABLE `subjects` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `subjects` */
 
 insert  into `subjects`(`id`,`institute_id`,`name`,`active`,`created_at`,`updated_at`) values 
 (1,1,'English',1,'2024-03-20 10:03:27','2024-03-20 10:07:58'),
-(2,1,'Hindi',1,'2024-03-20 10:05:39','2024-03-20 10:05:39');
+(2,1,'Hindi',1,'2024-03-20 10:05:39','2024-03-20 10:05:39'),
+(4,1,'Urdu',1,'2024-03-28 06:38:45','2024-03-28 06:38:45'),
+(5,1,'Marathi',1,'2024-03-28 06:38:54','2024-03-28 06:38:54'),
+(6,1,'History',1,'2024-03-28 06:39:18','2024-03-28 06:39:18'),
+(7,1,'Civics',1,'2024-03-28 06:39:29','2024-03-28 06:39:29'),
+(8,1,'Geography',1,'2024-03-28 06:39:46','2024-03-28 06:39:46'),
+(9,1,'Economics',1,'2024-03-28 06:39:58','2024-03-28 06:39:58'),
+(10,1,'EVS',1,'2024-03-28 06:40:12','2024-03-28 06:40:12'),
+(11,1,'Maths-1',1,'2024-03-28 06:40:24','2024-03-28 06:40:24'),
+(12,1,'Maths-2',1,'2024-03-28 06:40:35','2024-03-28 06:40:35'),
+(13,1,'Science-1',1,'2024-03-28 06:41:05','2024-03-28 06:41:05'),
+(14,1,'Science - 2',1,'2024-03-28 06:41:16','2024-03-28 06:41:16'),
+(15,1,'PT',1,'2024-03-28 06:41:26','2024-03-28 06:41:26'),
+(16,1,'Drawing',1,'2024-03-28 06:41:36','2024-03-28 06:41:36');
 
 /*Table structure for table `teachers` */
 
@@ -360,9 +354,12 @@ CREATE TABLE `teachers_learn_spaces` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `teachers_learn_spaces` */
+
+insert  into `teachers_learn_spaces`(`id`,`teacher_id`,`learn_space_id`,`created_at`,`updated_at`) values 
+(1,1,1,'2024-03-26 05:38:29','2024-03-26 05:38:29');
 
 /*Table structure for table `teachers_subjects` */
 
@@ -375,7 +372,7 @@ CREATE TABLE `teachers_subjects` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `teachers_subjects` */
 
