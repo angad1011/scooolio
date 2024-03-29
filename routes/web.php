@@ -20,6 +20,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\InstituteTimingController;
+use App\Http\Controllers\ClassTimeTableController;
 use App\Http\Middleware\Authenticate;
 
 
@@ -95,8 +96,9 @@ Route::resource('students', StudentController::class);
 Route::resource('institute_timings', InstituteTimingController::class);
 Route::get('/institute_timings/detail/{id}', [InstituteTimingController::class,'add'])->name('institute_timings.detail');
 
-
-
+/*Class Time Table*/ 
+Route::resource('time_tables', ClassTimeTableController::class);
+Route::get('/time_tables/add/{id}', [ClassTimeTableController::class,'add'])->name('time_tables.add');
 
 
 });

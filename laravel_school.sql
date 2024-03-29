@@ -37,6 +37,25 @@ insert  into `boards`(`id`,`name`,`active`,`created_at`,`updated_at`) values
 (3,'Dehli',1,'2024-03-14 11:24:43','2024-03-14 11:24:49'),
 (4,'Uttar Pradesh',1,'2024-03-14 11:25:04','2024-03-14 11:25:04');
 
+/*Table structure for table `class_time_tables` */
+
+DROP TABLE IF EXISTS `class_time_tables`;
+
+CREATE TABLE `class_time_tables` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `institute_id` int(11) NOT NULL,
+  `learn_space_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `week_day_id` int(11) NOT NULL,
+  `lecture_duration` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Data for the table `class_time_tables` */
+
 /*Table structure for table `departments` */
 
 DROP TABLE IF EXISTS `departments`;
@@ -77,7 +96,7 @@ CREATE TABLE `institute_timings` (
 /*Data for the table `institute_timings` */
 
 insert  into `institute_timings`(`id`,`institute_id`,`shift_type_id`,`shift_start`,`shift_end`,`break_time_start`,`break_durations`,`prayer_time`,`time_per_perioud`,`created_at`,`updated_at`) values 
-(1,1,1,'07:30','12:30','10:30','45','15','45','2024-03-28 11:17:36','2024-03-28 11:17:36'),
+(1,1,1,'07:30','12:30','10:30','35','10','35','2024-03-28 11:17:36','2024-03-29 03:47:12'),
 (2,1,2,'12:30','17:30','14:30','45','15','45','2024-03-28 11:18:29','2024-03-28 11:18:29');
 
 /*Table structure for table `institute_types` */
@@ -154,13 +173,17 @@ CREATE TABLE `learn_spaces` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `learn_spaces` */
 
 insert  into `learn_spaces`(`id`,`institute_id`,`teacher_id`,`shift_type_id`,`class_name`,`no_of_student`,`active`,`created_at`,`updated_at`) values 
-(1,1,1,1,'1st - A',30,0,'2024-03-20 07:01:15','2024-03-26 06:16:47'),
-(2,1,2,1,'1st - B',25,0,'2024-03-21 10:24:23','2024-03-26 06:16:58');
+(1,1,1,1,'5th- A',30,0,'2024-03-20 07:01:15','2024-03-29 03:48:21'),
+(2,1,2,1,'5th - B',25,0,'2024-03-21 10:24:23','2024-03-29 03:48:30'),
+(3,1,3,1,'6th - A',20,0,'2024-03-29 05:44:49','2024-03-29 05:44:49'),
+(4,1,4,2,'7th - A',30,0,'2024-03-29 05:45:20','2024-03-29 05:45:20'),
+(5,1,6,2,'8th - A',25,0,'2024-03-29 05:45:35','2024-03-29 05:45:35'),
+(6,1,7,2,'9th - A',30,0,'2024-03-29 05:45:59','2024-03-29 05:46:09');
 
 /*Table structure for table `mediums` */
 
@@ -335,13 +358,18 @@ CREATE TABLE `teachers` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `teachers` */
 
 insert  into `teachers`(`id`,`institute_id`,`name`,`email`,`contact`,`qualification`,`gender`,`address`,`profile_img`,`active`,`created_at`,`updated_at`) values 
-(1,1,'Hetuk Sir','mukesh@puratech.in','8898927606','MBA','male','Vidya Vihar','cmsdes2.webp',1,'2024-03-21 06:48:16','2024-03-21 09:12:09'),
-(2,1,'Rafique Shaikh','rafique@gmail.com','1234567890','D ed','male','B Sector E Line Room No. 12','dmc06.webp',1,'2024-03-21 09:13:21','2024-03-21 09:13:21');
+(1,1,'Survey Usman Gani','mukesh@puratech.in','8898927606','MBA','male','Vidya Vihar','teacher-illustration.png',1,'2024-03-21 06:48:16','2024-03-29 04:31:55'),
+(2,1,'Rafique Shaikh','rafique@gmail.com','1234567890','D ed','male','B Sector E Line Room No. 12','teacher-illustration.png',1,'2024-03-21 09:13:21','2024-03-29 04:32:50'),
+(3,1,'Rehmat Shaikh','rehamt@gmail.com','1325634182','B ed','female','Cheeta Camp','female.png',1,'2024-03-29 03:57:20','2024-03-29 04:33:05'),
+(4,1,'Shafique Khan','shafique@gmail.com','8523697410','D ed','male','B Sector E Line Room No. 12','teacher-illustration.png',1,'2024-03-29 03:58:50','2024-03-29 04:33:18'),
+(5,1,'Shabana Shaikh','shabana@gmail.com','8524561230','MBA','female','B Sector E Line Room No. 12','female.png',1,'2024-03-29 04:31:23','2024-03-29 04:31:23'),
+(6,1,'Rehana khan','rehana@gmail.com','2233114455','B Ed','female','Kurla','female.png',1,'2024-03-29 04:35:53','2024-03-29 04:35:53'),
+(7,1,'Salauddin Shaikh','sallauddin@gmail.com','2356897410','D Ed','male','B Sector E Line Room No. 12','teacher-illustration.png',1,'2024-03-29 04:36:54','2024-03-29 04:36:54');
 
 /*Table structure for table `teachers_learn_spaces` */
 
@@ -372,7 +400,7 @@ CREATE TABLE `teachers_subjects` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `teachers_subjects` */
 
@@ -380,7 +408,23 @@ insert  into `teachers_subjects`(`id`,`teacher_id`,`subject_id`,`created_at`,`up
 (1,1,1,'2024-03-21 06:48:16','2024-03-21 06:48:16'),
 (2,1,2,'2024-03-21 06:48:16','2024-03-21 06:48:16'),
 (3,2,1,'2024-03-21 09:13:21','2024-03-21 09:13:21'),
-(4,2,2,'2024-03-21 09:13:21','2024-03-21 09:13:21');
+(4,2,2,'2024-03-21 09:13:21','2024-03-21 09:13:21'),
+(7,3,1,'2024-03-29 03:57:20','2024-03-29 03:57:20'),
+(8,3,2,'2024-03-29 03:57:20','2024-03-29 03:57:20'),
+(9,3,4,'2024-03-29 03:57:20','2024-03-29 03:57:20'),
+(10,4,5,'2024-03-29 03:58:50','2024-03-29 03:58:50'),
+(11,4,13,'2024-03-29 03:58:50','2024-03-29 03:58:50'),
+(12,4,14,'2024-03-29 03:58:50','2024-03-29 03:58:50'),
+(13,5,4,'2024-03-29 04:31:23','2024-03-29 04:31:23'),
+(14,5,5,'2024-03-29 04:31:23','2024-03-29 04:31:23'),
+(15,5,10,'2024-03-29 04:31:23','2024-03-29 04:31:23'),
+(16,6,11,'2024-03-29 04:35:53','2024-03-29 04:35:53'),
+(17,6,12,'2024-03-29 04:35:53','2024-03-29 04:35:53'),
+(18,6,13,'2024-03-29 04:35:53','2024-03-29 04:35:53'),
+(19,6,14,'2024-03-29 04:35:53','2024-03-29 04:35:53'),
+(20,7,4,'2024-03-29 04:36:54','2024-03-29 04:36:54'),
+(21,7,6,'2024-03-29 04:36:54','2024-03-29 04:36:54'),
+(22,7,10,'2024-03-29 04:36:54','2024-03-29 04:36:54');
 
 /*Table structure for table `users` */
 
@@ -418,6 +462,30 @@ insert  into `users`(`id`,`role_id`,`department_id`,`institute_id`,`name`,`email
 (7,2,1,1,'Hameed Khan','hamid@gmail.com','$2y$12$NfATJYHqm8VE18tuNuggM.6f8POnbsFCPnRQ8NxbGs0ZK4UOLS9Oe',NULL,'123467980','8898927606','19 Mar, 2024','male',NULL,1,'2024-03-19 06:46:23','2024-03-19 06:46:23'),
 (8,2,1,1,'Waseem','wasim@gmail.com','$2y$12$v1e5hV/H93gVjYmVX42fWOmTQFewdpJNbv8A1MqwBG.OB/.K84xM.',NULL,'8522587410','8898927606','19 Mar, 2024','male',NULL,1,'2024-03-19 06:47:29','2024-03-19 06:47:29'),
 (9,2,1,2,'Vivek','vivek@gmail.com','$2y$12$2qW2JrYRT7H0IQgzcckrEeaInw7P.BexwEVDaASEqSwUy6w0buKcK',NULL,'9874563210','8898927606','19 Mar, 2024','male',NULL,1,'2024-03-19 06:51:05','2024-03-19 06:51:05');
+
+/*Table structure for table `week_days` */
+
+DROP TABLE IF EXISTS `week_days`;
+
+CREATE TABLE `week_days` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `day` varchar(45) DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Data for the table `week_days` */
+
+insert  into `week_days`(`id`,`day`,`active`,`created_at`,`updated_at`) values 
+(1,'Monday',1,'2024-03-29 11:45:10','2024-03-29 11:45:13'),
+(2,'Thesday',1,'2024-03-29 11:45:15','2024-03-29 11:45:17'),
+(3,'Wednesday',1,'2024-03-29 11:45:21','2024-03-29 11:45:24'),
+(4,'Thusday',1,'2024-03-29 11:45:25','2024-03-29 11:45:27'),
+(5,'Friday',1,'2024-03-29 11:45:31','2024-03-29 11:45:38'),
+(6,'Saturday',1,'2024-03-29 11:45:33','2024-03-29 11:45:41'),
+(7,'Sunday',0,'2024-03-29 11:45:35','2024-03-29 11:45:43');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

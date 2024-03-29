@@ -11,7 +11,7 @@
             <div class="d-flex align-items-center p-5 border-bottom border-gray-200 dark-border-dark-5">
                 <h2 class="fw-medium fs-base me-auto"> Class : {{$classDetail->class_name}} ({{$classDetail->teachers->name}}) </h2>
                 <div class="w-full w-sm-auto d-flex mt-4 mt-sm-0">
-                    <a href="{{ route('institute_timings.create') }}" class="btn btn-primary shadow-md me-2">Setup Time Table</a> 
+                    <a href="{{ route('time_tables.add',$classDetail->id) }}" class="btn btn-primary shadow-md me-2">Setup Time Table</a> 
                 </div>
             </div>  
             <div class="p-5">
