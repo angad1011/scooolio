@@ -33,6 +33,8 @@ class InstituteTimingController extends Controller
 
     }
 
+   
+
     /**
      * Store a newly created resource in storage.
      */
@@ -77,28 +79,36 @@ class InstituteTimingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
+    public function edit(string $id){
+        
+        $instituteId = Auth::user()->institute_id;
+        $instituteTiming = InstituteTiming::findOrFail($id);
+ 
+        /* Shift Type */ 
+        $shiftTypes = ShiftType::all();
+
+
+        return view('intitute_timing.edit',compact('shiftTypes','instituteTiming','instituteId'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(Request $request, string $id){
+        $instituteId = Auth::user()->institute_id;
+        $instituteTiming = InstituteTiming::find($id);
+        
+        if (!$instituteTiming) {
+             return redirect()->route('institute_timings.detail',$instituteId)->with('error', 'Schedulude not found.');
+        }
+
+        $instituteTiming->update($request->all());
+
+        return redirect()->route('institute_timings.detail',$instituteId);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-
-    public function add(string $instituteId){
+     /* Add Scheduled as per Institute Id*/ 
+     public function add(string $instituteId){
         
         /*Scheduled */ 
         $scheduleds = InstituteTiming::where('institute_id', $instituteId)->with('shift_types')->get();
@@ -115,4 +125,14 @@ class InstituteTimingController extends Controller
         return view('intitute_timing.detail',compact('instituteId','scheduleds','instituteName','instituteDetail','shiftTypes'));
     
     }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
+
+   
 }

@@ -26,4 +26,10 @@ class LearnSpace extends Model
         return $this->belongsTo(Teacher::class, 'teacher_id', 'id');
     }
 
+    // Define the hasMany relationship
+    public function class_time_tables()
+    {
+        return $this->hasMany(ClassTimeTable::class, 'subject_id', 'id');
+    }
+
 }

@@ -101,7 +101,16 @@ Update Teacher
    </div>
    </form>
  </div>
-
+ <script type="text/javascript">
+    imageFile.onchange = evt => {
+        const [file] = imageFile.files
+        if (file) {
+            blah.src = URL.createObjectURL(file)
+        }
+    }
+    
+  
+</script>
 @endsection
 
 

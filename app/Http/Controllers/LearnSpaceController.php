@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\LearnSpace;
-use App\Models\Standard;
-use App\Models\Division;
 use App\Models\ShiftType;
 use App\Models\Teacher;
 
@@ -68,9 +66,11 @@ class LearnSpaceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
+    public function show(string $id){
+        $classDetail = LearnSpace::with('shift_types','teachers')->findOrFail($id);
+
+        // dd($classDetail);    
+        return view('learn_spaces.show',compact('classDetail'));
     }
 
     /**

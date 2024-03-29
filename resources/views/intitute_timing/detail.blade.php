@@ -52,7 +52,15 @@
             </div>  
             @foreach ($scheduleds as $scheduled)   
                 <div class="p-5">
-                <strong>{{$scheduled->shift_types->name}}</strong>  
+                <div class="row">
+                    <div class="col-sm-6">
+                     <strong>{{$scheduled->shift_types->name}}</strong>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                    <a href="{{ route('institute_timings.edit',$scheduled->id) }}" class="text-theme-1">Update Scheduled</a>
+                    </div>
+                </div>
+                   
                 <div class="d-flex flex-column-reverse flex-xl-row flex-column">
                     
                     <table class="table table-bordered table-report mt-n2">

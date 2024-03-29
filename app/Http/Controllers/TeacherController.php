@@ -45,7 +45,9 @@ class TeacherController extends Controller
      */
     public function store(Request $request){
         // dd($request);
+        
         // dd($request->all());
+
         $validatedData = $request->validate([
             'name' => ['required'],
             'email' => ['required', 'email', 'unique:teachers,email'],
@@ -98,7 +100,7 @@ class TeacherController extends Controller
             $folder = 'files/teachers/profile_img/' . $teacher->id;
             $image->move(public_path($folder), $image->getClientOriginalName());
             $teacher->profile_img = $image->getClientOriginalName();
-        }
+        } 
     
         if ($teacher->save()) {
             return redirect()->route('teachers.index')->with('success', 'Teacher added successfully.');
@@ -119,9 +121,6 @@ class TeacherController extends Controller
        
         // Assignd Class
         $assignClasses = $teacher->learn_spaces;
-
-        // dd($assignClasses);
-  
 
         return view('teachers.show',compact('teacher','subjects','assignClasses'));
 
