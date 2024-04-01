@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class InstituteTiming extends Model
 {
     use HasFactory;
-    protected $fillable = ['institute_id','shift_type_id','shift_start','shift_end','break_time','prayer_time','time_per_perioud','break_time_start','break_durations','created_at','updated_at'];
+    protected $fillable = ['institute_id','shift_type_id','shift_start','shift_end','break_time','prayer_time','no_of_lect_fist_session','no_of_lect_secound_session','break_time_start','break_durations','created_at','updated_at'];
     protected $table = 'institute_timings';
 
     

@@ -87,7 +87,8 @@ CREATE TABLE `institute_timings` (
   `break_time_start` varbinary(45) DEFAULT NULL,
   `break_durations` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `prayer_time` varchar(45) DEFAULT NULL,
-  `time_per_perioud` varchar(45) DEFAULT NULL,
+  `no_of_lect_fist_session` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `no_of_lect_secound_session` varchar(45) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -95,9 +96,9 @@ CREATE TABLE `institute_timings` (
 
 /*Data for the table `institute_timings` */
 
-insert  into `institute_timings`(`id`,`institute_id`,`shift_type_id`,`shift_start`,`shift_end`,`break_time_start`,`break_durations`,`prayer_time`,`time_per_perioud`,`created_at`,`updated_at`) values 
-(1,1,1,'07:30','12:30','10:30','35','10','35','2024-03-28 11:17:36','2024-03-29 03:47:12'),
-(2,1,2,'12:30','17:30','14:30','45','15','45','2024-03-28 11:18:29','2024-03-28 11:18:29');
+insert  into `institute_timings`(`id`,`institute_id`,`shift_type_id`,`shift_start`,`shift_end`,`break_time_start`,`break_durations`,`prayer_time`,`no_of_lect_fist_session`,`no_of_lect_secound_session`,`created_at`,`updated_at`) values 
+(1,1,1,'07:30','12:30','10:30','30','10','4','3','2024-03-28 11:17:36','2024-04-01 09:55:46'),
+(2,1,2,'12:30','17:30','14:30','45','15','45',NULL,'2024-03-28 11:18:29','2024-03-28 11:18:29');
 
 /*Table structure for table `institute_types` */
 

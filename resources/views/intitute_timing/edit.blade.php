@@ -47,8 +47,12 @@
             <input id="break_durations" name="break_durations" type="text" class="form-control" placeholder="Breake duration" value="{{$instituteTiming->break_durations}}" required>
         </div>
         <div class="intro-y g-col-12 g-col-sm-3">
-            <label for="time_per_perioud" class="form-label">Period Duration</label>
-            <input id="time_per_perioud" name="time_per_perioud" type="text" class="form-control" placeholder="Period Duration" value="{{$instituteTiming->time_per_perioud}}" required>
+            <label for="no_of_lect_fist_session" class="form-label">No. Of Lecture In First Session</label>
+            <input id="no_of_lect_fist_session" name="no_of_lect_fist_session" type="number" class="form-control" placeholder="No. Of Lecture" value="{{$instituteTiming->no_of_lect_fist_session}}" required>
+        </div>
+        <div class="intro-y g-col-12 g-col-sm-3">
+            <label for="no_of_lect_secound_session" class="form-label">No. Of Lecture In Secound Session</label>
+            <input id="no_of_lect_secound_session" name="no_of_lect_secound_session" type="number" class="form-control" placeholder="No. Of Lecture" value="{{$instituteTiming->no_of_lect_secound_session}}" required>
         </div>
          <div class="intro-y g-col-12 d-flex align-items-center justify-content-center justify-content-sm-end mt-5">
           <button class="btn btn-primary w-24 ms-2" type="submit" >Submit</button>

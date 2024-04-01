@@ -61,7 +61,8 @@ class InstituteTimingController extends Controller
             'prayer_time' => $request->input('prayer_time'),
             'break_time_start' => $request->input('break_time_start'),
             'break_durations' => $request->input('break_durations'),
-            'time_per_perioud' => $request->input('time_per_perioud'),
+            'no_of_lect_fist_session' => $request->input('no_of_lect_fist_session'),
+            'no_of_lect_secound_session' => $request->input('no_of_lect_secound_session'),
         ]);
 
         return redirect()->route('institute_timings.detail',$instituteId);     
@@ -101,6 +102,8 @@ class InstituteTimingController extends Controller
         if (!$instituteTiming) {
              return redirect()->route('institute_timings.detail',$instituteId)->with('error', 'Schedulude not found.');
         }
+
+        // dd($request);
 
         $instituteTiming->update($request->all());
 
