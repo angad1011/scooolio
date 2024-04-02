@@ -3,7 +3,9 @@
 @section('content')
 <div class="intro-y d-flex flex-column flex-sm-row align-items-center mt-8">
     <h2 class="fs-lg fw-medium me-auto"> Teacher Details </h2>
-    
+    <div class="w-full w-sm-auto d-flex mt-4 mt-sm-0">
+        <a href="{{ route('teachers.index') }}" class="btn btn-primary shadow-md me-2">Teacher List</a>
+    </div>
 </div>
 <!-- BEGIN: HTML Table Data -->
 <div class="grid columns-12 gap-6">
@@ -37,7 +39,7 @@
             <div class="p-5 border-top border-gray-200 dark-border-dark-5">
                 <a class="d-flex align-items-center text-theme-1 dark-text-theme-10 fw-medium" href=""> <i data-feather="box" class="w-4 h-4 me-2"></i> Teacher Details </a>
                 <a class="d-flex align-items-center mt-5" href="{{ route('teachers.edit',$teacher->id) }}"> <i data-feather="settings" class="w-4 h-4 me-2"></i> Update Account </a>
-                
+                <a class="d-flex align-items-center mt-5" href="{{ route('teachers.time_table',$teacher->id) }}"> <i data-feather="clock" class="w-4 h-4 me-2"></i> Time Table </a>
             </div>
         </div>
     </div>
@@ -58,10 +60,13 @@
                         <th class="">Teacher Name</th>
                         <td>{{ $teacher->name.' ('.$teacher->qualification.')' }}</td>
                     </tr>
-                    
+                    <tr>
+                        <th class="">Shift</th>
+                        <td>{{ $teacher->shift_types->name }}</td>
+                    </tr>
                     <tr>
                         <th class="">Email | Contact </th>
-                        <td>{{ $teacher->email.'|'.$teacher->contact }}</td>
+                        <td>{{ $teacher->email.' | '.$teacher->contact }}</td>
                     </tr>
                     <tr>
                         <th class="">Address.</th>
@@ -75,14 +80,14 @@
                             @endforeach
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th class="">Assigned Class.</th>
                         <td>
                             @foreach ($assignClasses as $assignClass)
                             <label for="">{{ $assignClass->class_name }},</label>
                             @endforeach
                         </td>
-                    </tr>                        
+                    </tr> -->
                     </tbody>
                 </table>
                 </div>

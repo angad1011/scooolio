@@ -8,10 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Teacher extends Model
 {
     use HasFactory;
-    protected $fillable = ['institute_id','name','email','password','contact','qualification','gender','address','profile_img','active','created_at','updated_at'];
+    protected $fillable = ['institute_id','shift_type_id','name','email','password','contact','qualification','gender','address','profile_img','active','created_at','updated_at'];
     protected $table = 'teachers';
 
 
+
+    // Define the belongsTo relationship
+    public function shift_types(){
+        return $this->belongsTo(ShiftType::class, 'shift_type_id', 'id');
+    }
+
+    
     // hasManyblogs 
     public function learn_spaces()
     {

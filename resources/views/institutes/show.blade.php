@@ -89,10 +89,6 @@
                         <th class="">Medium | Type | Board</th>
                         <td>{{ $school->mediums->name }} | {{ $school->institute_types->name }} | {{ $school->boards->name }}</td>
                     </tr>
-                    <tr>
-                        <th class="">Morning Shift | Afternoons Shift</th>
-                        <td>{{ $school->morning_shift_start.' to '.$school->morning_shift_end }} | {{ $school->afternoon_shift_start.' to '.$school->afternoon_shift_end }}</td>
-                    </tr>
                     </tbody>
                 </table>
                 </div>

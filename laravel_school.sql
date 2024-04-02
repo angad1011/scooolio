@@ -48,13 +48,58 @@ CREATE TABLE `class_time_tables` (
   `subject_id` int(11) NOT NULL,
   `teacher_id` int(11) NOT NULL,
   `week_day_id` int(11) NOT NULL,
+  `period_number` int(11) DEFAULT NULL,
   `lecture_duration` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `class_time_tables` */
+
+insert  into `class_time_tables`(`id`,`institute_id`,`learn_space_id`,`subject_id`,`teacher_id`,`week_day_id`,`period_number`,`lecture_duration`,`created_at`,`updated_at`) values 
+(1,1,1,1,1,1,1,'07:40 AM-08:22 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(2,1,1,2,2,1,2,'08:22 AM-09:04 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(3,1,1,4,3,1,3,'09:04 AM-09:47 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(4,1,1,5,4,1,4,'09:47 AM-10:29 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(5,1,1,6,1,1,5,'11:00 AM-11:30 AM','2024-04-02 05:27:36','2024-04-02 06:18:07'),
+(6,1,1,7,6,1,6,'11:30 AM-12:00 PM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(7,1,1,8,7,1,7,'12:00 PM-12:30 PM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(8,1,1,1,1,2,1,'07:40 AM-08:22 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(9,1,1,10,2,2,2,'08:22 AM-09:04 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(10,1,1,9,3,2,3,'09:04 AM-09:47 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(11,1,1,11,4,2,4,'09:47 AM-10:29 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(12,1,1,12,5,2,5,'11:00 AM-11:30 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(13,1,1,13,6,2,6,'11:30 AM-12:00 PM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(14,1,1,14,7,2,7,'12:00 PM-12:30 PM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(15,1,1,1,1,3,1,'07:40 AM-08:22 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(16,1,1,15,2,3,2,'08:22 AM-09:04 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(17,1,1,16,3,3,3,'09:04 AM-09:47 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(18,1,1,2,4,3,4,'09:47 AM-10:29 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(19,1,1,4,5,3,5,'11:00 AM-11:30 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(20,1,1,5,6,3,6,'11:30 AM-12:00 PM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(21,1,1,6,7,3,7,'12:00 PM-12:30 PM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(22,1,1,1,1,4,1,'07:40 AM-08:22 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(23,1,1,7,2,4,2,'08:22 AM-09:04 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(24,1,1,8,3,4,3,'09:04 AM-09:47 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(25,1,1,9,4,4,4,'09:47 AM-10:29 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(26,1,1,10,5,4,5,'11:00 AM-11:30 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(27,1,1,11,5,4,6,'11:30 AM-12:00 PM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(28,1,1,12,7,4,7,'12:00 PM-12:30 PM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(29,1,1,1,1,5,1,'07:40 AM-08:22 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(30,1,1,12,2,5,2,'08:22 AM-09:04 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(31,1,1,13,3,5,3,'09:04 AM-09:47 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(32,1,1,14,4,5,4,'09:47 AM-10:29 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(33,1,1,15,5,5,5,'11:00 AM-11:30 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(34,1,1,16,5,5,6,'11:30 AM-12:00 PM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(35,1,1,2,7,5,7,'12:00 PM-12:30 PM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(36,1,1,1,1,6,1,'07:40 AM-08:22 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(37,1,1,4,2,6,2,'08:22 AM-09:04 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(38,1,1,5,3,6,3,'09:04 AM-09:47 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(39,1,1,6,4,6,4,'09:47 AM-10:29 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(40,1,1,7,5,6,5,'11:00 AM-11:30 AM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(41,1,1,8,6,6,6,'11:30 AM-12:00 PM','2024-04-02 05:27:36','2024-04-02 05:27:36'),
+(42,1,1,9,7,6,7,'12:00 PM-12:30 PM','2024-04-02 05:27:36','2024-04-02 05:27:36');
 
 /*Table structure for table `departments` */
 
@@ -348,6 +393,7 @@ DROP TABLE IF EXISTS `teachers`;
 CREATE TABLE `teachers` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `institute_id` int(11) DEFAULT NULL,
+  `shift_type_id` int(11) DEFAULT '0',
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `contact` varchar(45) DEFAULT NULL,
@@ -363,14 +409,14 @@ CREATE TABLE `teachers` (
 
 /*Data for the table `teachers` */
 
-insert  into `teachers`(`id`,`institute_id`,`name`,`email`,`contact`,`qualification`,`gender`,`address`,`profile_img`,`active`,`created_at`,`updated_at`) values 
-(1,1,'Survey Usman Gani','mukesh@puratech.in','8898927606','MBA','male','Vidya Vihar','teacher-illustration.png',1,'2024-03-21 06:48:16','2024-03-29 04:31:55'),
-(2,1,'Rafique Shaikh','rafique@gmail.com','1234567890','D ed','male','B Sector E Line Room No. 12','teacher-illustration.png',1,'2024-03-21 09:13:21','2024-03-29 04:32:50'),
-(3,1,'Rehmat Shaikh','rehamt@gmail.com','1325634182','B ed','female','Cheeta Camp','female.png',1,'2024-03-29 03:57:20','2024-03-29 04:33:05'),
-(4,1,'Shafique Khan','shafique@gmail.com','8523697410','D ed','male','B Sector E Line Room No. 12','teacher-illustration.png',1,'2024-03-29 03:58:50','2024-03-29 04:33:18'),
-(5,1,'Shabana Shaikh','shabana@gmail.com','8524561230','MBA','female','B Sector E Line Room No. 12','female.png',1,'2024-03-29 04:31:23','2024-03-29 04:31:23'),
-(6,1,'Rehana khan','rehana@gmail.com','2233114455','B Ed','female','Kurla','female.png',1,'2024-03-29 04:35:53','2024-03-29 04:35:53'),
-(7,1,'Salauddin Shaikh','sallauddin@gmail.com','2356897410','D Ed','male','B Sector E Line Room No. 12','teacher-illustration.png',1,'2024-03-29 04:36:54','2024-03-29 04:36:54');
+insert  into `teachers`(`id`,`institute_id`,`shift_type_id`,`name`,`email`,`contact`,`qualification`,`gender`,`address`,`profile_img`,`active`,`created_at`,`updated_at`) values 
+(1,1,1,'Survey Usman Gani','mukesh@puratech.in','8898927606','MBA','male','Vidya Vihar','teacher-illustration.png',1,'2024-03-21 06:48:16','2024-04-02 08:29:06'),
+(2,1,1,'Rafique Shaikh','rafique@gmail.com','1234567890','D ed','male','B Sector E Line Room No. 12','teacher-illustration.png',1,'2024-03-21 09:13:21','2024-04-02 08:36:55'),
+(3,1,1,'Rehmat Shaikh','rehamt@gmail.com','1325634182','B ed','female','Cheeta Camp','female.png',1,'2024-03-29 03:57:20','2024-04-02 08:37:03'),
+(4,1,1,'Shafique Khan','shafique@gmail.com','8523697410','D ed','male','B Sector E Line Room No. 12','teacher-illustration.png',1,'2024-03-29 03:58:50','2024-04-02 08:48:08'),
+(5,1,1,'Shabana Shaikh','shabana@gmail.com','8524561230','MBA','female','B Sector E Line Room No. 12','female.png',1,'2024-03-29 04:31:23','2024-04-02 08:48:16'),
+(6,1,1,'Rehana khan','rehana@gmail.com','2233114455','B Ed','female','Kurla','female.png',1,'2024-03-29 04:35:53','2024-04-02 08:48:26'),
+(7,1,1,'Salauddin Shaikh','sallauddin@gmail.com','2356897410','D Ed','male','B Sector E Line Room No. 12','teacher-illustration.png',1,'2024-03-29 04:36:54','2024-04-02 08:48:33');
 
 /*Table structure for table `teachers_learn_spaces` */
 
@@ -481,7 +527,7 @@ CREATE TABLE `week_days` (
 
 insert  into `week_days`(`id`,`day`,`active`,`created_at`,`updated_at`) values 
 (1,'Monday',1,'2024-03-29 11:45:10','2024-03-29 11:45:13'),
-(2,'Thesday',1,'2024-03-29 11:45:15','2024-03-29 11:45:17'),
+(2,'Tuesday',1,'2024-03-29 11:45:15','2024-03-29 11:45:17'),
 (3,'Wednesday',1,'2024-03-29 11:45:21','2024-03-29 11:45:24'),
 (4,'Thusday',1,'2024-03-29 11:45:25','2024-03-29 11:45:27'),
 (5,'Friday',1,'2024-03-29 11:45:31','2024-03-29 11:45:38'),

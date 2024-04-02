@@ -19,7 +19,16 @@ Add New Teacher
         </div>
     @endif
       <div class="grid columns-12 gap-4 gap-y-5">
-         <div class="intro-y g-col-12 g-col-sm-3">
+       <div class="intro-y g-col-12 g-col-sm-3">
+             <label for="name" class="form-label">Shift Type</label>
+             <select class="form-select me-sm-2" placeholder="Select Class" name="shift_type_id">
+                 <option value""">Select Shift</option>
+                @foreach ($shiftTypes as $shiftType)
+                <option value="{{ $shiftType['id'] }}">{{ $shiftType['name'] }}</option>
+                @endforeach
+            </select>     
+        </div> 
+        <div class="intro-y g-col-12 g-col-sm-3">
              <label for="name" class="form-label">Teacher Name</label>
              <input id="institute_id" type="hidden" name="institute_id" class="form-control" value="{{$instituteId}}">
              <input id="name" type="text" name="name" class="form-control" placeholder="Teacher Name" required>
@@ -44,6 +53,7 @@ Add New Teacher
             <label for="email" class="form-label">Email</label>
             <input id="email" type="email" class="form-control" name="email" placeholder="Email / Username" required>
         </div> 
+        
         <div class="intro-y g-col-12 g-col-sm-3">
             <label for="name" class="form-label">Subjects</label>
             <select class="jSelectbox form-select me-sm-2" placeholder="Select Subject" name="subjects[]" multiple="true">
@@ -52,14 +62,14 @@ Add New Teacher
                 @endforeach
             </select>
         </div>
-        <div class="intro-y g-col-12 g-col-sm-3">
+        <!-- <div class="intro-y g-col-12 g-col-sm-3">
             <label for="name" class="form-label">Assign Classes</label>
             <select class="jSelectbox form-select me-sm-2" placeholder="Select Class" name="learn_spaces[]" multiple="true">
                 @foreach ($assignClasses as $assignClass)
                 <option value="{{ $assignClass['id'] }}">{{ $assignClass['class_name'] }}</option>
                 @endforeach
             </select>
-        </div>
+        </div> -->
         <div class="intro-y g-col-12 g-col-sm-3">
              <label for="name" class="form-label">Status</label>
              <div class="d-flex justify-content-start align-items-center">

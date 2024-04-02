@@ -9,6 +9,11 @@ use App\Models\LearnSpace;
 use App\Models\Subject;
 use App\Models\TeachersSubjects;
 use App\Models\TeachersLearnSpaces;
+use App\Models\ShiftType;
+use App\Models\WeekDay;
+use App\Models\ClassTimeTable;
+use App\Models\InstituteTiming;
+use App\Traits\LectureTimingTrait;
 
 
 class TeacherController extends Controller
@@ -16,9 +21,11 @@ class TeacherController extends Controller
     /**
      * Display a listing of the resource.
      */
+    use LectureTimingTrait;
+
     public function index(){
         $instituteId = Auth::user()->institute_id;
-        $teachers = Teacher::all()->where('institute_id',$instituteId);
+        $teachers = Teacher::where('institute_id', $instituteId)->with('shift_types')->get();
 
         return view('teachers.index',compact('teachers'));
     }
@@ -34,9 +41,12 @@ class TeacherController extends Controller
         $assignClasses = LearnSpace::all()->where('institute_id', $instituteId);
 
 
-        // dd($assignClasses);
+        // Shift Types
+        $shiftTypes = ShiftType::all();
 
-        return view('teachers.create',compact('assignClasses','subjects','instituteId'));
+        // dd($shiftTypes);
+
+        return view('teachers.create',compact('assignClasses','subjects','instituteId','shiftTypes'));
 
     }
 
@@ -63,6 +73,7 @@ class TeacherController extends Controller
         // Create a new Teacher
         $teacher = Teacher::create([
             'institute_id' => $request->input('institute_id'),
+            'shift_type_id' => $request->input('shift_type_id'),
             'name' => $validatedData['name'],
             'contact' => $validatedData['contact'],
             'qualification' => $validatedData['qualification'],
@@ -146,9 +157,10 @@ class TeacherController extends Controller
 
         $assignClasses = LearnSpace::all()->where('institute_id', $instituteId);
 
-       
+        // Shift Types
+        $shiftTypes = ShiftType::all();
 
-        return view('teachers.edit',compact('subjects','instituteId','teacher','assignClasses','selectedSubjectIds','selectedClassIds'));
+        return view('teachers.edit',compact('subjects','instituteId','teacher','assignClasses','shiftTypes','selectedSubjectIds','selectedClassIds'));
 
     }
 
@@ -168,6 +180,7 @@ class TeacherController extends Controller
         $active = $request->has('active') ? 1 : 0; // Simplified check for 'active' field
 
         $teacher->update([
+            'shift_type_id' => $request->input('shift_type_id'),
             'name' => $request->input('name'),
             'contact' => $request->input('contact'),
             'qualification' => $request->input('qualification'),
@@ -235,6 +248,38 @@ class TeacherController extends Controller
 
 
     }
+
+    /*Teachers Time Table*/    
+    public function timeTable(string $teacherId){
+        $instituteId = Auth::user()->institute_id;
+       
+        $teacher = Teacher::with('learn_spaces','subjects')->findOrFail($teacherId);
+
+        $shiftTypeId = $teacher->shift_type_id;
+
+        $timing = InstituteTiming::where('institute_id', $instituteId)
+        ->where('shift_type_id', $shiftTypeId)
+        ->first();
+
+         $classTiming = $this->lecture_timing($timing);
+
+         $lectureSession = $classTiming['session']; 
+
+        //  dd($lectureSession);
+
+        /*WeekDays*/ 
+        $weekDays = WeekDay::all()->where('active',true);
+
+        
+        // Selecte Class Existing Schedulud
+        $timeTables = ClassTimeTable::where(['institute_id'=>$instituteId,'teacher_id'=>$teacherId])->get();
+
+    //    dd($timeTables);    
+
+       return view('teachers.time_table',compact('teacher','lectureSession','lectureSession','weekDays','timeTables'));
+
+    }
+
 
     /**
      * Remove the specified resource from storage.

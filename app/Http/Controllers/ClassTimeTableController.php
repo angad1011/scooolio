@@ -33,6 +33,8 @@ class ClassTimeTableController extends Controller
     /*Setup Class Wise Time Table Methof */ 
     public function add(string $classId){
         
+        // dd($classId);
+
         $instituteId = Auth::user()->institute_id;
 
         /*WeekDays*/ 
@@ -58,7 +60,17 @@ class ClassTimeTableController extends Controller
 
         $teachers = Teacher::all()->where('institute_id',$instituteId);
 
-        return view('time_tables.add',compact('classId','instituteId','weekDays','classDetail','lectureSession','subjects','teachers'));
+
+        // Selecte Class Existing Schedulud
+        $timeTables = ClassTimeTable::where(['institute_id'=>$instituteId,'learn_space_id'=>$classId])->get();
+
+        $timeTablesCount = count($timeTables);
+
+        // dd($timeTablesCount);
+
+
+
+        return view('time_tables.add',compact('classId','instituteId','weekDays','classDetail','lectureSession','subjects','teachers','timeTables','timeTablesCount'));
 
     }
 
@@ -111,9 +123,6 @@ class ClassTimeTableController extends Controller
         $second_session_start_time = $break_start_time + $break_duration;
         
         // Calculate the number of periods for the second session
-        
-        // dd($school_end_time);
-
         // $second_session_duration = ($school_end_time - $second_session_start_time) / 60; // in minutes
         $second_session_duration = ($school_end_time - $breakDuration) / 60; // in minutes
 
@@ -155,7 +164,45 @@ class ClassTimeTableController extends Controller
      */
     public function store(Request $request){
         
-        // dd($request);
+        // dd($request); ClassTimeTable
+
+        $requestData = $request['data']['ClassTimeTable'];
+
+        // dd($request->all());
+
+        // Add Data As per Class
+        foreach ($requestData as $key => $data) {
+
+            $classTimeTable = new ClassTimeTable();
+
+            if(empty($data['id'])){
+                $classTimeTable->institute_id = $data['institute_id'];
+                $classTimeTable->learn_space_id = $data['learn_space_id'];
+                $classTimeTable->week_day_id = $data['week_day_id'];
+                $classTimeTable->lecture_duration = $data['lecture_duration'];
+                $classTimeTable->subject_id = $data['subject_id'];
+                $classTimeTable->teacher_id = $data['teacher_id'];
+
+                // Save the record to the database
+                $classTimeTable->save();
+            }else{
+                ClassTimeTable::updateOrCreate(
+                    ['id' => $data['id']], // Search condition
+                    [
+                        'institute_id' => $data['institute_id'],
+                        'learn_space_id' => $data['learn_space_id'],
+                        'week_day_id' => $data['week_day_id'],
+                        'lecture_duration' => $data['lecture_duration'],
+                        'subject_id' => $data['subject_id'],
+                        'teacher_id' => $data['teacher_id'],
+                    ]
+                );
+            }    
+           
+        }
+
+        return redirect()->back()->with('success', 'Time Table Sceduled !');
+        // dd($requestData);
     }
 
     /**

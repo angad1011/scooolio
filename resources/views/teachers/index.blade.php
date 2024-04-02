@@ -24,6 +24,7 @@ Teacher List
             <thead>
                 <tr>
                     <th class="text-nowrap">Profile Pic</th>
+                    <th class="text-nowrap">Shift</th>
                     <th class="text-nowrap">Name</th>
                     <th class="text-nowrap">Contact</th>
                     <th class="text-nowrap">Email</th>
@@ -48,6 +49,7 @@ Teacher List
                         </div>
                     </div>
                     </td>  
+                    <td>{{ $teacher->shift_types->name}}</td>
                     <td>{{ $teacher->name }}</td>
                     <td>{{ $teacher->contact }}</td>
                     <td>{{ $teacher->email }}</td>

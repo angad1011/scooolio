@@ -7,12 +7,19 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\LearnSpace;
 use App\Models\ShiftType;
 use App\Models\Teacher;
+use App\Models\WeekDay;
+use App\Models\ClassTimeTable;
+use App\Models\InstituteTiming;
+use App\Traits\LectureTimingTrait;
+
 
 class LearnSpaceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    use LectureTimingTrait;
+
     public function index(){
         /* Institude Id */
         $instituteId = Auth::user()->institute_id;  
@@ -67,10 +74,34 @@ class LearnSpaceController extends Controller
      * Display the specified resource.
      */
     public function show(string $id){
+        $instituteId = Auth::user()->institute_id;  
+
         $classDetail = LearnSpace::with('shift_types','teachers')->findOrFail($id);
 
+        $shiftTypeId = $classDetail->shift_type_id;
+
+        $timing = InstituteTiming::where('institute_id', $instituteId)
+        ->where('shift_type_id', $shiftTypeId)
+        ->first();
+         
+        $classTiming = $this->lecture_timing($timing);
+
+        $lectureSession = $classTiming['session']; 
+
+        // dd($lectureSession);
+
+
+        /*WeekDays*/ 
+        $weekDays = WeekDay::all()->where('active',true);
+
+        // Selecte Class Existing Schedulud
+        $timeTables = ClassTimeTable::where(['institute_id'=>$instituteId,'learn_space_id'=>$id])->get();
+
+
+
+
         // dd($classDetail);    
-        return view('learn_spaces.show',compact('classDetail'));
+        return view('learn_spaces.show',compact('classDetail','weekDays','timeTables','lectureSession'));
     }
 
     /**

@@ -87,6 +87,7 @@ Route::resource('subjects', SubjectController::class);
 
 /* Teacher Routes */
 Route::resource('teachers', TeacherController::class);
+Route::get('/teachers/time_table/{id}', [TeacherController::class,'timeTable'])->name('teachers.time_table');
 
 /* Student Routes */
 Route::resource('students', StudentController::class);

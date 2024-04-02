@@ -37,7 +37,52 @@
                     </tbody>
                 </table>
             </div>
-            </div>     
+            </div> 
+            <div class="d-flex align-items-center p-5 border-bottom border-gray-200 dark-border-dark-5">
+                <h2 class="fw-medium fs-base me-auto"> Time Table </h2>
+            </div>   
+                <div class="p-5">
+                <div class="d-flex flex-column-reverse flex-xl-row flex-column">
+                    <table class="table table-bordered table-report mt-n2">
+                    <thead>
+                        <tr>
+                            <th>WeekDays</th>
+                            <?php foreach ($lectureSession as $sessionPeriods) { ?>
+                                 <th><?php echo $sessionPeriods['start_time'] . " - " . $sessionPeriods['end_time']; ?></th>
+                            <?php } ?>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($weekDays as $key => $weekDay) { ?>
+                        <tr>
+                            <td>{{$weekDay->day}}</td>
+                            <?php   
+                             foreach ($timeTables as $key1 => $timeTable) {
+                                if($timeTable->week_day_id == $weekDay->id){
+                                 
+                                     
+
+                            ?>
+                               <td>
+                                <table class="table-bordered table-report mt-n2">
+                                <tbody>
+                                    <tr>
+                                        <td> <span>{{$timeTable->subjects->name}} </span></td>
+                                    </tr>
+                                    <tr>
+                                    <td> <span>{{$timeTable->teachers->name}} </span></td>
+                                    </tr>
+                                </tbody>
+                                </table> 
+                               </td>
+                            <?php }} ?>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+                    </table>
+                </div>
+                </div> 
+            </div>    
         </div>
         <!-- END: Display Information -->
       
