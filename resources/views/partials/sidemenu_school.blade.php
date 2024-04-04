@@ -35,6 +35,12 @@
                     <div class="side-menu__title"> Users</div>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('academic_years.index') }}" class="side-menu">
+                    <div class="side-menu__icon"> <i data-feather="list"></i> </div>
+                    <div class="side-menu__title"> Academic Year</div>
+                </a>
+            </li>
        </ul>
    </li>
 

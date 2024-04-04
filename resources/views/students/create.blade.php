@@ -13,27 +13,36 @@ Add New Student
    <form method="POST" action="{{route('students.store')}}" enctype="multipart/form-data">
     @csrf
    <div class="px-5">
-   @if (session('success'))
+   @if (session('error'))
     <div class="alert alert-success">
-        {{ session('success') }}
+        {{ session('error') }}
     </div>
     @endif
       <div class="grid columns-12 gap-4 gap-y-5">
          <div class="intro-y g-col-12 g-col-sm-3">
-             <label for="name" class="form-label">Teacher Name</label>
+             <label for="name" class="form-label">Student Name</label>
              <input id="institute_id" type="hidden" name="institute_id" class="form-control" value="{{$instituteId}}">
-             <input id="name" type="text" name="name" class="form-control" placeholder="Teacher Name" required>
+             <input id="name" type="text" name="name" class="form-control" placeholder="Student Name" required>
          </div> 
          <div class="intro-y g-col-12 g-col-sm-3">
-             <label for="name" class="form-label">Contact No.</label>
-             <input id="contact" type="number" name="contact" class="form-control" placeholder="Contact No." required>
+             <label for="name" class="form-label">GR NO.</label>
+             <input id="gr_no" type="number" name="gr_no" class="form-control" placeholder="GR No." required>
+         </div>
+         <div class="intro-y g-col-12 g-col-sm-3">
+             <label for="name" class="form-label">Email</label>
+             <input id="email" type="email" name="email" class="form-control" placeholder="Email" required>
          </div> 
          <div class="intro-y g-col-12 g-col-sm-3">
-             <label for="name" class="form-label">Qualification</label>
-             <input id="qualification" type="text" name="qualification" class="form-control" placeholder="Qualification" required>
+             <label for="contact_no" class="form-label">Contact No.</label>
+             <input id="contact_no" type="number" name="contact_no" class="form-control" placeholder="Contact No." required>
          </div> 
          <div class="intro-y g-col-12 g-col-sm-3">
-            <label for="name" class="form-label">Gender</label>
+             <label for="date_of_birth" class="form-label">Date Of Birth</label>
+             <input id="date_of_birth" type="date" name="date_of_birth" class="form-control" placeholder="Date Of Birth" required>
+         </div> 
+        
+         <div class="intro-y g-col-12 g-col-sm-3">
+            <label for="gender" class="form-label">Gender</label>
             <select class="form-select me-sm-2" aria-label="Default select example" name="gender" required>
                 <option>Select Gender</option>
                 <option value="male">Male</option>
@@ -41,19 +50,10 @@ Add New Student
             </select>
         </div> 
         <div class="intro-y g-col-12 g-col-sm-3">
-            <label for="email" class="form-label">Email</label>
-            <input id="email" type="email" class="form-control" name="email" placeholder="Email / Username" required>
+            <label for="blood_group" class="form-label">Blood Group</label>
+            <input id="blood_group" type="text" class="form-control" name="blood_group" placeholder="Blood Group">
         </div> 
-        
-        <div class="intro-y g-col-12 g-col-sm-3">
-            <label for="name" class="form-label">Assign Classes</label>
-            <select class="form-select me-sm-2" aria-label="Default select example" name="learn_spaces[]" multiple="true">
-                <option>Select Class</option>
-                @foreach ($assignClasses as $assignClass)
-                <option value="{{ $assignClass['id'] }}">{{ $assignClass['name'] }}</option>
-                @endforeach
-            </select>
-        </div>
+    
         <div class="intro-y g-col-12 g-col-sm-3">
              <label for="name" class="form-label">Status</label>
              <div class="d-flex justify-content-start align-items-center">
@@ -64,7 +64,34 @@ Add New Student
                 </div>
 
             </div>
+        </div>
+        <div class="intro-y g-col-12 g-col-sm-12"><hr></div>
+
+        <div class="intro-y g-col-12 g-col-sm-3">
+             <label for="father_name" class="form-label">Father Name</label>
+             <input id="father_name" type="text" name="father_name" class="form-control" placeholder="Father Name" required>
          </div>
+
+         <div class="intro-y g-col-12 g-col-sm-3">
+             <label for="father_qualification" class="form-label">Father Qualification</label>
+             <input id="father_qualification" type="text" name="father_qualification" class="form-control" placeholder="Father Qualification">
+         </div>
+
+         <div class="intro-y g-col-12 g-col-sm-3">
+             <label for="mother_name" class="form-label">Mother Name</label>
+             <input id="mother_name" type="text" name="mother_name" class="form-control" placeholder="Mother Name" required>
+         </div>
+
+         <div class="intro-y g-col-12 g-col-sm-3">
+             <label for="mother_qualification" class="form-label">Mother Qualification</label>
+             <input id="mother_qualification" type="text" name="mother_qualification" class="form-control" placeholder="Mother Qualification">
+         </div>
+
+         <div class="intro-y g-col-12 g-col-sm-3">
+             <label for="date_of_admission" class="form-label">Date Of Admission</label>
+             <input id="date_of_admission" type="date" name="date_of_admission" class="form-control" placeholder="Date Of Admission">
+         </div>
+
         <div class="intro-y g-col-12 g-col-sm-12">
             <label for="name" class="form-label">Address</label>
             <textarea id="address" name="address" class="form-control"></textarea>

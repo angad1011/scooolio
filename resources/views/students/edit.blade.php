@@ -3,15 +3,15 @@
 @section('content')
 <div class="intro-y d-flex flex-column flex-sm-row align-items-center mt-8">
 <h2 class="fs-lg fw-medium me-auto">
-Update Teacher
+Update Student
 </h2>
 <div class="w-full w-sm-auto d-flex mt-4 mt-sm-0">
-<a href="{{ route('teachers.index') }}" class="btn btn-primary shadow-md me-2">Teacher List</a>
-<a href="{{ route('teachers.show',$teacher->id) }}" class="btn btn-primary shadow-md me-2">Teacher Details</a>
+<a href="{{ route('students.index') }}" class="btn btn-primary shadow-md me-2">Student List</a>
+<a href="{{ route('students.show',$student->id) }}" class="btn btn-primary shadow-md me-2">Student Details</a>
 </div>
 </div>
  <div class="intro-y box py-10 mt-5">
-   <form method="POST" action="{{ route('teachers.update', ['teacher' => $teacher->id]) }}" enctype="multipart/form-data">
+   <form method="POST" action="{{ route('students.update', ['student' => $student->id]) }}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="px-5">
@@ -20,70 +20,94 @@ Update Teacher
             {{ session('success') }}
         </div>
     @endif
-      <div class="grid columns-12 gap-4 gap-y-5">
+    <div class="grid columns-12 gap-4 gap-y-5">
          <div class="intro-y g-col-12 g-col-sm-3">
-             <label for="name" class="form-label">Teacher Name</label>
-             <input id="name" type="text" name="name" class="form-control" placeholder="Teacher Name" value="{{$teacher->name}}" required>
+             <label for="name" class="form-label">Student Name</label>
+             <input id="name" type="text" name="name" class="form-control" value="{{$student->name}}" placeholder="Student Name" required>
          </div> 
          <div class="intro-y g-col-12 g-col-sm-3">
-             <label for="name" class="form-label">Contact No.</label>
-             <input id="contact" type="number" name="contact" class="form-control" placeholder="Contact No." value="{{$teacher->contact}}" required>
+             <label for="name" class="form-label">GR NO.</label>
+             <input id="gr_no" type="number" name="gr_no" class="form-control" value="{{$student->gr_no}}" placeholder="GR No." required>
+         </div>
+         <div class="intro-y g-col-12 g-col-sm-3">
+             <label for="name" class="form-label">Email</label>
+             <input id="email" type="email" name="email" class="form-control" value="{{$student->email}}" placeholder="Email" required>
          </div> 
          <div class="intro-y g-col-12 g-col-sm-3">
-             <label for="name" class="form-label">Qualification</label>
-             <input id="qualification" type="text" name="qualification" class="form-control" placeholder="Qualification" value="{{$teacher->qualification}}" required>
+             <label for="contact_no" class="form-label">Contact No.</label>
+             <input id="contact_no" type="number" name="contact_no" class="form-control" value="{{$student->contact_no}}" placeholder="Contact No." required>
          </div> 
          <div class="intro-y g-col-12 g-col-sm-3">
-            <label for="name" class="form-label">Gender</label>
+             <label for="date_of_birth" class="form-label">Date Of Birth</label>
+             <input id="date_of_birth" type="date" name="date_of_birth" class="form-control" value="{{$student->date_of_birth}}" placeholder="Date Of Birth" required>
+         </div> 
+        
+         <div class="intro-y g-col-12 g-col-sm-3">
+            <label for="gender" class="form-label">Gender</label>
             <select class="form-select me-sm-2" aria-label="Default select example" name="gender" required>
-                <option>Select Gender</option>
-                <option value="male" {{($teacher->gender == 'male') ? 'selected' : ''}}>Male</option>
-                <option value="female" {{($teacher->gender == 'female') ? 'selected' : ''}}>Female</option>
+            <option>Select Gender</option>
+                <option value="male" {{($student->gender == 'male') ? 'selected' : ''}}>Male</option>
+                <option value="female" {{($student->gender == 'female') ? 'selected' : ''}}>Female</option>
             </select>
         </div> 
         <div class="intro-y g-col-12 g-col-sm-3">
-            <label for="email" class="form-label">Email</label>
-            <input id="email" type="email" class="form-control" name="email" placeholder="Email / Username" value="{{$teacher->email}}" required>
+            <label for="blood_group" class="form-label">Blood Group</label>
+            <input id="blood_group" type="text" class="form-control" name="blood_group" value="{{$student->blood_group}}" placeholder="Blood Group">
         </div> 
-        <div class="intro-y g-col-12 g-col-sm-3">
-            <label for="name" class="form-label">Subjects</label>
-            <select class="form-select me-sm-2" aria-label="Default select example" name="subjects[]" multiple="true">
-                <option>Select Subject</option>
-                @foreach ($subjects as $subject)
-                <option value="{{ $subject->id }}">{{ $subject->name }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="intro-y g-col-12 g-col-sm-3">
-            <label for="name" class="form-label">Assign Classes</label>
-            <select class="form-select me-sm-2" aria-label="Default select example" name="learn_spaces[]" multiple="true">
-                <option>Select Class</option>
-                @foreach ($assignClasses as $assignClass)
-                <option value="{{ $assignClass['id'] }}">{{ $assignClass['name'] }}</option>
-                @endforeach
-            </select>
-        </div>
+    
         <div class="intro-y g-col-12 g-col-sm-3">
              <label for="name" class="form-label">Status</label>
              <div class="d-flex justify-content-start align-items-center">
                 <div class="mt-2">
                     <div class="form-check form-switch"> 
-                        <input id="checkbox-switch-7"class="form-check-input" type="checkbox" name="active"  {{$active = ($teacher->active == 1) ? 'checked' : '';}}> 
+                        <input id="checkbox-switch-7"class="form-check-input" type="checkbox" name="active" {{$active = ($student->active == 1) ? 'checked' : '';}}> 
                     <label class="form-check-label" for="checkbox-switch-7"></label> </div>
                 </div>
 
             </div>
+        </div>
+        <div class="intro-y g-col-12 g-col-sm-12"><hr></div>
+
+        <div class="intro-y g-col-12 g-col-sm-3">
+             <label for="father_name" class="form-label">Father Name</label>
+             <input id="father_name" type="text" name="father_name" class="form-control" value="{{$student->father_name}}" placeholder="Father Name" required>
          </div>
+
+         <div class="intro-y g-col-12 g-col-sm-3">
+             <label for="father_qualification" class="form-label">Father Qualification</label>
+             <input id="father_qualification" type="text" name="father_qualification" class="form-control" value="{{$student->father_qualification}}" placeholder="Father Qualification">
+         </div>
+
+         <div class="intro-y g-col-12 g-col-sm-3">
+             <label for="mother_name" class="form-label">Mother Name</label>
+             <input id="mother_name" type="text" name="mother_name" class="form-control" value="{{$student->mother_name}}" placeholder="Mother Name" required>
+         </div>
+
+         <div class="intro-y g-col-12 g-col-sm-3">
+             <label for="mother_qualification" class="form-label">Mother Qualification</label>
+             <input id="mother_qualification" type="text" name="mother_qualification" class="form-control" value="{{$student->mother_qualification}}" placeholder="Mother Qualification">
+         </div>
+
+         <div class="intro-y g-col-12 g-col-sm-3">
+             <label for="date_of_admission" class="form-label">Date Of Admission</label>
+             <input id="date_of_admission" type="date" name="date_of_admission" class="form-control" value="{{$student->date_of_admission}}" placeholder="Date Of Admission">
+         </div>
+
+         <div class="intro-y g-col-12 g-col-sm-3">
+             <label for="date_of_admission" class="form-label">Date Of Leaving</label>
+             <input id="date_of_leaving" type="date" name="date_of_leaving" class="form-control" value="{{$student->date_of_leaving}}" placeholder="Date Of Admission">
+         </div>
+
         <div class="intro-y g-col-12 g-col-sm-12">
             <label for="name" class="form-label">Address</label>
-            <textarea id="address" name="address" class="form-control">{{$teacher->address}}</textarea>
+            <textarea id="address" name="address" class="form-control">{{$student->address}}</textarea>
         </div>
         <?php
-            $firstImage = $teacher->profile_img;
-            $id = $teacher->id;
-            $imagePath = $firstImage ? asset("files/teachers/profile_img/".$id."/".$firstImage."") : asset('dist/images/admin-pic.jpg');
+            $firstImage = $student->profile_img;
+            $id = $student->id;
+            $imagePath = $firstImage ? asset("files/students/profile_img/".$id."/".$firstImage."") : asset('dist/images/admin-pic.jpg');
             // echo $imagePath;
-        ?>   
+        ?> 
          <div class="intro-y g-col-12 g-col-sm-3">
             <div class="border-2 border-dashed shadow-sm border-gray-200 dark-border-dark-5 rounded-2 p-5">
                 <div class="h-40 position-relative image-fit cursor-pointer zoom-in mx-auto">
@@ -103,7 +127,14 @@ Update Teacher
    </div>
    </form>
  </div>
-
+ <script type="text/javascript">
+    imageFile.onchange = evt => {
+        const [file] = imageFile.files
+        if (file) {
+            blah.src = URL.createObjectURL(file)
+        }
+    }
+</script>
 @endsection
 
 

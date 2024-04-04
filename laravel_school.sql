@@ -16,6 +16,30 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`laravel` /*!40100 DEFAULT CHARACTER SET
 
 USE `laravel`;
 
+/*Table structure for table `academic_years` */
+
+DROP TABLE IF EXISTS `academic_years`;
+
+CREATE TABLE `academic_years` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `institute_id` int(11) DEFAULT NULL,
+  `year` varchar(255) DEFAULT NULL,
+  `its_current_year` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Data for the table `academic_years` */
+
+insert  into `academic_years`(`id`,`institute_id`,`year`,`its_current_year`,`created_at`,`updated_at`) values 
+(1,1,'2019-2020',0,'2024-04-04 05:38:19','2024-04-04 05:58:01'),
+(2,1,'2020-2021',0,'2024-04-04 05:38:36','2024-04-04 05:58:13'),
+(3,1,'2024-2025',1,'2024-04-04 05:46:21','2024-04-04 05:58:02'),
+(4,1,'2021-2022',0,'2024-04-04 05:58:25','2024-04-04 05:58:25'),
+(5,1,'2022-2023',0,'2024-04-04 05:58:51','2024-04-04 05:58:51'),
+(6,1,'2023-2024',0,'2024-04-04 05:59:02','2024-04-04 05:59:02');
+
 /*Table structure for table `boards` */
 
 DROP TABLE IF EXISTS `boards`;
@@ -307,27 +331,6 @@ insert  into `streams`(`id`,`name`,`active`,`created_at`,`updated_at`) values
 (2,'Arts',1,'2024-03-14 10:41:33','2024-03-14 10:41:33'),
 (3,'Commerce',1,'2024-03-14 10:41:43','2024-03-14 10:41:43');
 
-/*Table structure for table `student_details` */
-
-DROP TABLE IF EXISTS `student_details`;
-
-CREATE TABLE `student_details` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `student_id` int(11) DEFAULT NULL,
-  `father_name` varchar(45) NOT NULL,
-  `mother_name` varchar(45) NOT NULL,
-  `father_qualification` varchar(45) DEFAULT NULL,
-  `mother_qualification` varchar(45) DEFAULT NULL,
-  `address` text,
-  `contact_no` varchar(45) DEFAULT NULL,
-  `email_id` varchar(45) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-/*Data for the table `student_details` */
-
 /*Table structure for table `students` */
 
 DROP TABLE IF EXISTS `students`;
@@ -335,9 +338,7 @@ DROP TABLE IF EXISTS `students`;
 CREATE TABLE `students` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `institute_id` int(11) DEFAULT NULL,
-  `learn_space_id` int(11) DEFAULT NULL,
   `gr_no` varchar(45) DEFAULT NULL,
-  `roll_no` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(45) DEFAULT NULL,
   `contact_no` varchar(45) DEFAULT NULL,
@@ -345,13 +346,26 @@ CREATE TABLE `students` (
   `gender` varchar(45) DEFAULT NULL,
   `blood_group` varchar(45) DEFAULT NULL,
   `profile_img` varchar(255) DEFAULT NULL,
+  `father_name` varchar(255) DEFAULT NULL,
+  `mother_name` varchar(255) DEFAULT NULL,
+  `father_qualification` varchar(45) DEFAULT NULL,
+  `mother_qualification` varchar(45) DEFAULT NULL,
+  `date_of_admission` varchar(45) DEFAULT NULL,
+  `date_of_leaving` varchar(45) DEFAULT NULL,
+  `address` text,
+  `current_class_id` int(11) DEFAULT NULL,
+  `last_class_id` int(11) DEFAULT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `students` */
+
+insert  into `students`(`id`,`institute_id`,`gr_no`,`name`,`email`,`contact_no`,`date_of_birth`,`gender`,`blood_group`,`profile_img`,`father_name`,`mother_name`,`father_qualification`,`mother_qualification`,`date_of_admission`,`date_of_leaving`,`address`,`current_class_id`,`last_class_id`,`active`,`created_at`,`updated_at`) values 
+(1,1,'001','Shehzad Ahmed Sayyed','shehzad215@gmail.com','8898927606','1989-04-26','male','B+','student_male.png','Shakil Ahmed','Zubaida Khatoon','7th Pass','5th Pass','2023-03-01',NULL,'Cheeta Camp',NULL,NULL,1,'2024-04-04 06:48:14','2024-04-04 08:27:13'),
+(2,1,'002','Heena Shaikh','heena@gmail.com','9619905242','1989-04-26','male','C+','student_female.png','Salim Abdul Gaffar','Shamshad Bano','Nothing','10th Pass',NULL,NULL,'Cheeta Camp',NULL,NULL,1,'2024-04-04 06:54:24','2024-04-04 06:54:25');
 
 /*Table structure for table `subjects` */
 

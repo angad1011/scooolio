@@ -21,6 +21,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\InstituteTimingController;
 use App\Http\Controllers\ClassTimeTableController;
+use App\Http\Controllers\AcademicYearController;
 use App\Http\Middleware\Authenticate;
 
 
@@ -100,6 +101,10 @@ Route::get('/institute_timings/detail/{id}', [InstituteTimingController::class,'
 /*Class Time Table*/ 
 Route::resource('time_tables', ClassTimeTableController::class);
 Route::get('/time_tables/add/{id}', [ClassTimeTableController::class,'add'])->name('time_tables.add');
+
+
+/*Academi Year Master*/ 
+Route::resource('academic_years', AcademicYearController::class);
 
 
 });

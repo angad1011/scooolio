@@ -23,11 +23,11 @@ Student List
         <table class="table table-report mt-n2">
             <thead>
                 <tr>
-                    <th class="text-nowrap">Profile Pic</th>
+                    <th class="text-nowrap">Profil</th>
                     <th class="text-nowrap">Name</th>
+                    <th class="text-nowrap">GR No.</th>
                     <th class="text-nowrap">Contact</th>
                     <th class="text-nowrap">Email</th>
-                    <th class="text-nowrap">Status</th>
                     <th class="text-nowrap">Action</th>
                 </tr>
             </thead>
@@ -47,22 +47,12 @@ Student List
                             <img class="tooltip rounded-circle" src="{{$imagePath }}">
                         </div>
                     </div>
-                    </td>  
-                    <td>{{ $student->name }}</td>
-                    <td>{{ $student->contact }}</td>
-                    <td>{{ $student->email }}</td>
-                    <td>
-                        @php 
-                        $active = ($student->active == 1) ? 'checked' : '';
-                        @endphp
-                        <div class="d-flex justify-content-start align-items-center">
-                            <div class="mt-2">
-                                <div class="form-check form-switch"> 
-                                    <input id="checkbox-switch-7"class="form-check-input" type="checkbox" name="active" {{$active}}> 
-                                <label class="form-check-label" for="checkbox-switch-7"></label> </div>
-                            </div>
-                        </div>
+                   
                     </td>
+                    <td> {{ $student->name }}</td>
+                    <td> {{ $student->gr_no }}</td>
+                    <td>{{ $student->contact_no }}</td>
+                    <td>{{ $student->email }}</td>
                      <td class="table-report__action w-56">
                         <div class="d-flex justify-content-start align-items-center">
                             <a class="d-flex align-items-center me-3" href="{{ route('students.edit',$student->id) }}"> 

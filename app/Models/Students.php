@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Students extends Model
 {
     use HasFactory;
-    protected $fillable = ['institute_id','learn_space_id','gr_no','roll_no','name','email','contact_no','date_of_birth','gender','blood_group','profile_img','active','created_at','updated_at'];
+    protected $fillable = ['institute_id','gr_no','name','email','contact_no','date_of_birth','gender','blood_group','profile_img','father_name','mother_name','father_qualification','mother_qualification','address','date_of_admission','date_of_leaving','current_class_id','last_class_id','active','created_at','updated_at'];
     protected $table = 'students';
 
    // Define the belongsTo relationship
@@ -16,8 +16,6 @@ class Students extends Model
     return $this->belongsTo(Institute::class, 'institute_id', 'id');
   }
 
-    public function learn_spaces(){
-        return $this->belongsTo(LearnSpace::class, 'learn_space_id', 'id');
-    }     
+      
     
 }
