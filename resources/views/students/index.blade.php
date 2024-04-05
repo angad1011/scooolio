@@ -1,6 +1,44 @@
 @extends('layouts.app')
 
 @section('content')
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        <!-- <h4 class="modal-title">Upload Excel File For Students</h4> -->
+        <h2 class="fs-lg fw-medium me-auto modal-title">Upload Excel File For Students</h2>
+        <div class="w-full w-sm-auto d-flex mt-4 mt-sm-0">
+        <a class="d-flex align-items-center me-3 UplodExcelForm" href="{{asset('upload_excel/studentList.xlsx')}}" >Download Sample File</a>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="intro-y box py-10 mt-5" style="padding: 15px">
+            <form action="{{ route('import.students') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="grid columns-12 gap-4 gap-y-5">
+                    <div class="intro-y g-col-12 g-col-sm-12">
+                    <label for="name" class="form-label">Upload Excel File</label>
+                        <input type="file" name="file" class="form-control" accept=".xls,.xlsx">
+                    </div>
+                </div>
+                <div class="intro-y g-col-12 d-flex align-items-center justify-content-center justify-content-sm-end mt-5">
+                    <button class="btn btn-primary w-24 ms-2" type="submit" >Submit</button>
+                </div>
+            </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Model End Here -->
 <div class="intro-y d-flex flex-column flex-sm-row align-items-center mt-8">
 <h2 class="fs-lg fw-medium me-auto">
 Student List
@@ -9,6 +47,10 @@ Student List
     <a class="d-flex align-items-center me-3" href="{{ route('students.create') }}"> 
         <button class="btn btn-primary shadow-md me-2"><i data-feather="plus"></i> Add New
         Student</button>
+    </a>
+    <a class="d-flex align-items-center me-3 UplodExcelForm" href="#"> 
+        <button class="btn btn-primary shadow-md me-2"><i data-feather="file"></i> Upload
+        Excel</button>
     </a>
 </div>
 </div>
@@ -41,10 +83,11 @@ Student List
                              <?php
                                 $firstImage = $student->profile_img;
                                 $id = $student->id;
-                                $imagePath = $firstImage ? asset("files/students/profile_img/".$id."/".$firstImage."") : null;
+                                $localImage = ($student->gender == 'male') ? asset('dist/images/student_male_icon.png') : asset('dist/images/female_student_icon.png'); 
+                                $imagePath = $firstImage ? asset("files/students/profile_img/".$id."/".$firstImage."") : $localImage;
                                 // echo $imagePath;
                             ?>
-                            <img class="tooltip rounded-circle" src="{{$imagePath }}">
+                            <img class="tooltip rounded-circle" src="{{$imagePath }}" title="{{ $student->name }}">
                         </div>
                     </div>
                    
@@ -68,5 +111,10 @@ Student List
         </table>
      </div>
 </div>
+<script type="text/javascript">
+  $('.UplodExcelForm').click(function(){
+    $('#myModal').modal('show'); 
+  });
+</script>
 @endsection
 

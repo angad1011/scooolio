@@ -25,7 +25,8 @@
                     @php
                     $firstImage = $student->profile_img;
                     $id = $student->id;
-                    $imagePath = $firstImage ? asset("files/students/profile_img/".$id."/".$firstImage."") : asset('dist/images/admin-pic.jpg');
+                    $localImage = ($student->gender == 'male') ? asset('dist/images/student_male_icon.png') : asset('dist/images/female_student_icon.png'); 
+                    $imagePath = $firstImage ? asset("files/students/profile_img/".$id."/".$firstImage."") : $localImage;
 
                     @endphp
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Imports\StudentsImport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Students;
 
 
@@ -155,6 +157,26 @@ class StudentController extends Controller
         }
     
 
+    }
+
+
+    public function importStudents(Request $request)
+    {
+
+        // dd($request);
+
+        $request->validate([
+            'file' => 'required|mimes:xls,xlsx',
+        ]);
+
+        $file = $request->file('file');
+
+        // dd($file);
+
+        Excel::import(new StudentsImport, $file);
+
+        // return redirect()->back()->with('success', 'Students imported successfully.');
+        return redirect()->route('students.index')->with('success', 'Student imported successfully.');
     }
 
     /**

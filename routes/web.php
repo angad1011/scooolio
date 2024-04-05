@@ -92,6 +92,8 @@ Route::get('/teachers/time_table/{id}', [TeacherController::class,'timeTable'])-
 
 /* Student Routes */
 Route::resource('students', StudentController::class);
+Route::post('/import-students',[ StudentController::class,'importStudents'])->name('import.students');
+
 
 
 /* Institute Time Management */ 

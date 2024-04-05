@@ -88,7 +88,7 @@ Update Teacher
         <?php
             $firstImage = $teacher->profile_img;
             $id = $teacher->id;
-            $imagePath = $firstImage ? asset("files/teachers/profile_img/".$id."/".$firstImage."") : asset('dist/images/admin-pic.jpg');
+            $imagePath = $firstImage ? asset("files/teachers/profile_img/".$id."/".$firstImage."") : asset('dist/images/Image_not_available.png');
             // echo $imagePath;
         ?>   
          <div class="intro-y g-col-12 g-col-sm-3">
