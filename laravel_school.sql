@@ -61,6 +61,32 @@ insert  into `boards`(`id`,`name`,`active`,`created_at`,`updated_at`) values
 (3,'Dehli',1,'2024-03-14 11:24:43','2024-03-14 11:24:49'),
 (4,'Uttar Pradesh',1,'2024-03-14 11:25:04','2024-03-14 11:25:04');
 
+/*Table structure for table `class_students` */
+
+DROP TABLE IF EXISTS `class_students`;
+
+CREATE TABLE `class_students` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `institute_id` int(11) DEFAULT NULL,
+  `academic_year_id` int(11) DEFAULT NULL,
+  `learn_space_id` int(11) DEFAULT NULL,
+  `student_id` int(11) DEFAULT NULL,
+  `role_no` varchar(45) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Data for the table `class_students` */
+
+insert  into `class_students`(`id`,`institute_id`,`academic_year_id`,`learn_space_id`,`student_id`,`role_no`,`created_at`,`updated_at`) values 
+(1,1,3,1,2,'1','2024-04-08 09:42:46','2024-04-08 09:42:46'),
+(2,1,3,1,1,'2','2024-04-08 09:42:46','2024-04-08 09:42:46'),
+(3,1,3,1,3,'3','2024-04-08 09:42:46','2024-04-08 09:42:46'),
+(4,1,3,1,4,'4','2024-04-08 09:42:46','2024-04-08 09:42:46'),
+(5,1,3,1,29,'8','2024-04-08 09:42:46','2024-04-08 10:26:59'),
+(6,1,3,1,26,'9','2024-04-08 10:43:32','2024-04-08 10:43:32');
+
 /*Table structure for table `class_time_tables` */
 
 DROP TABLE IF EXISTS `class_time_tables`;
@@ -248,12 +274,12 @@ CREATE TABLE `learn_spaces` (
 /*Data for the table `learn_spaces` */
 
 insert  into `learn_spaces`(`id`,`institute_id`,`teacher_id`,`shift_type_id`,`class_name`,`no_of_student`,`active`,`created_at`,`updated_at`) values 
-(1,1,1,1,'5th- A',30,0,'2024-03-20 07:01:15','2024-03-29 03:48:21'),
-(2,1,2,1,'5th - B',25,0,'2024-03-21 10:24:23','2024-03-29 03:48:30'),
-(3,1,3,1,'6th - A',20,0,'2024-03-29 05:44:49','2024-03-29 05:44:49'),
-(4,1,4,2,'7th - A',30,0,'2024-03-29 05:45:20','2024-03-29 05:45:20'),
-(5,1,6,2,'8th - A',25,0,'2024-03-29 05:45:35','2024-03-29 05:45:35'),
-(6,1,7,2,'9th - A',30,0,'2024-03-29 05:45:59','2024-03-29 05:46:09');
+(1,1,1,1,'5th- A',6,0,'2024-03-20 07:01:15','2024-04-08 10:29:12'),
+(2,1,2,1,'5th - B',5,0,'2024-03-21 10:24:23','2024-03-29 03:48:30'),
+(3,1,3,1,'6th - A',5,0,'2024-03-29 05:44:49','2024-03-29 05:44:49'),
+(4,1,4,2,'7th - A',5,0,'2024-03-29 05:45:20','2024-03-29 05:45:20'),
+(5,1,6,2,'8th - A',5,0,'2024-03-29 05:45:35','2024-03-29 05:45:35'),
+(6,1,7,2,'9th - A',5,0,'2024-03-29 05:45:59','2024-03-29 05:46:09');
 
 /*Table structure for table `mediums` */
 
@@ -359,13 +385,22 @@ CREATE TABLE `students` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `students` */
 
 insert  into `students`(`id`,`institute_id`,`gr_no`,`name`,`email`,`contact_no`,`date_of_birth`,`gender`,`blood_group`,`profile_img`,`father_name`,`mother_name`,`father_qualification`,`mother_qualification`,`date_of_admission`,`date_of_leaving`,`address`,`current_class_id`,`last_class_id`,`active`,`created_at`,`updated_at`) values 
-(1,1,'001','Shehzad Ahmed Sayyed','shehzad215@gmail.com','8898927606','1989-04-26','male','B+','student_male.png','Shakil Ahmed','Zubaida Khatoon','7th Pass','5th Pass','2023-03-01',NULL,'Cheeta Camp',NULL,NULL,1,'2024-04-04 06:48:14','2024-04-04 08:27:13'),
-(2,1,'002','Heena Shaikh','heena@gmail.com','9619905242','1989-04-26','male','C+','student_female.png','Salim Abdul Gaffar','Shamshad Bano','Nothing','10th Pass',NULL,NULL,'Cheeta Camp',NULL,NULL,1,'2024-04-04 06:54:24','2024-04-04 06:54:25');
+(1,1,'1','Shehzad Ahmed Sayyed','shehzad215@gmail.com','8898927606','1999-04-26','male','B+',NULL,'Shakil Ahmed Sayyed','Zubaida Khatton','7th Pass','5th Pass',NULL,NULL,NULL,NULL,NULL,0,'2024-04-05 05:29:28','2024-04-05 06:35:32'),
+(2,1,'2','Zohrab Ahmed Sayyed','Zohrab143@gmail.com','9833276092','33583','male','B+',NULL,'Shakil Ahmed Sayyed','Zubaida Khatton','7th Pass','5th Pass',NULL,NULL,NULL,NULL,NULL,0,'2024-04-05 05:29:28','2024-04-05 05:29:28'),
+(3,1,'3','Baba Jaan','baba@gmail.com','1234567890','33689','male','A+',NULL,'Gafoor Shaikh','Zulaikha bee','10th Pass','10th pass',NULL,NULL,NULL,NULL,NULL,0,'2024-04-05 05:29:28','2024-04-05 05:29:28'),
+(4,1,'4','Zainul Abideen','janu@gmail.com','2589631470','33771','male','O+',NULL,'Janeef Pao wala','Nusrat Jaha','12th Pass','12th Pass',NULL,NULL,NULL,NULL,NULL,0,'2024-04-05 05:29:28','2024-04-05 05:29:28'),
+(9,1,'4','Mohammed Mustafa','mustafa@gmail.com','134567901','1995-05-26','male','B+',NULL,'kamal Badsha','Nusrat Jaha','12th Fail','10th Fail',NULL,NULL,NULL,NULL,NULL,0,'2024-04-05 06:55:43','2024-04-08 05:49:39'),
+(24,1,'5','Mohammed Raj','raj@gmail.com','134567901','1995-05-26','male','B+',NULL,'kamal Badsha','Nusrat Jaha','12th Fail','10th Fail',NULL,NULL,NULL,NULL,NULL,0,'2024-04-08 05:48:11','2024-04-08 05:49:30'),
+(25,1,'6','Sameer Shaikh','sameer@gmail.com','134567901','1995-05-26','male','B+',NULL,'kamal Badsha','Nusrat Jaha','12th Fail','10th Fail',NULL,NULL,NULL,NULL,NULL,0,'2024-04-08 05:49:19','2024-04-08 05:49:19'),
+(26,1,'7','Sultan Shaikh','sultan@gmail.com','123456790','1995-05-26','male','B+',NULL,'kamal Badsha','Nusrat Jaha','12th Fail','10th Fail',NULL,NULL,NULL,NULL,NULL,0,'2024-04-08 05:49:19','2024-04-08 05:49:19'),
+(27,1,'8','athar ali','athar@gmail.com','1234567890','1991-10-07','male','B+',NULL,'kamal Badsha','Nusrat Jaha','12th Fail','10th Fail',NULL,NULL,NULL,NULL,NULL,0,'2024-04-08 05:51:15','2024-04-08 05:51:15'),
+(28,1,'9','ismail shaikh','ismail@gmail.com','1234567890','1989-10-10','male','B+',NULL,'kamal Badsha','Nusrat Jaha','12th Fail','10th Fail',NULL,NULL,NULL,NULL,NULL,0,'2024-04-08 05:51:15','2024-04-08 05:51:15'),
+(29,1,'10','abid chaoudry','abid@gmail.com','1234567890','1992-11-10','male','B+',NULL,'kamal Badsha','Nusrat Jaha','12th Fail','10th Fail',NULL,NULL,NULL,NULL,NULL,0,'2024-04-08 05:51:15','2024-04-08 05:51:15');
 
 /*Table structure for table `subjects` */
 
