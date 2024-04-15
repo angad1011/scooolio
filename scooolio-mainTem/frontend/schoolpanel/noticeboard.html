@@ -9,14 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <title>Activate Deactivate School / College</title>
+    <title>Notice Board</title>
     <!-- BEGIN: CSS Assets-->
     <link rel="stylesheet" href="dist/css/app.css" />
     <!-- END: CSS Assets-->
 </head>
 <!-- END: Head -->
 
-<body class="main">
+<body class="main" page-name="noticeboard">
     <!-- BEGIN: Mobile Menu -->
     <div class="mobile-menu d-md-none" id="mobile-menu">
 
@@ -33,9 +33,9 @@
             <!-- BEGIN: Top Bar -->
             <div class="top-bar">
                 <!-- BEGIN: Breadcrumb -->
-                <div class="-intro-x breadcrumb me-auto d-none d-sm-flex"> <a href="">Admin</a> <i
+                <div class="-intro-x breadcrumb me-auto d-none d-sm-flex"> <a href="">School/College</a> <i
                         data-feather="chevron-right" class="breadcrumb__icon"></i> <a href=""
-                        class="breadcrumb--active">School & College List</a> </div>
+                        class="breadcrumb--active">Announcement Panel</a> </div>
                 <!-- END: Breadcrumb -->
                 <!-- BEGIN: Notifications -->
                 <div class="intro-x dropdown me-auto me-sm-6" id="notification-section">
@@ -49,98 +49,105 @@
                 <!-- END: Account Menu -->
             </div>
             <!-- END: Top Bar -->
-            <div class="intro-y d-flex flex-column flex-sm-row align-items-center mt-8">
-                <h2 class="fs-lg fw-medium me-auto">
-                    Activate Deactivate Service
-                </h2>
+            <div class="grid columns-12 gap-6">
+                <div class="g-col-12 g-col-lg-12 g-col-xxl-12">
+                    <!-- BEGIN: Display Information -->
+                    <div class="intro-y box mt-lg-5">
+                        <div class="d-flex align-items-center p-5 border-bottom border-gray-200 dark-border-dark-5">
+                            <h2 class="fw-medium fs-base me-auto">
+                                Create Anouncement
+                            </h2>
+                        </div>
+                        <div class="p-5">
+                            <div class="d-flex flex-column-reverse flex-xl-row flex-column">
+                                <div class="flex-1 mt-6 mt-xl-0">
+                                    <div class="grid columns-12 gap-x-5 gap-y-0">
+                                        <div class="g-col-12 g-col-xxl-3">
+                                            <div>
+                                                <label for="update-profile-form-1" class="form-label">
+                                                    Announcement Title</label>
+                                                <input id="update-profile-form-1" type="text" class="form-control"
+                                                    placeholder="" value="EMP1234">
+                                            </div>
+                                        </div>
+                                        <div class="g-col-12 g-col-xxl-3">
+                                            <div>
+                                                <label for="update-profile-form-1" class="form-label">
+                                                    Announcement Message</label>
+                                                <input id="update-profile-form-1" type="text" class="form-control"
+                                                    placeholder="" value="EMP1234">
+                                            </div>
+                                        </div>
 
-            </div>
-            <!-- BEGIN: HTML Table Data -->
-            <div class="intro-y box p-5 mt-5">
-                <div class="d-flex flex-column flex-sm-row align-items-sm-end align-items-xl-start">
-                    <form id="tabulator-html-filter-form" class="d-xl-flex me-sm-auto">
-                        <div class="d-sm-flex align-items-center me-sm-4">
-                            <label class="w-12 flex-none w-xl-auto flex-xl-initial me-2">Filter By</label>
-                            <select id="tabulator-html-filter-field"
-                                class="form-select w-full w-sm-32 w-2xl-full mt-2 mt-sm-0 w-sm-auto">
-                                <option value="name">Name</option>
-                                <option value="category">Category</option>
-                                <option value="remaining_stock">Remaining Stock</option>
-                            </select>
-                        </div>
-                        <div class="d-sm-flex align-items-center me-sm-4 mt-2 mt-xl-0">
-                            <label class="w-12 flex-none w-xl-auto flex-xl-initial me-2">Search By</label>
-                            <input id="tabulator-html-filter-value" type="text"
-                                class="form-control w-sm-40 w-2xl-full mt-2 mt-sm-0" placeholder="Search...">
-                        </div>
-                        <div class="mt-2 mt-xl-0">
-                            <button id="tabulator-html-filter-go" type="button"
-                                class="btn btn-primary w-full w-sm-16">Go</button>
-                        </div>
-                    </form>
-                    <div class="d-flex mt-5 mt-sm-0">
-                        <!-- <button id="tabulator-print" class="btn btn-outline-secondary w-1/2 w-sm-auto me-2"> <i
-                                data-feather="printer" class="w-4 h-4 me-2"></i> Print </button> -->
-                        <div class="dropdown w-1/2 w-sm-auto">
-                            <button class="dropdown-toggle btn btn-outline-secondary w-full w-sm-auto"
-                                aria-expanded="false" data-bs-toggle="dropdown"> <i data-feather="file-text"
-                                    class="w-4 h-4 me-2"></i> Export <i data-feather="chevron-down"
-                                    class="w-4 h-4 ms-auto ms-sm-2"></i> </button>
-                            <div class="dropdown-menu w-40">
-                                <ul class="dropdown-content">
-                                    <li>
-                                        <a id="tabulator-export-csv" href="javascript:;" class="dropdown-item"> <i
-                                                data-feather="file-text" class="w-4 h-4 me-2"></i> Export CSV </a>
-                                    </li>
-                                    <li>
-                                        <a id="tabulator-export-xlsx" href="javascript:;" class="dropdown-item"> <i
-                                                data-feather="file-text" class="w-4 h-4 me-2"></i> Export XLSX </a>
-                                    </li>
-                                </ul>
+                                        <div class="g-col-12 g-col-xxl-3">
+                                            <label for="input-wizard-4" class="form-label">Start Date</label>
+                                            <div class="input-group w-100 mx-auto">
+                                                <div id="input-group-email" class="input-group-text"> <i
+                                                        data-feather="calendar" class="w-4 h-4"></i> </div>
+                                                <input type="text" class="datepicker form-control"
+                                                    data-single-mode="true">
+                                            </div>
+                                        </div>
+                                        <div class="g-col-12 g-col-xxl-3">
+                                            <label for="input-wizard-4" class="form-label">End Date</label>
+                                            <div class="input-group w-100 mx-auto">
+                                                <div id="input-group-email" class="input-group-text"> <i
+                                                        data-feather="calendar" class="w-4 h-4"></i> </div>
+                                                <input type="text" class="datepicker form-control"
+                                                    data-single-mode="true">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <!-- BEGIN: HTML Table Data -->
+            <div class="intro-y box p-5 mt-5">
                 <!-- BEGIN: Data List -->
                 <div class="intro-y g-col-12 ooverflow-x-auto overflow-lg-visible mt-5">
                     <table class="table table-report mt-n2 ">
                         <thead>
                             <tr>
-                                <th class="text-nowrap">Logo</th>
-                                <th class="text-nowrap">Code</th>
-                                <th class="text-nowrap">Name</th>
-                                <th class="text-nowrap">Contact Number</th>
-                                <th class="text-nowrap">Branch</th>
-                                <th class="text-nowrap">City</th>
-                                <th class="text-nowrap">State</th>
+                                <th class="text-nowrap">Title</th>
+                                <th class="text-nowrap">Message</th>
+                                <th class="text-nowrap">Start Date</th>
+                                <th class="text-nowrap">End Date</th>
+                                <th class="text-nowrap">Created Date</th>
                                 <th class="text-nowrap">Status</th>
+                                <th class="text-nowrap">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="intro-x">
-                                <td class="w-20">
-                                    <div class="d-flex">
-                                        <div class="w-10 h-10 image-fit zoom-in">
-                                            <img alt="logo" class="tooltip rounded-circle"
-                                                src="dist/images/preview-14.jpg" title="Uploaded at 15 June 2021">
-                                        </div>
-                                    </div>
+                                <td class="text-right">
+                                    Anouncement Title
                                 </td>
-                                <td class="text-right">CM10266</td>
+                                <td class="text-right">Anouncement Message</td>
                                 <td>
-                                    <a href="" class="fw-medium text-nowrap">Swami Vivekanand School</a>
+                                    10/2/2024 12:00 AM
                                 </td>
-                                <td>8108847838</td>
-                                <td>Chembur</td>
-                                <td>Mumbai</td>
-                                <td>Maharastra</td>
-                                <td class="table-report__action w-56">
+                                <td>20/2/2024 12:00 AM</td>
+                                <td>09/2/2024 10:20 AM</td>
+
+                                <td class="table-report__action">
                                     <div class="d-flex justify-content-start align-items-center">
                                         <div class="mt-2">
                                             <div class="form-check form-switch"> <input id="checkbox-switch-7"
                                                     class="form-check-input" type="checkbox" checked> <label
                                                     class="form-check-label" for="checkbox-switch-7"></label> </div>
                                         </div>
+
+                                    </div>
+                                </td>
+                                <td class="table-report__action">
+                                    <div class="d-flex justify-content-start align-items-center">
+                                        <button class="d-flex align-items-center me-3"> <i data-feather="check-square"
+                                                class="w-4 h-4 me-1"></i> Edit </button>
+                                        <button class="d-flex align-items-center me-3">
+                                            <i data-feather="trash" class="w-4 h-4 me-1"></i> Delete </button>
 
                                     </div>
                                 </td>
@@ -154,10 +161,12 @@
                     <nav class="w-full w-sm-auto me-sm-auto">
                         <ul class="pagination">
                             <li class="page-item">
-                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevrons-left"></i> </a>
+                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevrons-left"></i>
+                                </a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevron-left"></i> </a>
+                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevron-left"></i>
+                                </a>
                             </li>
                             <li class="page-item"> <a class="page-link" href="#">...</a> </li>
                             <li class="page-item"> <a class="page-link" href="#">1</a> </li>
@@ -165,7 +174,8 @@
                             <li class="page-item"> <a class="page-link" href="#">3</a> </li>
                             <li class="page-item"> <a class="page-link" href="#">...</a> </li>
                             <li class="page-item">
-                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevron-right"></i> </a>
+                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevron-right"></i>
+                                </a>
                             </li>
                             <li class="page-item">
                                 <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevrons-right"></i>
