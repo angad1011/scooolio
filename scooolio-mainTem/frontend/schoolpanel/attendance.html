@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="en" class="light">
+<!-- BEGIN: Head -->
+
+<head>
+    <meta charset="utf-8">
+    <link href="dist/images/logo.svg" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Attendance</title>
+    <!-- BEGIN: CSS Assets-->
+    <link rel="stylesheet" href="dist/css/app.css" />
+    <!-- END: CSS Assets-->
+</head>
+<!-- END: Head -->
+
+<body class="main" page-name="attendance">
+    <!-- BEGIN: Mobile Menu -->
+    <div class="mobile-menu d-md-none" id="mobile-menu">
+
+    </div>
+    <!-- END: Mobile Menu -->
+    <div class="d-flex">
+        <!-- BEGIN: Side Menu -->
+        <nav class="side-nav" id="side-nav">
+
+        </nav>
+        <!-- END: Side Menu -->
+        <!-- BEGIN: Content -->
+        <div class="content">
+            <!-- BEGIN: Top Bar -->
+            <div class="top-bar">
+                <!-- BEGIN: Breadcrumb -->
+                <div class="-intro-x breadcrumb me-auto d-none d-sm-flex"> <a href="">School</a> <i
+                        data-feather="chevron-right" class="breadcrumb__icon"></i> <a href=""
+                        class="breadcrumb--active">Attendance</a> </div>
+                <!-- END: Breadcrumb -->
+                <!-- BEGIN: Notifications -->
+                <div class="intro-x dropdown me-auto me-sm-6" id="notification-section">
+
+                </div>
+                <!-- END: Notifications -->
+                <!-- BEGIN: Account Menu -->
+                <div class="intro-x dropdown w-8 h-8" id="right-profile-section">
+
+                </div>
+                <!-- END: Account Menu -->
+            </div>
+            <!-- END: Top Bar -->
+            <div class="intro-y d-flex flex-column flex-sm-row align-items-center mt-8">
+                <h2 class="fs-lg fw-medium me-auto">
+                    Attendance
+                </h2>
+                <div class="w-full w-sm-auto d-flex mt-4 mt-sm-0">
+                    <a href="student-list.html" class="btn btn-primary shadow-md me-2">
+                        Student List</a>
+                </div>
+            </div>
+            <div class="intro-y box mt-5">
+                <div class="p-5">
+                    <div class="d-flex flex-column-reverse flex-xl-row flex-column">
+                        <div class="flex-1 mt-xl-0">
+                            <div class="grid columns-12 gap-x-5 gap-y-0">
+                                <div class="g-col-12 g-col-xxl-2">
+                                    <div>
+                                        <label>Search By Class</label>
+                                        <div class="mt-2"> <select data-placeholder="Select your favorite actors"
+                                                class="tom-select w-full">
+                                                <option value="0" selected>Select Class</option>
+                                                <option value="1">1st</option>
+                                                <option value="2">2nd</option>
+                                                <option value="3">3rd</option>
+                                                <option value="4">4th</option>
+                                                <option value="5">5th</option>
+                                                <option value="6">6th</option>
+                                                <option value="7">7th</option>
+                                                <option value="8">8th</option>
+                                                <option value="9">9th</option>
+                                                <option value="10">10th</option>
+                                                <option value="11">11th</option>
+
+                                            </select>
+                                        </div>
+                                    </div> <!-- END: Basic Select -->
+                                </div>
+                                <div class="g-col-12 g-col-xxl-2">
+                                    <div>
+                                        <label>Division</label>
+                                        <div class="mt-2"> <select data-placeholder="Select your favorite actors"
+                                                class="tom-select w-full">
+                                                <option value="0" selected>Select Division</option>
+                                                <option value="1">A</option>
+                                                <option value="2">B</option>
+                                                <option value="3">C</option>
+                                                <option value="4">D</option>
+                                                <option value="5">E</option>
+                                                <option value="6">F</option>
+                                                <option value="7">G</option>
+                                                <option value="8">H</option>
+                                                <option value="9">I</option>
+                                            </select>
+                                        </div>
+                                    </div> <!-- END: Basic Select -->
+                                </div>
+                                <div class="g-col-12 g-col-xxl-3">
+                                    <div>
+                                        <label>Search By Name</label>
+                                        <div class="mt-2"> <select data-placeholder="Select your favorite actors"
+                                                class="tom-select w-full">
+                                                <option value="0" selected>Select Student</option>
+                                                <option value="1">Leonardo DiCaprio</option>
+                                                <option value="2">Johnny Deep</option>
+                                                <option value="3">Robert Downey, Jr</option>
+                                                <option value="4">Samuel L. Jackson</option>
+                                                <option value="5">Morgan Freeman</option>
+                                            </select>
+                                        </div>
+                                    </div> <!-- END: Basic Select -->
+                                </div>
+                                <div class="g-col-12 g-col-xxl-3">
+                                    <label for="input-wizard-4" class="form-label">Search By Date</label>
+                                    <div class="input-group w-100 mx-auto">
+                                        <div id="input-group-email" class="input-group-text"> <i data-feather="calendar"
+                                                class="w-4 h-4"></i> </div>
+                                        <input type="text" class="datepicker form-control" data-single-mode="true">
+                                    </div>
+                                </div>
+                                <div class="g-col-12 g-col-xxl-2">
+                                    <div class="mt-lg-6">
+                                        <button id="tabulator-html-filter-go" type="button"
+                                            class="btn btn-primary w-full">Clear</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- BEGIN: Calendar Content -->
+            <div class="g-col-12 g-col-xl-12 g-col-xxl-12 mt-5">
+                <div class="box p-5">
+                    <div class="full-calendar" id="calendar"></div>
+                </div>
+            </div>
+            <!-- END: Calendar Content -->
+
+        </div>
+        <!-- END: HTML Table Data -->
+    </div>
+    <!-- END: Content -->
+    </div>
+
+    <!-- BEGIN: JS Assets-->
+
+    <!-- <script src="dist/js/app.js"></script> -->
+    <script src="dist/js/custom.js"></script>
+    <!-- END: JS Assets-->
+</body>
+
+</html>

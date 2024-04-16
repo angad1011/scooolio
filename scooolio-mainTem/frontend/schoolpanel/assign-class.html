@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html lang="en" class="light">
+<!-- BEGIN: Head -->
+
+<head>
+    <meta charset="utf-8">
+    <link href="dist/images/logo.svg" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Assign Class</title>
+    <!-- BEGIN: CSS Assets-->
+    <link rel="stylesheet" href="dist/css/app.css" />
+    <!-- END: CSS Assets-->
+</head>
+<!-- END: Head -->
+
+<body class="main" page-name="teacher">
+    <!-- BEGIN: Mobile Menu -->
+    <div class="mobile-menu d-md-none" id="mobile-menu">
+
+    </div>
+    <!-- END: Mobile Menu -->
+    <div class="d-flex">
+        <!-- BEGIN: Side Menu -->
+        <nav class="side-nav" id="side-nav">
+
+        </nav>
+        <!-- END: Side Menu -->
+        <!-- BEGIN: Content -->
+        <div class="content">
+            <!-- BEGIN: Top Bar -->
+            <div class="top-bar">
+                <!-- BEGIN: Breadcrumb -->
+                <div class="-intro-x breadcrumb me-auto d-none d-sm-flex"> <a href="">School</a> <i
+                        data-feather="chevron-right" class="breadcrumb__icon"></i> <a href=""
+                        class="breadcrumb--active">Assign Class</a> </div>
+                <!-- END: Breadcrumb -->
+                <!-- BEGIN: Notifications -->
+                <div class="intro-x dropdown me-auto me-sm-6" id="notification-section">
+
+                </div>
+                <!-- END: Notifications -->
+                <!-- BEGIN: Account Menu -->
+                <div class="intro-x dropdown w-8 h-8" id="right-profile-section">
+
+                </div>
+                <!-- END: Account Menu -->
+            </div>
+            <!-- END: Top Bar -->
+            <div class="intro-y d-flex flex-column flex-sm-row align-items-center mt-8">
+                <h2 class="fs-lg fw-medium me-auto">
+                    Assign Class
+                </h2>
+                <div class="w-full w-sm-auto d-flex mt-4 mt-sm-0">
+                    <a href="teacher-list.html" class="btn btn-primary shadow-md me-2">
+                        Teacher List</a>
+                </div>
+            </div>
+            <div class="intro-y box mt-5">
+                <div class="p-5">
+                    <div class="d-flex flex-column-reverse flex-xl-row flex-column">
+                        <div class="flex-1 mt-xl-0">
+                            <div class="grid columns-12 gap-x-5 gap-y-0">
+                                <div class="g-col-12 g-col-xxl-2">
+                                    <div>
+                                        <label>Search By Class</label>
+                                        <div class="mt-2"> <select data-placeholder="Select your favorite actors"
+                                                class="tom-select w-full">
+                                                <option value="0" selected>Select Class</option>
+                                                <option value="1">1st</option>
+                                                <option value="2">2nd</option>
+                                                <option value="3">3rd</option>
+                                                <option value="4">4th</option>
+                                                <option value="5">5th</option>
+                                                <option value="6">6th</option>
+                                                <option value="7">7th</option>
+                                                <option value="8">8th</option>
+                                                <option value="9">9th</option>
+                                                <option value="10">10th</option>
+                                                <option value="11">11th</option>
+                                                <option value="12">12th</option>
+                                            </select>
+                                        </div>
+                                    </div> <!-- END: Basic Select -->
+                                </div>
+                                <div class="g-col-12 g-col-xxl-2">
+                                    <div>
+                                        <label>Division</label>
+                                        <div class="mt-2"> <select data-placeholder="Select your favorite actors"
+                                                class="tom-select w-full">
+                                                <option value="0" selected>Select Division</option>
+                                                <option value="1">A</option>
+                                                <option value="2">B</option>
+                                                <option value="3">C</option>
+                                                <option value="4">D</option>
+                                                <option value="5">E</option>
+                                                <option value="6">F</option>
+                                                <option value="7">G</option>
+                                                <option value="8">H</option>
+                                                <option value="9">I</option>
+                                            </select>
+                                        </div>
+                                    </div> <!-- END: Basic Select -->
+                                </div>
+                                <div class="g-col-12 g-col-xxl-3">
+                                    <div>
+                                        <label>Select Teacher</label>
+                                        <div class="mt-2"> <select data-placeholder="Select Teacher"
+                                                class="tom-select w-full">
+                                                <option value="0" selected>Select Teacher</option>
+                                                <option value="1">Leonardo DiCaprio</option>
+                                                <option value="2">Johnny Deep</option>
+                                                <option value="3">Robert Downey, Jr</option>
+                                                <option value="4">Samuel L. Jackson</option>
+                                                <option value="5">Morgan Freeman</option>
+                                            </select>
+                                        </div>
+                                    </div> <!-- END: Basic Select -->
+                                </div>
+                                <div class="g-col-12 g-col-xxl-2">
+                                    <div class="mt-lg-6">
+                                        <button id="tabulator-html-filter-go" type="button"
+                                            class="btn btn-primary w-full">Assign</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="intro-y box p-5 mt-5">
+                <!-- BEGIN: Data List -->
+                <div class="intro-y g-col-12 ooverflow-x-auto overflow-lg-visible mt-5">
+                    <table class="table table-report mt-n2 ">
+                        <thead>
+                            <tr>
+                                <th class="text-nowrap">Photo</th>
+                                <th class="text-nowrap">EMP ID</th>
+                                <th class="text-nowrap">Name</th>
+                                <th class="text-nowrap">Class</th>
+                                <th class="text-nowrap">Division</th>
+                                <th class="text-nowrap">Gender</th>
+                                <th class="text-nowrap">Assigned Date</th>
+                                <th class="text-nowrap">Create Date</th>
+                                <th class="text-nowrap">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="intro-x">
+                                <td class="w-20">
+                                    <div class="d-flex">
+                                        <div class="w-10 h-10 image-fit zoom-in">
+                                            <img alt="logo" class="tooltip rounded-circle"
+                                                src="dist/images/preview-14.jpg" title="Uploaded at 15 June 2021">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-right">EMP1234</td>
+                                <td>
+                                    <a href="" class="fw-medium text-nowrap">Sonal Jain</a>
+                                </td>
+                                <td>8</td>
+                                <td>A</td>
+                                <td>Female</td>
+                                <td>20/04/2023</td>
+                                <td>20/04/2023</td>
+                                <td class="table-report__action w-56">
+                                    <div class="d-flex justify-content-start align-items-center">
+                                        <a class="d-flex align-items-center me-3" href="assign-class.html"> <i
+                                                data-feather="check-square" class="w-4 h-4 me-1"></i> Edit </a>
+                                        <button class="d-flex align-items-center me-3">
+                                            <i data-feather="trash" class="w-4 h-4 me-1"></i> Delete </button>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- END: Data List -->
+                <!-- BEGIN: Pagination -->
+                <div class="intro-y g-col-12 d-flex flex-wrap flex-sm-row flex-sm-nowrap align-items-center mt-5">
+                    <nav class="w-full w-sm-auto me-sm-auto">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevrons-left"></i> </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevron-left"></i> </a>
+                            </li>
+                            <li class="page-item"> <a class="page-link" href="#">...</a> </li>
+                            <li class="page-item"> <a class="page-link" href="#">1</a> </li>
+                            <li class="page-item active"> <a class="page-link" href="#">2</a> </li>
+                            <li class="page-item"> <a class="page-link" href="#">3</a> </li>
+                            <li class="page-item"> <a class="page-link" href="#">...</a> </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevron-right"></i> </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevrons-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <select class="w-20 form-select box mt-3 mt-sm-0">
+                        <option>10</option>
+                        <option>25</option>
+                        <option>35</option>
+                        <option>50</option>
+                    </select>
+                </div>
+                <!-- END: Pagination -->
+            </div>
+        </div>
+        <!-- END: HTML Table Data -->
+
+        <!-- BEGIN: Delete Confirmation Modal -->
+        <div id="delete-confirmation-modal" class="modal fade" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="p-5 text-center">
+                            <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+                            <div class="fs-3xl mt-5">Are you sure?</div>
+                            <div class="text-gray-600 mt-2">
+                                Do you really want to delete these records?
+                                <br>
+                                This process cannot be undone.
+                            </div>
+                        </div>
+                        <div class="px-5 pb-8 text-center">
+                            <button type="button" data-bs-dismiss="modal"
+                                class="btn btn-outline-secondary w-24 me-1">Cancel</button>
+                            <button type="button" class="btn btn-danger w-24">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END: Delete Confirmation Modal -->
+    </div>
+    <!-- END: Content -->
+    </div>
+
+    <!-- BEGIN: JS Assets-->
+
+    <!-- <script src="dist/js/app.js"></script> -->
+    <script src="dist/js/custom.js"></script>
+    <!-- END: JS Assets-->
+</body>
+
+</html>
