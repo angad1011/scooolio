@@ -13,8 +13,17 @@ class Students extends Model
 
    // Define the belongsTo relationship
    public function institutes(){
-    return $this->belongsTo(Institute::class, 'institute_id', 'id');
-  }
+      return $this->belongsTo(Institute::class, 'institute_id', 'id');
+   }
+
+    // Define the hasMany relationship
+    public function student_attendances(){
+        return $this->hasMany(StudentAttendace::class, 'student_id', 'id');
+    }
+
+    public function class_students(){
+        return $this->hasOne(StudentClass::class, 'student_id', 'id');
+    }
 
       
     

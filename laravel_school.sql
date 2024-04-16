@@ -40,6 +40,24 @@ insert  into `academic_years`(`id`,`institute_id`,`year`,`its_current_year`,`cre
 (5,1,'2022-2023',0,'2024-04-04 05:58:51','2024-04-04 05:58:51'),
 (6,1,'2023-2024',0,'2024-04-04 05:59:02','2024-04-04 05:59:02');
 
+/*Table structure for table `attendance_types` */
+
+DROP TABLE IF EXISTS `attendance_types`;
+
+CREATE TABLE `attendance_types` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Data for the table `attendance_types` */
+
+insert  into `attendance_types`(`id`,`name`,`created_at`,`updated_at`) values 
+(1,'Precent','2024-04-16 11:38:00','2024-04-16 11:38:04'),
+(2,'Absent',NULL,NULL);
+
 /*Table structure for table `boards` */
 
 DROP TABLE IF EXISTS `boards`;
@@ -356,6 +374,34 @@ insert  into `streams`(`id`,`name`,`active`,`created_at`,`updated_at`) values
 (1,'Science',1,'2024-03-14 10:40:24','2024-03-14 10:41:49'),
 (2,'Arts',1,'2024-03-14 10:41:33','2024-03-14 10:41:33'),
 (3,'Commerce',1,'2024-03-14 10:41:43','2024-03-14 10:41:43');
+
+/*Table structure for table `student_attendances` */
+
+DROP TABLE IF EXISTS `student_attendances`;
+
+CREATE TABLE `student_attendances` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `institute_id` int(11) DEFAULT NULL,
+  `academic_year_id` int(11) DEFAULT NULL,
+  `learn_space_id` int(11) DEFAULT NULL,
+  `student_id` int(11) DEFAULT NULL,
+  `attendance_type_id` int(11) DEFAULT NULL,
+  `date` varchar(45) DEFAULT NULL,
+  `absent_reason` text,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Data for the table `student_attendances` */
+
+insert  into `student_attendances`(`id`,`institute_id`,`academic_year_id`,`learn_space_id`,`student_id`,`attendance_type_id`,`date`,`absent_reason`,`created_at`,`updated_at`) values 
+(1,1,3,1,2,1,'16-04-2024',NULL,'2024-04-16 09:40:48','2024-04-16 09:40:48'),
+(2,1,3,1,1,1,'16-04-2024',NULL,'2024-04-16 09:40:48','2024-04-16 09:40:48'),
+(3,1,3,1,3,1,'16-04-2024',NULL,'2024-04-16 09:40:48','2024-04-16 09:40:48'),
+(4,1,3,1,4,1,'16-04-2024',NULL,'2024-04-16 09:40:48','2024-04-16 09:40:48'),
+(5,1,3,1,29,1,'16-04-2024',NULL,'2024-04-16 09:40:48','2024-04-16 09:40:48'),
+(6,1,3,1,26,1,'16-04-2024','Not Well','2024-04-16 09:40:49','2024-04-16 10:29:34');
 
 /*Table structure for table `students` */
 

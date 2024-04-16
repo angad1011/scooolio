@@ -23,6 +23,7 @@ use App\Http\Controllers\InstituteTimingController;
 use App\Http\Controllers\ClassTimeTableController;
 use App\Http\Controllers\AcademicYearController;
 use App\Http\Controllers\StudentClassController;
+use App\Http\Controllers\StudentAttendanceController;
 use App\Http\Middleware\Authenticate;
 
 
@@ -114,6 +115,9 @@ Route::resource('class_students', StudentClassController::class);
 Route::get('/class_students/index/{id}', [StudentClassController::class,'index'])->name('class_students.index');
 Route::get('/class_students/add/{id}', [StudentClassController::class,'add'])->name('class_students.add');
 
+/*Student Attandace*/ 
+Route::resource('student_attendances', StudentAttendanceController::class);
+Route::get('/student_attendances/index/{id}', [StudentAttendanceController::class,'index'])->name('student_attendances.index');
 
 
 });
