@@ -118,7 +118,7 @@ Route::get('/class_students/add/{id}', [StudentClassController::class,'add'])->n
 /*Student Attandace*/ 
 Route::resource('student_attendances', StudentAttendanceController::class);
 Route::get('/student_attendances/index/{id}', [StudentAttendanceController::class,'index'])->name('student_attendances.index');
-
+Route::get('/student_attendances/attendence_details/{id}', [StudentAttendanceController::class,'attendence_details'])->name('student_attendances.attendence_details');
 
 });
 

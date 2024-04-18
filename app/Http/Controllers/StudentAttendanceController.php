@@ -9,6 +9,7 @@ use App\Models\LearnSpace;
 use App\Models\StudentClass;
 use App\Models\AcademicYear;
 use App\Models\AttendanceType;
+use DB;
 
 
 class StudentAttendanceController extends Controller
@@ -51,6 +52,28 @@ class StudentAttendanceController extends Controller
         // dd($attendance);
 
         return view('student_attendances.index',compact('attendanceCount','attendance','instituteId','classId','academicYear','classDetail','students','attendanceTypes','currentDate','presentDay'));
+
+    }
+
+    /*Class Wise Student Attendance Details*/
+    public function attendence_details(string $classId){
+        
+        $instituteId = Auth::user()->institute_id;
+
+        /*Class Details*/ 
+        $classDetail = LearnSpace::with('shift_types','teachers')->findOrFail($classId);
+
+
+        $attendanceData = StudentAttendace::selectRaw('date, 
+                        SUM(CASE WHEN attendance_type_id = 1 THEN 1 ELSE 0 END) as present_count,
+                        SUM(CASE WHEN attendance_type_id != 1 THEN 1 ELSE 0 END) as absent_count,
+                        COUNT(*) as total_count')
+                    ->where('learn_space_id', $classId)
+                    ->groupBy('date')
+                    ->get();
+
+
+        return view('student_attendances.attendence_details',compact('instituteId','classId','classDetail','attendanceData'));
 
     }
 

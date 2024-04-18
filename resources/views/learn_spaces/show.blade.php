@@ -17,7 +17,7 @@
                     <a href="{{ route('class_students.index',$classDetail->id) }}" class="btn btn-primary shadow-md me-2">Students</a> 
                 </div>
                 <div class="w-full w-sm-auto d-flex mt-4 mt-sm-0">
-                    <a href="{{ route('student_attendances.index',$classDetail->id) }}" class="btn btn-primary shadow-md me-2">Attendance</a> 
+                    <a href="{{ route('student_attendances.attendence_details',$classDetail->id) }}" class="btn btn-primary shadow-md me-2">Attendance</a> 
                 </div>
             </div>  
             <div class="p-5">
