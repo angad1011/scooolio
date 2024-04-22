@@ -24,6 +24,7 @@ use App\Http\Controllers\ClassTimeTableController;
 use App\Http\Controllers\AcademicYearController;
 use App\Http\Controllers\StudentClassController;
 use App\Http\Controllers\StudentAttendanceController;
+use App\Http\Controllers\NoticeController;
 use App\Http\Middleware\Authenticate;
 
 
@@ -47,6 +48,9 @@ Route::middleware([Authenticate::class])->group(function () {
 Route::get('/dashboard', [DashboardsController::class, 'index'])->name('dashboards.index');
 /*Role Route*/
 Route::resource('roles', RolesController::class);
+
+/*Notice Route*/ 
+Route::resource('notices', NoticeController::class);
 
 /*Branche Route*/
 Route::resource('boards', BoardsController::class);

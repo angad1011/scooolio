@@ -77,6 +77,12 @@
                     <div class="side-menu__title"> Student List </div>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('notices.index') }}" class="side-menu">
+                    <div class="side-menu__icon"> <i data-feather="list"></i> </div>
+                    <div class="side-menu__title"> Notice </div>
+                </a>
+            </li>
         </ul>
     </li>
    
