@@ -9,7 +9,7 @@
 <a class="d-flex align-items-center me-3" href="{{ route('learn_spaces.index') }}"> 
         <button class="btn btn-primary shadow-md me-2"> <i data-feather="list"></i>  Class Details </button>
     </a>
-    <a class="d-flex align-items-center me-3" href="{{ route('student_attendances.index',$classDetail->id) }}"> 
+    <a class="d-flex align-items-center me-3" href="{{ route('student_attendances.index',['id' => $classId, 'date' => $currentDate]) }}"> 
         <button class="btn btn-primary shadow-md me-2"> <i data-feather="plus"></i>  Get Today Attendance </button>
     </a>
 </div>
@@ -38,7 +38,10 @@
                    <td>{{$attendance->date}}</td>
                    <td>{{$totalCount}}</td>
                    <td>{{$attendancePercentage.' %'}} <br> Absent : {{$absentCount}}, Present : {{$presentCount}}</td>
-                   <td></td>
+                   <td>
+                       <a href="{{ route('student_attendances.index', ['id' => $classId, 'date' => $attendance->date]) }}">
+                       <i data-feather="check-square" class="w-4 h-4 me-1"></i>Edit</a>
+                   </td>
                </tr>     
                <?php } ?>
             </tbody>

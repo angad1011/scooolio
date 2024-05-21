@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\TeacherActivation;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -60,5 +64,61 @@ class AuthController extends Controller
         Auth::logout();
         return redirect('/');
     }
+
+    public function teacherLogin(Request $request){
+        
+         $teacher = TeacherActivation::where('username',$request->username)->first();
+
+         if (!$teacher || !Hash::check($request->password, $teacher->password)) {
+            return response([
+                'message' => ['These credentials do not match our records.']
+            ], 404);
+        }
+     
+        $token = $teacher->createToken('my-app-token')->plainTextToken;
+
+        $response = [
+            'teacher' => $teacher,
+            'token' => $token
+        ];
+    
+         return response($response, 201);
+        //  dd($teacher);
+    }
+
+    /*Teacher Forget Password API*/
+    public function teacherForgetPassword(Request $request){
+
+        $teacherActivation = TeacherActivation::where('username', $request->username)->first();
+
+        if (!$teacherActivation) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+
+        // print_r($teacher);
+        $teacherId = $teacherActivation->teacher_id;
+
+        /*Teacher Details*/
+        $teacher = Teacher::find($teacherId);
+
+
+        $newPassword = Str::random(10); // Generate a random password
+        // $teacherActivation->password = bcrypt($newPassword);
+        // $teacherActivation->save();
+
+         // Send email with new password
+        \Mail::raw("Your new password is: $newPassword", function($message) use ($teacher) {
+            $message->to($teacher->email)->subject('New Password');
+        });
+
+         return response()->json(['message' => 'New password sent to your email'], 200);
+
+        // var_dump($teacher);
+
+    }
+
+  
+
+
 
 }

@@ -17,10 +17,10 @@ class StudentAttendanceController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(string $classId){
+    public function index(string $classId, $date){
 
         // Current Date
-        $currentDate = Date('d-m-Y');
+        $currentDate = $date;
         $presentDay = Date('l');
         
         $instituteId = Auth::user()->institute_id;
@@ -72,8 +72,9 @@ class StudentAttendanceController extends Controller
                     ->groupBy('date')
                     ->get();
 
+        $currentDate = Date('d-m-Y');             
 
-        return view('student_attendances.attendence_details',compact('instituteId','classId','classDetail','attendanceData'));
+        return view('student_attendances.attendence_details',compact('instituteId','classId','classDetail','attendanceData','currentDate'));
 
     }
 
@@ -91,6 +92,7 @@ class StudentAttendanceController extends Controller
     public function store(Request $request){
         
         $requestData = $request['data']['StudentAttendace'];
+       
         // dd($requestData);
 
          // Add Data As per Class
@@ -139,16 +141,29 @@ class StudentAttendanceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
+    public function editAttendance($classId, $date) {
+
+        /*Class Details*/ 
+        $classDetail = LearnSpace::with('shift_types','teachers')->findOrFail($classId);
+
+        $presentDay = $currentDate =  $date;
+
+        $attendance = StudentAttendace::with('students.class_students')->where(['learn_space_id'=>$classId,'date'=>$currentDate])->get();
+        $attendanceCount = count($attendance);
+
+        /*Attandace Type*/ 
+        $attendanceTypes = AttendanceType::all();
+
+        // dd($attendanceData);
+
+        return view('student_attendances.edit', compact('attendanceCount','attendance','classId','classDetail','attendanceTypes','presentDay','currentDate'));
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
+    public function updateAttendance(Request $request, $classId, $date) {
         //
     }
 

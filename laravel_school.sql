@@ -320,6 +320,27 @@ insert  into `mediums`(`id`,`name`,`active`,`created_at`,`updated_at`) values
 (3,'Urdu',1,'2024-03-14 10:24:09','2024-03-14 10:24:09'),
 (4,'Marathi',0,'2024-03-14 10:24:19','2024-03-14 10:26:56');
 
+/*Table structure for table `notices` */
+
+DROP TABLE IF EXISTS `notices`;
+
+CREATE TABLE `notices` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` text,
+  `message` text,
+  `start_date` varchar(45) DEFAULT NULL,
+  `end_date` varchar(45) DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Data for the table `notices` */
+
+insert  into `notices`(`id`,`title`,`message`,`start_date`,`end_date`,`active`,`created_at`,`updated_at`) values 
+(1,'THis is for test','Mesh Mesho','22 Apr, 2024','24 Apr, 2024',1,'2024-04-22 09:34:59','2024-04-22 10:50:07');
+
 /*Table structure for table `roles` */
 
 DROP TABLE IF EXISTS `roles`;
@@ -391,7 +412,7 @@ CREATE TABLE `student_attendances` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `student_attendances` */
 
@@ -401,7 +422,13 @@ insert  into `student_attendances`(`id`,`institute_id`,`academic_year_id`,`learn
 (3,1,3,1,3,1,'16-04-2024',NULL,'2024-04-16 09:40:48','2024-04-16 09:40:48'),
 (4,1,3,1,4,1,'16-04-2024',NULL,'2024-04-16 09:40:48','2024-04-16 09:40:48'),
 (5,1,3,1,29,1,'16-04-2024',NULL,'2024-04-16 09:40:48','2024-04-16 09:40:48'),
-(6,1,3,1,26,1,'16-04-2024','Not Well','2024-04-16 09:40:49','2024-04-16 10:29:34');
+(6,1,3,1,26,1,'16-04-2024','Not Well','2024-04-16 09:40:49','2024-04-16 10:29:34'),
+(7,1,3,1,2,1,'18-04-2024',NULL,'2024-04-18 06:59:38','2024-04-18 06:59:38'),
+(8,1,3,1,1,1,'18-04-2024',NULL,'2024-04-18 06:59:38','2024-04-18 06:59:38'),
+(9,1,3,1,3,1,'18-04-2024',NULL,'2024-04-18 06:59:38','2024-04-18 06:59:38'),
+(10,1,3,1,4,1,'18-04-2024',NULL,'2024-04-18 06:59:38','2024-04-18 06:59:38'),
+(11,1,3,1,29,2,'18-04-2024',NULL,'2024-04-18 06:59:38','2024-04-18 06:59:38'),
+(12,1,3,1,26,2,'18-04-2024',NULL,'2024-04-18 06:59:38','2024-04-18 06:59:38');
 
 /*Table structure for table `students` */
 

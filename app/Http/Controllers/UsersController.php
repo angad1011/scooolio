@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Department;
 use App\Models\Institute;
+use App\Models\Teacher;
 
 class UsersController extends Controller
 {
@@ -137,6 +138,9 @@ class UsersController extends Controller
         return view('users.show', compact('user', 'pageTitle'));
     }
 
+
+
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -240,4 +244,8 @@ class UsersController extends Controller
     {
         //
     }
+
+
+    
+
 }

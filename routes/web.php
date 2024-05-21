@@ -18,6 +18,7 @@ use App\Http\Controllers\InstitutesController;
 use App\Http\Controllers\LearnSpaceController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\TeacherActivationController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\InstituteTimingController;
 use App\Http\Controllers\ClassTimeTableController;
@@ -95,6 +96,12 @@ Route::resource('subjects', SubjectController::class);
 /* Teacher Routes */
 Route::resource('teachers', TeacherController::class);
 Route::get('/teachers/time_table/{id}', [TeacherController::class,'timeTable'])->name('teachers.time_table');
+Route::get('/teachers/activations/{id}', [TeacherController::class,'activation'])->name('teachers.activation');
+
+
+/*Teacher Activations*/ 
+Route::resource('teacher_activations', TeacherActivationController::class);
+
 
 /* Student Routes */
 Route::resource('students', StudentController::class);
@@ -121,9 +128,8 @@ Route::get('/class_students/add/{id}', [StudentClassController::class,'add'])->n
 
 /*Student Attandace*/ 
 Route::resource('student_attendances', StudentAttendanceController::class);
-Route::get('/student_attendances/index/{id}', [StudentAttendanceController::class,'index'])->name('student_attendances.index');
+Route::get('/student_attendances/{id}/index/{date}', [StudentAttendanceController::class,'index'])->name('student_attendances.index');
 Route::get('/student_attendances/attendence_details/{id}', [StudentAttendanceController::class,'attendence_details'])->name('student_attendances.attendence_details');
-
 });
 
 Route::get('/', function () {return view('auth.login');});

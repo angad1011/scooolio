@@ -33,7 +33,7 @@
                 </div>
                 <div class="ms-4 me-auto">
                     <div class="fw-medium fs-base">{{ $teacher->name }}</div>
-                    <div class="text-gray-600">{{ $teacher->employee_id }}</div>
+                    <div class="text-gray-600">Qualification.{{ $teacher->qualification }}</div>
                 </div>
             </div>
             <div class="p-5 border-top border-gray-200 dark-border-dark-5">
@@ -50,7 +50,7 @@
         <div class="intro-y box mt-lg-5">
             <div class="d-flex align-items-center p-5 border-bottom border-gray-200 dark-border-dark-5">
                 <h2 class="fw-medium fs-base me-auto">
-                Joining Details
+                Teacher Details
                 </h2>
             </div>
             <div class="p-5">
@@ -58,41 +58,20 @@
                 <table class="table table-bordered table-report mt-n2">
                      <tbody>
                      <tr>
-                        <th class="">Joining Date.</th>
-                        <td>{{ $teacher->joining_date }}</td>
+                        <th class="">Teacher Name</th>
+                        <td>{{ $teacher->name.' ('.$teacher->qualification.')' }}</td>
                     </tr>
                     <tr>
                         <th class="">Shift</th>
                         <td>{{ $teacher->shift_types->name }}</td>
                     </tr>
-                     <tr>
-                        <th class="">Teacher Name</th>
-                        <td>{{ $teacher->name.' ('.$teacher->employee_id.')' }}</td>
-                     </tr>
-                    
                     <tr>
                         <th class="">Email | Contact </th>
                         <td>{{ $teacher->email.' | '.$teacher->contact }}</td>
                     </tr>
                     <tr>
-                        <th class="">Alternate No. | Whatsapp </th>
-                        <td>{{ $teacher->alternate_no.' | '.$teacher->whatsaap }}</td>
-                    </tr>
-                    <tr>
-                        <th class="">Date of Birth | Gender | Martial Status </th>
-                        <td>{{ $teacher->date_of_birth.' | '.$teacher->gender.' | '.$teacher->martial_status }}</td>
-                    </tr>
-                    <tr>
-                        <th class="">Nationality | Religion | Category </th>
-                        <td>{{ $teacher->nationality.' | '.$teacher->religion.' | '.$teacher->cast_catogory }}</td>
-                    </tr>
-                    <tr>
-                        <th class="">Qualification | Specialization </th>
-                        <td>{{ $teacher->qualification.' | '.$teacher->specialization }}</td>
-                    </tr>
-                    <tr>
-                        <th class="">Institute | Passing Year </th>
-                        <td>{{ $teacher->institute.' | '.$teacher->passing_year }}</td>
+                        <th class="">Address.</th>
+                        <td>{!! nl2br($teacher->address) !!}</td>
                     </tr>
                     <tr>
                         <th class="">Subjects.</th>
@@ -102,47 +81,20 @@
                             @endforeach
                         </td>
                     </tr>
+                    <!-- <tr>
+                        <th class="">Assigned Class.</th>
+                        <td>
+                            @foreach ($assignClasses as $assignClass)
+                            <label for="">{{ $assignClass->class_name }},</label>
+                            @endforeach
+                        </td>
+                    </tr> -->
                     </tbody>
                 </table>
                 </div>
             </div>
         </div>
-        <!-- END: Joinning Information -->
-        <!-- Start: Address Details -->
-        <div class="intro-y box mt-lg-5">
-            <div class="d-flex align-items-center p-5 border-bottom border-gray-200 dark-border-dark-5">
-                <h2 class="fw-medium fs-base me-auto">
-               Residential Address
-                </h2>
-            </div>
-            <div class="p-5">
-                <div class="d-flex flex-column-reverse flex-xl-row flex-column">
-                <table class="table table-bordered table-report mt-n2">
-                     <tbody>
-                     <tr>
-                        <th class="">Pincode.</th>
-                        <td>{{ $teacher->pincode }}</td>
-                    </tr>
-                    <tr>
-                        <th class="">City</th>
-                        <td>{{ $teacher->city }}</td>
-                    </tr>
-                     <tr>
-                        <th class="">State</th>
-                        <td>{{ $teacher->state }}</td>
-                     </tr>
-                    
-                    <tr>
-                        <th class="">Address </th>
-                        <td>{{ $teacher->address}}</td>
-                    </tr>
-                   
-                    </tbody>
-                </table>
-                </div>
-            </div>
-        </div>
-
+        <!-- END: Display Information -->
     </div>
 </div>
 @endsection

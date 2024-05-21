@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Teacher extends Model
 {
     use HasFactory;
-    protected $fillable = ['institute_id','shift_type_id','name','email','password','contact','qualification','gender','address','profile_img','active','created_at','updated_at'];
+    protected $fillable = ['institute_id','shift_type_id','employee_id','first_name','last_name','name','email','contact','alternate_no','whatsaap','gender','joining_date','date_of_birth','martial_status','nationality','religion','cast_catogory','qualification','specialization','institute','passing_year','profile_img','aadhar_cart','city','state','pincode','address','active','created_at','updated_at'];
     protected $table = 'teachers';
 
 
@@ -18,7 +18,12 @@ class Teacher extends Model
         return $this->belongsTo(ShiftType::class, 'shift_type_id', 'id');
     }
 
-    
+      // Define the hasMany relationship
+    public function teacher_activations()
+    {
+        return $this->hasMany(TeacherActivation::class, 'teacher_id', 'id');
+    }
+
     // hasManyblogs 
     public function learn_spaces()
     {
@@ -29,4 +34,6 @@ class Teacher extends Model
     {
         return $this->belongsToMany(Subject::class, 'teachers_subjects', 'teacher_id', 'subject_id');
     }
+
+    
 }

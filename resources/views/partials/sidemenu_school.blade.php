@@ -20,57 +20,44 @@
             </div>
         </a>
     </li>
-   <li>
-       <a href="javascript:;" class="side-menu" id="school">
-           <div class="side-menu__icon"> <i data-feather="user"></i> </div>
-            <div class="side-menu__title">
-                User Master
-                <div class="side-menu__sub-icon"> <i data-feather="chevron-down"></i> </div>
-            </div>
-       </a>
-       <ul>
-            <li>
-                <a href="{{ route('users.index') }}" class="side-menu">
-                    <div class="side-menu__icon"> <i data-feather="user"></i> </div>
-                    <div class="side-menu__title"> Users</div>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('academic_years.index') }}" class="side-menu">
-                    <div class="side-menu__icon"> <i data-feather="list"></i> </div>
-                    <div class="side-menu__title"> Academic Year</div>
-                </a>
-            </li>
-       </ul>
-   </li>
-
     <li>
-        <a href="javascript:;" class="side-menu" id="school">
+        <a href="javascript:void(0)" class="side-menu" id="teacher">
             <div class="side-menu__icon"> <i data-feather="layout"></i> </div>
             <div class="side-menu__title">
-                Institutes
+                Teachers
                 <div class="side-menu__sub-icon"> <i data-feather="chevron-down"></i> </div>
             </div>
         </a>
         <ul class="">
             <li>
-                <a href="{{ route('learn_spaces.index') }}" class="side-menu">
-                    <div class="side-menu__icon"> <i data-feather="list"></i> </div>
-                    <div class="side-menu__title">Setup Class</div>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('subjects.index') }}" class="side-menu">
-                    <div class="side-menu__icon"> <i data-feather="list"></i> </div>
-                    <div class="side-menu__title">Subjects</div>
-                </a>
-            </li>
-            <li>
                 <a href="{{ route('teachers.index') }}" class="side-menu">
                     <div class="side-menu__icon"> <i data-feather="list"></i> </div>
-                    <div class="side-menu__title"> Teacher List </div>
+                    <div class="side-menu__title"> Teachers List </div>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('teachers.create') }}" class="side-menu">
+                    <div class="side-menu__icon"> <i data-feather="edit"></i> </div>
+                    <div class="side-menu__title"> Add Teacher </div>
+                </a>
+            </li>
+            <!-- <li>
+                <a href="assign-class.html" class="side-menu">
+                    <div class="side-menu__icon"> <i data-feather="user-check"></i> </div>
+                    <div class="side-menu__title"> Assign Class </div>
+                </a>
+            </li> -->
+        </ul>
+    </li>
+    <li>
+        <a href="javascript:void(0)" class="side-menu" id="student">
+            <div class="side-menu__icon"> <i data-feather="layout"></i> </div>
+            <div class="side-menu__title">
+                Student
+                <div class="side-menu__sub-icon"> <i data-feather="chevron-down"></i> </div>
+            </div>
+        </a>
+        <ul class="">
             <li>
                 <a href="{{ route('students.index') }}" class="side-menu">
                     <div class="side-menu__icon"> <i data-feather="list"></i> </div>
@@ -78,19 +65,12 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('notices.index') }}" class="side-menu">
-                    <div class="side-menu__icon"> <i data-feather="list"></i> </div>
-                    <div class="side-menu__title"> Notice </div>
+                <a href="{{ route('students.create') }}" class="side-menu">
+                    <div class="side-menu__icon"> <i data-feather="edit"></i> </div>
+                    <div class="side-menu__title"> Add Student </div>
                 </a>
             </li>
         </ul>
-    </li>
-   
-    <li>
-        <a href="{{ route('logout') }}" class="side-menu">
-            <div class="side-menu__icon"> <i data-feather="power"></i> </div>
-            <div class="side-menu__title"> Logout </div>
-        </a>
     </li>
 
 </ul>

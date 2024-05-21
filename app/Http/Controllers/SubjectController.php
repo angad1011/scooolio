@@ -95,4 +95,19 @@ class SubjectController extends Controller
     {
         //
     }
+
+    public function subject_listing(){
+        
+        $instituteId = Auth::user()->institute_id;
+
+        $subjects = Subject::all()->where('institute_id',$instituteId);
+        // $subjects = Subject::all();
+
+        return response()->json([
+            'status' => true,
+            'subjects' => $subjects
+        ]);
+
+
+    }
 }
