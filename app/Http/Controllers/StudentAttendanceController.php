@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 use App\Models\StudentAttendace;
 use App\Models\LearnSpace;
 use App\Models\StudentClass;
+use App\Models\Students;
 use App\Models\AcademicYear;
 use App\Models\AttendanceType;
 use DB;
@@ -54,6 +56,57 @@ class StudentAttendanceController extends Controller
         return view('student_attendances.index',compact('attendanceCount','attendance','instituteId','classId','academicYear','classDetail','students','attendanceTypes','currentDate','presentDay'));
 
     }
+
+    /*Attendance Calender*/
+    public function attendance_calender(){
+        
+        $instituteId = Auth::user()->institute_id;
+
+        $students = Students::where('institute_id', $instituteId)
+                    ->select('id', 'name')
+                    ->get();
+
+    
+
+         return view('student_attendances.attendance_calender',compact('students'));
+    }
+
+    /*Student Calender*/
+    public function student_calender(Request $request){
+        $instituteId = Auth::user()->institute_id;
+
+        // Get the selected class and teacher IDs from the request
+        $studentId = ($request->input('studentId') != 0) ? $request->input('studentId') : '';
+
+        // $attendanceDetails = (!empty($studentId)) ? StudentAttendace::findOrFail($studentId) : null;
+        $attendanceDetails = StudentAttendace::where('student_id',$studentId)->get();
+
+        // dd($attendanceDetails);
+
+        $attendanceArr = [];
+        if (!empty($attendanceDetails)) {
+            foreach ($attendanceDetails as $attendanceDetail) {
+                $attendanceArrDetails = [];
+                $attendanceArrDetails['title'] = ($attendanceDetail->attendance_type_id == 1) ? 'Present' : 'Absent';
+                $attendanceArrDetails['className'] = $attendanceDetail->date;
+                $attendanceArrDetails['start'] = $attendanceDetail->date;
+                $attendanceArrDetails['end'] = $attendanceDetail->date;
+
+                $attendanceArr[] = $attendanceArrDetails;
+            }
+        }
+
+       $finalEncodedCalender = json_encode($attendanceArr); 
+
+       // echo $finalEncodedCalender;
+
+       $html = View::make('partials.student_calender', ['finalEncodedCalender' => $finalEncodedCalender])->render();
+
+       // Return the rendered HTML as a JSON response
+        return response()->json(['html' => $html]);
+
+    }
+
 
     /*Class Wise Student Attendance Details*/
     public function attendence_details(string $classId){

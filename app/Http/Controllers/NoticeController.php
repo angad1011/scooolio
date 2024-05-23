@@ -8,9 +8,13 @@ use App\Models\Notice;
 class NoticeController extends Controller{
     
     public function index(){
-       
-        $notices = Notice::all();
-        return view('notices.index',compact('notices'));
+         
+         $currentDate = date('d-m-Y');
+        $notices = Notice::paginate(10);
+
+        // dd($notices);
+
+        return view('notices.index',compact('notices','currentDate'));
 
     }
 

@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 use App\Models\ClassTimeTable;
 use App\Models\WeekDay;
 use App\Models\LearnSpace;
 use App\Models\InstituteTiming;
 use App\Models\Subject;
 use App\Models\Teacher;
+use App\Traits\LectureTimingTrait;
 
 
 class ClassTimeTableController extends Controller
@@ -17,10 +19,110 @@ class ClassTimeTableController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
+    public function index(Request $request){
+        $instituteId = Auth::user()->institute_id;
+        
+         /*Class Listing*/   
+        $assignClasses = LearnSpace::all()->where('institute_id', $instituteId);
+
+        /*Teacher Listing*/
+        $teachers = Teacher::all()->where('institute_id', $instituteId);
+
+        // dd($teachers);
+
+         return view('time_tables.index',compact('assignClasses','teachers'));
     }
+
+
+    /*Filter Method*/
+    public function filter(Request $request){
+        $instituteId = Auth::user()->institute_id;
+
+        /*WeekDays*/ 
+        $weekDays = WeekDay::all()->where('active',true);
+
+        // Get the selected class and teacher IDs from the request
+        $classId = ($request->input('class_id') != 0) ? $request->input('class_id') : '';
+        $teacherId = ($request->input('teacher_id') != 0) ? $request->input('teacher_id') : '';
+
+         /*Class Details*/
+        $classDetail = (!empty($classId)) ?  LearnSpace::with('shift_types','teachers')->findOrFail($classId) : '';
+
+        /*Selected Teacher Details*/
+        $teacher = (!empty($teacherId)) ? Teacher::with('learn_spaces','subjects')->findOrFail($teacherId) : '';
+
+        if(!empty($classDetail) && empty($teacher)){
+             $shiftTypeId = $classDetail->shift_type_id;
+              $timing = InstituteTiming::where('institute_id', $instituteId)
+            ->where('shift_type_id', $shiftTypeId)
+            ->first();
+
+            $classTiming = $this->lecture_timing($timing);
+
+            $lectureSession = $classTiming['session'];
+
+
+            // Selecte Class Existing Schedulud
+            $timeTables = ClassTimeTable::where(['institute_id'=>$instituteId,'learn_space_id'=>$classId])->get();
+
+            // dd($timeTables);
+
+             $html = View::make('partials.class_time_table', ['classDetail' => $classDetail,'lectureSession'=>$lectureSession,'weekDays'=>$weekDays,'timeTables'=>$timeTables])->render();
+
+             // dd($html);
+
+        }
+
+
+        
+
+        if(!empty($teacher) && empty($classDetail)){
+             $shiftTypeId = $teacher->shift_type_id;
+
+             $timing = InstituteTiming::where('institute_id', $instituteId)
+            ->where('shift_type_id', $shiftTypeId)
+            ->first();
+
+            $classTiming = $this->lecture_timing($timing);
+
+            $lectureSession = $classTiming['session']; 
+
+            // Selecte Class Existing Schedulud
+            $timeTables = ClassTimeTable::where(['institute_id'=>$instituteId,'teacher_id'=>$teacherId])->get();
+
+            $html = View::make('partials.teacher_time_table', ['teacher' => $teacher,'lectureSession'=>$lectureSession,'weekDays'=>$weekDays,'timeTables'=>$timeTables])->render();
+
+        }
+
+        if(!empty($classDetail) && !empty($teacher)){
+            
+            $shiftTypeId = $teacher->shift_type_id;
+
+             $timing = InstituteTiming::where('institute_id', $instituteId)
+            ->where('shift_type_id', $shiftTypeId)
+            ->first();
+
+            $classTiming = $this->lecture_timing($timing);
+
+            $lectureSession = $classTiming['session'];
+
+            // Selecte Class Existing Schedulud
+            $timeTables = ClassTimeTable::where(['institute_id'=>$instituteId,'teacher_id'=>$teacherId,'learn_space_id'=>$classId])->get();
+
+            // dd($timeTables);
+
+            $html = View::make('partials.common_time_table', ['teacher' => $teacher,'classDetail'=>$classDetail,'lectureSession'=>$lectureSession,'weekDays'=>$weekDays,'timeTables'=>$timeTables])->render();
+
+
+
+        }
+
+
+        // Return the rendered HTML as a JSON response
+        return response()->json(['html' => $html]);
+
+    }
+
 
     /**
      * Show the form for creating a new resource.

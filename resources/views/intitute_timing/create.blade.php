@@ -16,7 +16,7 @@
              <input id="institute_id" type="hidden" name="institute_id" class="form-control" value="{{$instituteId}}">
              <label for="name" class="form-label">Shift Type</label>
              <select class="form-select me-sm-2" placeholder="Select Class" name="shift_type_id">
-                 <option value""">Select Shift</option>
+                 <option value="">Select Shift</option>
                 @foreach ($shiftTypes as $shiftType)
                 <option value="{{ $shiftType['id'] }}">{{ $shiftType['name'] }}</option>
                 @endforeach
@@ -31,8 +31,8 @@
             <input id="shift_end" name="shift_end" type="time" class="form-control" placeholder="Timing End" required>
         </div>  
         <div class="intro-y g-col-12 g-col-sm-3">
-            <label for="prayer_time" class="form-label">Prayer Time</label>
-            <input id="prayer_time" name="prayer_time" type="text" class="form-control" placeholder="Prayer Time" required>
+            <label for="prayer_time" class="form-label">Assembly</label>
+            <input id="prayer_time" name="prayer_time" type="text" class="form-control" placeholder="Assembly" required>
         </div>  
         <div class="intro-y g-col-12 g-col-sm-3">
             <label for="break_time_start" class="form-label">Breake Time</label>

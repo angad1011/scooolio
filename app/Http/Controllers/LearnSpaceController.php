@@ -97,6 +97,7 @@ class LearnSpaceController extends Controller
         // Selecte Class Existing Schedulud
         $timeTables = ClassTimeTable::where(['institute_id'=>$instituteId,'learn_space_id'=>$id])->get();
 
+        // dd($timeTables);
 
 
 

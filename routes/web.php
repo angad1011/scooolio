@@ -116,6 +116,7 @@ Route::get('/institute_timings/detail/{id}', [InstituteTimingController::class,'
 /*Class Time Table*/ 
 Route::resource('time_tables', ClassTimeTableController::class);
 Route::get('/time_tables/add/{id}', [ClassTimeTableController::class,'add'])->name('time_tables.add');
+Route::get('/filter', [ClassTimeTableController::class,'filter'])->name('filter');
 
 
 /*Academi Year Master*/ 
@@ -130,6 +131,9 @@ Route::get('/class_students/add/{id}', [StudentClassController::class,'add'])->n
 Route::resource('student_attendances', StudentAttendanceController::class);
 Route::get('/student_attendances/{id}/index/{date}', [StudentAttendanceController::class,'index'])->name('student_attendances.index');
 Route::get('/student_attendances/attendence_details/{id}', [StudentAttendanceController::class,'attendence_details'])->name('student_attendances.attendence_details');
+Route::get('/attendance_calender', [StudentAttendanceController::class,'attendance_calender'])->name('attendance_calender');
+Route::get('/student_calender', [StudentAttendanceController::class,'student_calender'])->name('student_calender');
+
 });
 
 Route::get('/', function () {return view('auth.login');});

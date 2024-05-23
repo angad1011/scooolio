@@ -8,13 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Students extends Model
 {
     use HasFactory;
-    protected $fillable = ['institute_id','gr_no','name','email','contact_no','date_of_birth','gender','blood_group','profile_img','father_name','mother_name','father_qualification','mother_qualification','address','date_of_admission','date_of_leaving','current_class_id','last_class_id','active','created_at','updated_at'];
+    protected $fillable = ['institute_id','learn_space_id','gr_no','first_name','last_name','name','email','contact_no','alternate_no','whatsapp','gender','date_of_birth','profile_img','aadhar_cart','date_of_admission','date_of_leaving','year','nationality','religion','cast_catogory','blood_group','father_name','mother_name','qualification','father_occupation','mother_occupation','parent_income','parent_email','parent_contact_no','parent_alternat_no','parent_whatsapp','pincode','city','state','address','active','created_at','updated_at'];
+
     protected $table = 'students';
 
    // Define the belongsTo relationship
    public function institutes(){
       return $this->belongsTo(Institute::class, 'institute_id', 'id');
    }
+
+   public function learn_spaces(){
+      return $this->belongsTo(LearnSpace::class, 'learn_space_id', 'id');
+   }
+
 
     // Define the hasMany relationship
     public function student_attendances(){

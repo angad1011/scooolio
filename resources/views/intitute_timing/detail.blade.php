@@ -78,7 +78,7 @@
                             <td>{{ $scheduled->break_durations}} Minuts</td>
                         </tr>
                         <tr>
-                            <td class="">Prayer Time</td>
+                            <td class="">Assembly</td>
                             <td>{{ $scheduled->prayer_time}} Minuts</td>
                             <td class="">No. Of Lecture</td>
                             <td> Session-1 :  {{ $scheduled->no_of_lect_fist_session}} | Session-2 :  {{ $scheduled->no_of_lect_secound_session}}</td>

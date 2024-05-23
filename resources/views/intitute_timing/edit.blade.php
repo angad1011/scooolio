@@ -35,8 +35,8 @@
             <input id="shift_end" name="shift_end" type="time" class="form-control" placeholder="Timing End" value="{{$instituteTiming->shift_end}}" required>
         </div>  
         <div class="intro-y g-col-12 g-col-sm-3">
-            <label for="prayer_time" class="form-label">Prayer Time</label>
-            <input id="prayer_time" name="prayer_time" type="text" class="form-control" placeholder="Prayer Time" value="{{$instituteTiming->prayer_time}}" required>
+            <label for="prayer_time" class="form-label">Assembly</label>
+            <input id="prayer_time" name="prayer_time" type="text" class="form-control" placeholder="Assembly" value="{{$instituteTiming->prayer_time}}" required>
         </div>  
         <div class="intro-y g-col-12 g-col-sm-3">
             <label for="break_time_start" class="form-label">Breake Time</label>

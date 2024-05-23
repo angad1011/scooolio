@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\Teacher;
 use App\Models\LearnSpace;
 use App\Models\Subject;
@@ -26,7 +27,11 @@ class TeacherController extends Controller
 
     public function index(){
         $instituteId = Auth::user()->institute_id;
-        $teachers = Teacher::where('institute_id', $instituteId)->with('shift_types')->get();
+       
+        $teacherQuerry = Teacher::where('institute_id', $instituteId)
+                    ->with('shift_types');
+
+        $teachers = $teacherQuerry->paginate(10);
 
         return view('teachers.index',compact('teachers'));
     }
@@ -355,7 +360,7 @@ class TeacherController extends Controller
 
         // dd($timeTables);
 
-       return view('teachers.time_table',compact('teacher','lectureSession','lectureSession','weekDays','timeTables'));
+       return view('teachers.time_table',compact('teacher','lectureSession','weekDays','timeTables'));
 
     }
 

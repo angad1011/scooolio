@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\StudentClass;
 use App\Models\LearnSpace;
 use App\Models\Students;
@@ -23,8 +24,9 @@ class StudentClassController extends Controller
         /*Academic Year*/ 
         $academicYear = AcademicYear::where('its_current_year', true)->first();
 
-        $students = StudentClass::all()->where('institute_id',$instituteId);
+        $students = StudentClass::where('institute_id',$instituteId)->paginate(10);
 
+        
 
         /*Class Details*/ 
         $classDetail = LearnSpace::with('shift_types','teachers')->findOrFail($classId);

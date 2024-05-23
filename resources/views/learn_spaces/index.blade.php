@@ -22,6 +22,7 @@ Class List
                     <th class="text-nowrap">Class Teacher</th>
                     <th class="text-nowrap">Class Shift</th>
                     <th class="text-nowrap">No Of Students</th>
+                    <th class="text-nowrap">Time Table</th>
                     <th class="text-nowrap">Action</th>
                 </tr>
             </thead>
@@ -32,13 +33,20 @@ Class List
                     <td>{{ $learnSpace->teachers->name }}</td>
                     <td>{{$learnSpace->shift_types->name}}</td>
                     <td>{{$learnSpace->no_of_student}}</td>
+                    <td class="table-report__action w-56">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <a class="d-flex align-items-center me-3" href="{{ route('time_tables.add',$learnSpace->id) }}"> <i data-feather="clock" class="w-4 h-4 me-1"></i> Time Table 
+                            </a>
+                        </div>
+                    </td>
                      <td class="table-report__action w-56">
                         <div class="d-flex justify-content-start align-items-center">
                             <a class="d-flex align-items-center me-3" href="{{ route('learn_spaces.edit',$learnSpace->id) }}"> 
                                 <i data-feather="check-square" class="w-4 h-4 me-1"></i> Edit 
                             </a>
                             <a class="d-flex align-items-center me-3" href="{{ route('learn_spaces.show',$learnSpace->id) }}"> <i data-feather="eye"
-                                    class="w-4 h-4 me-1"></i> View </a>
+                                    class="w-4 h-4 me-1"></i> View 
+                            </a>
                         </div>
                     </td>
                   </tr>

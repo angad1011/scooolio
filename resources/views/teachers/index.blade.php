@@ -14,16 +14,12 @@ Teacher List
 </div>
 <!-- BEGIN: HTML Table Data -->
 <div class="intro-y box p-5 mt-5">
-@if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
      <div class="intro-y g-col-12 ooverflow-x-auto overflow-lg-visible mt-5">
         <table class="table table-report mt-n2">
             <thead>
                 <tr>
                     <th class="text-nowrap">Profile Pic</th>
+                    <th class="text-nowrap">EMP ID</th>
                     <th class="text-nowrap">Shift</th>
                     <th class="text-nowrap">Name</th>
                     <th class="text-nowrap">Contact</th>
@@ -49,6 +45,7 @@ Teacher List
                         </div>
                     </div>
                     </td>  
+                    <td>{{ $teacher->employee_id}}</td>
                     <td>{{ $teacher->shift_types->name}}</td>
                     <td>{{ $teacher->name }}</td>
                     <td>{{ $teacher->contact }}</td>
@@ -79,6 +76,8 @@ Teacher List
              </tbody>
         </table>
      </div>
+     <!-- Pagunation Start Here -->
+     @include('partials.pagination', ['items' => $teachers])
 </div>
 @endsection
 
