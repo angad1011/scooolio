@@ -12,6 +12,7 @@
     <title>Attendance</title>
     <!-- BEGIN: CSS Assets-->
     <link rel="stylesheet" href="dist/css/app.css" />
+    <link rel="stylesheet" href="dist/css/calendar.css" />
     <!-- END: CSS Assets-->
 </head>
 <!-- END: Head -->
@@ -124,7 +125,8 @@
                                     <div class="input-group w-100 mx-auto">
                                         <div id="input-group-email" class="input-group-text"> <i data-feather="calendar"
                                                 class="w-4 h-4"></i> </div>
-                                        <input type="text" class="datepicker form-control" data-single-mode="true">
+                                        <input type="text" class="datepicker form-control" id="dateInput"
+                                            data-single-mode="true">
                                     </div>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-2">
@@ -141,7 +143,8 @@
             <!-- BEGIN: Calendar Content -->
             <div class="g-col-12 g-col-xl-12 g-col-xxl-12 mt-5">
                 <div class="box p-5">
-                    <div class="full-calendar" id="calendar"></div>
+                    <!-- <input type="date" id="dateInput"> -->
+                    <div id='customCalendar'></div>
                 </div>
             </div>
             <!-- END: Calendar Content -->
@@ -156,6 +159,7 @@
 
     <!-- <script src="dist/js/app.js"></script> -->
     <script src="dist/js/custom.js"></script>
+    <script src="dist/js/calendar.js"></script>
     <!-- END: JS Assets-->
 </body>
 
