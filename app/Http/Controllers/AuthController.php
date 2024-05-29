@@ -69,6 +69,8 @@ class AuthController extends Controller
         
          $teacher = TeacherActivation::where('username',$request->username)->first();
 
+         // echo $teacher;exit;
+
          if (!$teacher || !Hash::check($request->password, $teacher->password)) {
             return response([
                 'message' => ['These credentials do not match our records.']
@@ -103,8 +105,8 @@ class AuthController extends Controller
 
 
         $newPassword = Str::random(10); // Generate a random password
-        // $teacherActivation->password = bcrypt($newPassword);
-        // $teacherActivation->save();
+        $teacherActivation->password = bcrypt($newPassword);
+        $teacherActivation->save();
 
          // Send email with new password
         \Mail::raw("Your new password is: $newPassword", function($message) use ($teacher) {

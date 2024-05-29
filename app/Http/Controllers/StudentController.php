@@ -9,6 +9,8 @@ use App\Imports\StudentsImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Students;
 use App\Models\LearnSpace;
+use App\Models\AcademicYear;
+use App\Models\StudentAttendace;
 
 
 class StudentController extends Controller
@@ -138,12 +140,63 @@ class StudentController extends Controller
      * Display the specified resource.
      */
     public function show(string $id){
-        
+            
+         // dd($id);   
+
+        /*InstitudeIds*/    
+        $instituteId = Auth::user()->institute_id;
+
+         /*Student Details*/
         $student = Students::with('learn_spaces')->findOrFail($id);
 
         // dd($student);
+        /*Current Class*/
+        $currentClassId = (isset($student->learn_spaces->id) && (!empty($student->learn_spaces->id))) ? $student->learn_spaces->id : '';
 
-        return view('students.show',compact('student'));
+
+        // dd($currentClassId);
+
+        /*Defaul Year*/
+        $academicYear = AcademicYear::where(['its_current_year'=>true,'institute_id'=>$instituteId])->first();
+        $academicYearId = $academicYear->id;
+
+        /*Student Attendace Percentage*/
+        $studentAttendances = StudentAttendace::where(['student_id'=>$id,'learn_space_id'=>$currentClassId,'academic_year_id'=>$academicYearId,'institute_id'=>$instituteId])->get();
+
+        // dd($studentAttendances);
+
+        if(!empty($studentAttendances)){
+            $totalDays = count($studentAttendances);
+
+
+            $presentDays = $apsentDay =  $precentPercentage = $absentPercentage = 0;;
+
+            foreach ($studentAttendances as $key => $attendance) {
+                
+                if ($attendance->attendance_type_id == 1) {
+                    $presentDays++;
+                }
+
+                if ($attendance->attendance_type_id == 2) {
+                    $apsentDay++;
+                }
+
+            }
+
+            if($totalDays > 0){
+                $precentPercentage = ($presentDays / $totalDays) * 100;
+                $precentPercentage = number_format($precentPercentage,2);
+
+                $absentPercentage = ($apsentDay / $totalDays) * 100;    
+                $absentPercentage = number_format($absentPercentage,2);
+            }
+
+        }
+
+
+
+
+        return view('students.show',compact('student','absentPercentage','precentPercentage'));
     }
 
     /**

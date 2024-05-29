@@ -43,7 +43,7 @@
          <div class="mt-6 mt-lg-0 flex-1 dark-text-gray-300 px-5 border-start border-end border-gray-200 dark-border-dark-5 border-top border-top-lg-0 pt-5 pt-lg-0">
               <div class="fw-medium text-center text-lg-start mt-lg-3">Attendance</div>
               <div class="d-flex flex-column justify-content-center align-items-center align-items-lg-start mt-4">
-                 <div class="truncate white-space-sm-normal d-flex align-items-center fs-4xl"> 90%</div>
+                 <div class="truncate white-space-sm-normal d-flex align-items-center fs-4xl"> {{$precentPercentage.'%'}}</div>
                  <div class="dropdown ms-auto">
                 <a class="dropdown-toggle w-5 h-5 d-block" href="javascript:;" aria-expanded="false"
                     data-bs-toggle="dropdown"> <i data-feather="more-horizontal"

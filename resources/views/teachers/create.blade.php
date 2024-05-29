@@ -27,7 +27,7 @@ Add New Teacher
                                     <div class="g-col-4 g-col-xxl-3">
                                         <input id="institute_id" type="hidden" name="institute_id" class="form-control" value="{{$instituteId}}">
                                         <label for="name" class="form-label">Shift Type</label>
-                                         <select class="form-select me-sm-2" placeholder="Select Class" name="shift_type_id">
+                                         <select class="form-select me-sm-2" placeholder="Select Class" name="shift_type_id" required>
                                              <option value="" selected disabled>Select Shift</option>
                                             @foreach ($shiftTypes as $shiftType)
                                             <option value="{{ $shiftType['id'] }}">{{ $shiftType['name'] }}</option>
@@ -38,7 +38,7 @@ Add New Teacher
                                         <div>
                                             <label for="update-profile-form-1" class="form-label">Emp ID</label>
                                             <input id="update-profile-form-1" type="text" class="form-control"
-                                                name="employee_id" value="{{$emplyeecode}}" readonly>
+                                                name="employee_id" value="{{$emplyeecode}}" required>
                                         </div>
                                     </div>
                                     <div class="g-col-4 g-col-xxl-3">
@@ -150,7 +150,7 @@ Add New Teacher
                             </div>
                             <div class="g-col-4 g-col-xxl-4">
                                 <label for="name" class="form-label">Martial Status</label>
-                                <select class="form-select me-sm-2" name="martial_status"  aria-label="Default select example">
+                                <select class="form-select me-sm-2" name="martial_status"  aria-label="Default select example" required>
                                     <option value="" selected disabled>Select Martial Status</option>
                                     <option value="married">Married</option>
                                     <option value="unmarried">Unmarried</option>
@@ -161,7 +161,7 @@ Add New Teacher
                         <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
                             <div class="g-col-4 g-col-xxl-4">
                                 <label for="name" class="form-label">Nationality</label>
-                                <select class="form-select me-sm-2" name="nationality"  aria-label="Default select example">
+                                <select class="form-select me-sm-2" name="nationality"  aria-label="Default select example" required>
                                     <option value="" selected disabled>Select Nationality</option>
                                     <option value="india">India</option>
                                     <option value="nepal">Nepal</option>
@@ -170,7 +170,7 @@ Add New Teacher
                             </div>
                             <div class="g-col-4 g-col-xxl-4">
                                 <label for="name" class="form-label">Religion</label>
-                                <select class="form-select me-sm-2" name="religion" aria-label="Default select example">
+                                <select class="form-select me-sm-2" name="religion" aria-label="Default select example" required>
                                     <option value="" selected disabled>Select Religion</option>
                                     <option value="Hindu">Hindu</option>
                                     <option value="Muslim">Muslim</option>
@@ -182,20 +182,21 @@ Add New Teacher
                             </div>
                             <div class="g-col-4 g-col-xxl-4">
                                 <label for="name" class="form-label">Category</label>
-                                <select class="form-select me-sm-2" name="cast_catogory" aria-label="Default select example">
+                                <!-- <select class="form-select me-sm-2" name="cast_catogory" aria-label="Default select example">
                                     <option value="" selected disabled>Select Category</option>
                                     <option value="GN">GN</option>
                                     <option value="OBC">OBC</option>
                                     <option value="ST">ST</option>
                                     <option value="NT">NT</option>
-                                </select>
+                                </select> -->
+                                <input id="update-profile-form-1" type="text" class="form-control" placeholder="Category" name="cast_catogory" required>
                             </div>
                         </div>
                         <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
                             <div class="g-col-4 g-col-xxl-4">
                                 <label for="name" class="form-label">Qualification</label>
                                 <select class="form-select me-sm-2" name="qualification" aria-label="Default select example"
-                                    id="qualificationSelect">
+                                    id="qualificationSelect" required>
                                     <option value="" selected disabled>Select Qualification</option>
                                     <option value="High School">High School</option>
                                     <option value="Diploma">Diploma</option>
@@ -223,7 +224,7 @@ Add New Teacher
                             </div>
                             <div class="g-col-4 g-col-xxl-4">
                                 <label for="Institute" class="form-label">Institute</label>
-                                <input id="Institute" type="text" name="institute" class="form-control" placeholder="Institute">
+                                <input id="Institute" type="text" name="institute" class="form-control" placeholder="Institute" required>
                             </div>
                         </div>
                         <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
@@ -240,7 +241,7 @@ Add New Teacher
                                 <div class="input-group w-100 mx-auto">
                                     <div id="input-group-email" class="input-group-text"> <i data-feather="calendar"
                                             class="w-4 h-4"></i> </div>
-                                    <input type="text" name="passing_year" class="datepicker form-control" data-single-mode="true">
+                                    <input type="text" name="passing_year" class="datepicker form-control" data-single-mode="true" required>
                                 </div>
                             </div>
                         </div>
@@ -263,7 +264,7 @@ Add New Teacher
                                         <label for="update-profile-form-1" class="form-label">
                                             Pincode</label>
                                         <input id="update-profile-form-1" type="text" class="form-control"
-                                            placeholder="Pin Code" name="pincode">
+                                            placeholder="Pin Code" name="pincode" required>
                                     </div>
                                 </div>
 
@@ -272,12 +273,12 @@ Add New Teacher
                                         <label for="update-profile-form-1" class="form-label">
                                             City</label>
                                         <input id="update-profile-form-1" type="text" class="form-control"
-                                            placeholder="City" name="city">
+                                            placeholder="City" name="city" required>
                                     </div>
                                 </div>
                                 <div class="g-col-4 g-col-xxl-4">
                                     <label for="name" class="form-label">State</label>
-                                    <select name="state" class="form-select me-sm-2" aria-label="Default select example">
+                                    <select name="state" class="form-select me-sm-2" aria-label="Default select example" required>
                                         <option value="" selected disabled>Select State</option>
                                         <option value="Andhra Pradesh">Andhra Pradesh</option>
                                         <option value="Arunachal Pradesh">Arunachal Pradesh</option>

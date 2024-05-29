@@ -26,6 +26,7 @@ use App\Http\Controllers\AcademicYearController;
 use App\Http\Controllers\StudentClassController;
 use App\Http\Controllers\StudentAttendanceController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\AppScreenController;
 use App\Http\Middleware\Authenticate;
 
 
@@ -52,6 +53,9 @@ Route::resource('roles', RolesController::class);
 
 /*Notice Route*/ 
 Route::resource('notices', NoticeController::class);
+
+/*App Screen Route*/
+Route::resource('app_screens', AppScreenController::class);
 
 /*Branche Route*/
 Route::resource('boards', BoardsController::class);

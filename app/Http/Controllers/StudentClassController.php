@@ -21,12 +21,19 @@ class StudentClassController extends Controller
         
         $instituteId = Auth::user()->institute_id;
         
+
+
+        // dd($classId);
+
         /*Academic Year*/ 
-        $academicYear = AcademicYear::where('its_current_year', true)->first();
+        $academicYear = AcademicYear::where(['its_current_year'=>true,'institute_id'=>$instituteId])->first();
+        $academicYearId = $academicYear->id;
 
-        $students = StudentClass::where('institute_id',$instituteId)->paginate(10);
+        // dd($academicYear);
 
-        
+        $students = StudentClass::where(['institute_id'=>$instituteId,'learn_space_id'=>$classId,'academic_year_id'=>$academicYearId])->get();
+
+        // dd($students);
 
         /*Class Details*/ 
         $classDetail = LearnSpace::with('shift_types','teachers')->findOrFail($classId);
@@ -43,15 +50,17 @@ class StudentClassController extends Controller
         $instituteId = Auth::user()->institute_id;
        
         /*Academic Year*/ 
-        $academicYear = AcademicYear::where('its_current_year', true)->first();
+        $academicYear = AcademicYear::where(['its_current_year'=>true,'institute_id'=>$instituteId])->first();
+        $academicYearId = $academicYear->id;
 
         /*Class Details*/ 
         $classDetail = LearnSpace::with('shift_types','teachers')->findOrFail($classId);
         $noOfStudent = $classDetail->no_of_student;
 
-    
+        
         /*Student List*/
-        $students = Students::all();
+        $students = Students::where('institute_id',$instituteId)->get();
+
         $studentDetails = StudentClass::where(['institute_id'=>$instituteId,'learn_space_id'=>$classId])->get();
 
         $studentDetailCount = count($studentDetails);

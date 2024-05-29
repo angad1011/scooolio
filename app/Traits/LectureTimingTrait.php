@@ -25,7 +25,7 @@ trait LectureTimingTrait
         $period_duration = $first_session_duration / $noOfLecSesionOne;
 
         // Calculate start and end time for each period in the first session
-        $periods_first_session = [];
+        $periods_first_session = $periods_first_session_api = [];
         $current_time = $first_session_start_time;
         for ($i = 1; $i <= $noOfLecSesionOne; $i++) {
             $period_start = date('h:i A', $current_time);
@@ -36,6 +36,13 @@ trait LectureTimingTrait
                 'start_time' => $period_start,
                 'end_time' => $period_end
             ];
+            
+            $periods_first_session_api['Session 1'][] = [
+                'period_number' => $i,
+                'start_time' => $period_start,
+                'end_time' => $period_end
+            ]; 
+
         }
 
         $breakDuration =  $break_start_time + $break_duration * 60;
@@ -60,7 +67,7 @@ trait LectureTimingTrait
 
 
         // Calculate start and end time for each period in the second session
-        $periods_second_session = [];
+        $periods_second_session =  $periods_second_session_api = [];
         $current_time = $breakDuration;
         for ($i = 1; $i <= $noOfLecSesionTwo; $i++) {
             $period_start = date('h:i A', $current_time);
@@ -71,6 +78,12 @@ trait LectureTimingTrait
                 'start_time' => $period_start,
                 'end_time' => $period_end
             ];
+
+            $periods_second_session_api['Session 2'][] = [
+                'period_number' => $noOfLecSesionOne + $i,
+                'start_time' => $period_start,
+                'end_time' => $period_end
+            ]; 
         }
 
         // return [
@@ -80,9 +93,13 @@ trait LectureTimingTrait
         // ];
 
         $session = array_merge($periods_first_session,$periods_second_session);
+        $apiSession = array_merge($periods_first_session_api,$periods_second_session_api);
+
         $breakModule = $breakSetup;
 
-        return ['session'=>$session,'breakModule'=>$breakModule];
+
+
+        return ['session'=>$session,'breakModule'=>$breakModule,'apiSession'=>$apiSession];
 
 
 }

@@ -29,7 +29,7 @@ Update Teacher
                             <div class="g-col-4 g-col-xxl-3">
                                 <input id="institute_id" type="hidden" name="institute_id" class="form-control" value="{{$instituteId}}">
                                 <label for="name" class="form-label">Shift Type</label>
-                                 <select class="form-select me-sm-2" placeholder="Select Class" name="shift_type_id">
+                                 <select class="form-select me-sm-2" placeholder="Select Class" name="shift_type_id" required>
                                      <option value="" selected disabled>Select Shift</option>
                                     @foreach ($shiftTypes as $shiftType)
                                     <option value="{{ $shiftType['id'] }}" {{($teacher->shift_type_id == $shiftType['id']) ? 'selected' : ''}}>{{ $shiftType['name'] }}</option>
@@ -40,7 +40,7 @@ Update Teacher
                                 <div>
                                     <label for="update-profile-form-1" class="form-label">Emp ID</label>
                                     <input id="update-profile-form-1" type="text" class="form-control"
-                                        name="employee_id" value="{{$emplyeecode}}" readonly>
+                                        name="employee_id" value="{{$emplyeecode}}" required>
                                 </div>
                             </div>
                             <div class="g-col-4 g-col-xxl-3">
@@ -152,7 +152,7 @@ Update Teacher
                     </div>
                     <div class="g-col-4 g-col-xxl-4">
                         <label for="name" class="form-label">Martial Status</label>
-                        <select class="form-select me-sm-2" name="martial_status"  aria-label="Default select example">
+                        <select class="form-select me-sm-2" name="martial_status"  aria-label="Default select example" required>
                             <option value="" selected disabled>Select Martial Status</option>
                             <option value="married" {{($teacher->martial_status == 'married') ? 'selected' : ''}}>Married</option>
                             <option value="unmarried" {{($teacher->martial_status == 'unmarried') ? 'selected' : ''}}>Unmarried</option>
@@ -163,7 +163,7 @@ Update Teacher
                 <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
                     <div class="g-col-4 g-col-xxl-4">
                         <label for="name" class="form-label">Nationality</label>
-                        <select class="form-select me-sm-2" name="nationality"  aria-label="Default select example">
+                        <select class="form-select me-sm-2" name="nationality"  aria-label="Default select example" required>
                             <option value="" selected disabled>Select Nationality</option>
                             <option value="india" {{($teacher->nationality == 'india') ? 'selected' : ''}}>India</option>
                             <option value="nepal" {{($teacher->nationality == 'nepal') ? 'selected' : ''}} >Nepal</option>
@@ -172,7 +172,7 @@ Update Teacher
                     </div>
                     <div class="g-col-4 g-col-xxl-4">
                         <label for="name" class="form-label">Religion</label>
-                        <select class="form-select me-sm-2" name="religion" aria-label="Default select example">
+                        <select class="form-select me-sm-2" name="religion" aria-label="Default select example" required>
                             <option value="" selected disabled>Select Religion</option>
                             <option value="Hindu" {{($teacher->religion == 'Hindu') ? 'selected' : ''}}>Hindu</option>
                             <option value="Muslim" {{($teacher->religion == 'Muslim') ? 'selected' : ''}}>Muslim</option>
@@ -184,20 +184,21 @@ Update Teacher
                     </div>
                     <div class="g-col-4 g-col-xxl-4">
                         <label for="name" class="form-label">Category</label>
-                        <select class="form-select me-sm-2" name="cast_catogory" aria-label="Default select example">
+                        <!-- <select class="form-select me-sm-2" name="cast_catogory" aria-label="Default select example">
                             <option value="" selected disabled>Select Category</option>
                             <option value="GN" {{($teacher->cast_catogory == 'GN') ? 'selected' : ''}}>GN</option>
                             <option value="OBC" {{($teacher->cast_catogory == 'OBC') ? 'selected' : ''}}>OBC</option>
                             <option value="ST" {{($teacher->cast_catogory == 'ST') ? 'selected' : ''}}>ST</option>
                             <option value="NT" {{($teacher->cast_catogory == 'NT') ? 'selected' : ''}}>NT</option>
-                        </select>
+                        </select> -->
+                        <input id="update-profile-form-1" type="text" class="form-control" placeholder="Category" value="{{$teacher->cast_catogory}}" name="cast_catogory" required>
                     </div>
                 </div>
                 <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
                     <div class="g-col-4 g-col-xxl-4">
                         <label for="name" class="form-label">Qualification</label>
                         <select class="form-select me-sm-2" name="qualification" aria-label="Default select example"
-                            id="qualificationSelect">
+                            id="qualificationSelect" required>
                             <option value="" selected disabled>Select Qualification</option>
                             <option value="High School" {{($teacher->qualification == 'High School') ? 'selected' : ''}}>High School</option>
                             <option value="Diploma" {{($teacher->qualification == 'Diploma') ? 'selected' : ''}}>Diploma</option>
@@ -225,7 +226,7 @@ Update Teacher
                     </div>
                     <div class="g-col-4 g-col-xxl-4">
                         <label for="Institute" class="form-label">Institute</label>
-                        <input id="Institute" type="text" name="institute" value="{{$teacher->institute}}" class="form-control" placeholder="Institute">
+                        <input id="Institute" type="text" name="institute" value="{{$teacher->institute}}" class="form-control" placeholder="Institute" required>
                     </div>
                 </div>
                 <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
@@ -243,7 +244,7 @@ Update Teacher
                         <div class="input-group w-100 mx-auto">
                             <div id="input-group-email" class="input-group-text"> <i data-feather="calendar"
                                     class="w-4 h-4"></i> </div>
-                            <input type="text" name="passing_year" value="{{$teacher->passing_year}}" class="datepicker form-control" data-single-mode="true">
+                            <input type="text" name="passing_year" value="{{$teacher->passing_year}}" class="datepicker form-control" data-single-mode="true" required>
                         </div>
                     </div>
                     <div class="g-col-4 g-col-xxl-4">
@@ -277,7 +278,7 @@ Update Teacher
                                 <label for="update-profile-form-1" class="form-label">
                                     Pincode</label>
                                 <input id="update-profile-form-1" type="text" class="form-control"
-                                    placeholder="Pin Code" name="pincode" value="{{$teacher->pincode}}">
+                                    placeholder="Pin Code" name="pincode" value="{{$teacher->pincode}}" required>
                             </div>
                         </div>
 
@@ -286,12 +287,12 @@ Update Teacher
                                 <label for="update-profile-form-1" class="form-label">
                                     City</label>
                                 <input id="update-profile-form-1" type="text" class="form-control"
-                                    placeholder="City" name="city" value="{{$teacher->city}}">
+                                    placeholder="City" name="city" value="{{$teacher->city}}" required>
                             </div>
                         </div>
                         <div class="g-col-4 g-col-xxl-4">
                             <label for="name" class="form-label">State</label>
-                            <select name="state" class="form-select me-sm-2" aria-label="Default select example">
+                            <select name="state" class="form-select me-sm-2" aria-label="Default select example" required>
                                 <option value="" selected disabled>Select State</option>
                                 <option value="Andhra Pradesh" {{($teacher->state == 'Andhra Pradesh') ? 'selected' : ''}}>Andhra Pradesh</option>
                                 <option value="Arunachal Pradesh" {{($teacher->state == 'Arunachal Pradesh') ? 'selected' : ''}}>Arunachal Pradesh</option>

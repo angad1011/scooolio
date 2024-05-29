@@ -55,13 +55,8 @@
                                         <div class="box p-5">
                                             <div class="d-flex">
                                                 <i data-feather="user" class="report-box__icon text-theme-9"></i>
-                                                <div class="ms-auto">
-                                                    <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                                        title="22% Higher than last month"> 5% <i
-                                                            data-feather="chevron-up" class="w-4 h-4 ms-0.5"></i> </div>
-                                                </div>
                                             </div>
-                                            <div class="report-box__total fs-3xl fw-medium mt-6">90%</div>
+                                            <div class="report-box__total fs-3xl fw-medium mt-6">{{$precentPercentage.'%'}}</div>
                                             <div class="fs-base text-gray-600 mt-1">Attendance</div>
                                         </div>
                                     </div>

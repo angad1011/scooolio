@@ -49,7 +49,7 @@
                 <div class="intro-y g-col-12 g-col-sm-4">
                     <input name="teacher_id" type="hidden" value="{{$teacherId}}"> 
                     <label for="username" class="form-label">Username</label>
-                    <input id="username" type="text" name="username" class="form-control" placeholder="Username" required>
+                    <input id="username" type="text" name="username" class="form-control" placeholder="Username" value="{{$teacher->email}}" required>
                 </div>
                 <div class="intro-y g-col-12 g-col-sm-4">
                     <label for="password" class="form-label">Password</label>
@@ -80,17 +80,19 @@
                     <input id="password" type="password" class="form-control" name="password" placeholder="Password" value="{{$teacherActivation->password}}" readonly="true" required> 
                 </div>
                 <div class="intro-y g-col-12 g-col-sm-3">
-             <label for="name" class="form-label">Status</label>
-             <div class="d-flex justify-content-start align-items-center">
-                <div class="mt-2">
-                    <div class="form-check form-switch"> 
-                        <input id="checkbox-switch-7"class="form-check-input" type="checkbox" name="active" <?php echo ($teacherActivation->active == 1) ? 'checked' : ''; ?>> 
-                    <label class="form-check-label" for="checkbox-switch-7"></label> </div>
-                </div>
+                     <label for="name" class="form-label">Status</label>
+                     <div class="d-flex justify-content-start align-items-center">
+                        <div class="mt-2">
+                            <div class="form-check form-switch"> 
+                                <input id="checkbox-switch-7"class="form-check-input" type="checkbox" name="active" <?php echo ($teacherActivation->active == 1) ? 'checked' : ''; ?>> 
+                            <label class="form-check-label" for="checkbox-switch-7"></label> </div>
+                        </div>
 
-            </div>
-         </div>
-                    
+                    </div>
+                 </div>
+                 <div class="intro-y g-col-12 g-col-sm-4 d-flex mt-5">
+                    <button class="btn btn-primary w-24 ms-2 changePSW" type="button" style="width: 100% !important;">Change Password</button>
+                 </div>   
             </div> 
             <?php }?>
             <!-- Submit Form -->
@@ -103,4 +105,10 @@
         <!-- END: Display Information -->
     </div>
 </div>
+<script type="text/javascript">
+    $('.changePSW').click(function(){
+        $('#password').attr('readonly',false);
+        $('#password').val('');
+    });
+</script>
 @endsection

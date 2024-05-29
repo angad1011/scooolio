@@ -84,7 +84,10 @@ class LearnSpaceController extends Controller
         ->where('shift_type_id', $shiftTypeId)
         ->first();
          
+        // dd($timing); 
         $classTiming = $this->lecture_timing($timing);
+
+        // dd($classTiming);
 
         $lectureSession = $classTiming['session']; 
 
@@ -124,7 +127,7 @@ class LearnSpaceController extends Controller
     public function update(Request $request, string $id){
         $learnSpace = LearnSpace::find($id);
         if (!$learnSpace) {
-            return redirect()->route('LearnSpace.index')->with('error', 'User not found.');
+            return redirect()->route('learn_spaces.index')->with('error', 'User not found.');
        }
 
     //    dd($request);

@@ -24,7 +24,7 @@
 <div>
 <label>Select Class</label>
 <div class="mt-2"> 
-<select data-placeholder="Select your favorite actors" id="classDropdown"
+<select data-placeholder="Select your class" id="classDropdown"
     class="tom-select w-full">
     <option value="0" selected>Select Class</option>
     @foreach ($assignClasses as $assignClass)
@@ -40,7 +40,7 @@
 <div>
 <label>Class Teacher</label>
 <div class="mt-2"> 
-<select data-placeholder="Select your favorite actors" id="teacherDropdown"
+<select data-placeholder="Select your teacher" id="teacherDropdown"
     class="tom-select w-full">
     <option value="0" selected>Class Teacher</option>
      @foreach ($teachers as $teacher)

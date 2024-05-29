@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AppScreenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +23,17 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/teacher_profile',  [TeacherController::class, 'teacher_profile'])->name('teacher_profile');
     Route::get('/teacher_time_table',  [TeacherController::class, 'time_table_api'])->name('teacher_time_table');
     Route::get('/week_day/{id}',  [TeacherController::class, 'teacher_day_time_table']);
+    Route::get('/today_time_table',  [TeacherController::class, 'current_day_timeTable']);
+    Route::get('/class_details',  [TeacherController::class, 'class_details']);
+    Route::get('/week_day_list',  [TeacherController::class, 'weekdays']);
+    Route::get('/attendance_types',  [TeacherController::class, 'attendance_types']);
+
+
 });
 
 Route::post("/login",[AuthController::class,'teacherLogin']);
 Route::post("/forget_password_teacher",[AuthController::class,'teacherForgetPassword']);
+Route::post("/screen",[AppScreenController::class,'screens']);
 
 
 
