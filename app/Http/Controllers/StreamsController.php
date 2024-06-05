@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Stream;
 
-class StreamsController extends Controller
+class StreamsController extends BaseController
 {
     /**
      * Display a listing of the resource.

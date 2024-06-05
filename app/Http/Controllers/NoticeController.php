@@ -3,14 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Notice;
 
-class NoticeController extends Controller{
+class NoticeController extends BaseController{
     
     public function index(){
-         
-         $currentDate = date('d-m-Y');
-        $notices = Notice::paginate(10);
+        
+        $roleId = Auth::user()->role_id;
+       $instituteId = Auth::user()->institute_id;
+        $currentDate = date('d-m-Y');
+
+       // Conditional query based on the role ID
+        if ($roleId == 1) {
+            // For role ID 1, show all notices with an empty institut_id
+            $notices = Notice::whereNull('institute_id')->paginate(10);
+        } else {
+            // For other roles, show all notices with a non-empty institute_id
+            $notices = Notice::where('institute_id',$instituteId)->paginate(10);
+        }
+
+        // $notices = Notice::paginate(10);
 
         // dd($notices);
 
@@ -22,8 +35,11 @@ class NoticeController extends Controller{
      * Show the form for creating a new resource.
      */
     public function create(){
+        
+        $instituteId = Auth::user()->institute_id;
 
-        return view('notices.create');
+
+        return view('notices.create',compact('instituteId'));
     }
 
      /**
@@ -40,12 +56,15 @@ class NoticeController extends Controller{
              'end_date' => ['required']
         ]);   
 
+        $active = $request->has('active') ? 1 : 0;
+
         $notce = Notice::create([
+            'institute_id' => $request->input('institute_id'),
             'title' => $request->input('title'),
             'message' => $request->input('message'),
             'start_date' => $request->input('start_date'),
             'end_date' => $request->input('end_date'),
-            'active' => $request->input('active'),
+            'active' => $active,
         ]);
 
         return redirect()->route('notices.index');
@@ -88,8 +107,12 @@ class NoticeController extends Controller{
         if (!$notice) {
              return redirect()->route('notices.index')->with('error', 'Notice not found.');
         }
+        $active = $request->has('active') ? 1 : 0;
 
-        $notice->update($request->all()); 
+        $data = $request->all();
+        $data['active'] =  $active;
+        
+        $notice->update($data); 
  
         //  $notice->update([
         //      'name' => $request->input('name'),

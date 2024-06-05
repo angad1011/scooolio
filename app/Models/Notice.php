@@ -9,8 +9,13 @@ class Notice extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title','message','start_date','end_date','active','created_at','updated_at'];
+    protected $fillable = ['title','institute_id','message','start_date','end_date','active','created_at','updated_at'];
 
     protected $table = 'notices';
+
+    // Define the belongsTo relationship
+    public function institutes(){
+        return $this->belongsTo(Institute::class, 'institute_id', 'id');
+    }
 
 }

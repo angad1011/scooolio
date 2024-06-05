@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TeacherActivationMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use App\Models\TeacherActivation;
+use App\Models\Teacher;
 
-class TeacherActivationController extends Controller
+class TeacherActivationController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -40,13 +43,20 @@ class TeacherActivationController extends Controller
 
         $instituteId = Auth::user()->institute_id;
 
+        $teacherId = $request->input('teacher_id');
+
+        $teacher = Teacher::findOrFail($teacherId);
+
+
+        $password = $request->input('password');
+
         $teacherActivation = new TeacherActivation(); 
 
         if(empty($request->input('id'))){
             $teacherActivation->institute_id = $instituteId;
-            $teacherActivation->teacher_id = $request->input('teacher_id');
+            $teacherActivation->teacher_id = $teacherId;
             $teacherActivation->username = $request->input('username');
-            $teacherActivation->password = bcrypt($request->input('password'));
+            $teacherActivation->password = bcrypt($password);
             $teacherActivation->active = $active;
 
              // Save the record to the database
@@ -56,13 +66,22 @@ class TeacherActivationController extends Controller
                 ['id' => $request->input('id')], // Search condition
                 [
                     'username' => $request->input('username'),
-                    'password' => bcrypt($request->input('password')),
+                    'password' => bcrypt($password),
                     'active' => $active
                 ]
             );
         }
 
-        return redirect()->back()->with('success', 'Activation Done!');
+        $emailData = [];
+
+        $emailData['name'] = $teacher->name;
+        $emailData['password'] = $password; 
+
+         // Send the email
+        Mail::to('shehzad@puratech.in')->send(new TeacherActivationMail($emailData));
+
+
+        return redirect()->back()->with('success', 'Teacher Activation Done!');
 
     }
 

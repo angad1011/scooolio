@@ -12,7 +12,7 @@ use App\Models\AcademicYear;
 
 
 
-class StudentClassController extends Controller
+class StudentClassController extends BaseController
 {
      /**
      * Display a listing of the resource.

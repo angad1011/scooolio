@@ -35,26 +35,30 @@
                     @endif
                     <form method="POST" action="{{ route('login') }}">
                      @csrf    
-                    <!-- <div class="mt-3">
+                    <div class="mt-3">
                         <div class="d-flex flex-coloumn flex-sm-row mt-2">
                             <div class="form-check me-2">
-                                <input id="radio-switch-4" class="form-check-input" checked type="radio"
-                                    name="horizontal_radio_button" value="horizontal-radio-chris-evans">
+                                <input id="radio-switch-4" class="form-check-input loginType" checked type="radio"
+                                    name="login_type" value="1">
                                 <label class="form-check-label" for="radio-switch-4">Admin</label>
                             </div>
                             <div class="form-check me-2 mt-2 mt-sm-0"> <input id="radio-switch-5"
-                                    class="form-check-input" type="radio" name="horizontal_radio_button"
-                                    value="horizontal-radio-liam-neeson"> <label class="form-check-label"
+                                    class="form-check-input loginType" type="radio" name="login_type"
+                                    value="2"> <label class="form-check-label"
                                     for="radio-switch-5">School/College</label> </div>
                         </div>
-                    </div> -->
+                    </div>
                     <div class="intro-x mt-2 text-gray-500 d-xl-none text-center">Centralize all your accounts within a
                         single location for school management</div>
                     <div class="intro-x mt-8">
+                        <div class="Code" style="margin-bottom: 10px; display: none;">
                         <input type="text" class="intro-x login__input form-control py-3 px-4 border-gray-300 d-block"
+                            placeholder="School / Collge Code" name="code">
+                        </div>    
+                        <input type="email" class="intro-x login__input form-control py-3 px-4 border-gray-300 d-block"
                             placeholder="Email" name="email" required>
-                        <input type="password"
-                            class="intro-x login__input form-control py-3 px-4 border-gray-300 d-block mt-4"
+
+                        <input type="password" class="intro-x login__input form-control py-3 px-4 border-gray-300 d-block mt-4"
                             placeholder="Password" name="password" required>
                     </div>
                     <div class="intro-x d-flex text-gray-700 dark-text-gray-600 fs-xs fs-sm-sm mt-4">
@@ -62,7 +66,7 @@
                             <input id="remember-me" type="checkbox" class="form-check-input border me-2">
                             <label class="cursor-pointer select-none" for="remember-me">Remember me</label>
                         </div>
-                        <a href="">Forgot Password?</a>
+                        <a href="{{ route('forgot_password') }}">Forgot Password?</a>
                     </div>
                     <div class="intro-x mt-5 mt-xl-8 text-center text-xl-start">
                        <!--  <a href="{{ route('dashboards.index') }}"
@@ -75,4 +79,16 @@
             <!-- END: Login Form -->
         </div>
     </div>
+   <script type="text/javascript">
+    $(document).ready(function () {
+        $('.loginType').change(function () {
+            var value = $(this).val();
+            if(value == 2){
+                $('.Code').show();
+            }else{
+                $('.Code').hide();
+            }    
+        });
+    });
+</script>
 @endsection

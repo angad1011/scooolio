@@ -19,11 +19,11 @@
     <!-- BEGIN: Profile Menu -->
     <div class="g-col-12 g-col-lg-4 g-col-xxl-3 d-flex d-lg-block flex-column-reverse">
         <div class="intro-y box mt-5">
-            @if (session('success'))
+          <!--   @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
-            @endif
+            @endif -->
             <div class="position-relative d-flex align-items-center p-5">
                 <div class="w-12 h-12 image-fit">
                     <!-- <img alt=" " class="rounded-circle" src="dist/images/admin-pic.jpg"> -->

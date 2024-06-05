@@ -41,10 +41,10 @@ Update User
             <label for="name" class="form-label">Full Name</label>
             <input id="name" type="text" class="form-control" name="name" placeholder="Full Name" value="{{$user->name}}" required>
         </div>
-        <div class="intro-y g-col-12 g-col-sm-3">
+        <!-- <div class="intro-y g-col-12 g-col-sm-3">
             <label for="contact_no" class="form-label">Contact No.</label>
             <input id="contact_no" type="number" class="form-control" name="contact_no" placeholder="Contact No" value="{{$user->contact_no}}" required>
-        </div> 
+        </div> --> 
         <div class="intro-y g-col-12 g-col-sm-3">
             <label for="alternat_no" class="form-label">Alternate No.</label>
             <input id="alternat_no" type="number" class="form-control" name="alternat_no" placeholder="Alternate No" value="{{$user->alternat_no}}" required>

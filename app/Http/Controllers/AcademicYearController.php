@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\AcademicYear;
 
 
-class AcademicYearController extends Controller
+class AcademicYearController extends BaseController
 {
     /**
      * Display a listing of the resource.

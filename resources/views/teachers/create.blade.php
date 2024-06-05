@@ -170,7 +170,7 @@ Add New Teacher
                             </div>
                             <div class="g-col-4 g-col-xxl-4">
                                 <label for="name" class="form-label">Religion</label>
-                                <select class="form-select me-sm-2" name="religion" aria-label="Default select example" required>
+                                <!-- <select class="form-select me-sm-2" name="religion" aria-label="Default select example" required>
                                     <option value="" selected disabled>Select Religion</option>
                                     <option value="Hindu">Hindu</option>
                                     <option value="Muslim">Muslim</option>
@@ -178,7 +178,8 @@ Add New Teacher
                                     <option value="Christian">Christian</option>
                                     <option value="Jain">Jain</option>
                                     <option value="Baudh">Baudh</option>
-                                </select>
+                                </select> -->
+                                <input id="update-profile-form-1" type="text" class="form-control" placeholder="Religion" name="religion" required>
                             </div>
                             <div class="g-col-4 g-col-xxl-4">
                                 <label for="name" class="form-label">Category</label>

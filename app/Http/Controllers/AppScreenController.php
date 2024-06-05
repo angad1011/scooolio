@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\AppScreen;
 
-class AppScreenController extends Controller
+class AppScreenController extends BaseController
 {
     /**
      * Display a listing of the resource.

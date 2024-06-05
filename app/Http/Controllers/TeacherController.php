@@ -22,7 +22,7 @@ use App\Traits\LectureTimingTrait;
 
 
 
-class TeacherController extends Controller
+class TeacherController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -590,19 +590,27 @@ class TeacherController extends Controller
         $classDetails = LearnSpace::where(['teacher_id'=>$teacherId,'institute_id'=>$instituteId])->first();
         $classId = $classDetails->id;
 
+        // print_r($classDetails);exit;
 
         /*Class Students*/
         $classStudents = StudentClass::where(['learn_space_id'=>$classId,'academic_year_id'=>$academicYearId])->with('students')->get();
 
+        // print_r($classStudents);exit;
+
         $studentsDetails = [];
         $count = 0;
         foreach ($classStudents as $key => $classStudent) {
+
+            // print_r($classStudent);
 
              $firstImage = $classStudent->students->profile_img; 
 
              $imagePath = (!empty($firstImage)) ? asset("files/students/profile_img/".$classStudent->students->id."/".$firstImage."") : asset('dist/images/admin-pic.jpg');
 
 
+              $studentsDetails['Student'][$count]['institute_id'] = $classStudent->institute_id;  
+              $studentsDetails['Student'][$count]['learn_space_id'] = $classStudent->learn_space_id;  
+              $studentsDetails['Student'][$count]['academic_year_id'] = $academicYearId;  
               $studentsDetails['Student'][$count]['id'] = $classStudent->students->id;  
               $studentsDetails['Student'][$count]['Name'] = $classStudent->students->name;  
               $studentsDetails['Student'][$count]['role_no'] = $classStudent->role_no;  

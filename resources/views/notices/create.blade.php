@@ -17,6 +17,7 @@ Add New Notice
          <div class="intro-y g-col-12 g-col-sm-12">
              <label for="title" class="form-label">Title</label>
              <input id="title" type="text" name="title" class="form-control" placeholder="Title" required>
+             <input id="institute_id" type="hidden" name="institute_id" class="form-control" value="{{$instituteId}}">
          </div> 
          <div class="intro-y g-col-12 g-col-sm-12">
              <label for="title" class="form-label">Message</label>
@@ -40,13 +41,14 @@ Add New Notice
           </div>
          <div class="intro-y g-col-12 g-col-sm-4">
              <label for="name" class="form-label">Status</label>
-             <br>
-              <label class="radio-inline">
-               <input type="radio" name="active" value="1">Active
-             </label>
-             <label class="radio-inline">
-               <input type="radio" name="active" value="0" checked>In-active
-             </label>
+             <div class="d-flex justify-content-start align-items-center">
+                <div class="mt-2">
+                    <div class="form-check form-switch"> 
+                        <input id="checkbox-switch-7" class="form-check-input" type="checkbox" name="active"> 
+                    <label class="form-check-label" for="checkbox-switch-7"></label> </div>
+                </div>
+
+            </div>
          </div>   
          <div class="intro-y g-col-12 d-flex align-items-center justify-content-center justify-content-sm-end mt-5">
           <button class="btn btn-primary w-24 ms-2" type="submit" >Submit</button>

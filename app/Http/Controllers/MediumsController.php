@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Medium;
 
-class MediumsController extends Controller
+class MediumsController extends BaseController
 {
     /**
      * Display a listing of the resource.

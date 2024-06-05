@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Subject;
 
-class SubjectController extends Controller
+class SubjectController extends BaseController
 {
     /**
      * Display a listing of the resource.

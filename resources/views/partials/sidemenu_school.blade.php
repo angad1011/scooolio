@@ -123,12 +123,6 @@
                     <div class="side-menu__title"> Add User </div>
                 </a>
             </li>
-            <li>
-                <a href="{{ route('app_screens.index') }}" class="side-menu">
-                    <div class="side-menu__icon"> <i data-feather="layout"></i> </div>
-                    <div class="side-menu__title"> App Screen </div>
-                </a>
-            </li>
         </ul>
     </li>
      <li>

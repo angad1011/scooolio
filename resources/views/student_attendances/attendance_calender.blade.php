@@ -20,19 +20,26 @@
 <div>
 <label>Students</label>
 <div class="mt-2"> 
-<select data-placeholder="Select your favorite actors" id="studentDropdown"
+ <?php $selectedStudent = session('student'); ?>
+<select data-placeholder="Select Students" id="studentDropdown"
     class="tom-select w-full">
+
     <option value="0" selected>Select Student</option>
-     @foreach ($students as $student)
-    <option value="{{ $student['id'] }}">{{ $student['name'] }}</option>
-    @endforeach
+        <?php foreach ($students as $key => $student) { 
+            $selected = ($selectedStudent ==  $student['id']) ? 'selected' : '';
+        ?>
+        <option value="<?php echo $student['id']; ?>" <?php echo  $selected;?>>{{ $student['name'] }}</option>
+    <?php } ?>
+    <!--  @foreach ($students as $student)
+    <option value="{{ $student['id'] }}" <?php echo ($selectedStudent ==  $student['id']) ? 'selected' : ''; ?>>{{ $student['name'] }}</option>
+    @endforeach -->
 </select>
 </div>
 </div> <!-- END: Basic Select -->
 </div>
 <div class="g-col-4 g-col-xxl-2">
 <div class="mt-lg-6">
- <a href="{{ route('time_tables.index') }}">    
+ <a href="{{ route('attendance_calender') }}">    
 <button id="tabulator-html-filter-go" type="button"
 class="btn btn-primary w-full" style="margin-top: 5px;">Reset</button>
 </a>
@@ -78,7 +85,7 @@ class="btn btn-primary w-full" style="margin-top: 5px;">Reset</button>
             type: 'GET', // or 'POST', depending on your requirement
             data: {studentId: studentId},
             success: function(response) {
-
+                 window.location.reload();
                 // $('#calendar-container').html(response.html);
            
             },
@@ -88,26 +95,10 @@ class="btn btn-primary w-full" style="margin-top: 5px;">Reset</button>
                 toastr.error('An error occurred while loading data.');
             }
         });
-
      });
     });
     
-     $('#calendar1').fullCalendar({
-        header: {
-          left: 'prev,next',
-          center: 'title',
-          right: 'month,agendaWeek,agendaDay,listMonth'
-        },
-        defaultDate: todayDate,
-        locale: initialLocaleCode,
-        buttonIcons: false,
-        weekNumbers: true,
-        navLinks: true,
-        editable: true,
-        eventLimit: true
-      });
- 
-     
-</script>
+
+</script>     
 @endsection
 

@@ -40,10 +40,10 @@
                     <label for="contact_no" class="form-label">Contact No.</label>
                     <input id="contact_no" type="number" class="form-control" name="contact_no" placeholder="Contact No" required>
                 </div>
-                <div class="intro-y g-col-12 g-col-sm-3">
+                <!-- <div class="intro-y g-col-12 g-col-sm-3">
                     <label for="alternat_no" class="form-label">Alternate No.</label>
                     <input id="alternat_no" type="number" class="form-control" name="alternat_no" placeholder="Alternate No" required>
-                </div>
+                </div> -->
                 <div class="intro-y g-col-12 g-col-sm-3">
                     <label for="name" class="form-label">Gender</label>
                     <select class="form-select me-sm-2" aria-label="Default select example" name="gender" required>

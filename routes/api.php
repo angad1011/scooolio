@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\StudentAttendanceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AppScreenController;
 
@@ -27,7 +28,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/class_details',  [TeacherController::class, 'class_details']);
     Route::get('/week_day_list',  [TeacherController::class, 'weekdays']);
     Route::get('/attendance_types',  [TeacherController::class, 'attendance_types']);
-
+    
+    Route::post('/attendance_store',  [StudentAttendanceController::class, 'attendance_store']);
+    Route::post('/attendances/confirm', [StudentAttendanceController::class, 'confirm']);
+    Route::get('/attendances/pending', [StudentAttendanceController::class, 'pendingConfirmations']);
 
 });
 

@@ -13,7 +13,7 @@ use App\Models\InstituteTiming;
 use App\Traits\LectureTimingTrait;
 
 
-class LearnSpaceController extends Controller
+class LearnSpaceController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -33,9 +33,20 @@ class LearnSpaceController extends Controller
      * Show the form for creating a new resource.
      */
     public function create(){
+        
+        $instituteId = Auth::user()->institute_id; 
+
+        
+
 
         $shiftTypes = ShiftType::all();
-        $teachers = Teacher::all()->where('active',true);
+        $teachers = Teacher::where('active', true)
+                   ->where('institute_id', $instituteId)
+                   ->get();
+
+
+            
+
 
 
         return view('learn_spaces.create',compact('shiftTypes','teachers'));

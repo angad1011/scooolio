@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ForgotPasswordMail;
 use App\Models\User;
 use App\Models\TeacherActivation;
 use App\Models\Teacher;
+use App\Models\Institute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
-class AuthController extends Controller
+class AuthController extends BaseController
 {
    
     public function showLoginForm(){
@@ -19,18 +22,43 @@ class AuthController extends Controller
 
     public function login(Request $request){
 
-        $credentials = $request->only('email', 'password');
+        $loginType = $request->login_type;    
 
-        // Check if the user exists and is active
-        $user = User::where('email', $credentials['email'])
-            ->where('active', true)
-            ->first();
+        if($loginType == 1){
+            $credentials = $request->only('email', 'password');
+
+            // Check if the user exists and is active
+            $user = User::where('email', $credentials['email'])
+                ->where('active', true)
+                ->first();
+        }else{
+            $institudeCode = $request->code;
+            
+            $institude = Institute::where('code',$institudeCode)
+                         ->where('active', true)
+                        ->first();
+                
+            if(!empty($institude)){
+                 $institudeId = $institude->id;
+                 $credentials = $request->only('email', 'password');
+
+                // Check if the user exists and is active
+                $user = User::where('email', $credentials['email'])
+                    ->where('institute_id', $institudeId)
+                    ->where('active', true)
+                    ->first();
+            }else{
+                 return back()->withErrors(['email' => 'Code Does Not Match']);
+            }    
+        }
+
             
         if ($user && Auth::attempt($credentials)) {
             return redirect()->route('dashboards.index');
         }
 
         return back()->withErrors(['email' => 'Username Or Password Not Match!']);
+        // redirect()->back()->with('danger', 'Username Or Password Not Match!');
     }
 
     public function singUp(){
@@ -119,6 +147,32 @@ class AuthController extends Controller
 
     }
 
+    /*Forgit Password*/
+    public function forgot_password(){
+         return view('auth.forgot-password');
+    }
+
+
+    /*Update Password*/
+    public function update_password(Request $request){
+        $user = User::where('email', $request->email)->first();
+
+         if (!$user) {
+            return back()->withErrors(['email' => 'User Not Fund!']);
+        }
+       
+        $newPassword = Str::random(10); // Generate a random password   
+        $user->password = bcrypt($newPassword);
+        $user->save();
+
+        $emailData['name'] = $user->name;
+        $emailData['password'] = $newPassword;
+
+        // Send the email
+        Mail::to($request->email)->send(new ForgotPasswordMail($emailData));
+
+       return redirect()->back()->with('success', 'Password mailed to you!');
+    }
   
 
 

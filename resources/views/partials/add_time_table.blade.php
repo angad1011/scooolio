@@ -24,7 +24,7 @@
                         <input name="data[ClassTimeTable][{{$key1}}_{{$key}}][institute_id]" type="hidden" value="{{$instituteId}}">
                         <input name="data[ClassTimeTable][{{$key1}}_{{$key}}][learn_space_id]" type="hidden" value="{{$classId}}">      
                         <input name="data[ClassTimeTable][{{$key1}}_{{$key}}][week_day_id]" type="hidden" value="{{$weekDay->id}}">
-                        <input name="data[ClassTimeTable][{{$key1}}_{{$key}}][period_number]" type="text" value="{{$sessionPeriods['period_number']}}">  
+                        <input name="data[ClassTimeTable][{{$key1}}_{{$key}}][period_number]" type="hidden" value="{{$sessionPeriods['period_number']}}">  
                         <input name="data[ClassTimeTable][{{$key1}}_{{$key}}][lecture_duration]" type="hidden" value="{{$lectureDuration}}">  
                         
                         <label for="name" class="form-label">Subject</label>    

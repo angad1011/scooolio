@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\StudentActivationMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Imports\StudentsImport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Students;
 use App\Models\LearnSpace;
 use App\Models\AcademicYear;
 use App\Models\StudentAttendace;
 
 
-class StudentController extends Controller
+
+class StudentController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -58,6 +61,7 @@ class StudentController extends Controller
             'last_name' => ['required'],
             'email' => ['required'],
             'contact_no' => ['required'],
+            'udise_no' => ['required'],
             'gr_no' => ['required'],
             'gender' => ['required'],
             'date_of_birth' => ['required'],
@@ -79,6 +83,7 @@ class StudentController extends Controller
         $student = Students::create([
             'institute_id' => $request->input('institute_id'),
             'learn_space_id' => $request->input('learn_space_id'),
+            'udise_no' => $validatedData['udise_no'],
             'gr_no' => $validatedData['gr_no'],
             'date_of_admission' =>$request->input('date_of_admission'),
             'first_name' => $validatedData['first_name'],
@@ -163,8 +168,6 @@ class StudentController extends Controller
         /*Student Attendace Percentage*/
         $studentAttendances = StudentAttendace::where(['student_id'=>$id,'learn_space_id'=>$currentClassId,'academic_year_id'=>$academicYearId,'institute_id'=>$instituteId])->get();
 
-        // dd($studentAttendances);
-
         if(!empty($studentAttendances)){
             $totalDays = count($studentAttendances);
 
@@ -193,10 +196,9 @@ class StudentController extends Controller
 
         }
 
+        $activationStatus = (!empty($student->username)) ? 2 : 1;
 
-
-
-        return view('students.show',compact('student','absentPercentage','precentPercentage'));
+        return view('students.show',compact('student','absentPercentage','precentPercentage','activationStatus'));
     }
 
     /**
@@ -220,7 +222,9 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id){
         
-        // dd($request);
+        $currenDate = date('d M, Y');
+
+        // echo $currenDate;
 
         $student = Students::find($id);
        
@@ -230,8 +234,14 @@ class StudentController extends Controller
 
         $active = $request->has('active') ? 1 : 0; // Simplified check for 'active' field
 
+
+        $dateOfLiving = ($currenDate == $request->input('date_of_leaving')) ? '' :  $request->input('date_of_leaving');
+        // dd($dateOfLiving);
+        
+
         $student->update([
             'learn_space_id' => $request->input('learn_space_id'),
+            'udise_no' => $request->input('udise_no'),
             'gr_no' => $request->input('gr_no'),
             'date_of_admission' => $request->input('date_of_admission'),
             'first_name' =>  $request->input('first_name'),
@@ -247,7 +257,7 @@ class StudentController extends Controller
             'religion' => $request->input('religion'),
             'cast_catogory' => $request->input('cast_catogory'),
             'blood_group' => $request->input('blood_group'),
-            'date_of_leaving' => $request->input('date_of_leaving'),
+            'date_of_leaving' => $dateOfLiving,
             'father_name' => $request->input('father_name'),
             'mother_name' => $request->input('mother_name'),
             'parent_email' => $request->input('parent_email'),
@@ -292,9 +302,6 @@ class StudentController extends Controller
 
     public function importStudents(Request $request)
     {
-
-        // dd($request);
-
         $request->validate([
             'file' => 'required|mimes:xls,xlsx',
         ]);
@@ -309,6 +316,36 @@ class StudentController extends Controller
 
         // return redirect()->back()->with('success', 'Students imported successfully.');
         return redirect()->route('students.index')->with('success', 'Student imported successfully.');
+    }
+
+
+    /*Udpate Student Activation*/
+    public function student_activation(Request $request){
+        // dd($request);
+
+        $password = $request->input('password');
+        $id = $request->input('id');
+
+        Students::updateOrCreate(
+            ['id' => $request->input('id')], 
+            [
+                'username' => $request->input('username'),
+                'password' => bcrypt($password)
+            ]
+        );
+
+        $student = Students::findOrFail($id);
+
+        // $emailData = [];
+
+        $emailData['name'] = $student->name;
+        $emailData['password'] = $password; 
+
+        // Send the email
+        Mail::to($student->email)->send(new StudentActivationMail($emailData));
+
+
+        return redirect()->back()->with('success', 'Student Activation Done!');
     }
 
     /**

@@ -14,7 +14,7 @@ use App\Models\Teacher;
 use App\Traits\LectureTimingTrait;
 
 
-class ClassTimeTableController extends Controller
+class ClassTimeTableController extends BaseController
 {
     /**
      * Display a listing of the resource.

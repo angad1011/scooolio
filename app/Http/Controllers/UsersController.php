@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\UserActivationMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Department;
 use App\Models\Institute;
 use App\Models\Teacher;
 
-class UsersController extends Controller
+class UsersController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -85,6 +87,9 @@ class UsersController extends Controller
         // dd($request->input('institute_id'));
         // dd($instituteId);
 
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $password = $request->input('password');
 
         $users = User::create([
             'role_id' => $roleId,
@@ -92,9 +97,8 @@ class UsersController extends Controller
             'department_id' => $request->input('department_id'),
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
+            'password' => bcrypt($password),
             'contact_no' => $request->input('contact_no'),
-            'alternat_no' => $request->input('alternat_no'),
             'dob' => $request->input('dob'),
             'gender' => $request->input('gender'),
             'active' => (!empty($active)) ? 1 : 0,
@@ -110,6 +114,14 @@ class UsersController extends Controller
         }
 
         if ($users->save()) {
+
+             $emailData['name'] = $name;
+             $emailData['password'] = $password;
+
+             // Send the email
+              Mail::to($email)->send(new UserActivationMail($emailData));
+
+
             if (!empty($instituteId)) {
                 return redirect()->route('institutes.show', $instituteId)->with('success', 'User added successfully.');
             } else {
@@ -171,7 +183,6 @@ class UsersController extends Controller
             'department_id' => $request->input('department_id'),
             'name' => $request->input('name'),
             'contact_no' => $request->input('contact_no'),
-            'alternat_no' => $request->input('alternat_no'),
             'dob' => $request->input('dob'),
             'gender' => $request->input('gender'),
             'active' => (!empty($active)) ? 1 : 0,

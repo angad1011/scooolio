@@ -18,7 +18,7 @@ Teacher List
         <table class="table table-report mt-n2">
             <thead>
                 <tr>
-                    <th class="text-nowrap">Profile Pic</th>
+                    <th class="text-nowrap">Profile Photo</th>
                     <th class="text-nowrap">EMP ID</th>
                     <th class="text-nowrap">Shift</th>
                     <th class="text-nowrap">Name</th>

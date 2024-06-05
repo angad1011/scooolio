@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Log;
 use App\Models\StudentAttendace;
 use App\Models\LearnSpace;
 use App\Models\StudentClass;
@@ -14,7 +16,7 @@ use App\Models\AttendanceType;
 use DB;
 
 
-class StudentAttendanceController extends Controller
+class StudentAttendanceController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -75,8 +77,16 @@ class StudentAttendanceController extends Controller
     public function student_calender(Request $request){
         $instituteId = Auth::user()->institute_id;
 
+
         // Get the selected class and teacher IDs from the request
-        $studentId = ($request->input('studentId') != 0) ? $request->input('studentId') : '';
+        $studentId = $request->input('studentId');
+        
+        if ($studentId != 0) {
+            $request->session()->put('student', $studentId);
+        } else {
+            $request->session()->forget('student');
+        }
+
 
         // $attendanceDetails = (!empty($studentId)) ? StudentAttendace::findOrFail($studentId) : null;
         $attendanceDetails = StudentAttendace::where('student_id',$studentId)->get();
@@ -86,19 +96,37 @@ class StudentAttendanceController extends Controller
         $attendanceArr = [];
         if (!empty($attendanceDetails)) {
             foreach ($attendanceDetails as $attendanceDetail) {
+
+
                 $attendanceArrDetails = [];
                 $attendanceArrDetails['title'] = ($attendanceDetail->attendance_type_id == 1) ? 'Present' : 'Absent';
-                $attendanceArrDetails['className'] = $attendanceDetail->date;
-                $attendanceArrDetails['start'] = $attendanceDetail->date;
-                $attendanceArrDetails['end'] = $attendanceDetail->date;
+                $attendanceArrDetails['className'] = $attendanceArrDetails['title'];
+
+                 // Parse the existing date string and format it as needed using strtotime()
+                $timestamp = strtotime($attendanceDetail->date);
+                $formattedDate = date('Y-m-d', $timestamp); // Change 'Y-m-d' to your desired format
+
+                $attendanceArrDetails['start'] = $formattedDate;
+                $attendanceArrDetails['end'] = $formattedDate;
 
                 $attendanceArr[] = $attendanceArrDetails;
             }
         }
 
+        // print_r($attendanceArr);exit;
+
+        // $attendanceArr1 =[['title'=>'Vue Vixens Day','start'=>'2024-04-16','end'=>'2024-04-16'],['title'=>'VueConfUS','start'=>'2024-04-17','end'=>'2024-04-17']];
+
+        // print_r($attendanceArr1);exit;
+
        $finalEncodedCalender = json_encode($attendanceArr); 
 
-       // echo $finalEncodedCalender;
+      
+
+       $request->session()->put('calendar', $finalEncodedCalender);
+
+      
+       
 
        $html = View::make('partials.student_calender', ['finalEncodedCalender' => $finalEncodedCalender])->render();
 
@@ -182,6 +210,74 @@ class StudentAttendanceController extends Controller
 
 
     }
+
+    /*Attendace Store From API*/
+    public function attendance_store(Request $request){
+
+        // dd();
+
+        // $confirmations = [];
+
+        foreach ($request['attendances'] as $attendanceData) {
+            if ($attendanceData['attendance_type_id'] == 1) {
+                StudentAttendace::create($attendanceData);
+            } elseif ($attendanceData['attendance_type_id'] == 2) {
+                $confirmations[] = $attendanceData;
+            }
+        }
+
+         // Store confirmations in session
+        if (!empty($confirmations)) {
+            
+            $request->session()->put('confirmationData', $confirmations);
+
+            return response()->json(['confirmations' => $confirmations], 202);
+        }
+
+        return response()->json(['message' => 'Attendances stored successfully'], 201);
+
+    }
+
+    public function pendingConfirmations(Request $request){
+
+        $pendingConfirmations = $request->session()->get('confirmationData', []);
+        Log::info('Retrieved pending confirmations from session: ', $pendingConfirmations);
+        return response()->json($pendingConfirmations);
+    
+    }
+
+    public function confirm(Request $request)
+    {
+        
+         $pendingConfirmations = $request->session()->get('confirmationData', []);
+
+         // dd($request);
+        // dd($request['confirmations']);
+
+
+        foreach ($request['confirmations'] as $confirmationData) {
+            // Find the matching pending confirmation
+            foreach ($pendingConfirmations as $key => $pendingConfirmation) {
+                if ($pendingConfirmation['institute_id'] == $confirmationData['institute_id'] && $pendingConfirmation['learn_space_id'] == $confirmationData['learn_space_id'] && $pendingConfirmation['academic_year_id'] == $confirmationData['academic_year_id'] && $pendingConfirmation['student_id'] == $confirmationData['student_id'] &&
+                    $pendingConfirmation['date'] == $confirmationData['date'] &&
+                    $pendingConfirmation['attendance_type_id'] == $confirmationData['attendance_type_id']) {
+                    // Save the record
+                    StudentAttendace::create($pendingConfirmation);
+                    // Remove from pending confirmations
+                    unset($pendingConfirmations[$key]);
+                    break;
+                }
+            }
+        }
+
+        // Update the session
+        Session::put('pending_confirmations', array_values($pendingConfirmations));
+
+        return response()->json(['message' => 'Attendances confirmed successfully'], 201);
+    }
+
+
+
 
     /**
      * Display the specified resource.

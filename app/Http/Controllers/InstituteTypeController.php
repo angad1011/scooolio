@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\InstituteType;
 
-class InstituteTypeController extends Controller
+class InstituteTypeController extends BaseController
 {
     /**
      * Display a listing of the resource.

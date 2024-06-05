@@ -22,13 +22,13 @@
        <ul>
            <li>
                 <a href="{{ route('roles.index') }}" class="side-menu">
-                    <div class="side-menu__icon"> <i data-feather="list"></i> </div>
+                    <div class="side-menu__icon"> <i data-feather="layout"></i> </div>
                     <div class="side-menu__title"> Roles</div>
                 </a>
             </li>
             <li>
                 <a href="{{ route('departments.index') }}" class="side-menu">
-                    <div class="side-menu__icon"> <i data-feather="list"></i> </div>
+                    <div class="side-menu__icon"> <i data-feather="layout"></i> </div>
                     <div class="side-menu__title"> Department</div>
                 </a>
             </li>
@@ -45,7 +45,7 @@
         <a href="javascript:;" class="side-menu" id="school">
             <div class="side-menu__icon"> <i data-feather="layout"></i> </div>
             <div class="side-menu__title">
-                Institutes
+                Manage School/College
                 <div class="side-menu__sub-icon"> <i data-feather="chevron-down"></i> </div>
             </div>
         </a>
@@ -89,14 +89,28 @@
             
         </ul>
     </li>
+     <li>
+        <a href="{{ route('notices.index') }}" class="side-menu" id="noticeboard">
+            <div class="side-menu__icon"> <i data-feather="volume-2"></i> </div>
+            <div class="side-menu__title"> Anouncement Panel </div>
+        </a>
+    </li>
     <li>
         <a href="javascript:;" class="side-menu" id="school">
-            <div class="side-menu__icon"> <i data-feather="list"></i> </div>
+            <div class="side-menu__icon"> <i data-feather="settings"></i> </div>
             <div class="side-menu__title">
-                Comman Masters
+                Common Settings
                 <div class="side-menu__sub-icon"> <i data-feather="chevron-down"></i> </div>
             </div>
         </a>
+        <ul class="">
+        <li>
+            <a href="{{ route('app_screens.index') }}" class="side-menu">
+                <div class="side-menu__icon"> <i data-feather="layout"></i> </div>
+                <div class="side-menu__title"> App Screen </div>
+            </a>
+        </li>
+        </ul>    
     </li>    
     <li>
         <a href="{{ route('logout') }}" class="side-menu">

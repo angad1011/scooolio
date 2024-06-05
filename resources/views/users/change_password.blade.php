@@ -15,7 +15,7 @@ Reset Password
 </div>
 @endif
 <div class="intro-y box py-10 mt-5">
- <form method="POST" action="{{route('update_password')}}" enctype="multipart/form-data">
+ <form method="POST" action="{{route('new_password')}}" enctype="multipart/form-data">
    @csrf
    <!-- @method('PUT') -->
    <div class="px-5">

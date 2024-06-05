@@ -27,29 +27,25 @@
                 </tr>
             </thead>
              <tbody>
-                 @foreach ($notices as $notice)  
-                 <?php 
-                    $endDate = $notice->end_date;
-
-                    $currentDateTime = DateTime::createFromFormat('d-m-Y', $currentDate);
-                    $endDateTime = DateTime::createFromFormat('d M, Y', $endDate);
-
-                    if ($currentDateTime && $endDateTime) {
-                        // Compare dates
-                        if ($currentDateTime < $endDateTime) {
-                            $active = 'checked';
-                        } else {
-                            $active = ' ';
-                        }
-                    } 
-
-                 ?> 
+                 @foreach ($notices as $notice)   
                   <tr class="intro-x">
                     <td>{{ $notice->title }}</td>
                     <td>{{ $notice->message }}</td>
                     <td>{{ $notice->start_date }}</td>
                     <td>{{ $notice->end_date }}</td>
                     <td>
+                        @php 
+                        $active = ($notice->active == 1) ? 'checked' : '';
+                        $endDate = $notice->end_date;
+
+                        $currentTimestamp = strtotime($currentDate);
+                        $timestamp = strtotime($endDate);
+
+                        $formattedDate = date('d-m-Y', $timestamp);
+
+                        $active = ($timestamp > $currentTimestamp) ? 'checked' : '';
+
+                        @endphp
                         <div class="d-flex justify-content-start align-items-center">
                             <div class="mt-2">
                                 <div class="form-check form-switch"> 

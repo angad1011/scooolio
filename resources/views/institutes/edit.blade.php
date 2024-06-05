@@ -7,9 +7,9 @@ Update {{$instituteName}}
 </h2>
 <div class="w-full w-sm-auto d-flex mt-4 mt-sm-0">
 <?php if($school->its_college == 1){ ?>    
-    <a href="{{ route('colleges') }}" class="btn btn-primary shadow-md me-2">{{$instituteName}} List</a>
+    <a href="{{ route('colleges') }}" class="btn btn-primary shadow-md me-2">{{$instituteName}} Detail</a>
 <?php }else{ ?>
-<a href="{{ route('institutes.index') }}" class="btn btn-primary shadow-md me-2">{{$instituteName}} List</a>    
+<a href="{{ route('institutes.show',$school->id) }}" class="btn btn-primary shadow-md me-2">{{$instituteName}} Detail</a>    
 <?php } ?>    
 </div>
 </div>
@@ -140,7 +140,17 @@ Update {{$instituteName}}
                 <input type="file" class="w-full h-full top-0 start-0 position-absolute opacity-0" id="imageFile" name="image_file">
             </div>
         </div>
+        </div>
+         <div class="g-col-4 g-col-xxl-4">
+            <label for="name" class="form-label">Status</label>
+             <div class="d-flex justify-content-start align-items-center">
+                <div class="mt-2">
+                    <div class="form-check form-switch"> 
+                        <input id="checkbox-switch-7" class="form-check-input" type="checkbox" name="active"  {{$active = ($school->active == 1) ? 'checked' : '';}}> 
+                    <label class="form-check-label" for="checkbox-switch-7"></label> </div>
+                </div>
 
+            </div>
         </div>
         <div class="intro-y g-col-12 d-flex align-items-center justify-content-center justify-content-sm-end mt-5">
         <button class="btn btn-primary w-24 ms-2" type="submit">submit</button>

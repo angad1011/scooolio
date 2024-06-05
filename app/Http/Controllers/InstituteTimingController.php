@@ -9,7 +9,7 @@ use App\Models\Institute;
 use App\Models\InstituteTiming;
 
 
-class InstituteTimingController extends Controller
+class InstituteTimingController extends BaseController
 {
     /**
      * Display a listing of the resource.

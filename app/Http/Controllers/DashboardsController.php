@@ -16,9 +16,13 @@ class DashboardsController extends BaseController
 {
     public function index(){
        
+
+
         $currentDate = date('d-m-Y');
         $instituteId = Auth::user()->institute_id;
         $roleId = Auth::user()->role_id;
+
+        // dd($roleId);
 
 
         /*Defaul Year*/

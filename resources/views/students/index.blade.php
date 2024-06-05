@@ -60,7 +60,7 @@ Student List
         <table class="table table-report mt-n2">
             <thead>
                 <tr>
-                    <th class="text-nowrap">Profil</th>
+                    <th class="text-nowrap">Profile Photo</th>
                     <th class="text-nowrap">Name</th>
                     <th class="text-nowrap">GR No.</th>
                     <th class="text-nowrap">Contact</th>

@@ -32,6 +32,10 @@ Update Student
                             <div class="flex-1 mt-6 mt-xl-0">
                                 <div class="grid columns-12 gap-x-5 gap-y-0">
                                     <div class="g-col-4 g-col-xxl-3">
+                                          <label for="update-profile-form-1" class="form-label"> UDISE </label>
+                                            <input id="update-profile-form-1"  type="text" name="udise_no" value="{{$student->udise_no}}" class="form-control" placeholder="UDISE" required>
+                                    </div>
+                                    <div class="g-col-4 g-col-xxl-3">
                                           <label for="update-profile-form-1" class="form-label"> Register Number</label>
                                             <input id="update-profile-form-1"  type="text" name="gr_no" class="form-control"  value="{{$student->gr_no}}"  placeholder="Register Number" required>
                                     </div>
@@ -133,50 +137,6 @@ Update Student
                                 </div>
                             </div>
                             <div class="g-col-4 g-col-xxl-4">
-                                <label for="name" class="form-label">Class</label>
-                                <select class="form-select me-sm-2" name="learn_space_id"  aria-label="Default select example">
-                                     <option value="" selected disabled>Select Class</option>
-                                    @foreach ($classes as $classe)
-                                    <option value="{{ $classe['id'] }}" {{($student->learn_space_id == $classe['id']) ? 'selected' : ''}}>{{ $classe['class_name'] }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
-                            <div class="g-col-4 g-col-xxl-4">
-                                <label for="name" class="form-label">Nationality</label>
-                                <select class="form-select me-sm-2" name="nationality"  aria-label="Default select example">
-                                    <option value="" selected disabled>Select Nationality</option>
-                                    <option value="india" {{($student->nationality == 'india') ? 'selected' : ''}}>India</option>
-                                    <option value="nepal" {{($student->nationality == 'nepal') ? 'selected' : ''}}>Nepal</option>
-                                    <option value="bangladesh" {{($student->nationality == 'bangladesh') ? 'selected' : ''}}>Bangladesh</option>
-                                </select>
-                            </div>
-                            <div class="g-col-4 g-col-xxl-4">
-                                <label for="name" class="form-label">Religion</label>
-                                <select class="form-select me-sm-2" name="religion" aria-label="Default select example">
-                                    <option value="" selected disabled>Select Religion</option>
-                                    <option value="Hindu" {{($student->religion == 'Hindu') ? 'selected' : ''}} >Hindu</option>
-                                    <option value="Muslim" {{($student->religion == 'Muslim') ? 'selected' : ''}} >Muslim</option>
-                                    <option value="Sikh" {{($student->religion == 'Sikh') ? 'selected' : ''}} >Sikh</option>
-                                    <option value="Christian" {{($student->religion == 'Christian') ? 'selected' : ''}} >Christian</option>
-                                    <option value="Jain" {{($student->religion == 'Jain') ? 'selected' : ''}} >Jain</option>
-                                    <option value="Baudh" {{($student->religion == 'Baudh') ? 'selected' : ''}} >Baudh</option>
-                                </select>
-                            </div>
-                            <div class="g-col-4 g-col-xxl-4">
-                                <label for="name" class="form-label">Category</label>
-                                <select class="form-select me-sm-2" name="cast_catogory" aria-label="Default select example">
-                                    <option value="" selected disabled>Select Category</option>
-                                    <option value="GN" {{($student->cast_catogory == 'GN') ? 'selected' : ''}}>GN</option>
-                                    <option value="OBC" {{($student->cast_catogory == 'OBC') ? 'selected' : ''}}>OBC</option>
-                                    <option value="ST" {{($student->cast_catogory == 'ST') ? 'selected' : ''}}>ST</option>
-                                    <option value="NT" {{($student->cast_catogory == 'NT') ? 'selected' : ''}}>NT</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
-                            <div class="g-col-4 g-col-xxl-4">
                                 <label for="name" class="form-label">Blood Group</label>
                                     <select class="form-select me-sm-2" name="blood_group" aria-label="Default select example">
                                         <option selected disabled>Select</option>
@@ -190,12 +150,48 @@ Update Student
                                         <option value="O-" {{($student->blood_group == 'O-') ? 'selected' : ''}}>O-</option>
                                     </select>
                             </div>
+                        </div>
+                        <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
+                            <div class="g-col-4 g-col-xxl-4">
+                                <label for="name" class="form-label">Class</label>
+                                <select class="form-select me-sm-2" name="learn_space_id"  aria-label="Default select example">
+                                     <option value="" selected disabled>Select Class</option>
+                                    @foreach ($classes as $classe)
+                                    <option value="{{ $classe['id'] }}" {{($student->learn_space_id == $classe['id']) ? 'selected' : ''}}>{{ $classe['class_name'] }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="g-col-4 g-col-xxl-4">
+                                <div>
+                                    <label for="update-profile-form-1" class="form-label">Year</label>
+                                    <input id="update-profile-form-1" type="tel" class="form-control" placeholder="Year" name="year" value="{{$student->year}}">
+                                </div>
+                            </div>
+                            <div class="g-col-4 g-col-xxl-4">
+                                <label for="name" class="form-label">Nationality</label>
+                                <select class="form-select me-sm-2" name="nationality"  aria-label="Default select example">
+                                    <option value="" selected disabled>Select Nationality</option>
+                                    <option value="india" {{($student->nationality == 'india') ? 'selected' : ''}}>India</option>
+                                    <option value="nepal" {{($student->nationality == 'nepal') ? 'selected' : ''}}>Nepal</option>
+                                    <option value="bangladesh" {{($student->nationality == 'bangladesh') ? 'selected' : ''}}>Bangladesh</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
+                            <div class="g-col-4 g-col-xxl-4">
+                                <label for="name" class="form-label">Religion</label>
+                                <input id="update-profile-form-1" type="text" class="form-control" placeholder="Religion" value="{{$student->religion}}" name="religion" required>
+                            </div>
+                            <div class="g-col-4 g-col-xxl-4">
+                                <label for="name" class="form-label">Category</label>
+                                <input id="update-profile-form-1" type="text" class="form-control" placeholder="Category" value="{{$student->cast_catogory}}" name="cast_catogory" required>
+                            </div>
                             <div class="g-col-4 g-col-xxl-4">
                                 <label for="input-wizard-4" class="form-label">Date of Leaving</label>
                                 <div class="input-group w-100 mx-auto">
                                     <div id="input-group-email" class="input-group-text"> <i data-feather="calendar"
                                             class="w-4 h-4"></i> </div>
-                                    <input type="text" name="date_of_leaving" value="{{$student->date_of_leaving}}" class="datepicker form-control" data-single-mode="true" required>
+                                    <input type="text" name="date_of_leaving" value="{{$student->date_of_leaving}}" id="date_of_leaving" class="datepicker form-control" data-single-mode="true" required>
                                 </div>
                             </div>
                         </div>
@@ -235,15 +231,15 @@ Update Student
                             <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
                                 <div class="g-col-4 g-col-xxl-4">
                                     <div>
-                                        <label for="update-profile-form-1" class="form-label"> Mobile Number</label>
-                                        <input id="update-profile-form-1" type="tel" class="form-control" placeholder="Mobile Number" value="{{$student->parent_contact_no}}" name="parent_contact_no" required>
+                                        <label for="update-profile-form-1" class="form-label">Father Mobile Number</label>
+                                        <input id="update-profile-form-1" type="tel" class="form-control" placeholder="Father Mobile Number" value="{{$student->parent_contact_no}}" name="parent_contact_no" required>
                                     </div>
                                 </div>
                                 <div class="g-col-4 g-col-xxl-4">
                                     <div>
                                         <label for="update-profile-form-1" class="form-label">
-                                            Alternate Mobile Number</label>
-                                        <input id="update-profile-form-1" type="tel" class="form-control" placeholder="Alternate Number" value="{{$student->parent_alternat_no}}" name="parent_alternat_no">
+                                            Mother Mobile Number</label>
+                                        <input id="update-profile-form-1" type="tel" class="form-control" placeholder="Mother Mobile Number" value="{{$student->parent_alternat_no}}" name="parent_alternat_no">
                                     </div>
                                 </div>
                                 <div class="g-col-4 g-col-xxl-4">
@@ -418,6 +414,7 @@ Update Student
        </div>
 </div>
    </form>
+ 
 @endsection
 
 

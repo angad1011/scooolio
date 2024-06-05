@@ -31,6 +31,7 @@
              <div class="ms-5">
                   <div class="w-24 w-sm-40 truncate white-space-sm-wrap fw-medium fs-lg">{{ $student->name }}</div>
                   <div class="text-gray-600">GR No. {{ $student->gr_no }}</span></div>
+                  <div class="text-gray-600">UDISE : {{ $student->udise_no }}</span></div>
              </div>
          </div>
          <div class="mt-6 mt-lg-0 flex-1 dark-text-gray-300 px-5 border-start border-end border-gray-200 dark-border-dark-5 border-top border-top-lg-0 pt-5 pt-lg-0">
@@ -78,7 +79,7 @@
             <a href="javascript:;" class="nav-link px-0 me-sm-8 d-flex align-items-center"
                 data-bs-toggle="pill" data-bs-target="#change-password" role="tab"
                 aria-controls="change-password-tab" aria-selected="false">
-                <i class="w-4 h-4 me-2" data-feather="lock"></i> Change Password </a>
+                <i class="w-4 h-4 me-2" data-feather="lock"></i> Activation / Change Password </a>
         </li>
     </ul>   
 </div>
@@ -86,244 +87,158 @@
 <div class="intro-y box tab-content mt-5">
     <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
          <div class="p-5">
-                 <div class="grid columns-12 gap-x-5 gap-y-0">
-                    <div class="g-col-12 g-col-xxl-4">
-                        <div>
-                            <label for="update-profile-form-1" class="form-label">
-                                First Name</label>
-                            <input id="update-profile-form-1" readonly type="text" class="form-control"
-                                placeholder="" value="{{ $student->first_name }}">
-                        </div>
-                    </div>
-                    <div class="g-col-12 g-col-xxl-4">
-                        <div>
-                            <label for="update-profile-form-1" class="form-label">
-                                Last Name</label>
-                            <input id="update-profile-form-1" disabled type="text" class="form-control"
-                                placeholder="" value="{{ $student->last_name }}">
-                        </div>
-                    </div>
-                    <div class="g-col-12 g-col-xxl-4">
-                        <div>
-                            <label for="update-profile-form-1" class="form-label">
-                                Email ID</label>
-                            <input id="update-profile-form-1" disabled type="email" class="form-control"
-                                placeholder="" value="{{ $student->email }}">
-                        </div>
-                    </div>
-                </div>
-                <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
-                <div class="g-col-12 g-col-xxl-4">
-                    <div>
-                        <label for="update-profile-form-1" class="form-label">
-                            Mobile Number</label>
-                        <input id="update-profile-form-1" disabled type="tel" class="form-control"
-                            placeholder=""  value="{{ $student->contact_no }}">
-                    </div>
-                </div>
-                <div class="g-col-12 g-col-xxl-4">
-                    <div>
-                        <label for="update-profile-form-1" class="form-label">
-                            Alternate Mobile Number</label>
-                        <input id="update-profile-form-1" disabled type="tel" class="form-control"
-                            placeholder="" value="{{ $student->alternate_no }}">
-                    </div>
-                </div>
-                <div class="g-col-12 g-col-xxl-4">
-                    <div>
-                        <label for="update-profile-form-1" class="form-label">
-                            Whatsapp Number</label>
-                        <input id="update-profile-form-1" disabled type="tel" class="form-control"
-                            placeholder="" value="{{ $student->whatsapp }}">
-                    </div>
-                </div>
-            </div>
-            <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
-                <div class="g-col-12 g-col-xxl-4">
-                    <div>
-                       <label>Gender</label>
-                                <div class="d-flex flex-coloumn flex-sm-row mt-2">
-                                    <div class="form-check me-2"> <input id="radio-switch-4" checked disabled class="form-check-input" type="radio" name="horizontal_radio_button" value="horizontal-radio-chris-evans"> <label class="form-check-label" for="radio-switch-4">{{ $student->gender }}</label> 
-                                    </div>
-                                </div>
-                    </div>
-                </div>
-                <div class="g-col-12 g-col-xxl-4">
-                    <div>
-                        <label for="update-profile-form-1" class="form-label">
-                            Date of Birth</label>
-                        <input id="update-profile-form-1" disabled type="tel" class="form-control"
-                            placeholder="" value="{{ $student->date_of_birth }}">
-                    </div>
-                </div>
-                <div class="g-col-12 g-col-xxl-4">
-                    <label for="input-wizard-4" class="form-label">Class</label>
-                    <div class="input-group w-100 mx-auto">
-                        <input type="text" disabled class="form-control" value="{{(!empty($student->learn_spaces->class_name)) ? $student->learn_spaces->class_name : ''}}">
-                    </div>
-                 </div>
-                 <div class="g-col-12 g-col-xxl-4">
-                    <div>
-                        <label for="update-profile-form-1" class="form-label">
-                           Year</label>
-                        <input id="update-profile-form-1" readonly type="text" class="form-control"
-                            placeholder="" value="{{ $student->year }}">
-                    </div>
-                </div>
-                 <div class="g-col-12 g-col-xxl-4">
-                    <div>
-                        <label for="update-profile-form-1" class="form-label">
-                           Nationality</label>
-                        <input id="update-profile-form-1" readonly type="text" class="form-control"
-                            placeholder="" value="{{ $student->nationality }}">
-                    </div>
-                </div>
-                <div class="g-col-12 g-col-xxl-4">
-                    <div>
-                        <label for="update-profile-form-1" class="form-label">
-                           Religion</label>
-                        <input id="update-profile-form-1" readonly type="text" class="form-control"
-                            placeholder="" value="{{ $student->religion }}">
-                    </div>
-                </div>
-                <div class="g-col-12 g-col-xxl-4">
-                    <div>
-                        <label for="update-profile-form-1" class="form-label">
-                           Category</label>
-                        <input id="update-profile-form-1" readonly type="text" class="form-control"
-                            placeholder="" value="{{ $student->cast_catogory }}">
-                    </div>
-                </div>
-                <div class="g-col-12 g-col-xxl-4">
-                    <div>
-                        <label for="update-profile-form-1" class="form-label">
-                           Blood Group</label>
-                        <input id="update-profile-form-1" readonly type="text" class="form-control"
-                            placeholder="" value="{{ $student->blood_group }}">
-                    </div>
-                </div>
-            </div>
-        </div>
+             <h4><strong>Student Details</strong></h4>   
+             <br>
+             <div class="d-flex flex-column-reverse flex-xl-row flex-column">
+                 <table class="table table-bordered table-report mt-n2">
+                     <tbody>
+                         <tr>
+                            <th class="">Name</th>
+                            <td>{{ $student->first_name.' '.$student->last_name }}</td>
+                            <th class="">Email ID</th>
+                            <td>{{ $student->email }}</td>
+                             <th class="">Mobile Number</th>
+                            <td>{{ $student->contact_no }}</td>
+                        </tr>
+                        <tr>
+                            <th class="">Alternate Mobile Number</th>
+                            <td>{{ $student->alternate_no}}</td>
+                            <th class=""> Whatsapp Number</th>
+                            <td>{{ $student->whatsapp }}</td>
+                             <th class="">Date of Birth</th>
+                            <td>{{ $student->date_of_birth }}</td>
+                        </tr>
+                        <tr>
+                            <th class="">Gender</th>
+                            <td>{{ $student->gender}}</td>
+                            <th class=""> Class</th>
+                            <td>{{(!empty($student->learn_spaces->class_name)) ? $student->learn_spaces->class_name : ''}}</td>
+                             <th class="">Year</th>
+                            <td>{{ $student->year }}</td>
+                        </tr>
+                        <tr>
+                            <th class="">Nationality</th>
+                            <td>{{ $student->nationality}}</td>
+                            <th class=""> Religion</th>
+                            <td>{{ $student->religion }}</td>
+                             <th class="">Category</th>
+                            <td>{{ $student->cast_catogory }}</td>
+                        </tr>
+                        <tr>
+                            <th class="">Blood Group</th>
+                            <td>{{ $student->blood_group}}</td>
+                            <th class=""> Date of Leaving </th>
+                            <td>{{ $student->date_of_leaving }}</td>
+                             <th class="">Status</th>
+                            <td>{{ ($student->active == 1) ? 'Active' : 'Inactive' }}</td>
+                        </tr>
+                     </tbody>
+                 </table>
+             </div>
+         </div>
     </div>
     <!-- End of Parents Details -->
      <div class="tab-pane fade show" id="account" role="tabpanel" aria-labelledby="account-tab">
          <div class="p-5">
-             <div class="grid columns-12 gap-x-5 gap-y-0">
-                  <div class="g-col-12 g-col-xxl-4">
-                        <div>
-                            <label for="update-profile-form-1" class="form-label">
-                                Father Name</label>
-                            <input id="update-profile-form-1" disabled type="text" class="form-control"
-                                placeholder="" value="{{ $student->father_name }}">
-                        </div>
-                    </div>
-                     <div class="g-col-12 g-col-xxl-4">
-                        <div>
-                            <label for="update-profile-form-1" class="form-label">
-                                Mother Name</label>
-                            <input id="update-profile-form-1" disabled type="text" class="form-control"
-                                placeholder="" value="{{ $student->mother_name }}">
-                        </div>
-                    </div>
-                      <div class="g-col-12 g-col-xxl-4">
-                        <div>
-                            <label for="update-profile-form-1" class="form-label">
-                                Email ID</label>
-                            <input id="update-profile-form-1" disabled type="text" class="form-control"
-                                placeholder="" value="{{ $student->parent_email }}">
-                        </div>
-                    </div>
-                    <div class="g-col-12 g-col-xxl-4">
-                        <div>
-                            <label for="update-profile-form-1" class="form-label">Mobile Number</label>
-                            <input id="update-profile-form-1" disabled type="text" class="form-control"
-                                placeholder="" value="{{ $student->parent_contact_no }}">
-                        </div>
-                    </div>
-                    <div class="g-col-12 g-col-xxl-4">
-                        <div>
-                            <label for="update-profile-form-1" class="form-label">Alternate Mobile Number</label>
-                            <input id="update-profile-form-1" disabled type="text" class="form-control"
-                                placeholder="" value="{{ $student->parent_alternat_no }}">
-                        </div>
-                    </div>
-                    <div class="g-col-12 g-col-xxl-4">
-                        <div>
-                            <label for="update-profile-form-1" class="form-label">Whatsapp Number</label>
-                            <input id="update-profile-form-1" disabled type="text" class="form-control"
-                                placeholder="" value="{{ $student->parent_whatsapp }}">
-                        </div>
-                    </div>
-             </div>
-             <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
-                <div class="g-col-12 g-col-xxl-4">
-                    <div>
-                        <label for="update-profile-form-1" class="form-label">
-                            Qualification</label>
-                        <input id="update-profile-form-1" disabled type="tel" class="form-control"
-                            placeholder=""  value="{{ $student->qualification }}">
-                    </div>
-                </div>
-                <div class="g-col-12 g-col-xxl-4">
-                    <div>
-                        <label for="update-profile-form-1" class="form-label">
-                            Father Occupation</label>
-                        <input id="update-profile-form-1" disabled type="tel" class="form-control"
-                            placeholder="" value="{{ $student->father_occupation }}">
-                    </div>
-                </div>
-                <div class="g-col-12 g-col-xxl-4">
-                    <div>
-                        <label for="update-profile-form-1" class="form-label">
-                            Mother Occupation</label>
-                        <input id="update-profile-form-1" disabled type="tel" class="form-control"
-                            placeholder="" value="{{ $student->mother_occupation }}">
-                    </div>
-                </div>
-            </div>
-            <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
-                <div class="g-col-12 g-col-xxl-4">
-                    <div>
-                        <label for="update-profile-form-1" class="form-label">
-                            Parents Yearly Income</label>
-                        <input id="update-profile-form-1" disabled type="tel" class="form-control"
-                            placeholder=""  value="{{ $student->parent_income }}">
-                    </div>
-                </div>
-                <div class="g-col-12 g-col-xxl-4">
-                    <div>
-                        <label for="update-profile-form-1" class="form-label">
-                           Pincode</label>
-                        <input id="update-profile-form-1" disabled type="tel" class="form-control"
-                            placeholder="" value="{{ $student->pincode }}">
-                    </div>
-                </div>
-                <div class="g-col-12 g-col-xxl-4">
-                    <div>
-                        <label for="update-profile-form-1" class="form-label">
-                            City</label>
-                        <input id="update-profile-form-1" disabled type="tel" class="form-control"
-                            placeholder="" value="{{ $student->city }}">
-                    </div>
-                </div>
-                <div class="g-col-12 g-col-xxl-4">
-                    <div>
-                        <label for="update-profile-form-1" class="form-label">
-                            State</label>
-                        <input id="update-profile-form-1" disabled type="tel" class="form-control"
-                            placeholder="" value="{{ $student->state }}">
-                    </div>
-                </div>
-                <div class="g-col-12 g-col-xxl-4">
-                    <div>
-                        <label for="update-profile-form-1" class="form-label">
-                            Address</label>
-                        <input id="update-profile-form-1" disabled type="tel" class="form-control"
-                            placeholder="" value="{{ $student->address }}">
-                    </div>
-                </div>
-            </div>
+                <h4><strong>Parent Details</strong></h4>   
+                <br>
+               <div class="d-flex flex-column-reverse flex-xl-row flex-column">
+                   <table class="table table-bordered table-report mt-n2">
+                       <tbody>
+                           <tr>
+                               <th class="">Father Name</th>
+                                <td>{{ $student->father_name }}</td>
+                                <th class="">Mother Name</th>
+                                <td>{{ $student->mother_name }}</td>
+                                 <th class="">Email ID</th>
+                                <td>{{ $student->parent_email }}</td>
+                           </tr>
+                           <tr>
+                               <th class="">Father Number</th>
+                                <td>{{ $student->parent_contact_no }}</td>
+                                <th class="">Mother Mobile Number</th>
+                                <td>{{ $student->parent_alternat_no }}</td>
+                                 <th class="">Whatsapp Number</th>
+                                <td>{{ $student->parent_whatsapp }}</td>
+                           </tr>
+                           <tr>
+                               <th class="">Qualification</th>
+                                <td>{{ $student->qualification }}</td>
+                                <th class="">Father Occupation</th>
+                                <td>{{ $student->father_occupation }}</td>
+                                 <th class="">Mother Occupation</th>
+                                <td>{{ $student->mother_occupation }}</td>
+                           </tr>
+                           <tr>
+                               <th class="">Parents Yearly Income</th>
+                                <td>{{ $student->parent_income }}</td>
+                           </tr>
+                       </tbody>
+                   </table>
+               </div>
+                <br>
+                <h4><strong>Residential Address</strong></h4>   
+                <br>
+                <div class="d-flex flex-column-reverse flex-xl-row flex-column">
+                   <table class="table table-bordered table-report mt-n2">
+                       <tbody>
+                           <tr>
+                               <th class="">Pincode</th>
+                                <td>{{ $student->pincode }}</td>
+                                <th class="">City</th>
+                                <td>{{ $student->city }}</td>
+                                 <th class="">State</th>
+                                <td>{{ $student->state }}</td>
+                           </tr>
+                           <tr>
+                               <th class="">Address</th>
+                                <td colspan="5">{{ $student->address }}</td>
+                           </tr>
+                       </tbody>
+                   </table>
+               </div>
          </div>
      </div>
+     <!-- Activation And Change Password  -->
+      <div class="tab-pane fade show" id="change-password" role="tabpanel" aria-labelledby="account-tab">
+          <div class="p-5">
+              <h2 class="fw-medium fs-base me-auto">
+                {{ $student->name }} - Activation
+              </h2>
+              <hr>
+              <br>
+              <form method="POST" action="{{ route('student_activation') }}" enctype="multipart/form-data">
+               @csrf
+                <div class="grid columns-12 gap-4 gap-y-5">
+                      <div class="intro-y g-col-12 g-col-sm-4">
+                        <input name="id" type="hidden" value="{{$student->id}}"> 
+                        <label for="username" class="form-label">Username</label>
+                        <input id="username" type="text" name="username" class="form-control" placeholder="Username" value="{{$student->email}}" required>
+                    </div>
+                    <?php $readonly = ($activationStatus == 2) ? 'readonly' : '';  ?>
+                    <div class="intro-y g-col-12 g-col-sm-4">
+                        <label for="password" class="form-label">Password</label>
+                        <input id="password" type="password" class="form-control" name="password" placeholder="Password" {{$readonly}} value="{{$student->password}}"  required>
+                    </div>
+
+                    <?php if($activationStatus == 2){ ?>
+                        <div class="intro-y g-col-12 g-col-sm-4 d-flex mt-5">
+                            <button class="btn btn-primary w-24 ms-2 changePSW" type="button" style="width: 100% !important;">Change Password</button>
+                         </div> 
+                    <?php } ?>    
+                    <div class="intro-y g-col-12 d-flex align-items-center justify-content-center justify-content-sm-end mt-5">
+                        <button class="btn btn-primary w-24 ms-2" type="submit">Submit</button>
+                    </div>
+                </div>
+
+              </form>
+          </div>
+      </div>
 </div>
+<script type="text/javascript">
+    $('.changePSW').click(function(){
+        $('#password').attr('readonly',false);
+        $('#password').val('');
+    });
+</script>
 @endsection

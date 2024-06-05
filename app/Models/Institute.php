@@ -31,9 +31,12 @@ class Institute extends Model
     }
 
      // Define the hasMany relationship
-    public function users()
-    {
+    public function users(){
         return $this->hasMany(User::class, 'institute_id', 'id');
+    }
+
+    public function notices(){
+        return $this->hasMany(Notice::class, 'institute_id', 'id');
     }
 
 }

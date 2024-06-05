@@ -8,7 +8,7 @@ class="breadcrumb--active">Dashboard</a> </div>
 
 <!-- BEGIN: Notifications -->
 <div class="intro-x dropdown me-auto me-sm-6" id="notification-section">
-
+	@include('partials.notification')
 </div>
 <!-- END: Notifications -->
 <?php if(Auth::user()->role_id != 1){ ?>   

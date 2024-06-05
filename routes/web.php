@@ -81,7 +81,7 @@ Route::resource('standards', StandardController::class);
 /*Users*/
 Route::resource('users', UsersController::class);
 Route::get('/change_password', [UsersController::class,'change_password'])->name('change_password');
-Route::post('/update_password', [UsersController::class,'update_password'])->name('update_password');
+Route::post('/new_password', [UsersController::class,'update_password'])->name('new_password');
 Route::get('/institute_user/{id}', [UsersController::class,'institute_user'])->name('institute_user');
 
 /*institutes Route*/
@@ -110,7 +110,7 @@ Route::resource('teacher_activations', TeacherActivationController::class);
 /* Student Routes */
 Route::resource('students', StudentController::class);
 Route::post('/import-students',[ StudentController::class,'importStudents'])->name('import.students');
-
+Route::post('/student_activation', [StudentController::class,'student_activation'])->name('student_activation');
 
 
 /* Institute Time Management */ 
@@ -141,3 +141,5 @@ Route::get('/student_calender', [StudentAttendanceController::class,'student_cal
 });
 
 Route::get('/', function () {return view('auth.login');});
+Route::get('/forgot_password', [AuthController::class,'forgot_password'])->name('forgot_password');
+Route::post("/update_password",[AuthController::class,'update_password'])->name('update_password');

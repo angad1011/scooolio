@@ -33,10 +33,6 @@
                  <td>{{ $user->contact_no }}</td>
              </tr>
              <tr>
-                 <th class="">Alternate No.</th>
-                 <td>{{ $user->alternat_no }}</td>
-             </tr>
-             <tr>
                  <th class="">Date Of Birth</th>
                  <td>{{ $user->dob }}</td>
              </tr>

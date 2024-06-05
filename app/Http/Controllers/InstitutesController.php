@@ -10,7 +10,7 @@ use App\Models\Stream;
 use App\Models\InstituteType;
 use App\Models\User;
 
-class InstitutesController extends Controller
+class InstitutesController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -136,12 +136,22 @@ class InstitutesController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id){
+
         $school = Institute::find($id);
+
+
         if (!$school) {
             return redirect()->route('institutes.index')->with('error', 'User not found.');
        }
 
-       $school->update($request->all());
+       $active = $request->has('active') ? 1 : 0;
+
+       $data = $request->all();
+
+       $data['active'] =  $active;
+    
+
+       $school->update($data);
 
         /*Upload Files*/
          if ($request->hasFile('image_file')) {

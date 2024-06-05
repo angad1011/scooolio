@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Division;
 
-class DivisionController extends Controller
+class DivisionController extends BaseController
 {
     /**
      * Display a listing of the resource.

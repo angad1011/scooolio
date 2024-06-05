@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Standard;
 
-class StandardController extends Controller
+class StandardController extends BaseController
 {
     /**
      * Display a listing of the resource.

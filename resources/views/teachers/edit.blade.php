@@ -172,7 +172,7 @@ Update Teacher
                     </div>
                     <div class="g-col-4 g-col-xxl-4">
                         <label for="name" class="form-label">Religion</label>
-                        <select class="form-select me-sm-2" name="religion" aria-label="Default select example" required>
+                        <!-- <select class="form-select me-sm-2" name="religion" aria-label="Default select example" required>
                             <option value="" selected disabled>Select Religion</option>
                             <option value="Hindu" {{($teacher->religion == 'Hindu') ? 'selected' : ''}}>Hindu</option>
                             <option value="Muslim" {{($teacher->religion == 'Muslim') ? 'selected' : ''}}>Muslim</option>
@@ -180,7 +180,8 @@ Update Teacher
                             <option value="Christian" {{($teacher->religion == 'Christian') ? 'selected' : ''}}>Christian</option>
                             <option value="Jain" {{($teacher->religion == 'Jain') ? 'selected' : ''}}>Jain</option>
                             <option value="Baudh" {{($teacher->religion == 'Baudh') ? 'selected' : ''}}>Baudh</option>
-                        </select>
+                        </select> -->
+                        <input id="update-profile-form-1" type="text" class="form-control" placeholder="Religion" value="{{$teacher->religion}}" name="religion" required>
                     </div>
                     <div class="g-col-4 g-col-xxl-4">
                         <label for="name" class="form-label">Category</label>

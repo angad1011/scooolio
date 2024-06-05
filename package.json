@@ -11,8 +11,12 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
-        "@fullcalendar/core": "^6.1.11",
-        "@fullcalendar/daygrid": "^6.1.11",
+        "@fullcalendar/core": "^6.1.13",
+        "@fullcalendar/daygrid": "^6.1.13",
+        "@fullcalendar/interaction": "^6.1.13",
+        "bootstrap": "^5.3.3",
+        "jquery": "^3.7.1",
+        "popper.js": "^1.16.1",
         "select2": "^4.1.0-rc.0",
         "toastr": "^2.1.4"
     }
