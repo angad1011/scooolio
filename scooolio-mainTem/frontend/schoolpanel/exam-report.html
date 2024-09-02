@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="en" class="light">
+<!-- BEGIN: Head -->
+
+<head>
+    <meta charset="utf-8">
+    <link href="dist/images/logo.svg" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Exam Report</title>
+    <!-- BEGIN: CSS Assets-->
+    <link rel="stylesheet" href="dist/css/app.css" />
+    <!-- END: CSS Assets-->
+</head>
+<!-- END: Head -->
+
+<body class="main" page-name="exam">
+    <!-- BEGIN: Mobile Menu -->
+    <div class="mobile-menu d-md-none" id="mobile-menu">
+
+    </div>
+    <!-- END: Mobile Menu -->
+    <div class="d-flex">
+        <!-- BEGIN: Side Menu -->
+        <nav class="side-nav" id="side-nav">
+
+        </nav>
+        <!-- END: Side Menu -->
+        <!-- BEGIN: Content -->
+        <div class="content">
+            <!-- BEGIN: Top Bar -->
+            <div class="top-bar">
+                <!-- BEGIN: Breadcrumb -->
+                <div class="-intro-x breadcrumb me-auto d-none d-sm-flex"> <a href="">School</a> <i
+                        data-feather="chevron-right" class="breadcrumb__icon"></i> <a href=""
+                        class="breadcrumb--active">exam report</a> </div>
+                <!-- END: Breadcrumb -->
+
+                <!-- BEGIN: Notifications -->
+                <div class="intro-x dropdown me-auto me-sm-6" id="notification-section">
+
+                </div>
+                <!-- END: Notifications -->
+                <!-- BEGIN: Account Menu -->
+                <div class="intro-x dropdown w-8 h-8" id="right-profile-section">
+
+                </div>
+                <!-- END: Account Menu -->
+            </div>
+            <!-- END: Top Bar -->
+            <div class="grid columns-12 gap-6">
+                <div class="g-col-12 g-col-xxl-12">
+                    <div class="grid columns-12 gap-6">
+                        <!-- BEGIN: General Report -->
+                        <div class="g-col-12 mt-8">
+                            <div class="intro-y d-flex align-items-center h-10">
+                                <h2 class="fs-lg fw-medium truncate me-5">
+                                    Exam Report
+                                </h2>
+                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#uploadExamReport"
+                                    class="ms-auto d-flex align-items-center btn btn-primary">Upload
+                                    Report
+                                    Modal</a>
+                            </div>
+                        </div>
+                        <!-- END: General Report -->
+
+                    </div>
+                </div>
+            </div>
+            <div class="intro-y box p-5 mt-10">
+                <div class="d-flex flex-column flex-sm-row align-items-sm-end align-items-xl-start">
+                    <form id="tabulator-html-filter-form" class="d-xl-flex me-sm-auto">
+                        <div class="d-sm-flex align-items-center me-sm-6">
+                            <label class="w-12 flex-none w-xl-auto me-2">Filter By</label>
+                            <select class="tom-select w-full">
+                                <option value="1" selected>GR Number</option>
+                                <option value="2">1234</option>
+                                <option value="3">1234</option>
+                                <option value="4">1234</option>
+                                <option value="5">1234</option>
+                            </select>
+                        </div>
+                        <div class="d-sm-flex align-items-center me-sm-6">
+                            <select class="tom-select w-full">
+                                <option value="1" selected>Class Name</option>
+                                <option value="2">1st-A</option>
+                                <option value="3">1st-A</option>
+                                <option value="4">1st-A</option>
+                                <option value="5">1st-A</option>
+                            </select>
+                        </div>
+                        <div class="d-sm-flex align-items-center me-sm-6">
+                            <select class="tom-select w-full">
+                                <option value="1" selected>Student Name</option>
+                                <option value="2">Angad</option>
+                                <option value="3">Angad</option>
+                                <option value="4">Angad</option>
+                                <option value="5">Angad</option>
+                            </select>
+                        </div>
+                        <div class="d-sm-flex align-items-center me-sm-6">
+                            <select class="tom-select w-full">
+                                <option value="0" selected>Status</option>
+                                <option value="1">Pass</option>
+                                <option value="2">Fail</option>
+                                <option value="3">Pass with KT</option>
+                            </select>
+                        </div>
+                    </form>
+                    <div class="d-flex mt-5 mt-sm-0">
+                        <!-- <button id="tabulator-print" class="btn btn-outline-secondary w-1/2 w-sm-auto me-2"> <i
+                                                        data-feather="printer" class="w-4 h-4 me-2"></i> Print </button> -->
+                        <div class="dropdown w-1/2 w-sm-auto">
+                            <button class="dropdown-toggle btn btn-outline-secondary w-full w-sm-auto"
+                                aria-expanded="false" data-bs-toggle="dropdown"> <i data-feather="file-text"
+                                    class="w-4 h-4 me-2"></i> Export <i data-feather="chevron-down"
+                                    class="w-4 h-4 ms-auto ms-sm-2"></i> </button>
+                            <div class="dropdown-menu w-40">
+                                <ul class="dropdown-content">
+                                    <li>
+                                        <a id="tabulator-export-csv" href="javascript:;" class="dropdown-item"> <i
+                                                data-feather="file-text" class="w-4 h-4 me-2"></i> Export CSV </a>
+                                    </li>
+                                    <li>
+                                        <a id="tabulator-export-xlsx" href="javascript:;" class="dropdown-item"> <i
+                                                data-feather="file-text" class="w-4 h-4 me-2"></i> Export XLSX </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- BEGIN: Data List -->
+                <div class="intro-y g-col-12 ooverflow-x-auto overflow-lg-visible mt-5">
+                    <table class="table table-report mt-n2">
+                        <thead>
+                            <tr>
+
+                                <th class="text-nowrap">GR No.</th>
+                                <th class="text-nowrap">Student Name</th>
+                                <th class="text-nowrap">Class</th>
+                                <th class="text-nowrap">Roll No.</th>
+                                <th class="text-nowrap">Obt Marks</th>
+                                <th class="text-nowrap">Total Marks</th>
+                                <th class="text-nowrap">Percentage</th>
+                                <th class="text-nowrap">Status</th>
+                                <th class="text-nowrap">Announced Date</th>
+                                <th class="text-nowrap">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="intro-x">
+                                <td>12345</td>
+                                <td>Angad Yadav</td>
+                                <td>9th A</td>
+                                <td>12</td>
+                                <td>143</td>
+                                <td>210</td>
+                                <td>68.10%</td>
+                                <td>Pass</td>
+                                <td>10/06/2024</td>
+                                <td>
+                                    <div class="dropdown ms-auto">
+                                        <a class="dropdown-toggle w-5 h-5 d-block" href="javascript:;"
+                                            aria-expanded="false" data-bs-toggle="dropdown"> <i
+                                                data-feather="more-vertical"
+                                                class="w-5 h-5 text-gray-600 dark-text-gray-300"></i> </a>
+                                        <div class="dropdown-menu w-40">
+                                            <ul class="dropdown-content">
+                                                <li>
+                                                    <a href="update-report.html" class="dropdown-item"> <i
+                                                            data-feather="edit" class="w-4 h-4 me-2"></i> Update Report
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="view-report.html" class="dropdown-item"> <i
+                                                            data-feather="eye" class="w-4 h-4 me-2"></i> View
+                                                        Report
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- END: Data List -->
+                <!-- BEGIN: Pagination -->
+                <div class="intro-y g-col-12 d-flex flex-wrap flex-sm-row flex-sm-nowrap align-items-center mt-5">
+                    <nav class="w-full w-sm-auto me-sm-auto">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevrons-left"></i> </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevron-left"></i> </a>
+                            </li>
+                            <li class="page-item"> <a class="page-link" href="#">...</a> </li>
+                            <li class="page-item"> <a class="page-link" href="#">1</a> </li>
+                            <li class="page-item active"> <a class="page-link" href="#">2</a> </li>
+                            <li class="page-item"> <a class="page-link" href="#">3</a> </li>
+                            <li class="page-item"> <a class="page-link" href="#">...</a> </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevron-right"></i> </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevrons-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <select class="w-20 form-select box mt-3 mt-sm-0">
+                        <option>10</option>
+                        <option>25</option>
+                        <option>35</option>
+                        <option>50</option>
+                    </select>
+                </div>
+                <!-- END: Pagination -->
+            </div>
+        </div>
+        <!-- END: Content -->
+    </div>
+    <!-- upload Modal -->
+    <!-- BEGIN: Modal Content -->
+    <div id="uploadExamReport" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- BEGIN: Modal Header -->
+                <div class="modal-header">
+                    <h2 class="fw-medium fs-base me-auto">Upload Exam Report</h2>
+                </div> <!-- END: Modal Header -->
+                <!-- BEGIN: Modal Body -->
+                <div class="modal-body grid columns-12 gap-4 gap-y-3">
+                    <form data-file-types="XLSX" action="/file-upload" class="dropzone g-col-12">
+                        <div class="fallback"> <input name="file" type="file" /> </div>
+                        <div class="dz-message" data-dz-message>
+                            <div class="fs-lg fw-medium">Drop files here or click to upload.</div>
+                            <div class="text-gray-600"> This is just a demo dropzone. Selected files are <span
+                                    class="fw-medium">not</span>
+                                actually uploaded. </div>
+                        </div>
+                    </form>
+                </div> <!-- END: Modal Body -->
+                <!-- BEGIN: Modal Footer -->
+                <div class="modal-footer text-end"> <button type="button" data-bs-dismiss="modal"
+                        class="btn btn-outline-secondary w-20 me-1">close</button> <button type="button"
+                        class="btn btn-primary w-20">Submit</button> </div> <!-- END: Modal Footer -->
+            </div>
+        </div>
+    </div> <!-- END: Modal Content -->
+    <!-- End of upload Modal -->
+    <!-- BEGIN: JS Assets-->
+    <!-- <script src="dist/js/app.js"></script> -->
+    <script src="dist/js/custom.js"></script>
+
+    <!-- END: JS Assets-->
+</body>
+
+</html>

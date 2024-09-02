@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html lang="en" class="light">
+<!-- BEGIN: Head -->
+
+<head>
+    <meta charset="utf-8">
+    <link href="dist/images/logo.svg" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Collect Fees</title>
+    <!-- BEGIN: CSS Assets-->
+    <link rel="stylesheet" href="dist/css/app.css" />
+    <!-- END: CSS Assets-->
+</head>
+<!-- END: Head -->
+
+<body class="main" page-name="fees">
+    <!-- BEGIN: Mobile Menu -->
+    <div class="mobile-menu d-md-none" id="mobile-menu">
+
+    </div>
+    <!-- END: Mobile Menu -->
+    <div class="d-flex">
+        <!-- BEGIN: Side Menu -->
+        <nav class="side-nav" id="side-nav">
+
+        </nav>
+        <!-- END: Side Menu -->
+        <!-- BEGIN: Content -->
+        <div class="content">
+            <!-- BEGIN: Top Bar -->
+            <div class="top-bar">
+                <!-- BEGIN: Breadcrumb -->
+                <div class="-intro-x breadcrumb me-auto d-none d-sm-flex"> <a href="">School/College</a> <i
+                        data-feather="chevron-right" class="breadcrumb__icon"></i> <a href=""
+                        class="breadcrumb--active">Fees</a> </div>
+                <!-- END: Breadcrumb -->
+
+                <!-- BEGIN: Notifications -->
+                <div class="intro-x dropdown me-auto me-sm-6" id="notification-section">
+
+                </div>
+                <!-- END: Notifications -->
+                <!-- BEGIN: Account Menu -->
+                <div class="intro-x dropdown w-8 h-8" id="right-profile-section">
+
+                </div>
+                <!-- END: Account Menu -->
+            </div>
+            <!-- END: Top Bar -->
+            <div class="intro-y box p-10">
+
+                <div class="grid columns-12 gap-4 gap-y-5 mt-5">
+                    <div class="intro-y g-col-12 g-col-sm-4">
+                        <label for="class" class="form-label">Select Class</label>
+                        <select id="class" class="form-select">
+                            <option>1st - A</option>
+                            <option>2nd - A</option>
+                            <option>2nd - A</option>
+                            <option>2nd - A</option>
+                        </select>
+                    </div>
+                    <div class="intro-y g-col-12 g-col-sm-4">
+                        <label for="class" class="form-label">Roll Number</label>
+                        <select id="class" class="form-select">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>2</option>
+                            <option>2</option>
+                        </select>
+                    </div>
+                    <div class="intro-y g-col-12 g-col-sm-4">
+                        <label for="student" class="form-label">Student Name</label>
+                        <select id="student" class="form-select">
+                            <option></option>
+                            <option>Ajay Yadav</option>
+                            <option>Vinod Kale</option>
+                            <option>Deepak Gore</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column flex-sm-row align-items-center mt-10 mb-2">
+                    <h2 class="fw-medium fs-base me-auto">
+                        Student Details:
+                    </h2>
+                </div>
+                <div class="d-flex flex-column flex-sm-row align-items-center p-5 bg-gray-200 justify-space-between">
+                    <div class="student-name">
+                        <span class="fs-base fw-bold">Student Name: </span>
+                        <span class="fs-base">Abhishek Saini</span>
+                    </div>
+                    <div class="father-name">
+                        <span class="fs-base fw-bold">Father Name: </span>
+                        <span class="fs-base">Abhishek Saini</span>
+                    </div>
+                    <div class="class-name">
+                        <span class="fs-base fw-bold">Class & Division: </span>
+                        <span class="fs-base">5th - D</span>
+                    </div>
+                    <div class="roll-number">
+                        <span class="fs-base fw-bold">Roll Number: </span>
+                        <span class="fs-base">25</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-sm-row align-items-center mt-5 mb-2">
+                    <h2 class="fw-medium fs-base me-auto">
+                        Fees Log:
+                    </h2>
+                </div>
+                <div class="d-flex flex-column flex-sm-row align-items-center p-5 bg-gray-200 justify-space-between">
+                    <div class="student-name">
+                        <span class="fs-base fw-bold">Total Fees: </span>
+                        <span class="fs-base">25000</span>
+                    </div>
+                    <div class="father-name">
+                        <span class="fs-base fw-bold">Fine: </span>
+                        <span class="fs-base">0</span>
+                    </div>
+                    <div class="class-name">
+                        <span class="fs-base fw-bold">Paid: </span>
+                        <span class="fs-base">15000</span>
+                    </div>
+                    <div class="class-name">
+                        <span class="fs-base fw-bold">Discount: </span>
+                        <span class="fs-base">0</span>
+                    </div>
+                    <div class="roll-number">
+                        <span class="fs-base fw-bold">Balance: </span>
+                        <span class="fs-base">10000</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-sm-row align-items-center mt-10 mb-2">
+                    <h2 class="fw-medium fs-base me-auto">
+                        Collect Fees:
+                    </h2>
+                </div>
+                <div class="grid columns-12 gap-4 gap-y-5 mt-5">
+                    <div class="intro-y g-col-12 g-col-sm-6">
+                        <label for="class" class="form-label">Select Month</label>
+                    </div>
+                    <div class="intro-y g-col-12 g-col-sm-6">
+                        <select data-placeholder="Select Months" data-header="Months" class="tom-select w-full"
+                            multiple>
+                            <option value="1" disabled>January</option>
+                            <option value="2" disabled>February</option>
+                            <option value="3" disabled>March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid columns-12 gap-4 gap-y-5 mt-5">
+                    <div class="intro-y g-col-12 g-col-sm-6">
+                        <label for="class" class="form-label">Total Fees in Rs. (fees is calculated as per month
+                            selection)</label>
+                    </div>
+                    <div class="intro-y g-col-12 g-col-sm-6">
+                        <div>
+                            <input id="regular-form-1" value="1800" type="text" class="form-control" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid columns-12 gap-4 gap-y-5 mt-5">
+                    <div class="intro-y g-col-12 g-col-sm-6">
+                        <label for="class" class="form-label">Date:</label>
+                    </div>
+                    <div class="intro-y g-col-12 g-col-sm-6">
+                        <input class="datepicker form-control d-block mx-auto" data-single-mode="true">
+                    </div>
+                </div>
+                <div class="grid columns-12 gap-4 gap-y-5 mt-5">
+                    <div class="intro-y g-col-12 g-col-sm-6">
+                        <label for="class" class="form-label">Payment Mode</label>
+                    </div>
+                    <div class="intro-y g-col-12 g-col-sm-6">
+                        <select id="class" class="form-select">
+                            <option>Scan QR</option>
+                            <option>Bank Transfer</option>
+                            <option>Debit/Credit Card</option>
+                            <option>Cash</option>
+                            <option>Cheque</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid columns-12 gap-4 gap-y-5 mt-5">
+                    <div class="intro-y g-col-12 g-col-sm-6">
+                        <label for="class" class="form-label">Remark if Any (optional)</label>
+                    </div>
+                    <div class="intro-y g-col-12 g-col-sm-6">
+                        <textarea id="regular-form-1" value="" type="" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div
+                    class="intro-y g-col-12 d-flex align-items-center justify-content-center justify-content-sm-end mt-5">
+                    <button class="btn btn-secondary w-24">Cancel</button>
+                    <button class="btn btn-primary w-24 ms-2">Submit</button>
+                </div>
+            </div>
+        </div>
+        <!-- END: Content -->
+    </div>
+
+    <!-- BEGIN: JS Assets-->
+    <!-- <script src="dist/js/app.js"></script> -->
+    <script src="dist/js/custom.js"></script>
+
+    <!-- END: JS Assets-->
+</body>
+
+</html>

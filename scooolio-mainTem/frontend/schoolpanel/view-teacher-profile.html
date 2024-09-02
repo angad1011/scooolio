@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html lang="en" class="light">
+<!-- BEGIN: Head -->
+
+<head>
+    <meta charset="utf-8">
+    <link href="dist/images/logo.svg" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Teacher Details</title>
+    <!-- BEGIN: CSS Assets-->
+    <link rel="stylesheet" href="dist/css/app.css" />
+    <!-- END: CSS Assets-->
+</head>
+<!-- END: Head -->
+
+<body class="main" page-name="teacher">
+    <!-- BEGIN: Mobile Menu -->
+    <div class="mobile-menu d-md-none" id="mobile-menu">
+
+    </div>
+    <!-- END: Mobile Menu -->
+    <div class="d-flex">
+        <!-- BEGIN: Side Menu -->
+        <nav class="side-nav" id="side-nav">
+
+        </nav>
+        <!-- END: Side Menu -->
+        <!-- BEGIN: Content -->
+        <div class="content">
+            <!-- BEGIN: Top Bar -->
+            <div class="top-bar">
+                <!-- BEGIN: Breadcrumb -->
+                <div class="-intro-x breadcrumb me-auto d-none d-sm-flex"> <a href="">School</a> <i
+                        data-feather="chevron-right" class="breadcrumb__icon"></i> <a href=""
+                        class="breadcrumb--active">Teacher Details</a> </div>
+                <!-- END: Breadcrumb -->
+                <!-- BEGIN: Notifications -->
+                <div class="intro-x dropdown me-auto me-sm-6" id="notification-section">
+
+                </div>
+                <!-- END: Notifications -->
+                <!-- BEGIN: Account Menu -->
+                <div class="intro-x dropdown w-8 h-8" id="right-profile-section">
+
+                </div>
+                <!-- END: Account Menu -->
+            </div>
+            <!-- END: Top Bar -->
+            <div class="intro-y d-flex flex-column flex-sm-row align-items-center mt-8">
+                <h2 class="fs-lg fw-medium me-auto">
+                    Teacher Profile
+                </h2>
+                <div class="w-full w-sm-auto d-flex mt-4 mt-sm-0">
+                    <a href="teacher-list.html" class="btn btn-primary shadow-md me-2">
+                        Teacher List</a>
+                </div>
+            </div>
+            <!-- BEGIN: Profile Info -->
+            <div class="intro-y box px-5 pt-5 mt-5">
+                <div class="d-flex flex-column flex-lg-row border-bottom border-gray-200 dark-border-dark-5 pb-5 mx-n5">
+                    <div class="d-flex flex-1 px-5 align-items-center justify-content-center justify-content-lg-start">
+                        <div class="w-20 h-20 w-sm-24 h-sm-24 flex-none w-lg-32 h-lg-32 image-fit position-relative">
+                            <img alt=" " class="rounded-circle" src="dist/images/profile-photo.jpg">
+                        </div>
+                        <div class="ms-5">
+                            <div class="w-24 w-sm-40 truncate white-space-sm-wrap fw-medium fs-lg">Sonal Jain</div>
+                            <div class="text-gray-600">EMP ID - 1234</span></div>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-6 mt-lg-0 flex-1 dark-text-gray-300 px-5 border-start border-end border-gray-200 dark-border-dark-5 border-top border-top-lg-0 pt-5 pt-lg-0">
+                        <div class="fw-medium text-center text-lg-start mt-lg-3">Contact Details</div>
+                        <div
+                            class="d-flex flex-column justify-content-center align-items-center align-items-lg-start mt-4">
+                            <div class="truncate white-space-sm-normal d-flex align-items-center"> <i
+                                    data-feather="mail" class="w-4 h-4 me-2"></i> abc@gmail.com </div>
+                            <div class="truncate white-space-sm-normal d-flex align-items-center mt-3"> <i
+                                    data-feather="phone" class="w-4 h-4 me-2"></i> +91 8108847838 </div>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-6 mt-lg-0 flex-1 d-flex align-items-center justify-content-center px-5 border-top border-lg-0 border-gray-200 dark-border-dark-5 pt-5 pt-lg-0">
+                        <div class="dropdown ms-auto">
+                            <a class="dropdown-toggle w-5 h-5 d-block" href="javascript:;" aria-expanded="false"
+                                data-bs-toggle="dropdown"> <i data-feather="more-horizontal"
+                                    class="w-5 h-5 text-gray-600 dark-text-gray-300"></i> </a>
+                            <div class="dropdown-menu w-40">
+                                <ul class="dropdown-content">
+                                    <li>
+                                        <a href="add-teacher.html" class="dropdown-item d-flex align-items-center"> <i
+                                                data-feather="edit" class="w-4 h-4 me-2"></i> Edit Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="" class="dropdown-item d-flex align-items-center"
+                                            data-bs-toggle="modal" data-bs-target="#delete-confirmation-modal"> <i
+                                                data-feather="trash" class="w-4 h-4 me-2"></i> Delete </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav nav-link-tabs flex-column flex-sm-row justify-content-center justify-content-lg-start"
+                    role="tablist">
+                    <li id="profile-tab" class="nav-item" role="presentation">
+                        <a href="javascript:;" class="nav-link px-0 me-sm-8 d-flex align-items-center active"
+                            data-bs-toggle="pill" data-bs-target="#profile" role="tab" aria-controls="profile-tab"
+                            aria-selected="true"> <i class="w-4 h-4 me-2" data-feather="user"></i> Basic Information
+                        </a>
+                    </li>
+                    <li id="account-tab" class="nav-item" role="presentation">
+                        <a href="javascript:;" class="nav-link px-0 me-sm-8 d-flex align-items-center"
+                            data-bs-toggle="pill" data-bs-target="#account" role="tab" aria-controls="account-tab"
+                            aria-selected="false"> <i class="w-4 h-4 me-2" data-feather="shield"></i> Personal Details
+                        </a>
+                    </li>
+                    <li id="change-password-tab" class="nav-item" role="presentation">
+                        <a href="javascript:;" class="nav-link px-0 me-sm-8 d-flex align-items-center"
+                            data-bs-toggle="pill" data-bs-target="#change-password" role="tab"
+                            aria-controls="change-password-tab" aria-selected="false">
+                            <i class="w-4 h-4 me-2" data-feather="lock"></i> Change Password </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- END: Profile Info -->
+            <div class="intro-y box tab-content mt-5">
+                <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="p-5">
+                        <div class="grid columns-12 gap-x-5 gap-y-0">
+                            <div class="g-col-12 g-col-xxl-3">
+                                <div>
+                                    <label for="update-profile-form-1" class="form-label">
+                                        Emp ID</label>
+                                    <input id="update-profile-form-1" type="text" class="form-control" placeholder=""
+                                        value="EMP1234" disabled>
+                                </div>
+                            </div>
+                            <div class="g-col-12 g-col-xxl-3">
+                                <div>
+                                    <label for="update-profile-form-1" class="form-label">
+                                        First Name</label>
+                                    <input id="update-profile-form-1" type="text" class="form-control" placeholder=""
+                                        value="Sonal" disabled>
+                                </div>
+                            </div>
+                            <div class="g-col-12 g-col-xxl-3">
+                                <div>
+                                    <label for="update-profile-form-1" class="form-label">
+                                        Last Name</label>
+                                    <input id="update-profile-form-1" disabled type="text" class="form-control"
+                                        placeholder="" value="Jain">
+                                </div>
+                            </div>
+
+                            <div class="g-col-12 g-col-xxl-3">
+                                <label for="input-wizard-4" class="form-label">Joining Date</label>
+                                <div class="input-group w-100 mx-auto">
+                                    <div id="input-group-email" class="input-group-text"> <i data-feather="calendar"
+                                            class="w-4 h-4"></i> </div>
+                                    <input type="text" class="datepicker form-control" data-single-mode="true" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
+                            <div class="g-col-12 g-col-xxl-3">
+                                <label>Gender</label>
+                                <div class="d-flex flex-coloumn flex-sm-row mt-2">
+                                    <div class="form-check me-2 mt-2 mt-sm-0"> <input id="radio-switch-5"
+                                            class="form-check-input" type="radio" checked name="horizontal_radio_button"
+                                            value="horizontal-radio-liam-neeson"> <label class="form-check-label"
+                                            for="radio-switch-5">Female</label> </div>
+                                </div>
+                            </div>
+                            <div class="g-col-12 g-col-xxl-3">
+                                <label for="name" class="form-label">Teaching Subjects</label>
+                                <select data-placeholder="Select Subjects" disabled class="tom-select w-full" multiple>
+                                    <option value="1" selected>Hindi</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="account" role="tabpanel" aria-labelledby="account-tab">
+                    <div class="p-5">
+                        <div class="grid columns-12 gap-x-5 gap-y-0">
+
+                            <div class="g-col-12 g-col-xxl-3">
+                                <div>
+                                    <label for="update-profile-form-1" class="form-label">
+                                        Email ID</label>
+                                    <input id="update-profile-form-1" type="email" class="form-control" placeholder=""
+                                        value="abc@gmail.com" disabled>
+                                </div>
+                            </div>
+                            <div class="g-col-12 g-col-xxl-3">
+                                <div>
+                                    <label for="update-profile-form-1" class="form-label">
+                                        Mobile Number</label>
+                                    <input id="update-profile-form-1" disabled type="tel" class="form-control"
+                                        placeholder="" value="8108847838">
+                                </div>
+                            </div>
+                            <div class="g-col-12 g-col-xxl-3">
+                                <div>
+                                    <label for="update-profile-form-1" class="form-label">
+                                        Alternate Mobile Number</label>
+                                    <input id="update-profile-form-1" disabled type="tel" class="form-control"
+                                        placeholder="" value="810885784">
+                                </div>
+                            </div>
+                            <div class="g-col-12 g-col-xxl-3">
+                                <div>
+                                    <label for="update-profile-form-1" class="form-label">
+                                        Whatsapp Number</label>
+                                    <input id="update-profile-form-1" disabled type="tel" class="form-control"
+                                        placeholder="" value="810885784">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
+                            <div class="g-col-12 g-col-xxl-3">
+                                <label for="input-wizard-4" class="form-label">Date of Birth</label>
+                                <div class="input-group w-100 mx-auto">
+                                    <div id="input-group-email" class="input-group-text"> <i data-feather="calendar"
+                                            class="w-4 h-4"></i> </div>
+                                    <input type="text" class="datepicker form-control" disabled data-single-mode="true">
+                                </div>
+                            </div>
+                            <div class="g-col-12 g-col-xxl-3">
+                                <label for="name" class="form-label">Martial Status</label>
+                                <select class="form-select me-sm-2" disabled aria-label="Default select example">
+                                    <option>Married</option>
+                                </select>
+                            </div>
+                            <div class="g-col-12 g-col-xxl-3">
+                                <label for="name" class="form-label">Nationality</label>
+                                <select class="form-select me-sm-2" disabled aria-label="Default select example">
+                                    <option selected>India</option>
+                                </select>
+                            </div>
+                            <div class="g-col-12 g-col-xxl-3">
+                                <label for="name" class="form-label">Religion</label>
+                                <select class="form-select me-sm-2" disabled aria-label="Default select example">
+                                    <option selected>Hindu</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
+                            <div class="g-col-12 g-col-xxl-4">
+                                <label for="name" class="form-label">Category</label>
+                                <select class="form-select me-sm-2" disabled aria-label="Default select example">
+                                    <option selected>GN</option>
+                                </select>
+                            </div>
+                            <div class="g-col-12 g-col-xxl-4">
+                                <label for="name" class="form-label">Qualification</label>
+                                <select class="form-select me-sm-2" disabled aria-label="Default select example">
+                                    <option selected>BA</option>
+                                </select>
+                            </div>
+                            <div class="g-col-12 g-col-xxl-4">
+                                <label for="Specialization" class="form-label">Specialization</label>
+                                <input id="Specialization" type="text" class="form-control" placeholder="" value="">
+                            </div>
+                            <div class="g-col-12 g-col-xxl-4">
+                                <label for="Institute" class="form-label">Institute</label>
+                                <input id="Institute" type="text" class="form-control" placeholder="" value="">
+                            </div>
+                        </div>
+                        <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
+                            <div class="g-col-12 g-col-xxl-3">
+                                <label for="input-wizard-3" class="form-label">Passing Year</label>
+                                <div class="input-group w-100 mx-auto">
+                                    <div id="input-group-email" class="input-group-text"> <i data-feather="calendar"
+                                            class="w-4 h-4"></i> </div>
+                                    <input disabled type="text" class="datepicker form-control" data-single-mode="true">
+                                </div>
+                            </div>
+                            <div class="g-col-12 g-col-xxl-3">
+                                <div>
+                                    <label for="update-profile-form-1" class="form-label">
+                                        Pincode</label>
+                                    <input id="update-profile-form-1" disabled type="text" class="form-control"
+                                        placeholder="" value="EMP1234">
+                                </div>
+                            </div>
+
+                            <div class="g-col-12 g-col-xxl-3">
+                                <div>
+                                    <label for="update-profile-form-1" class="form-label">
+                                        City</label>
+                                    <input id="update-profile-form-1" disabled type="text" class="form-control"
+                                        placeholder="" value="EMP1234">
+                                </div>
+                            </div>
+                            <div class="g-col-12 g-col-xxl-3">
+                                <label for="name" class="form-label">State</label>
+                                <select disabled class="form-select me-sm-2" aria-label="Default select example">
+                                    <option selected>Maharastra</option>
+                                </select>
+                            </div>
+                            <div class="grid columns-12 gap-x-5 gap-y-0 mt-5">
+                                <div class="intro-y g-col-12 g-col-sm-12">
+
+                                    <label for="validation-form-6"
+                                        class="form-label w-full d-flex flex-column flex-sm-row">
+                                        Address
+                                    </label> <textarea disabled id="validation-form-6" class="form-control"
+                                        name="comment" placeholder="Enter Address" minlength="10" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="change-password" role="tabpanel"
+                    aria-labelledby="change-password-tab">
+
+                    <div class="grid columns-12 gap-6">
+                        <!-- BEGIN: Change Password -->
+                        <div class="intro-y box g-col-12 g-col-lg-12">
+                            <div class="d-flex align-items-center p-5 border-bottom border-gray-200 dark-border-dark-5">
+                                <h2 class="fw-medium fs-base me-auto">
+                                    Change Password
+                                </h2>
+                            </div>
+                            <div class="p-5">
+                                <div>
+                                    <label for="change-password-form-1" class="form-label">Old Password</label>
+                                    <input id="change-password-form-1" type="password" class="form-control"
+                                        placeholder="Input text">
+                                </div>
+                                <div class="mt-3">
+                                    <label for="change-password-form-2" class="form-label">New Password</label>
+                                    <input id="change-password-form-2" type="password" class="form-control"
+                                        placeholder="Input text">
+                                </div>
+                                <div class="mt-3">
+                                    <label for="change-password-form-3" class="form-label">Confirm New Password</label>
+                                    <input id="change-password-form-3" type="password" class="form-control"
+                                        placeholder="Input text">
+                                </div>
+                                <button type="button" class="btn btn-primary mt-4">Change Password</button>
+                            </div>
+                        </div>
+                        <!-- END: Change Password -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- END: HTML Table Data -->
+        <!-- BEGIN: Delete Confirmation Modal -->
+        <div id="delete-confirmation-modal" class="modal fade" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="p-5 text-center">
+                            <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+                            <div class="fs-3xl mt-5">Are you sure?</div>
+                            <div class="text-gray-600 mt-2">
+                                Do you really want to delete these records?
+                                <br>
+                                This process cannot be undone.
+                            </div>
+                        </div>
+                        <div class="px-5 pb-8 text-center">
+                            <button type="button" data-bs-dismiss="modal"
+                                class="btn btn-outline-secondary w-24 me-1">Cancel</button>
+                            <button type="button" class="btn btn-danger w-24">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END: Delete Confirmation Modal -->
+    </div>
+    <!-- END: Content -->
+    </div>
+
+    <!-- BEGIN: JS Assets-->
+
+    <!-- <script src="dist/js/app.js"></script> -->
+    <script src="dist/js/custom.js"></script>
+    <!-- END: JS Assets-->
+</body>
+
+</html>

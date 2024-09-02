@@ -27520,3 +27520,7 @@ html body {
 .dark .bg-opacity-90 {
     --bs-bg-opacity: $bg-opacity !important
 }
+
+.features {
+    justify-content: space-between;
+}

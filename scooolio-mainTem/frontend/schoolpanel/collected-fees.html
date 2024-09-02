@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html lang="en" class="light">
+<!-- BEGIN: Head -->
+
+<head>
+    <meta charset="utf-8">
+    <link href="dist/images/logo.svg" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Collected Fees Log</title>
+    <!-- BEGIN: CSS Assets-->
+    <link rel="stylesheet" href="dist/css/app.css" />
+    <!-- END: CSS Assets-->
+</head>
+<!-- END: Head -->
+
+<body class="main" page-name="fees">
+    <!-- BEGIN: Mobile Menu -->
+    <div class="mobile-menu d-md-none" id="mobile-menu">
+
+    </div>
+    <!-- END: Mobile Menu -->
+    <div class="d-flex">
+        <!-- BEGIN: Side Menu -->
+        <nav class="side-nav" id="side-nav">
+
+        </nav>
+        <!-- END: Side Menu -->
+        <!-- BEGIN: Content -->
+        <div class="content">
+            <!-- BEGIN: Top Bar -->
+            <div class="top-bar">
+                <!-- BEGIN: Breadcrumb -->
+                <div class="-intro-x breadcrumb me-auto d-none d-sm-flex"> <a href="">School</a> <i
+                        data-feather="chevron-right" class="breadcrumb__icon"></i> <a href=""
+                        class="breadcrumb--active">Fees log</a> </div>
+                <!-- END: Breadcrumb -->
+
+                <!-- BEGIN: Notifications -->
+                <div class="intro-x dropdown me-auto me-sm-6" id="notification-section">
+
+                </div>
+                <!-- END: Notifications -->
+                <!-- BEGIN: Account Menu -->
+                <div class="intro-x dropdown w-8 h-8" id="right-profile-section">
+
+                </div>
+                <!-- END: Account Menu -->
+            </div>
+            <!-- END: Top Bar -->
+            <div class="grid columns-12 gap-6">
+                <div class="g-col-12 g-col-xxl-12">
+                    <div class="grid columns-12 gap-6">
+                        <!-- BEGIN: General Report -->
+                        <div class="g-col-12 mt-8">
+                            <div class="intro-y d-flex align-items-center h-10">
+                                <h2 class="fs-lg fw-medium truncate me-5">
+                                    Collected Fees Report
+                                </h2>
+                                <a href="" class="ms-auto d-flex align-items-center text-theme-1 dark-text-theme-10"> <i
+                                        data-feather="refresh-ccw" class="w-4 h-4 me-3"></i> Reload Data </a>
+                            </div>
+                            <div class="grid columns-12 gap-6 mt-5">
+                                <div class="g-col-12 g-col-sm-6 g-col-xl-3 intro-y">
+                                    <div class="report-box zoom-in">
+                                        <div class="box p-5 bg-theme-18">
+                                            <div class="d-flex">
+                                                <div class="fs-base text-gray-600 mt-1">Total Fees</div>
+                                                <div class="ms-auto">
+                                                    <div class="report-box__indicator text-gray-700"><i
+                                                            data-feather="pocket" class="w-6 h-6 ms-0.5"></i> </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="report-box__total fs-3xl fw-medium mt-6">
+                                                <span>&#8377;</span>25,00000
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="g-col-12 g-col-sm-6 g-col-xl-3 intro-y">
+                                    <div class="report-box zoom-in">
+                                        <div class="box p-5 bg-theme-8">
+                                            <div class="d-flex">
+                                                <div class="fs-base text-gray-600 mt-1">Collected Fees</div>
+                                                <div class="ms-auto">
+                                                    <div class="report-box__indicator text-gray-700"><i
+                                                            data-feather="pocket" class="w-6 h-6 ms-0.5"></i> </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="report-box__total fs-3xl fw-medium mt-6">
+                                                <span>&#8377;</span>20,00000
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="g-col-12 g-col-sm-6 g-col-xl-3 intro-y">
+                                    <div class="report-box zoom-in">
+                                        <div class="box p-5 bg-theme-17">
+                                            <div class="d-flex">
+                                                <div class="fs-base text-gray-600 mt-1">Balance</div>
+                                                <div class="ms-auto">
+                                                    <div class="report-box__indicator text-gray-700"><i
+                                                            data-feather="pocket" class="w-6 h-6 ms-0.5"></i> </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="report-box__total fs-3xl fw-medium mt-6">
+                                                <span>&#8377;</span>5,00000
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="g-col-12 g-col-sm-6 g-col-xl-3 intro-y">
+                                    <div class="report-box zoom-in">
+                                        <div class="box p-5 bg-theme-14">
+                                            <div class="d-flex">
+                                                <div class="fs-base text-gray-600 mt-1">Overdue</div>
+                                                <div class="ms-auto">
+                                                    <div class="report-box__indicator text-gray-700"><i
+                                                            data-feather="pocket" class="w-6 h-6 ms-0.5"></i> </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="report-box__total fs-3xl fw-medium mt-6">
+                                                <span>&#8377;</span>50,000
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END: General Report -->
+
+                    </div>
+                </div>
+            </div>
+            <div class="intro-y box p-5 mt-10">
+                <div class="d-flex flex-column flex-sm-row align-items-sm-end align-items-xl-start">
+                    <form id="tabulator-html-filter-form" class="d-xl-flex me-sm-auto">
+                        <div class="d-sm-flex align-items-center me-sm-6">
+                            <label class="w-12 flex-none w-xl-auto flex-xl-initial me-2">Filter By</label>
+                            <select class="tom-select w-full">
+                                <option value="1" selected>GR Number</option>
+                                <option value="2">1234</option>
+                                <option value="3">1234</option>
+                                <option value="4">1234</option>
+                                <option value="5">1234</option>
+                            </select>
+                        </div>
+                        <div class="d-sm-flex align-items-center me-sm-6">
+                            <select class="tom-select w-full">
+                                <option value="1" selected>Class Name</option>
+                                <option value="2">1st-A</option>
+                                <option value="3">1st-A</option>
+                                <option value="4">1st-A</option>
+                                <option value="5">1st-A</option>
+                            </select>
+                        </div>
+                        <div class="d-sm-flex align-items-center me-sm-6">
+                            <select class="tom-select w-full">
+                                <option value="0" selected>Select Month</option>
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </div>
+                        <div class="d-sm-flex align-items-center me-sm-6">
+                            <select class="w-full">
+                                <option value="0" selected>Status</option>
+                                <option value="1">Paid</option>
+                                <option value="2">Pending</option>
+                                <option value="3">Overdue</option>
+                            </select>
+                        </div>
+                    </form>
+                    <div class="d-flex mt-5 mt-sm-0">
+                        <!-- <button id="tabulator-print" class="btn btn-outline-secondary w-1/2 w-sm-auto me-2"> <i
+                                                        data-feather="printer" class="w-4 h-4 me-2"></i> Print </button> -->
+                        <div class="dropdown w-1/2 w-sm-auto">
+                            <button class="dropdown-toggle btn btn-outline-secondary w-full w-sm-auto"
+                                aria-expanded="false" data-bs-toggle="dropdown"> <i data-feather="file-text"
+                                    class="w-4 h-4 me-2"></i> Export <i data-feather="chevron-down"
+                                    class="w-4 h-4 ms-auto ms-sm-2"></i> </button>
+                            <div class="dropdown-menu w-40">
+                                <ul class="dropdown-content">
+                                    <li>
+                                        <a id="tabulator-export-csv" href="javascript:;" class="dropdown-item"> <i
+                                                data-feather="file-text" class="w-4 h-4 me-2"></i> Export CSV </a>
+                                    </li>
+                                    <li>
+                                        <a id="tabulator-export-xlsx" href="javascript:;" class="dropdown-item"> <i
+                                                data-feather="file-text" class="w-4 h-4 me-2"></i> Export XLSX </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- BEGIN: Data List -->
+                <div class="intro-y g-col-12 ooverflow-x-auto overflow-lg-visible mt-5">
+                    <table class="table table-report mt-n2">
+                        <thead>
+                            <tr>
+                                <th class="text-nowrap">Photo</th>
+                                <th class="text-nowrap">GR No.</th>
+                                <th class="text-nowrap">Name</th>
+                                <th class="text-nowrap">Father Name</th>
+                                <th class="text-nowrap">Contact No.</th>
+                                <th class="text-nowrap">Standard</th>
+                                <th class="text-nowrap">Division</th>
+                                <th class="text-nowrap">Fees</th>
+                                <th class="text-nowrap">Balance</th>
+                                <th class="text-nowrap">Status</th>
+                                <th class="text-nowrap">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="intro-x">
+                                <td class="w-20">
+                                    <div class="d-flex">
+                                        <div class="w-10 h-10 image-fit zoom-in">
+                                            <img alt="logo" class="tooltip rounded-circle"
+                                                src="dist/images/preview-14.jpg" title="Uploaded at 15 June 2021">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-right">1234567</td>
+                                <td>
+                                    <a href="view-student-profile.html" class="fw-medium text-nowrap">Angad Yadav</a>
+                                </td>
+                                <td>KP Yadav</td>
+                                <td>8108847838</td>
+                                <td>8th</td>
+                                <td>A</td>
+                                <td>Paid</td>
+                                <td>90%</td>
+                                <td>Paid</td>
+                                <td>
+                                    <div class="dropdown ms-auto">
+                                        <a class="dropdown-toggle w-5 h-5 d-block" href="javascript:;"
+                                            aria-expanded="false" data-bs-toggle="dropdown"> <i
+                                                data-feather="more-vertical"
+                                                class="w-5 h-5 text-gray-600 dark-text-gray-300"></i> </a>
+                                        <div class="dropdown-menu w-40">
+                                            <ul class="dropdown-content">
+                                                <li>
+                                                    <a href="update-fees-individuals" class="dropdown-item"> <i
+                                                            data-feather="edit" class="w-4 h-4 me-2"></i> Update Fees
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="collect-fees.html" class="dropdown-item"> <i
+                                                            data-feather="activity" class="w-4 h-4 me-2"></i> Collect
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- END: Data List -->
+                <!-- BEGIN: Pagination -->
+                <div class="intro-y g-col-12 d-flex flex-wrap flex-sm-row flex-sm-nowrap align-items-center mt-5">
+                    <nav class="w-full w-sm-auto me-sm-auto">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevrons-left"></i> </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevron-left"></i> </a>
+                            </li>
+                            <li class="page-item"> <a class="page-link" href="#">...</a> </li>
+                            <li class="page-item"> <a class="page-link" href="#">1</a> </li>
+                            <li class="page-item active"> <a class="page-link" href="#">2</a> </li>
+                            <li class="page-item"> <a class="page-link" href="#">3</a> </li>
+                            <li class="page-item"> <a class="page-link" href="#">...</a> </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevron-right"></i> </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevrons-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <select class="w-20 form-select box mt-3 mt-sm-0">
+                        <option>10</option>
+                        <option>25</option>
+                        <option>35</option>
+                        <option>50</option>
+                    </select>
+                </div>
+                <!-- END: Pagination -->
+            </div>
+        </div>
+        <!-- END: Content -->
+    </div>
+
+    <!-- BEGIN: JS Assets-->
+    <!-- <script src="dist/js/app.js"></script> -->
+    <script src="dist/js/custom.js"></script>
+
+    <!-- END: JS Assets-->
+</body>
+
+</html>

@@ -16,7 +16,7 @@
 </head>
 <!-- END: Head -->
 
-<body class="main" page-name="school">
+<body class="main" page-name="teacher">
     <!-- BEGIN: Mobile Menu -->
     <div class="mobile-menu d-md-none" id="mobile-menu">
 
@@ -33,9 +33,9 @@
             <!-- BEGIN: Top Bar -->
             <div class="top-bar">
                 <!-- BEGIN: Breadcrumb -->
-                <div class="-intro-x breadcrumb me-auto d-none d-sm-flex"> <a href="">Admin</a> <i
+                <div class="-intro-x breadcrumb me-auto d-none d-sm-flex"> <a href="">School</a> <i
                         data-feather="chevron-right" class="breadcrumb__icon"></i> <a href=""
-                        class="breadcrumb--active">School List</a> </div>
+                        class="breadcrumb--active">Teacher List</a> </div>
                 <!-- END: Breadcrumb -->
                 <!-- BEGIN: Notifications -->
                 <div class="intro-x dropdown me-auto me-sm-6" id="notification-section">
@@ -51,11 +51,12 @@
             <!-- END: Top Bar -->
             <div class="intro-y d-flex flex-column flex-sm-row align-items-center mt-8">
                 <h2 class="fs-lg fw-medium me-auto">
-                    School List
+                    Teacher List
                 </h2>
                 <div class="w-full w-sm-auto d-flex mt-4 mt-sm-0">
-                    <a href="add-school.html" class="btn btn-primary shadow-md me-2"><i data-feather="plus"></i> Add New
-                        School</a>
+                    <a href="add-teacher.html" class="btn btn-primary shadow-md me-2"><i data-feather="plus"></i> Add
+                        New
+                        Teacher</a>
                 </div>
             </div>
             <!-- BEGIN: HTML Table Data -->
@@ -109,13 +110,14 @@
                     <table class="table table-report mt-n2 ">
                         <thead>
                             <tr>
-                                <th class="text-nowrap">Logo</th>
-                                <th class="text-nowrap">Code</th>
-                                <th class="text-nowrap">School Name</th>
+                                <th class="text-nowrap">Photo</th>
+                                <th class="text-nowrap">EMP ID</th>
+                                <th class="text-nowrap">Name</th>
                                 <th class="text-nowrap">Contact Number</th>
-                                <th class="text-nowrap">Branch</th>
-                                <th class="text-nowrap">City</th>
-                                <th class="text-nowrap">State</th>
+                                <th class="text-nowrap">Assigned Class</th>
+                                <th class="text-nowrap">Division</th>
+                                <th class="text-nowrap">Gender</th>
+                                <th class="text-nowrap">Joining Date</th>
                                 <th class="text-nowrap">Action</th>
                             </tr>
                         </thead>
@@ -129,20 +131,21 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="text-right">CM10266</td>
+                                <td class="text-right">EMP1234</td>
                                 <td>
-                                    <a href="" class="fw-medium text-nowrap">Swami Vivekanand School</a>
+                                    <a href="" class="fw-medium text-nowrap">Sonal Jain</a>
                                 </td>
                                 <td>8108847838</td>
-                                <td>Chembur</td>
-                                <td>Mumbai</td>
-                                <td>Maharastra</td>
+                                <td>8</td>
+                                <td>A</td>
+                                <td>Female</td>
+                                <td>20/04/2023</td>
                                 <td class="table-report__action w-56">
                                     <div class="d-flex justify-content-start align-items-center">
-                                        <a class="d-flex align-items-center me-3" href=""> <i
+                                        <a class="d-flex align-items-center me-3" href="add-student.html"> <i
                                                 data-feather="check-square" class="w-4 h-4 me-1"></i> Edit </a>
-                                        <a class="d-flex align-items-center me-3" href=""> <i data-feather="eye"
-                                                class="w-4 h-4 me-1"></i> View </a>
+                                        <a class="d-flex align-items-center me-3" href="view-teacher-profile.html"> <i
+                                                data-feather="eye" class="w-4 h-4 me-1"></i> View </a>
 
                                     </div>
                                 </td>

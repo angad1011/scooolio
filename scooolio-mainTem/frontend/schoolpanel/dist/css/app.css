@@ -15557,6 +15557,10 @@ textarea {
     align-items: center !important
 }
 
+.justify-space-between {
+    justify-content: space-between !important;
+}
+
 .mx-1 {
     margin-left: .25rem !important;
     margin-right: .25rem !important
@@ -27519,4 +27523,13 @@ html body {
 .dark .bg-opacity-50,
 .dark .bg-opacity-90 {
     --bs-bg-opacity: $bg-opacity !important
+}
+
+*>.-intro-x:first-child,
+*>.intro-x:first-child {
+    justify-content: center;
+}
+
+.logo {
+    width: 50%;
 }

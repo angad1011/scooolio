@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+
+<html lang="en" class="light">
+<!-- BEGIN: Head -->
+
+<head>
+    <meta charset="utf-8">
+    <link href="dist/images/logo.svg" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Schedule Exam</title>
+    <!-- BEGIN: CSS Assets-->
+    <link rel="stylesheet" href="dist/css/app.css" />
+    <!-- END: CSS Assets-->
+</head>
+<!-- END: Head -->
+
+<body class="main" page-name="fees">
+    <!-- BEGIN: Mobile Menu -->
+    <div class="mobile-menu d-md-none" id="mobile-menu">
+
+    </div>
+    <!-- END: Mobile Menu -->
+    <div class="d-flex">
+        <!-- BEGIN: Side Menu -->
+        <nav class="side-nav" id="side-nav">
+
+        </nav>
+        <!-- END: Side Menu -->
+        <!-- BEGIN: Content -->
+        <div class="content">
+            <!-- BEGIN: Top Bar -->
+            <div class="top-bar">
+                <!-- BEGIN: Breadcrumb -->
+                <div class="-intro-x breadcrumb me-auto d-none d-sm-flex"> <a href="">School</a> <i
+                        data-feather="chevron-right" class="breadcrumb__icon"></i> <a href=""
+                        class="breadcrumb--active">Schedule Exam</a> </div>
+                <!-- END: Breadcrumb -->
+
+                <!-- BEGIN: Notifications -->
+                <div class="intro-x dropdown me-auto me-sm-6" id="notification-section">
+
+                </div>
+                <!-- END: Notifications -->
+                <!-- BEGIN: Account Menu -->
+                <div class="intro-x dropdown w-8 h-8" id="right-profile-section">
+
+                </div>
+                <!-- END: Account Menu -->
+            </div>
+            <!-- END: Top Bar -->
+            <div class="intro-y box p-5 mt-5">
+                <h2 class="fs-lg fw-medium truncate me-5">
+                    Add Exam Time Table
+                </h2>
+                <div class="grid columns-12 gap-4 gap-y-5 mt-5">
+                    <div class="intro-y g-col-12 g-col-sm-8">
+                        <div class="grid columns-12 gap-4 gap-y-5">
+                            <div class="intro-y g-col-6 g-col-sm-6">
+                                <label for="groupName" class="form-label">Select Exam Group</label>
+                                <select id="groupName" class="form-select">
+                                    <option selected>select</option>
+                                    <option>Anual Exam</option>
+                                    <option>Quarterly Exam</option>
+                                    <option>Half-Yearly Exam</option>
+                                    <option>Prelims Exam</option>
+                                    <option>Semester 1</option>
+                                    <option>Semester 2</option>
+                                    <option>Semester 3</option>
+                                    <option>Semester 4</option>
+                                </select>
+                            </div>
+                            <div class="intro-y g-col-6 g-col-sm-6">
+                                <label for="groupName" class="form-label">Select Stream</label>
+                                <select id="groupName" class="form-select">
+                                    <option selected>select</option>
+                                    <option>Science Stream</option>
+                                    <option>Commerce Stream</option>
+                                    <option>Arts/Humanities Stream</option>
+                                    <option>Vocational/Technical Stream</option>
+                                    <option>Information Technology (IT) Stream</option>
+                                    <option>Primary</option>
+                                    <option>Nursery</option>
+                                    <option>High School</option>
+                                </select>
+                            </div>
+                            <div class="intro-y g-col-6 g-col-sm-6">
+                                <label for="groupName" class="form-label">Select Class</label>
+                                <select data-placeholder="Select Class" data-header="Class" class="tom-select w-full"
+                                    multiple>
+                                    <option value="4">1st</option>
+                                    <option value="5">2nd</option>
+                                    <option value="6">3rd</option>
+                                    <option value="7">4th</option>
+                                    <option value="8">5th</option>
+                                    <option value="9">6th</option>
+                                    <option value="10">7th</option>
+                                    <option value="11">8th</option>
+                                    <option value="12">9th</option>
+                                </select>
+                            </div>
+                            <div class="intro-y g-col-6 g-col-sm-6">
+                                <div class="mt-3"> <label>Publish Time Table</label>
+                                    <small>(If activated this will be visible to the
+                                        students in mobile app)</small>
+                                    <div class="d-flex flex-coloumn flex-sm-row mt-2">
+                                        <div class="form-check me-2"> <input id="radio-switch-4"
+                                                class="form-check-input" type="radio" name="horizontal_radio_button"
+                                                value="horizontal-radio-chris-evans"> <label class="form-check-label"
+                                                for="radio-switch-4">Active</label> </div>
+                                        <div class="form-check me-2 mt-2 mt-sm-0"> <input id="radio-switch-5"
+                                                class="form-check-input" type="radio" name="horizontal_radio_button"
+                                                value="horizontal-radio-liam-neeson"> <label class="form-check-label"
+                                                for="radio-switch-5">Inactive</label> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="intro-y g-col-6 g-col-sm-6">
+                                <label for="groupName" class="form-label">Start Date</label>
+                                <input class="datepicker form-control" data-single-mode="true" />
+                            </div>
+                            <div class="intro-y g-col-6 g-col-sm-6">
+                                <label for="groupName" class="form-label">End Date</label>
+                                <input class="datepicker form-control" data-single-mode="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="intro-y g-col-12 g-col-sm-12">
+                        <!-- BEGIN: Data List -->
+                        <div class="intro-y g-col-12 ooverflow-x-auto overflow-lg-visible">
+                            <table class="table table-bordered mt-n2">
+                                <thead>
+                                    <tr>
+
+                                        <th class="text-nowrap">Subject</th>
+                                        <th class="text-nowrap">Markes</th>
+                                        <th class="text-nowrap">Passing Mark</th>
+                                        <th class="text-nowrap">Start Date Time</th>
+                                        <th class="text-nowrap">End Date Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="intro-x">
+                                        <td>
+                                            <select id="1" class="form-select">
+                                                <option>Physics</option>
+                                                <option>Chemistry</option>
+                                                <option>Biology</option>
+                                                <option>Mathematics</option>
+                                                <option>Computer Science</option>
+                                                <option>History</option>
+                                                <option>Geography</option>
+                                                <option>English</option>
+                                                <option>Hindi</option>
+                                                <option>Art</option>
+
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="100">
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="35">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                    </tr>
+                                    <tr class="intro-x">
+                                        <td>
+                                            <select id="1" class="form-select">
+                                                <option>Physics</option>
+                                                <option>Chemistry</option>
+                                                <option>Biology</option>
+                                                <option>Mathematics</option>
+                                                <option>Computer Science</option>
+                                                <option>History</option>
+                                                <option>Geography</option>
+                                                <option>English</option>
+                                                <option>Hindi</option>
+                                                <option>Art</option>
+
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="100">
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="35">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                    </tr>
+                                    <tr class="intro-x">
+                                        <td>
+                                            <select id="1" class="form-select">
+                                                <option>Physics</option>
+                                                <option>Chemistry</option>
+                                                <option>Biology</option>
+                                                <option>Mathematics</option>
+                                                <option>Computer Science</option>
+                                                <option>History</option>
+                                                <option>Geography</option>
+                                                <option>English</option>
+                                                <option>Hindi</option>
+                                                <option>Art</option>
+
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="100">
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="35">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                    </tr>
+                                    <tr class="intro-x">
+                                        <td>
+                                            <select id="1" class="form-select">
+                                                <option>Physics</option>
+                                                <option>Chemistry</option>
+                                                <option>Biology</option>
+                                                <option>Mathematics</option>
+                                                <option>Computer Science</option>
+                                                <option>History</option>
+                                                <option>Geography</option>
+                                                <option>English</option>
+                                                <option>Hindi</option>
+                                                <option>Art</option>
+
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="100">
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="35">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                    </tr>
+                                    <tr class="intro-x">
+                                        <td>
+                                            <select id="1" class="form-select">
+                                                <option>Physics</option>
+                                                <option>Chemistry</option>
+                                                <option>Biology</option>
+                                                <option>Mathematics</option>
+                                                <option>Computer Science</option>
+                                                <option>History</option>
+                                                <option>Geography</option>
+                                                <option>English</option>
+                                                <option>Hindi</option>
+                                                <option>Art</option>
+
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="100">
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="35">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                    </tr>
+                                    <tr class="intro-x">
+                                        <td>
+                                            <select id="1" class="form-select">
+                                                <option>Physics</option>
+                                                <option>Chemistry</option>
+                                                <option>Biology</option>
+                                                <option>Mathematics</option>
+                                                <option>Computer Science</option>
+                                                <option>History</option>
+                                                <option>Geography</option>
+                                                <option>English</option>
+                                                <option>Hindi</option>
+                                                <option>Art</option>
+
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="100">
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="35">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                    </tr>
+                                    <tr class="intro-x">
+                                        <td>
+                                            <select id="1" class="form-select">
+                                                <option>Physics</option>
+                                                <option>Chemistry</option>
+                                                <option>Biology</option>
+                                                <option>Mathematics</option>
+                                                <option>Computer Science</option>
+                                                <option>History</option>
+                                                <option>Geography</option>
+                                                <option>English</option>
+                                                <option>Hindi</option>
+                                                <option>Art</option>
+
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="100">
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="35">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                    </tr>
+                                    <tr class="intro-x">
+                                        <td>
+                                            <select id="1" class="form-select">
+                                                <option>Physics</option>
+                                                <option>Chemistry</option>
+                                                <option>Biology</option>
+                                                <option>Mathematics</option>
+                                                <option>Computer Science</option>
+                                                <option>History</option>
+                                                <option>Geography</option>
+                                                <option>English</option>
+                                                <option>Hindi</option>
+                                                <option>Art</option>
+
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="100">
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="35">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                    </tr>
+                                    <tr class="intro-x">
+                                        <td>
+                                            <select id="1" class="form-select">
+                                                <option>Physics</option>
+                                                <option>Chemistry</option>
+                                                <option>Biology</option>
+                                                <option>Mathematics</option>
+                                                <option>Computer Science</option>
+                                                <option>History</option>
+                                                <option>Geography</option>
+                                                <option>English</option>
+                                                <option>Hindi</option>
+                                                <option>Art</option>
+
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="100">
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="35">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                    </tr>
+                                    <tr class="intro-x">
+                                        <td>
+                                            <select id="1" class="form-select">
+                                                <option>Physics</option>
+                                                <option>Chemistry</option>
+                                                <option>Biology</option>
+                                                <option>Mathematics</option>
+                                                <option>Computer Science</option>
+                                                <option>History</option>
+                                                <option>Geography</option>
+                                                <option>English</option>
+                                                <option>Hindi</option>
+                                                <option>Art</option>
+
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="100">
+                                        </td>
+                                        <td>
+                                            <input value="" type="text" class="form-control" placeholder="35">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                        <td>
+                                            <input type="datetime-local" class="form-control d-block mx-auto">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- END: Data List -->
+                    </div>
+                    <div
+                        class="intro-y g-col-12 d-flex align-items-center justify-content-center justify-content-sm-end mt-5">
+                        <button class="btn btn-primary w-24 ms-2"><i data-feather="save" class="w-4 h-4 me-3"></i>
+                            Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END: Content -->
+    </div>
+
+    <!-- BEGIN: JS Assets-->
+    <!-- <script src="dist/js/app.js"></script> -->
+    <script src="dist/js/custom.js"></script>
+
+    <!-- END: JS Assets-->
+</body>
+
+</html>
